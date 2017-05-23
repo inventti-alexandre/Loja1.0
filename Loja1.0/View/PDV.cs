@@ -27,7 +27,7 @@ namespace Loja1._0
         private void btnExit_Click(object sender, EventArgs e)
         {
             Dispose();
-            Inicial form = new Inicial();
+            Inicial form = new Inicial(user);
             form.Show();            
         }
 

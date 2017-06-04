@@ -78,7 +78,8 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.exit;
+            this.btnExit.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(762, 4);
@@ -86,7 +87,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(34, 34);
             this.btnExit.TabIndex = 10;
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblNome

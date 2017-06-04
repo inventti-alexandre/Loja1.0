@@ -86,6 +86,13 @@ namespace Loja1._0.Model
                     select cidade).ToList();
         }
 
+        public List<Vendas_Produtos> pesquisaProdutosVendaById(int busca)
+        {
+            return (from prodVenda in dataEntity.Vendas_Produtos
+                    where prodVenda.id_venda == busca
+                    select prodVenda).ToList();
+        }
+
         public int contaUserValidos()
         {
             List<Usuarios> lista = (from usuarios in dataEntity.Usuarios
@@ -263,6 +270,11 @@ namespace Loja1._0.Model
             return (from fornecedor in dataEntity.Fornecedores
                     where (fornecedor.nome.Equals(nome))
                     select fornecedor).SingleOrDefault();
+        }
+
+        public void salvarNovoPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
+        {
+            dataEntity.Pagamentos_Vendas.Add(pagamentoPedido);
         }
 
         public UnidMedidas pesquisaMedidaId(int id)

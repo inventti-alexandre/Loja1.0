@@ -14,6 +14,12 @@ namespace Loja1._0.Model
     
     public partial class Pagamentos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pagamentos()
+        {
+            this.Pagamentos_Vendas = new HashSet<Pagamentos_Vendas>();
+        }
+    
         public int id { get; set; }
         public string tipoPag { get; set; }
         public string formaPag { get; set; }
@@ -24,10 +30,10 @@ namespace Loja1._0.Model
         public Nullable<decimal> valorParcela { get; set; }
         public string numChequePrimeiro { get; set; }
         public string numChequeUltimo { get; set; }
-        public Nullable<int> id_venda { get; set; }
         public Nullable<int> id_movimento { get; set; }
     
         public virtual Movimentos Movimentos { get; set; }
-        public virtual Vendas Vendas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pagamentos_Vendas> Pagamentos_Vendas { get; set; }
     }
 }

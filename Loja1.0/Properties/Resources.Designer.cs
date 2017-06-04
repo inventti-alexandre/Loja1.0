@@ -83,9 +83,9 @@ namespace Loja1._0.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fundoSistema {
+        internal static System.Drawing.Bitmap Icone {
             get {
-                object obj = ResourceManager.GetObject("fundoSistema", resourceCulture);
+                object obj = ResourceManager.GetObject("Icone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +136,26 @@ namespace Loja1._0.Properties {
         internal static System.Drawing.Bitmap OK {
             get {
                 object obj = ResourceManager.GetObject("OK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trocar {
+            get {
+                object obj = ResourceManager.GetObject("trocar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap voltar1 {
+            get {
+                object obj = ResourceManager.GetObject("voltar1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

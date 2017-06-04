@@ -17,7 +17,7 @@ namespace Loja1._0.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Vendas()
         {
-            this.Pagamentos = new HashSet<Pagamentos>();
+            this.Pagamentos_Vendas = new HashSet<Pagamentos_Vendas>();
             this.Vendas_Produtos = new HashSet<Vendas_Produtos>();
         }
     
@@ -31,10 +31,11 @@ namespace Loja1._0.Model
         public Nullable<int> id_Cliente { get; set; }
         public Nullable<int> desconto { get; set; }
         public Nullable<decimal> comissao { get; set; }
+        public Nullable<bool> NFP { get; set; }
     
         public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pagamentos> Pagamentos { get; set; }
+        public virtual ICollection<Pagamentos_Vendas> Pagamentos_Vendas { get; set; }
         public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendas_Produtos> Vendas_Produtos { get; set; }

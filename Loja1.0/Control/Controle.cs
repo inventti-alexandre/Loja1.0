@@ -90,6 +90,13 @@ namespace Loja1._0.Control
             return dbRepository.pesquisaCidadeByNameUF(pesquisa);
         }
 
+        public List<Vendas_Produtos> pesquisaProdutosVenda(int id)
+        {
+            int busca = id;
+
+            return dbRepository.pesquisaProdutosVendaById(busca);
+        }
+
         public List<UnidMedidas> pesquisaUnidades(string v)
         {
             return dbRepository.pesquisaMedidas();
@@ -325,6 +332,11 @@ namespace Loja1._0.Control
             int id = id_medida;
 
             return dbRepository.pesquisaMedidaId(id);
+        }
+
+        public void salvaPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
+        {
+            dbRepository.salvarNovoPagamentoPedido(pagamentoPedido);
         }
     }
 }

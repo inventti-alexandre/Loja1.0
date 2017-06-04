@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Loja1._0.Model;
+using FiscalPrinterBematech;
 
 namespace Loja1._0
 {
@@ -23,7 +24,19 @@ namespace Loja1._0
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            Inicial form = new Inicial(user);
+            form.Show();
             Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Configuração inicial Impressora fiscal
+            BemaFI32.Bematech_FI_AlteraSimboloMoeda("R");
+            BemaFI32.Bematech_FI_ProgramaAliquota("10,38", 0);            
+            BemaFI32.Bematech_FI_LinhasEntreCupons(1);
+            BemaFI32.Bematech_FI_EspacoEntreLinhas(5);
+            BemaFI32.Bematech_FI_ProgramaArredondamento();
         }
     }
 }

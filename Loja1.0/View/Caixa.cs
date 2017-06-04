@@ -94,13 +94,17 @@ namespace Loja1._0
                 btnAdicionar1.Enabled = false;
                 txtPedidoNum1.Enabled = false;
 
-                if(venda.Clientes != null && cliente == null)
+                if(venda.Clientes != null && cliente.cpf == null)
                 {
                     btnAtribuirCliente.Enabled = false;
                     cliente = venda.Clientes;
                     txtCliente.Text = cliente.nome;
                     txtCpf.Text = cliente.cpf;
-                    txtCredito.Text = cliente.creditos.ToString();
+                    txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
+                    if (txtCreditosCliente.Text.Equals(""))
+                    {
+                        txtCreditosCliente.Text = "0,00";
+                    }
                 }
                 acrescentaPedido();
             }
@@ -146,13 +150,17 @@ namespace Loja1._0
                     txtPedidoNum3.Enabled = true;
                     btnAdicionar2.Enabled = false;
                     txtPedidoNum2.Enabled = false;
-                    if (venda.Clientes != null && cliente == null)
+                    if (venda.Clientes.cpf != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
                         txtCliente.Text = cliente.nome;
                         txtCpf.Text = cliente.cpf;
-                        txtCredito.Text = cliente.creditos.ToString();
+                        txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
+                        if (txtCreditosCliente.Text.Equals(""))
+                        {
+                            txtCreditosCliente.Text = "0,00";
+                        }
                     }
                     acrescentaPedido();
                 }
@@ -203,13 +211,17 @@ namespace Loja1._0
                     txtPedidoNum4.Enabled = true;
                     btnAdicionar3.Enabled = false;
                     txtPedidoNum3.Enabled = false;
-                    if (venda.Clientes != null && cliente == null)
+                    if (venda.Clientes.cpf != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
                         txtCliente.Text = cliente.nome;
                         txtCpf.Text = cliente.cpf;
-                        txtCredito.Text = cliente.creditos.ToString();
+                        txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
+                        if (txtCreditosCliente.Text.Equals(""))
+                        {
+                            txtCreditosCliente.Text = "0,00";
+                        }
                     }
                     acrescentaPedido();
                 }
@@ -259,13 +271,18 @@ namespace Loja1._0
                     txtPedidoNum5.Enabled = true;
                     btnAdicionar4.Enabled = false;
                     txtPedidoNum4.Enabled = false;
-                    if (venda.Clientes != null && cliente == null)
+                    if (venda.Clientes.cpf != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
                         txtCliente.Text = cliente.nome;
                         txtCpf.Text = cliente.cpf;
                         txtCredito.Text = cliente.creditos.ToString();
+                        txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
+                        if (txtCreditosCliente.Text.Equals(""))
+                        {
+                            txtCreditosCliente.Text = "0,00";
+                        }
                     }
                     acrescentaPedido();
                 }
@@ -313,15 +330,18 @@ namespace Loja1._0
                     listaVendas.Add(venda);
                     btnAdicionar5.Enabled = false;
                     txtPedidoNum5.Enabled = false;
-                    if (venda.Clientes != null && cliente == null)
+                    if (venda.Clientes.cpf != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
                         txtCliente.Text = cliente.nome;
                         txtCpf.Text = cliente.cpf;
-                        txtCredito.Text = cliente.creditos.ToString();
+                        txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
+                        if (txtCreditosCliente.Text.Equals(""))
+                        {
+                            txtCreditosCliente.Text = "0,00";
+                        }
                     }
-
                     MessageBox.Show("Pedido Adicionado com sucesso. Para a cobrança de mais de 5 pedidos é necessário realizar mais de um faturamento, conclua este faturamento e inicie um novo.", "Atenção");
                     acrescentaPedido();
                 }
@@ -332,9 +352,13 @@ namespace Loja1._0
             }
         }
 
-        private bool pedidoPago(string text)
+        private bool pedidoPago(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamentoe devolve true
+            if (controle.pesquisaPagamentoIdVenda(numPedido))
+            {
+                return true;
+            }
             return false;
         }
 
@@ -386,7 +410,7 @@ namespace Loja1._0
         {
             if (txtCpf.Text.Equals(""))
             {
-                MessageBox.Show("Para associar Cnpj / Cpf a um pagamento é necessário preencher o campo correspondente.", "Ação Inválido");
+                MessageBox.Show("Para associar Cnpj / Cpf a um pagamento é necessário preencher o campo correspondente.", "Ação Inválida");
             }
             else if (validaCpf.validaTipoCpfCnpj(txtCpf.Text))
             {
@@ -398,7 +422,7 @@ namespace Loja1._0
                     cliente = controle.pesquisaClienteCpf(txtCpf.Text);
                     txtCliente.Text = cliente.nome;
                     txtCpf.Text = cliente.cpf;
-                    txtCredito.Text = cliente.creditos.ToString();
+                    txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
                     if(txtCpf.Text.Length == 11)
                     {
                         venda.cpf = txtCpf.Text;
@@ -416,6 +440,10 @@ namespace Loja1._0
                     MessageBox.Show("Não existe cliente com o Cnpj / Cpf digitado, para associar cliente não cadastrado utilize o botão \"Associar Outro\"", "Ação Inválida");
                 }
             }
+            else
+            {
+                txtCpf.Text = "";
+            }
         }
 
         private void btnAtribuirOutro_Click(object sender, EventArgs e)
@@ -426,23 +454,34 @@ namespace Loja1._0
             }
             else if (validaCpf.validaTipoCpfCnpj(txtCpf.Text))
             {
-                btnAtribuirCliente.Enabled = false;
-                btnAtribuirOutro.Enabled = false;
-                txtCpf.Enabled = false;
-                if (txtCpf.Text.Length == 11)
+                if (controle.pesquisaClienteCpf(txtCpf.Text) != null)
                 {
-                    venda.cpf = txtCpf.Text;
-                    venda.cnpj = "";
+                    MessageBox.Show("Cnpj / Cpf informado pertence a um cliente previamente cadastrado, pressione \"Associar Cliente\"", "Ação Inválida");
+                    btnAtribuirCliente.Enabled = true;
                 }
                 else
                 {
-                    venda.cpf = "";
-                    venda.cnpj = txtCpf.Text;
+                    txtCliente.Text = "Não Cadastrado";
+                    txtCreditosCliente.Text = "0,00";
+                    btnAtribuirCliente.Enabled = false;
+                    btnAtribuirOutro.Enabled = false;
+                    txtCpf.Enabled = false;
+                    if (txtCpf.Text.Length == 11)
+                    {
+                        venda.cpf = txtCpf.Text;
+                        venda.cnpj = "";
+                    }
+                    else
+                    {
+                        venda.cpf = "";
+                        venda.cnpj = txtCpf.Text;
+                    }
+                    controle.salvaAtualiza();
                 }
-                controle.salvaAtualiza();
             }
             else
             {
+                btnAtribuirCliente.Enabled = true;
                 txtCpf.Text = "";
             }
         }
@@ -1166,6 +1205,7 @@ namespace Loja1._0
 
         private bool realizaTEF()
         {
+            //chamada e resposta enviada pelo gerenciador padrão de transação TEF
             DialogResult = MessageBox.Show("Já foi realizada a transação de transferência de fundos ?","Ação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (DialogResult.Equals(DialogResult.Yes))
             {
@@ -1195,8 +1235,8 @@ namespace Loja1._0
 
         private void imprimeCupomFiscal()
         {
-            
-            /*if (-3 == 3)
+
+            /*if (não existir configuração de aliquota)
             {
                 //Configuração inicial Impressora fiscal
                 BemaFI32.Bematech_FI_AlteraSimboloMoeda("R");
@@ -1206,8 +1246,15 @@ namespace Loja1._0
                 BemaFI32.Bematech_FI_ProgramaArredondamento();
             }*/
 
-            //cnpj ou cpf do cliente e analize de aliquota cadastrada
-            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));            
+            if (rdbNPsim.Checked)
+            {
+                //cnpj ou cpf do cliente
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
+            }
+            else
+            {
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(""));
+            }
 
             //Relação das ordens de serviço que compõem o pagamento efetuado
             foreach (Vendas value in listaVendas)

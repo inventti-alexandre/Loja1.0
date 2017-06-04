@@ -1274,7 +1274,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(114, 46);
             this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.Text = "Cancelar Pagamento";
+            this.btnCancelar.Text = "Limpar Pagamento";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -1289,7 +1289,7 @@
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(114, 46);
             this.btnImprimir.TabIndex = 12;
-            this.btnImprimir.Text = "Imprimir Leitura Fiscal";
+            this.btnImprimir.Text = "Cancelar";
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 

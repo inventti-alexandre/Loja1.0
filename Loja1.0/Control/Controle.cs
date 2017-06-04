@@ -338,5 +338,12 @@ namespace Loja1._0.Control
         {
             dbRepository.salvarNovoPagamentoPedido(pagamentoPedido);
         }
+
+        public bool pesquisaPagamentoIdVenda(string numPedido)
+        {
+            int idVenda = Convert.ToInt32(numPedido);
+
+            return dbRepository.pesquisaPagamentoVendaByIdVenda(idVenda);
+        }
     }
 }

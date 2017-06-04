@@ -277,6 +277,19 @@ namespace Loja1._0.Model
             dataEntity.Pagamentos_Vendas.Add(pagamentoPedido);
         }
 
+        public bool pesquisaPagamentoVendaByIdVenda(int idVenda)
+        {
+            bool busca = true;
+            int teste = (from pagVenda in dataEntity.Pagamentos_Vendas
+                         where pagVenda.id_Venda == idVenda
+                         select pagVenda).Count();
+            if (teste == 0)
+            {
+                busca = false;
+            }
+            return busca;
+        }
+
         public UnidMedidas pesquisaMedidaId(int id)
         {
             return (from unid in dataEntity.UnidMedidas

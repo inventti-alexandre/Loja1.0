@@ -97,7 +97,7 @@ namespace Loja1._0
                 MessageBox.Show("Para pesquisa de produto insira parte do nome/descrição", "Ação Inválida");
             }
             else
-            {                
+            {
                 listaProdutos = controle.pesquisaProdutosValidoNome(txtCodigo.Text);
                 cmbListaProdutos.DataSource = listaProdutos;
                 cmbListaProdutos.ValueMember = "cod_produto";
@@ -121,7 +121,6 @@ namespace Loja1._0
                     cmbListaProdutos.Visible = true;
                     btnCancelPesquisa.Visible = true;
                     btnOkPesquisa.Visible = true;
-                    cmbListaProdutos.Text = "";
                     txtCodigo.Text = "";
                 }
                 cmbListaProdutos.Focus();
@@ -141,6 +140,8 @@ namespace Loja1._0
 
         private void btnOkPesquisa_Click(object sender, EventArgs e)
         {
+            AcceptButton = btnAdicionar;
+            txtCodigo.Focus();
             lblCodigo.Text = "Código Produto : ";
             txtCodigo.Visible = true;
             btnPesquisar.Visible = true;
@@ -315,6 +316,9 @@ namespace Loja1._0
 
         private void btnPesquisaCliente_Click(object sender, EventArgs e)
         {
+            cmbCliente.Focus();
+            AcceptButton = btnOkCliente;
+            CancelButton = btnCancelCliente;
             if (txtBuscaCliente.Text.Equals(""))
             {
                 MessageBox.Show("Para pesquisa de cliente insira parte do nome, ou cpf completo", "Ação Inválida");
@@ -349,7 +353,6 @@ namespace Loja1._0
                     cmbCliente.Visible = true;
                     btnCancelCliente.Visible = true;
                     btnOkCliente.Visible = true;
-                    cmbCliente.Text = "";
                     txtBuscaCliente.Text = "";
                 }
             }
@@ -440,6 +443,16 @@ namespace Loja1._0
         {
             this.AcceptButton = btnOkPesquisa;
             this.CancelButton = btnCancelPesquisa;
+        }
+
+        private void txtCliente_Click(object sender, EventArgs e)
+        {
+            AcceptButton = btnPesquisaCliente;
+        }
+
+        private void txtCodigo_OnFocus(object sender, EventArgs e)
+        {
+            AcceptButton = btnAdicionar;
         }
     }
 }

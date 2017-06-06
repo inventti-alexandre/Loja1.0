@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Caixa));
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlLogo = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlPedidos = new System.Windows.Forms.GroupBox();
@@ -117,11 +115,10 @@
             this.txtCreditosCliente = new System.Windows.Forms.TextBox();
             this.lblCliente = new System.Windows.Forms.Label();
             this.lblCreditos = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblOperador = new System.Windows.Forms.Label();
-            this.btnTrocaUser = new System.Windows.Forms.Button();
             this.btnDesconto = new System.Windows.Forms.Button();
             this.btnPagamento = new System.Windows.Forms.Button();
             this.pnlDesconto = new System.Windows.Forms.Panel();
@@ -146,6 +143,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtRecebido = new System.Windows.Forms.Label();
             this.lblSub = new System.Windows.Forms.Label();
+            this.btnTrocaUser = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.pnlLogo = new System.Windows.Forms.Panel();
             this.pnlPedidos.SuspendLayout();
             this.pnlPagamento.SuspendLayout();
             this.pnlCheque.SuspendLayout();
@@ -174,33 +174,6 @@
             this.lblTitulo.Size = new System.Drawing.Size(473, 33);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Sistema Alemão da Construção 1.0";
-            // 
-            // pnlLogo
-            // 
-            this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
-            this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogo.Location = new System.Drawing.Point(6, 519);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(132, 61);
-            this.pnlLogo.TabIndex = 1;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.Khaki;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnExit.Location = new System.Drawing.Point(764, 3);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(0);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(34, 34);
-            this.btnExit.TabIndex = 2;
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblNome
             // 
@@ -1262,36 +1235,36 @@
             this.lblCreditos.TabIndex = 69;
             this.lblCreditos.Text = "Créditos :";
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.AutoEllipsis = true;
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.Enabled = false;
+            this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnLimpar.Location = new System.Drawing.Point(675, 406);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(114, 46);
+            this.btnLimpar.TabIndex = 11;
+            this.btnLimpar.Text = "Limpar Pagamento";
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // btnCancelar
             // 
             this.btnCancelar.AutoEllipsis = true;
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.Enabled = false;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancelar.Location = new System.Drawing.Point(675, 406);
+            this.btnCancelar.Location = new System.Drawing.Point(674, 465);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(114, 46);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.Text = "Limpar Pagamento";
+            this.btnCancelar.TabIndex = 12;
+            this.btnCancelar.Text = "Cancelar Último Cupom";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.AutoEllipsis = true;
-            this.btnImprimir.BackColor = System.Drawing.Color.White;
-            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprimir.Location = new System.Drawing.Point(674, 465);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(114, 46);
-            this.btnImprimir.TabIndex = 12;
-            this.btnImprimir.Text = "Cancelar";
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // lblUser
             // 
@@ -1314,22 +1287,6 @@
             this.lblOperador.Size = new System.Drawing.Size(87, 18);
             this.lblOperador.TabIndex = 62;
             this.lblOperador.Text = "Operador : ";
-            // 
-            // btnTrocaUser
-            // 
-            this.btnTrocaUser.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.btnTrocaUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnTrocaUser.BackgroundImage = global::Loja1._0.Properties.Resources.trocar;
-            this.btnTrocaUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTrocaUser.FlatAppearance.BorderSize = 0;
-            this.btnTrocaUser.ForeColor = System.Drawing.Color.Lime;
-            this.btnTrocaUser.Location = new System.Drawing.Point(727, 3);
-            this.btnTrocaUser.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTrocaUser.Name = "btnTrocaUser";
-            this.btnTrocaUser.Size = new System.Drawing.Size(34, 34);
-            this.btnTrocaUser.TabIndex = 64;
-            this.btnTrocaUser.UseVisualStyleBackColor = false;
-            this.btnTrocaUser.Click += new System.EventHandler(this.btnTrocaUser_Click);
             // 
             // btnDesconto
             // 
@@ -1622,6 +1579,49 @@
             this.lblSub.Text = "Recebido : ";
             this.lblSub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnTrocaUser
+            // 
+            this.btnTrocaUser.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnTrocaUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnTrocaUser.BackgroundImage = global::Loja1._0.Properties.Resources.trocar;
+            this.btnTrocaUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnTrocaUser.FlatAppearance.BorderSize = 0;
+            this.btnTrocaUser.ForeColor = System.Drawing.Color.Lime;
+            this.btnTrocaUser.Location = new System.Drawing.Point(727, 3);
+            this.btnTrocaUser.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTrocaUser.Name = "btnTrocaUser";
+            this.btnTrocaUser.Size = new System.Drawing.Size(34, 34);
+            this.btnTrocaUser.TabIndex = 64;
+            this.btnTrocaUser.UseVisualStyleBackColor = false;
+            this.btnTrocaUser.Click += new System.EventHandler(this.btnTrocaUser_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Khaki;
+            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnExit.Location = new System.Drawing.Point(764, 3);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(34, 34);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // pnlLogo
+            // 
+            this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlLogo.Location = new System.Drawing.Point(6, 519);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(132, 61);
+            this.pnlLogo.TabIndex = 1;
+            // 
             // Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1636,8 +1636,8 @@
             this.Controls.Add(this.lblOperador);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnTrocaUser);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.pnlCliente);
             this.Controls.Add(this.pnlPagamento);
             this.Controls.Add(this.pnlPedidos);
@@ -1759,8 +1759,8 @@
         private System.Windows.Forms.Label lblReais1;
         private System.Windows.Forms.Label txtDinheiro;
         private System.Windows.Forms.GroupBox pnlCliente;
+        private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnImprimir;
         public System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.Button btnTrocaUser;

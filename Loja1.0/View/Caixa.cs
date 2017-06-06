@@ -12,6 +12,7 @@ namespace Loja1._0
 {
     public partial class Caixa : Form
     {
+        //função para chamada do objeto bematech flash builder
         //static ImpressoraFiscal BematechFiscal = ImpressoraFiscal.Construir();
         private Controle controle = new Controle();
         public Model.Usuarios user;
@@ -34,21 +35,22 @@ namespace Loja1._0
         public string Aliquota = "10,38";
         public static decimal valorDesc = 0.00M;
         public static decimal valorPago = 0.00M;
+        public bool ultimoExcluido = false;
 
         public Caixa(Model.Usuarios user)
         {            
-
             this.user = user;
             InitializeComponent();
             lblUser.Text = user.nome;
             txtPedidoNum1.Focus();
             AcceptButton = btnAdicionar1;
-            txtRecebido.Text = "0,00";            
+            txtRecebido.Text = "0,00";
+            gerencia = controle.pesquisaGerenciamento(1);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            btnCancelar_Click(sender, e);
+            btnLimpar_Click(sender, e);
             Inicial form = new Inicial(user);
             form.Show();
             Dispose();
@@ -70,22 +72,22 @@ namespace Loja1._0
             {
                 MessageBox.Show("Os dados inseridos não correspondem a nenhum pedido de compra, por favor, verifique e tente novamente.","Ação Inválida");
             }
+            //validação da existencia de pagamento para o pedido inserido
             else if (pedidoPago(txtPedidoNum1.Text))
             {
                 MessageBox.Show("Já existe um pagamento associado ao pedido nº" + txtPedidoNum1.Text + ", por favor, verifique e tente novamente", "Ação Inválida");
             }
             else
-            {
-                AcceptButton = btnAdicionar2;
-                txtPedidoNum2.Focus();
+            {               
                 venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text));
                 listaVendas.Add(venda);
 
-                desconto = desconto + Convert.ToInt32(venda.desconto);
-                trkDesconto.Minimum = desconto;
-                trkDesconto.Value = desconto;
+                if (venda.desconto != 0)
+                {
+                    valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
+                }           
                 btnDesconto.Enabled = true;
-                btnCancelar.Enabled = true;                
+                btnLimpar.Enabled = true;                
 
                 pnlPagamento.Enabled = true;
                 pnlCliente.Enabled = true;
@@ -95,7 +97,7 @@ namespace Loja1._0
                 txtPedidoNum1.Enabled = false;
 
                 if(venda.Clientes != null && cliente.cpf == null)
-                {
+                {                    
                     btnAtribuirCliente.Enabled = false;
                     cliente = venda.Clientes;
                     txtCliente.Text = cliente.nome;
@@ -107,8 +109,9 @@ namespace Loja1._0
                     }
                 }
                 acrescentaPedido();
-            }
-            
+                AcceptButton = btnAdicionar2;
+                txtPedidoNum2.Focus();
+            }            
         }
 
         private void btnAdicionar2_Click(object sender, EventArgs e)
@@ -140,17 +143,16 @@ namespace Loja1._0
 
                 if (!existe)
                 {
-                    desconto = (desconto + Convert.ToInt32(venda.desconto)) / 2;
-                    trkDesconto.Minimum = desconto;
-                    trkDesconto.Value = desconto;
-                    AcceptButton = btnAdicionar2;
-                    txtPedidoNum2.Focus();
+                    if (venda.desconto != 0)
+                    {
+                        valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
+                    }
                     listaVendas.Add(venda);
                     btnAdicionar3.Enabled = true;
                     txtPedidoNum3.Enabled = true;
                     btnAdicionar2.Enabled = false;
                     txtPedidoNum2.Enabled = false;
-                    if (venda.Clientes.cpf != null && cliente.cpf == null)
+                    if (venda.Clientes != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
@@ -163,6 +165,8 @@ namespace Loja1._0
                         }
                     }
                     acrescentaPedido();
+                    AcceptButton = btnAdicionar3;
+                    txtPedidoNum3.Focus();
                 }
                 else
                 {
@@ -201,17 +205,16 @@ namespace Loja1._0
 
                 if (!existe)
                 {
-                    desconto = (desconto + Convert.ToInt32(venda.desconto)) / 2;
-                    trkDesconto.Minimum = desconto;
-                    trkDesconto.Value = desconto;
-                    AcceptButton = btnAdicionar3;
-                    txtPedidoNum3.Focus();
+                    if (venda.desconto != 0 && venda.desconto != null)
+                    {
+                        valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
+                    }
                     listaVendas.Add(venda);
                     btnAdicionar4.Enabled = true;
                     txtPedidoNum4.Enabled = true;
                     btnAdicionar3.Enabled = false;
                     txtPedidoNum3.Enabled = false;
-                    if (venda.Clientes.cpf != null && cliente.cpf == null)
+                    if (venda.Clientes != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
@@ -224,6 +227,8 @@ namespace Loja1._0
                         }
                     }
                     acrescentaPedido();
+                    AcceptButton = btnAdicionar4;
+                    txtPedidoNum4.Focus();
                 }
                 else
                 {
@@ -261,17 +266,16 @@ namespace Loja1._0
 
                 if (!existe)
                 {
-                    desconto = (desconto + Convert.ToInt32(venda.desconto)) / 2;
-                    trkDesconto.Minimum = desconto;
-                    trkDesconto.Value = desconto;
-                    AcceptButton = btnAdicionar4;
-                    txtPedidoNum4.Focus();
+                    if (venda.desconto != 0)
+                    {
+                        valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
+                    }
                     listaVendas.Add(venda);
                     btnAdicionar5.Enabled = true;
                     txtPedidoNum5.Enabled = true;
                     btnAdicionar4.Enabled = false;
                     txtPedidoNum4.Enabled = false;
-                    if (venda.Clientes.cpf != null && cliente.cpf == null)
+                    if (venda.Clientes != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
@@ -285,6 +289,8 @@ namespace Loja1._0
                         }
                     }
                     acrescentaPedido();
+                    AcceptButton = btnAdicionar5;
+                    txtPedidoNum5.Focus();
                 }
                 else
                 {
@@ -322,15 +328,14 @@ namespace Loja1._0
 
                 if (!existe)
                 {
-                    desconto = (desconto + Convert.ToInt32(venda.desconto)) / 2;
-                    trkDesconto.Minimum = desconto;
-                    trkDesconto.Value = desconto;
-                    AcceptButton = btnAdicionar5;
-                    txtPedidoNum5.Focus();
+                    if (venda.desconto != 0)
+                    {
+                        valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
+                    }                    
                     listaVendas.Add(venda);
                     btnAdicionar5.Enabled = false;
                     txtPedidoNum5.Enabled = false;
-                    if (venda.Clientes.cpf != null && cliente.cpf == null)
+                    if (venda.Clientes != null && cliente.cpf == null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         cliente = venda.Clientes;
@@ -354,11 +359,12 @@ namespace Loja1._0
 
         private bool pedidoPago(string numPedido)
         {
-            //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamentoe devolve true
+            //comentario exclusivo para debug
+            /*/verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamentoe devolve true
             if (controle.pesquisaPagamentoIdVenda(numPedido))
             {
                 return true;
-            }
+            }*/
             return false;
         }
 
@@ -373,37 +379,43 @@ namespace Loja1._0
             txtValorTotal.Text = "0,00";
             txtCustoTotal.Text = "0,00";
             custoAux = 0;
+
             foreach (Vendas value in listaVendas)
             {
-                txtDinheiro.Text = (Convert.ToDecimal(txtDinheiro.Text) + Convert.ToDecimal(value.valor_Venda - (value.valor_Venda  * (Convert.ToDouble(desconto) / 100)))).ToString("0.00");
+                txtDinheiro.Text = (Convert.ToDecimal(txtDinheiro.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 txtSaldoDinheiro.Text = txtDinheiro.Text;
-                txtPrePago.Text = (Convert.ToDecimal(txtPrePago.Text) + Convert.ToDecimal(value.valor_Venda - (value.valor_Venda * (Convert.ToDouble(desconto) / 100)))).ToString("0.00");
+                txtPrePago.Text = (Convert.ToDecimal(txtPrePago.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 txtSaldoPrePago.Text = txtPrePago.Text;
-                txtDebito.Text = (Convert.ToDecimal(txtDebito.Text) + Convert.ToDecimal(value.valor_Venda - (value.valor_Venda * (Convert.ToDouble(desconto) / 100)))).ToString("0.00");
+                txtDebito.Text = (Convert.ToDecimal(txtDebito.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 txtSaldoDebito.Text = txtDebito.Text;
-                cmbNumParcCredito.SelectedValue = 1;
+                cmbNumParcCredito.SelectedItem = 1;
                 txtCredito.Text = (Convert.ToDecimal(txtCredito.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 txtParcCred.Text = txtCredito.Text;
-                cmbNumParcCheque.SelectedValue = 1;
+                cmbNumParcCheque.SelectedItem = 1;
                 txtCheque.Text = (Convert.ToDecimal(txtCheque.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
-                txtParcCheq.Text = txtCheque.Text;
-
-                trkDesconto.Minimum = desconto;
-                trkDesconto.Value = desconto;
+                txtParcCheq.Text = txtCheque.Text;                
 
                 txtValorVenda.Text = (Convert.ToDecimal(txtValorVenda.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");                
-                txtValorTotal.Text = (Convert.ToDecimal(txtValorTotal.Text) + Convert.ToDecimal(value.valor_Venda - (value.valor_Venda * (Convert.ToDouble(trkDesconto.Value) / 100)))).ToString("0.00");
+                txtValorTotal.Text = (Convert.ToDecimal(txtValorTotal.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 listaProdutosVenda = controle.pesquisaProdutosVenda(value.id);
                 
                 foreach (Vendas_Produtos result in listaProdutosVenda)
                 {
                     custoAux = custoAux + (result.Produtos.preco_compra * result.quantidade);
                 }
-                txtCustoTotal.Text = (Convert.ToDecimal(txtCustoTotal.Text) + custoAux).ToString("0.00");
 
+                txtCustoTotal.Text = ((Convert.ToDecimal(txtCustoTotal.Text) + custoAux) + ((Convert.ToDecimal(txtCustoTotal.Text) + custoAux)) * 0.1039M).ToString("0.00");
                 txtTotal.Text = txtValorVenda.Text;
                 valorTotal = Convert.ToDecimal(txtTotal.Text);
+
             }
+            txtDinheiro.Text = (Convert.ToDecimal(txtDinheiro.Text) - valorDesc).ToString("0.00");
+            txtSaldoDinheiro.Text = txtDinheiro.Text;
+            txtPrePago.Text = (Convert.ToDecimal(txtPrePago.Text) - valorDesc).ToString("0.00");
+            txtSaldoPrePago.Text = txtPrePago.Text;
+            txtDebito.Text = (Convert.ToDecimal(txtDebito.Text) - valorDesc).ToString("0.00");
+            txtSaldoDebito.Text = txtDebito.Text;
+            txtValorTotal.Text = (Convert.ToDecimal(txtValorTotal.Text) - valorDesc).ToString("0.00");
         }
 
         private void btnAtribuir_Click(object sender, EventArgs e)
@@ -431,7 +443,7 @@ namespace Loja1._0
                     else
                     {
                         venda.cpf = "";
-                        venda.cnpj = txtCpf.Text; ;
+                        venda.cnpj = txtCpf.Text;
                     }
                     controle.salvaAtualiza();
                 }
@@ -516,7 +528,7 @@ namespace Loja1._0
                     pnlDesconto.Enabled = false;
                     rdbDinheiro.Enabled = false;
                     pnlDinheiro.Enabled = false;
-                    valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text)/(Convert.ToDecimal(txtDinheiro.Text)/Convert.ToDecimal(txtDinheiro.Text))) * (Convert.ToDecimal(desconto) / 100);
+                    //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text)/(Convert.ToDecimal(txtDinheiro.Text)/Convert.ToDecimal(txtDinheiro.Text))) * (Convert.ToDecimal(desconto) / 100);
                     salvaPagamentoDinheiro(Convert.ToDecimal(txtPagDinheiro.Text), sender, e);
                     if (!txtPagDinheiro.Text.Equals(""))
                     {
@@ -530,7 +542,7 @@ namespace Loja1._0
                     pnlDesconto.Enabled = false;
                     rdbDinheiro.Enabled = false;
                     pnlDinheiro.Enabled = false;
-                    valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtDinheiro.Text) / Convert.ToDecimal(txtPagDinheiro.Text))) * (Convert.ToDecimal(desconto) / 100);
+                    //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtDinheiro.Text) / Convert.ToDecimal(txtPagDinheiro.Text))) * (Convert.ToDecimal(desconto) / 100);
                     salvaPagamentoDinheiro(Convert.ToDecimal(txtPagDinheiro.Text), sender, e);
                     if (!txtPagDinheiro.Text.Equals(""))
                     {
@@ -558,7 +570,7 @@ namespace Loja1._0
                         pnlDesconto.Enabled = false;
                         rdbDebito.Enabled = false;
                         pnlDebito.Enabled = false;
-                        valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtDebito.Text) / Convert.ToDecimal(txtPagDebito.Text))) * (Convert.ToDecimal(desconto) / 100);
+                        //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtDebito.Text) / Convert.ToDecimal(txtPagDebito.Text))) * (Convert.ToDecimal(desconto) / 100);
                         salvaPagamentoDebito(Convert.ToDecimal(txtPagDebito.Text), sender, e);
                         if (!txtPagDebito.Text.Equals(""))
                         {
@@ -585,7 +597,7 @@ namespace Loja1._0
                     pnlDesconto.Enabled = false;
                     rdbPrePag.Enabled = false;
                     pnlPrePag.Enabled = false;
-                    valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtPrePago.Text) / Convert.ToDecimal(txtPagPrePago.Text))) * (Convert.ToDecimal(desconto) / 100);
+                    //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtPrePago.Text) / Convert.ToDecimal(txtPagPrePago.Text))) * (Convert.ToDecimal(desconto) / 100);
                     salvaPagamentoPrePago(Convert.ToDecimal(txtPagPrePago.Text), sender, e);
                     if (!txtPagPrePago.Text.Equals(""))
                     {
@@ -672,105 +684,64 @@ namespace Loja1._0
         {
             pnlPedidos.Enabled = false;
 
+            if (valorDesc > 0)
+            {
+                desconto = Convert.ToInt32( valorDesc/ (valorTotal / 100));
+                trkDesconto.SetRange(desconto, Convert.ToInt32((valorTotal - (Convert.ToDecimal(txtCustoTotal.Text) + (Convert.ToDecimal(txtCustoTotal.Text) * Convert.ToDecimal(gerencia.lucroMinimo)))) / (valorTotal/100) ));
+            }
             if (pnlDesconto.Enabled)
             {
                 pnlDesconto.Enabled = false;
             }
             else
             {
-                pnlDesconto.Enabled = true;
-                trkDesconto.Minimum = desconto;
-                trkDesconto.Value = desconto;
+                pnlDesconto.Enabled = true;                
             }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            pnlPedidos.Enabled = true;
-            AcceptButton = btnAdicionar1;
-            txtPedidoNum1.Text = "";
-            txtPedidoNum1.Enabled = true;
-            btnAdicionar1.Enabled = true;
-            btnPagamento.Enabled = false;
-            btnDesconto.Enabled = false;
-            btnCancelar.Enabled = false;
-            trkDesconto.Minimum = 0;
-            trkDesconto.Value = 0;                                
-
-            txtPedidoNum2.Text = "";
-            txtPedidoNum2.Enabled = false;
-            btnAdicionar2.Enabled = false;
-            txtPedidoNum3.Text = "";
-            txtPedidoNum3.Enabled = false;
-            btnAdicionar3.Enabled = false;
-            txtPedidoNum4.Text = "";
-            txtPedidoNum4.Enabled = false;
-            btnAdicionar4.Enabled = false;
-            txtPedidoNum5.Text = "";
-            txtPedidoNum5.Enabled = false;
-            btnAdicionar5.Enabled = false;
-
-            pnlCliente.Enabled = false;
-            txtCreditosCliente.Text = "";
-            txtCpf.Text = "";
-            rdbNPnao.Checked = true;
-            txtCliente.Text = "";
             
-            txtDescValor.Text = "0,00";
-            txtCustoTotal.Text = "0,00";
-            txtValorVenda.Text = "0,00";
-            txtValorTotal.Text = "0,00";
+            DialogResult = MessageBox.Show("Você tem certeza que deseja cancelar o último cupom emitido e excluir o registro de pagamento ?","Confirmação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (DialogResult.Equals(DialogResult.Yes))
+            {
+                if (!ultimoExcluido)
+                {
+                    ultimoExcluido = true;                    
+                    List<Pagamentos> listaPagamentos = controle.pesquisaUltimoPagamento();
 
-            pnlPagamento.Enabled = false;
-            rdbDinheiro.Checked = false;
-            rdbDebito.Checked = false;
-            rdbCredito.Checked = false;
-            rdbPrePag.Checked = false;
-            rdbCheque.Checked = false;
-            rdbDinheiro.Enabled = true;
-            rdbDebito.Enabled = true;
-            rdbCredito.Enabled = true;
-            rdbPrePag.Enabled = true;
-            rdbCheque.Enabled = true;
+                    foreach(Pagamentos value in listaPagamentos)
+                    {
+                        int idPag = value.id;
+                        int idMov = Convert.ToInt32(value.id_movimento);
 
-            txtDinheiro.Text = "0,00";
-            txtSaldoDinheiro.Text = "0,00";
-            txtPagDinheiro.Text = "";
-            txtDebito.Text = "0,00";
-            txtSaldoDebito.Text = "0,00";
-            txtPagDebito.Text = "";
-            txtPrePago.Text = "0,00";
-            txtSaldoPrePago.Text = "0,00";
-            txtPagPrePago.Text = "";
-            txtCredito.Text = "0,00";
-            cmbNumParcCredito.SelectedItem = 1;
-            txtParcCred.Text = "0,00";
-            txtCheque.Text = "0,00"; 
-            txtParcCheq.Text = "0,00";
+                        List<Pagamentos_Vendas> listaPagVenda = controle.pesquisaPagVendaIdPagamento(value.id);
+                        foreach (Pagamentos_Vendas pagVend in listaPagVenda)
+                        {
+                            controle.removePagamentoVenda(pagVend);
+                            controle.salvaAtualiza();
+                        }
+                        controle.removePagamento(value);
+                        controle.salvaAtualiza();
 
-            txtRecebido.Text = "0,00";
-            txtTotal.Text = "R$";
+                        Movimentos movimento = controle.pesquisaMovimentoId(idMov);
+                        controle.removeMovimento(movimento);
+                        controle.salvaAtualiza();
 
-            listaVendas = new List<Vendas>();
-            listaProdutosVenda = new List<Vendas_Produtos>();
-            venda = new Vendas();
-            cliente = new Model.Clientes();
-            valorDesc = 0.00M;
-            valorPago = 0.00M;
-            valorTotal = 0;
-            custoAux = 0;
-            desconto = 0;
-            entrada = false;
-            txtPedidoNum1.Text = "";
-            pnlCheque.Enabled = false;
-            pnlCredito.Enabled = false;
-            pnlDebito.Enabled = false;
-            pnlDinheiro.Enabled = false;
-            pnlPrePag.Enabled = false;
-            txtPedidoNum1.Enabled = true;
-            btnAdicionar1.Enabled = true;
-            pnlPedidos.Enabled = true;
-            btnPagamento.Enabled = false;
+                        List<Movimentos> ListaMovimento = controle.pesquisaMovimentoReferIdPagamento(idPag);
+                        foreach(Movimentos mov in ListaMovimento)
+                        {
+                            controle.removeMovimento(mov);
+                            controle.salvaAtualiza();
+                        }                        
+                        
+                    }
+                    BemaFI32.Bematech_FI_CancelaCupom();
+                    MessageBox.Show("Exclusão realizada com sucesso","Ação Bem Sucedida");
+                    btnLimpar_Click(sender, e);
+                }
+                
+            } 
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -780,6 +751,8 @@ namespace Loja1._0
 
         private void rdbDinheiro_CheckedChanged(object sender, EventArgs e)
         {
+            AcceptButton = btnPagamento;
+            txtPagDinheiro.Focus();
             pnlPedidos.Enabled = false;
             btnPagamento.Enabled = true;
             pnlDinheiro.Enabled = true;
@@ -791,6 +764,8 @@ namespace Loja1._0
 
         private void rdbDebito_CheckedChanged(object sender, EventArgs e)
         {
+            AcceptButton = btnPagamento;
+            txtPagDebito.Focus();
             pnlPedidos.Enabled = false;
             btnPagamento.Enabled = true;
             pnlDinheiro.Enabled = false;
@@ -802,6 +777,8 @@ namespace Loja1._0
 
         private void rdbPrePag_CheckedChanged(object sender, EventArgs e)
         {
+            AcceptButton = btnPagamento;
+            txtPagPrePago.Focus();
             pnlPedidos.Enabled = false;
             btnPagamento.Enabled = true;
             pnlDinheiro.Enabled = false;
@@ -813,7 +790,9 @@ namespace Loja1._0
 
         private void rdbCredito_CheckedChanged(object sender, EventArgs e)
         {
-            valorParcela = Convert.ToDecimal(txtParcCred.Text);
+            AcceptButton = btnPagamento;
+            cmbNumParcCredito.Focus();
+                        
             pnlPedidos.Enabled = false;
             btnPagamento.Enabled = true;
             pnlDinheiro.Enabled = false;
@@ -825,7 +804,13 @@ namespace Loja1._0
 
         private void rdbCheque_CheckedChanged(object sender, EventArgs e)
         {
-            valorParcela = Convert.ToDecimal(txtParcCheq.Text);
+            AcceptButton = btnPagamento;
+            cmbNumParcCheque.Focus();
+
+            if (cmbNumParcCheque.SelectedItem == null)
+            {
+                valorParcela = Convert.ToDecimal(txtParcCheq.Text);
+            }
             pnlPedidos.Enabled = false;
             btnPagamento.Enabled = true;
             pnlDinheiro.Enabled = false;
@@ -838,9 +823,10 @@ namespace Loja1._0
         private void cmbNumParcCredito_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cmbNumParcCredito.SelectedItem != null)
-            {                
+            {
                 txtParcCred.Text = (valorParcela / Convert.ToInt32(cmbNumParcCredito.SelectedItem)).ToString("0.00");
-            }            
+            }      
+            valorParcela = Convert.ToDecimal(txtParcCred.Text) * Convert.ToDecimal(cmbNumParcCredito.SelectedItem);
         }
 
         private void cmbNumParcCheque_SelectedIndexChanged(object sender, EventArgs e)
@@ -849,6 +835,7 @@ namespace Loja1._0
             {                
                 txtParcCheq.Text = (valorParcela / Convert.ToInt32(cmbNumParcCheque.SelectedItem)).ToString("0.00");
             }
+            valorParcela = Convert.ToDecimal(txtParcCheq.Text) * Convert.ToDecimal(cmbNumParcCheque.SelectedItem);
         }
         private void salvaPagamentoCheque(decimal valor, object sender, EventArgs e)
         {
@@ -878,9 +865,11 @@ namespace Loja1._0
                     }
                     movimento.valor = valor / Convert.ToInt32(cmbNumParcCheque.SelectedItem);
                     movimento.data = DateTime.Today.AddMonths(i + ent);
+                    controle.salvaAtualiza();
 
                     Pagamentos pagamento = new Pagamentos();
                     controle.salvarPagamento(pagamento);
+                    pagamento.id_movimento = movimento.id;
                     pagamento.dataPagamento = DateTime.Today.AddMonths(i + ent);
                     pagamento.formaPag = "Cheque";
                     pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
@@ -889,35 +878,60 @@ namespace Loja1._0
                     pagamento.numChequePrimeiro = chequePrim;
                     pagamento.numChequeUltimo = chequeUlt;
 
-                    if (!entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) == 1)
+                    if (!entrada && Convert.ToInt32(cmbNumParcCheque.SelectedItem) == 1)
                     {
                         pagamento.tipoPag = "Total";
                         pagamento.numParcela = 1;
+                        pagamento.qntParcelas = 1;
                     }
-                    else if (!entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) != 1 && i >= 1)
+                    else if (!entrada && Convert.ToInt32(cmbNumParcCheque.SelectedItem) != 1 && i >= 1)
                     {
                         pagamento.tipoPag = "Parcelado";
                         pagamento.numParcela = i;
+                        pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCheque.SelectedItem);
                     }
-                    else if (entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) == 1)
+                    else if (entrada && Convert.ToInt32(cmbNumParcCheque.SelectedItem) == 1)
                     {
                         pagamento.tipoPag = "Parcial";
                         pagamento.numParcela = 0;
+                        pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCheque.SelectedItem);
                     }
-                    else if (entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) >= 2)
+                    else if (entrada && Convert.ToInt32(cmbNumParcCheque.SelectedItem) >= 2)
                     {
                         pagamento.tipoPag = "Entrada + Parcelas";
-                        pagamento.numParcela = i;
+                        pagamento.numParcela = i+1;
+                        pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCheque.SelectedItem);
                     }
 
                     controle.salvaAtualiza();
-                    pagamento.id_movimento = movimento.id;
-
-                    Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                    controle.salvaPagamentoPedido(pagamentoPedido);
-                    pagamentoPedido.id_Venda = venda.id;
-                    pagamentoPedido.id_Pagamento = pagamento.id;
+                    Movimentos movimentoImposto = new Movimentos();
+                    controle.salvarMovimento(movimentoImposto);
+                    movimentoImposto.data = DateTime.Today;
+                    movimentoImposto.desc = "Trib Pag:" + pagamento.id;
+                    movimentoImposto.id_tipo = 11;
+                    movimentoImposto.valor = pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     controle.salvaAtualiza();
+
+                    Movimentos movimentoMercadoria = new Movimentos();
+                    controle.salvarMovimento(movimentoMercadoria);
+                    movimentoMercadoria.data = DateTime.Today;
+                    movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
+                    movimentoMercadoria.id_tipo = 65;
+                    movimentoMercadoria.valor = custoAux / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
+                    controle.salvaAtualiza();
+
+                    foreach (Vendas value in listaVendas)
+                    {
+                        venda = controle.pesquisaVendaID(value.id);
+                        venda.desconto = trkDesconto.Value;
+
+                        Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
+                        controle.salvaPagamentoPedido(pagamentoPedido);
+                        pagamentoPedido.id_Venda = venda.id;
+                        pagamentoPedido.id_Pagamento = pagamento.id;
+
+                        controle.salvaAtualiza();
+                    }
                 }
                 foreach (Vendas value in listaVendas)
                 {
@@ -928,7 +942,7 @@ namespace Loja1._0
 
                 MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
                 imprimeCupomFiscal();
-                btnCancelar_Click(sender, e);
+                btnLimpar_Click(sender, e);
 
             }
             catch
@@ -964,9 +978,11 @@ namespace Loja1._0
                     }
                     movimento.valor = valor / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     movimento.data = DateTime.Today.AddMonths(i + ent);
+                    controle.salvaAtualiza();
 
                     Pagamentos pagamento = new Pagamentos();
                     controle.salvarPagamento(pagamento);
+                    pagamento.id_movimento = movimento.id;
                     pagamento.dataPagamento = DateTime.Today.AddMonths(i + ent);
                     pagamento.formaPag = "C. Crédito";
                     pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
@@ -977,30 +993,55 @@ namespace Loja1._0
                     {
                         pagamento.tipoPag = "Total";
                         pagamento.numParcela = 1;
+                        pagamento.qntParcelas = 1;
                     }
                     else if(!entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) != 1 && i >= 1)
                     {
                         pagamento.tipoPag = "Parcelado";
                         pagamento.numParcela = i;
+                        pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     }
                     else if (entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) == 1)
                     {
                         pagamento.tipoPag = "Parcial";
                         pagamento.numParcela = 0;
+                        pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     }
                     else if (entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) >= 2)
                     {
                         pagamento.tipoPag = "Entrada + Parcelas";
-                        pagamento.numParcela = i;
+                        pagamento.numParcela = i+1;
+                        pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     }
                     controle.salvaAtualiza();
-                    pagamento.id_movimento = movimento.id;
-
-                    Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                    controle.salvaPagamentoPedido(pagamentoPedido);
-                    pagamentoPedido.id_Venda = venda.id;
-                    pagamentoPedido.id_Pagamento = pagamento.id;
+                    Movimentos movimentoImposto = new Movimentos();
+                    controle.salvarMovimento(movimentoImposto);
+                    movimentoImposto.data = DateTime.Today;
+                    movimentoImposto.desc = "Trib Pag:" + pagamento.id;
+                    movimentoImposto.id_tipo = 11;
+                    movimentoImposto.valor = pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     controle.salvaAtualiza();
+
+                    Movimentos movimentoMercadoria = new Movimentos();
+                    controle.salvarMovimento(movimentoMercadoria);
+                    movimentoMercadoria.data = DateTime.Today;
+                    movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
+                    movimentoMercadoria.id_tipo = 65;
+                    movimentoMercadoria.valor = custoAux / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
+                    controle.salvaAtualiza();
+
+                    foreach (Vendas value in listaVendas)
+                    {
+                        venda = controle.pesquisaVendaID(value.id);
+                        venda.desconto = trkDesconto.Value;
+
+                        Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
+                        controle.salvaPagamentoPedido(pagamentoPedido);
+                        pagamentoPedido.id_Venda = venda.id;
+                        pagamentoPedido.id_Pagamento = pagamento.id;
+
+                        controle.salvaAtualiza();
+                    }
                 }
                 foreach (Vendas value in listaVendas)
                 {
@@ -1011,7 +1052,7 @@ namespace Loja1._0
 
                 MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
                 imprimeCupomFiscal();
-                btnCancelar_Click(sender, e);
+                btnLimpar_Click(sender, e);
 
             }
             catch
@@ -1045,26 +1086,44 @@ namespace Loja1._0
                     movimento.desc = "Total Pré-Pago";
                     pagamento.tipoPag = "Total";
                     pagamento.numParcela = 1;
+                    pagamento.qntParcelas = 1;
                 }
                 else
                 {
                     movimento.desc = "Entrada pré-pago";
                     pagamento.tipoPag = "Entrada";
                     pagamento.numParcela = 0;
+                    pagamento.qntParcelas = 0;
                 }
                 controle.salvaAtualiza();
                 pagamento.id_movimento = movimento.id;
 
-                Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                controle.salvaPagamentoPedido(pagamentoPedido);
-                pagamentoPedido.id_Venda = venda.id;
-                pagamentoPedido.id_Pagamento = pagamento.id;
+                Movimentos movimentoImposto = new Movimentos();
+                controle.salvarMovimento(movimentoImposto);
+                movimentoImposto.data = DateTime.Today;
+                movimentoImposto.desc = "Trib Pag:" + pagamento.id;
+                movimentoImposto.id_tipo = 11;
+                movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
+                controle.salvaAtualiza();
+
+                Movimentos movimentoMercadoria = new Movimentos();
+                controle.salvarMovimento(movimentoMercadoria);
+                movimentoMercadoria.data = DateTime.Today;
+                movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
+                movimentoMercadoria.id_tipo = 65;
+                movimentoMercadoria.valor = custoAux;
                 controle.salvaAtualiza();
 
                 foreach (Vendas value in listaVendas)
                 {
                     venda = controle.pesquisaVendaID(value.id);
                     venda.desconto = trkDesconto.Value;
+
+                    Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
+                    controle.salvaPagamentoPedido(pagamentoPedido);
+                    pagamentoPedido.id_Venda = venda.id;
+                    pagamentoPedido.id_Pagamento = pagamento.id;
+
                     controle.salvaAtualiza();
                 }
 
@@ -1072,7 +1131,7 @@ namespace Loja1._0
                 {
                     MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
                     imprimeCupomFiscal();
-                    btnCancelar_Click(sender, e);
+                    btnLimpar_Click(sender, e);
                 }
             }
             catch
@@ -1106,26 +1165,44 @@ namespace Loja1._0
                     movimento.desc = "Total TEF Débito";
                     pagamento.tipoPag = "Total";
                     pagamento.numParcela = 1;
+                    pagamento.qntParcelas = 1;
                 }
                 else
                 {
                     movimento.desc = "Entrada TEF Débito";
                     pagamento.tipoPag = "Entrada";
                     pagamento.numParcela = 0;
+                    pagamento.qntParcelas = 0;
                 }
                 controle.salvaAtualiza();
                 pagamento.id_movimento = movimento.id;
 
-                Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                controle.salvaPagamentoPedido(pagamentoPedido);
-                pagamentoPedido.id_Venda = venda.id;
-                pagamentoPedido.id_Pagamento = pagamento.id;
+                Movimentos movimentoImposto = new Movimentos();
+                controle.salvarMovimento(movimentoImposto);
+                movimentoImposto.data = DateTime.Today;
+                movimentoImposto.desc = "Trib Pag:" + pagamento.id;
+                movimentoImposto.id_tipo = 11;
+                movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
+                controle.salvaAtualiza();
+
+                Movimentos movimentoMercadoria = new Movimentos();
+                controle.salvarMovimento(movimentoMercadoria);
+                movimentoMercadoria.data = DateTime.Today;
+                movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
+                movimentoMercadoria.id_tipo = 65;
+                movimentoMercadoria.valor = custoAux;
                 controle.salvaAtualiza();
 
                 foreach (Vendas value in listaVendas)
                 {
                     venda = controle.pesquisaVendaID(value.id);
                     venda.desconto = trkDesconto.Value;
+
+                    Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
+                    controle.salvaPagamentoPedido(pagamentoPedido);
+                    pagamentoPedido.id_Venda = venda.id;
+                    pagamentoPedido.id_Pagamento = pagamento.id;
+
                     controle.salvaAtualiza();
                 }
 
@@ -1133,7 +1210,7 @@ namespace Loja1._0
                 {
                     MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
                     imprimeCupomFiscal();
-                    btnCancelar_Click(sender, e);
+                    btnLimpar_Click(sender, e);
                 }
             }
             catch
@@ -1167,26 +1244,44 @@ namespace Loja1._0
                     movimento.desc = "Total a dinheiro";
                     pagamento.tipoPag = "Total";
                     pagamento.numParcela = 1;
+                    pagamento.qntParcelas = 1;
                 }
                 else
                 {
                     movimento.desc = "Entrada a dinheiro";
                     pagamento.tipoPag = "Entrada";
                     pagamento.numParcela = 0;
+                    pagamento.qntParcelas = 0;
                 }
                 controle.salvaAtualiza();
-                pagamento.id_movimento = movimento.id;
+                pagamento.id_movimento = movimento.id;                
 
-                Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                controle.salvaPagamentoPedido(pagamentoPedido);
-                pagamentoPedido.id_Venda = venda.id;
-                pagamentoPedido.id_Pagamento = pagamento.id;
+                Movimentos movimentoImposto = new Movimentos();
+                controle.salvarMovimento(movimentoImposto);
+                movimentoImposto.data = DateTime.Today;
+                movimentoImposto.desc = "Trib Pag:" + pagamento.id;
+                movimentoImposto.id_tipo = 11;
+                movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
+                controle.salvaAtualiza();
+
+                Movimentos movimentoMercadoria = new Movimentos();
+                controle.salvarMovimento(movimentoMercadoria);
+                movimentoMercadoria.data = DateTime.Today;
+                movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
+                movimentoMercadoria.id_tipo = 65;
+                movimentoMercadoria.valor = custoAux;
                 controle.salvaAtualiza();
 
                 foreach (Vendas value in listaVendas)
                 {
                     venda = controle.pesquisaVendaID(value.id);
                     venda.desconto = trkDesconto.Value;
+
+                    Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
+                    controle.salvaPagamentoPedido(pagamentoPedido);
+                    pagamentoPedido.id_Venda = venda.id;
+                    pagamentoPedido.id_Pagamento = pagamento.id;
+
                     controle.salvaAtualiza();
                 }
 
@@ -1194,7 +1289,7 @@ namespace Loja1._0
                 {                    
                     imprimeCupomFiscal();
                     MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
-                    btnCancelar_Click(sender, e);
+                    btnLimpar_Click(sender, e);
                 }
             }
             catch
@@ -1274,8 +1369,97 @@ namespace Loja1._0
 
             //Bematech_FI_FechaCupom(string FormaPagamento, string AcrescimoDesconto, string TipoAcrescimoDesconto, string ValorAcrescimoDesconto, string ValorPago, string Mensagem);
             BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_FechaCupom("Dinheiro", "D", "$", valorDesc.ToString("0.00"), valorPago.ToString("0.00"), "O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: "+ ((valorTotal - valorDesc) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal - valorDesc) * 0.0486M).ToString("0.00") +" Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
-
             
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            pnlPedidos.Enabled = true;
+            AcceptButton = btnAdicionar1;
+            txtPedidoNum1.Text = "";
+            txtPedidoNum1.Enabled = true;
+            btnAdicionar1.Enabled = true;
+            btnPagamento.Enabled = false;
+            btnDesconto.Enabled = false;
+            btnLimpar.Enabled = false;
+            trkDesconto.Minimum = 0;
+            trkDesconto.Value = 0;
+
+            txtPedidoNum2.Text = "";
+            txtPedidoNum2.Enabled = false;
+            btnAdicionar2.Enabled = false;
+            txtPedidoNum3.Text = "";
+            txtPedidoNum3.Enabled = false;
+            btnAdicionar3.Enabled = false;
+            txtPedidoNum4.Text = "";
+            txtPedidoNum4.Enabled = false;
+            btnAdicionar4.Enabled = false;
+            txtPedidoNum5.Text = "";
+            txtPedidoNum5.Enabled = false;
+            btnAdicionar5.Enabled = false;
+
+            pnlCliente.Enabled = false;
+            txtCreditosCliente.Text = "";
+            txtCpf.Text = "";
+            rdbNPnao.Checked = true;
+            txtCliente.Text = "";
+
+            txtDescValor.Text = "0,00";
+            txtCustoTotal.Text = "0,00";
+            txtValorVenda.Text = "0,00";
+            txtValorTotal.Text = "0,00";
+
+            pnlPagamento.Enabled = false;
+            rdbDinheiro.Checked = false;
+            rdbDebito.Checked = false;
+            rdbCredito.Checked = false;
+            rdbPrePag.Checked = false;
+            rdbCheque.Checked = false;
+            rdbDinheiro.Enabled = true;
+            rdbDebito.Enabled = true;
+            rdbCredito.Enabled = true;
+            rdbPrePag.Enabled = true;
+            rdbCheque.Enabled = true;
+
+            txtDinheiro.Text = "0,00";
+            txtSaldoDinheiro.Text = "0,00";
+            txtPagDinheiro.Text = "";
+            txtDebito.Text = "0,00";
+            txtSaldoDebito.Text = "0,00";
+            txtPagDebito.Text = "";
+            txtPrePago.Text = "0,00";
+            txtSaldoPrePago.Text = "0,00";
+            txtPagPrePago.Text = "";
+            txtCredito.Text = "0,00";
+            cmbNumParcCredito.SelectedItem = 1;
+            txtParcCred.Text = "0,00";
+            txtCheque.Text = "0,00";
+            txtParcCheq.Text = "0,00";
+
+            txtRecebido.Text = "0,00";
+            txtTotal.Text = "R$";
+
+            listaVendas = new List<Vendas>();
+            listaProdutosVenda = new List<Vendas_Produtos>();
+            venda = new Vendas();
+            cliente = new Model.Clientes();
+            valorDesc = 0.00M;
+            valorPago = 0.00M;
+            valorTotal = 0;
+            custoAux = 0;
+            desconto = 0;
+            entrada = false;
+            ultimoExcluido = false;
+            txtPedidoNum1.Text = "";
+            pnlCheque.Enabled = false;
+            pnlCredito.Enabled = false;
+            pnlDebito.Enabled = false;
+            pnlDinheiro.Enabled = false;
+            pnlPrePag.Enabled = false;
+            txtPedidoNum1.Enabled = true;
+            btnAdicionar1.Enabled = true;
+            pnlPedidos.Enabled = true;
+            btnPagamento.Enabled = false;
         }
     }
 }

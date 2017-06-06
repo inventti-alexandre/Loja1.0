@@ -345,5 +345,46 @@ namespace Loja1._0.Control
 
             return dbRepository.pesquisaPagamentoVendaByIdVenda(idVenda);
         }
+
+        public List<Pagamentos> pesquisaUltimoPagamento()
+        {
+            return dbRepository.pesquisaPagamentosUltimo();
+        }
+
+        public Movimentos pesquisaMovimentoId(int? id_movimento)
+        {
+            int id = Convert.ToInt32(id_movimento);
+
+            return dbRepository.pesquisaMovimentoByID(id);
+        }
+
+        public void removeMovimento(Movimentos movimento)
+        {
+            dbRepository.excluirMovimento(movimento);
+        }
+
+        public List<Movimentos> pesquisaMovimentoReferIdPagamento(int id)
+        {
+            int idPagamento = id;
+
+            return dbRepository.pesquisaMovimentosReferentePagamento(idPagamento);
+        }
+
+        public List<Pagamentos_Vendas> pesquisaPagVendaIdPagamento(int id)
+        {
+            int idPagamento = id;
+
+            return dbRepository.pesquisaPagamentoVendaByIdPagamento(idPagamento);
+        }
+
+        public void removePagamentoVenda(Pagamentos_Vendas pagVend)
+        {
+            dbRepository.excluirPagamento_Venda(pagVend);
+        }
+
+        public void removePagamento(Pagamentos pag)
+        {
+            dbRepository.excluirPagamento(pag);
+        }
     }
 }

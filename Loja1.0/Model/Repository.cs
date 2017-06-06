@@ -290,6 +290,68 @@ namespace Loja1._0.Model
             return busca;
         }
 
+        public Movimentos pesquisaMovimentoByID(int id)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.id == id
+                    select movimento).Single();
+        }
+
+        public void excluirMovimento(Movimentos movimento)
+        {
+            dataEntity.Movimentos.Remove(movimento);
+        }
+
+        public List<Movimentos> pesquisaMovimentosReferentePagamento(int idPagamento)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.desc.Contains(idPagamento.ToString())
+                    select movimento).ToList();
+        }
+
+        public List<Pagamentos_Vendas> pesquisaPagamentoVendaByIdPagamento(int idPagamento)
+        {
+            return (from pagVend in dataEntity.Pagamentos_Vendas
+                    where pagVend.id_Pagamento == idPagamento
+                    select pagVend).ToList();
+        }
+
+        public void excluirPagamento(Pagamentos pag)
+        {
+            dataEntity.Pagamentos.Remove(pag);
+        }
+
+        public void excluirPagamento_Venda(Pagamentos_Vendas pagVend)
+        {
+            dataEntity.Pagamentos_Vendas.Remove(pagVend);
+        }
+
+        public List<Pagamentos> pesquisaPagamentosUltimo()
+        {
+            Pagamentos ultimoPag = (from pagamento in dataEntity.Pagamentos
+                                    orderby pagamento.id descending
+                                    select pagamento).First();
+            
+            int qntParcelas = Convert.ToInt32(ultimoPag.qntParcelas);
+
+            List<Pagamentos> listaRetorno = new List<Pagamentos>();
+
+            if (ultimoPag.tipoPag.Contains("Entrada +"))
+            {
+                qntParcelas++;
+            }
+
+            for (int i = 0; i < qntParcelas; i++)
+            {
+                Pagamentos pagamento = (from pag in dataEntity.Pagamentos
+                                        where pag.id == (ultimoPag.id - i)
+                                        select pag).Single();
+                listaRetorno.Add(pagamento);
+            }
+
+            return listaRetorno;
+        }
+
         public UnidMedidas pesquisaMedidaId(int id)
         {
             return (from unid in dataEntity.UnidMedidas

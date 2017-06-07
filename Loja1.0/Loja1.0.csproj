@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="Control\BemaFI32.cs" />
     <Compile Include="Control\Controle.cs" />
+    <Compile Include="Control\CupomFiscal.cs" />
     <Compile Include="Control\PrintablePanel.cs">
       <SubType>Component</SubType>
     </Compile>

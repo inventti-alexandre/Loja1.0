@@ -107,34 +107,36 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="comissao" Type="float" Nullable="false" />
-          <Property Name="percIcms" Type="float" Nullable="false" />
-          <Property Name="autoDescPerc" Type="float" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="comissao" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="Tributacao" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="autoDescPerc" Type="decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="autoDescValor" Type="decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="maxDescPerc" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo3x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo4x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo5x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo6x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo7x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo8x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo9x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo10x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo11x" Type="float" Nullable="false" />
-          <Property Name="jurosPrazo12x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque2x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque3x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque4x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque5x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque6x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque7x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque8x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque9x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque10x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque11x" Type="float" Nullable="false" />
-          <Property Name="jurosCheque12x" Type="float" Nullable="false" />
-          <Property Name="lucroMinimo" Type="float" Nullable="false" />
+          <Property Name="maxDescPerc" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo2x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo3x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo4x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo5x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo6x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo7x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo8x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo9x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo10x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo11x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo12x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque1x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque2x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque3x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque4x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque5x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque6x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque7x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque8x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque9x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque10x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque11x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque12x" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="lucroMinimo" Type="decimal" Precision="7" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Movimentos">
           <Key>
@@ -235,9 +237,8 @@
           <Property Name="valor_Venda" Type="float" />
           <Property Name="id_Usuario" Type="int" Nullable="false" />
           <Property Name="id_Cliente" Type="int" />
-          <Property Name="desconto" Type="int" />
+          <Property Name="desconto" Type="int" Nullable="false" />
           <Property Name="comissao" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="NFP" Type="bit" />
         </EntityType>
         <EntityType Name="Vendas_Produtos">
           <Key>
@@ -570,39 +571,6 @@
           <Property Name="ref_local" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK__Estoque__id_prod__2B3F6F97" FromRole="Estoque" ToRole="Produtos" />
         </EntityType>
-        <EntityType Name="Gerenciamento">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="comissao" Type="Double" Nullable="false" />
-          <Property Name="percIcms" Type="Double" Nullable="false" />
-          <Property Name="autoDescPerc" Type="Double" Nullable="false" />
-          <Property Name="autoDescValor" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="maxDescPerc" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo3x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo4x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo5x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo6x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo7x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo8x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo9x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo10x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo11x" Type="Double" Nullable="false" />
-          <Property Name="jurosPrazo12x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque2x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque3x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque4x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque5x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque6x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque7x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque8x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque9x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque10x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque11x" Type="Double" Nullable="false" />
-          <Property Name="jurosCheque12x" Type="Double" Nullable="false" />
-          <Property Name="lucroMinimo" Type="Double" Nullable="false" />
-        </EntityType>
         <EntityType Name="Movimentos">
           <Key>
             <PropertyRef Name="id" />
@@ -715,7 +683,6 @@
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
           <EntitySet Name="Estados" EntityType="Self.Estados" />
           <EntitySet Name="Estoque" EntityType="Self.Estoque" />
-          <EntitySet Name="Gerenciamento" EntityType="Self.Gerenciamento" />
           <EntitySet Name="Movimentos" EntityType="Self.Movimentos" />
           <EntitySet Name="Perfis" EntityType="Self.Perfis" />
           <EntitySet Name="Tipos_Movimentacao" EntityType="Self.Tipos_Movimentacao" />
@@ -761,6 +728,17 @@
             <End Role="Produtos" EntitySet="Produtos" />
           </AssociationSet>
           <EntitySet Name="Pagamentos_Vendas" EntityType="ServidorLojaModel.Pagamentos_Vendas" />
+          <EntitySet Name="Contabilidade" EntityType="ServidorLojaModel.Contabilidade" />
+          <EntitySet Name="Pagamentos" EntityType="ServidorLojaModel.Pagamentos" />
+          <AssociationSet Name="FK__Pagamento__id_mo__3C69FB99" Association="ServidorLojaModel.FK__Pagamento__id_mo__3C69FB99">
+            <End Role="Movimentos" EntitySet="Movimentos" />
+            <End Role="Pagamentos" EntitySet="Pagamentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pagamento__id_Pa__71D1E811" Association="ServidorLojaModel.FK__Pagamento__id_Pa__71D1E811">
+            <End Role="Pagamentos" EntitySet="Pagamentos" />
+            <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
+          </AssociationSet>
+          <EntitySet Name="Gerenciamento" EntityType="ServidorLojaModel.Gerenciamento" />
           <EntitySet Name="Vendas" EntityType="ServidorLojaModel.Vendas" />
           <AssociationSet Name="FK__Vendas__id_Clien__5629CD9C" Association="ServidorLojaModel.FK__Vendas__id_Clien__5629CD9C">
             <End Role="Clientes" EntitySet="Clientes" />
@@ -777,16 +755,6 @@
           <AssociationSet Name="id_venda" Association="ServidorLojaModel.id_venda">
             <End Role="Vendas" EntitySet="Vendas" />
             <End Role="Vendas_Produtos" EntitySet="Vendas_Produtos" />
-          </AssociationSet>
-          <EntitySet Name="Contabilidade" EntityType="ServidorLojaModel.Contabilidade" />
-          <EntitySet Name="Pagamentos" EntityType="ServidorLojaModel.Pagamentos" />
-          <AssociationSet Name="FK__Pagamento__id_mo__3C69FB99" Association="ServidorLojaModel.FK__Pagamento__id_mo__3C69FB99">
-            <End Role="Movimentos" EntitySet="Movimentos" />
-            <End Role="Pagamentos" EntitySet="Pagamentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Pagamento__id_Pa__71D1E811" Association="ServidorLojaModel.FK__Pagamento__id_Pa__71D1E811">
-            <End Role="Pagamentos" EntitySet="Pagamentos" />
-            <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="UnidMedidas">
@@ -903,77 +871,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_Venda" Type="Int32" Nullable="false" />
           <Property Name="id_Pagamento" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK__Pagamento__id_Ve__72C60C4A" FromRole="Pagamentos_Vendas" ToRole="Vendas" />
           <NavigationProperty Name="Pagamentos" Relationship="ServidorLojaModel.FK__Pagamento__id_Pa__71D1E811" FromRole="Pagamentos_Vendas" ToRole="Pagamentos" />
+          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK__Pagamento__id_Ve__72C60C4A" FromRole="Pagamentos_Vendas" ToRole="Vendas" />
         </EntityType>
-        <EntityType Name="Vendas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="data_Venda" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="cpf" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="cnpj" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="ICMS" Type="Double" />
-          <Property Name="valor_Venda" Type="Double" />
-          <Property Name="id_Usuario" Type="Int32" Nullable="false" />
-          <Property Name="id_Cliente" Type="Int32" />
-          <Property Name="desconto" Type="Int32" />
-          <Property Name="comissao" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="NFP" Type="Boolean" />
-          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__5629CD9C" FromRole="Vendas" ToRole="Clientes" />
-          <NavigationProperty Name="Pagamentos_Vendas" Relationship="ServidorLojaModel.FK__Pagamento__id_Ve__72C60C4A" FromRole="Vendas" ToRole="Pagamentos_Vendas" />
-          <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.id_usuario" FromRole="Vendas" ToRole="Usuarios" />
-          <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.id_venda" FromRole="Vendas" ToRole="Vendas_Produtos" />
-        </EntityType>
-        <Association Name="FK__Vendas__id_Clien__5629CD9C">
-          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vendas">
-              <PropertyRef Name="id_Cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Pagamento__id_Ve__72C60C4A">
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Pagamentos_Vendas" Role="Pagamentos_Vendas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vendas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Pagamentos_Vendas">
-              <PropertyRef Name="id_Venda" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="id_usuario">
-          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vendas">
-              <PropertyRef Name="id_Usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="id_venda">
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Vendas_Produtos" Role="Vendas_Produtos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vendas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vendas_Produtos">
-              <PropertyRef Name="id_venda" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Contabilidade">
           <Key>
             <PropertyRef Name="Id" />
@@ -1045,6 +945,108 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Gerenciamento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="comissao" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="Tributacao" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="autoDescPerc" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="autoDescValor" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="maxDescPerc" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo2x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo3x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo4x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo5x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo6x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo7x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo8x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo9x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo10x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo11x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosPrazo12x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque1x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque2x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque3x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque4x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque5x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque6x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque7x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque8x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque9x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque10x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque11x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="jurosCheque12x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="lucroMinimo" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+        </EntityType>
+        <EntityType Name="Vendas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_Venda" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cpf" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="cnpj" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ICMS" Type="Double" />
+          <Property Name="valor_Venda" Type="Double" />
+          <Property Name="id_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_Cliente" Type="Int32" />
+          <Property Name="desconto" Type="Int32" Nullable="false" />
+          <Property Name="comissao" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__5629CD9C" FromRole="Vendas" ToRole="Clientes" />
+          <NavigationProperty Name="Pagamentos_Vendas" Relationship="ServidorLojaModel.FK__Pagamento__id_Ve__72C60C4A" FromRole="Vendas" ToRole="Pagamentos_Vendas" />
+          <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.id_usuario" FromRole="Vendas" ToRole="Usuarios" />
+          <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.id_venda" FromRole="Vendas" ToRole="Vendas_Produtos" />
+        </EntityType>
+        <Association Name="FK__Vendas__id_Clien__5629CD9C">
+          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vendas">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pagamento__id_Ve__72C60C4A">
+          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="1" />
+          <End Type="ServidorLojaModel.Pagamentos_Vendas" Role="Pagamentos_Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pagamentos_Vendas">
+              <PropertyRef Name="id_Venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_usuario">
+          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vendas">
+              <PropertyRef Name="id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_venda">
+          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="0..1" />
+          <End Type="ServidorLojaModel.Vendas_Produtos" Role="Vendas_Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vendas_Produtos">
+              <PropertyRef Name="id_venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1103,40 +1105,6 @@
                 <ScalarProperty Name="num_local" ColumnName="num_local" />
                 <ScalarProperty Name="letra_local" ColumnName="letra_local" />
                 <ScalarProperty Name="ref_local" ColumnName="ref_local" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gerenciamento">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Gerenciamento">
-              <MappingFragment StoreEntitySet="Gerenciamento">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="comissao" ColumnName="comissao" />
-                <ScalarProperty Name="percIcms" ColumnName="percIcms" />
-                <ScalarProperty Name="autoDescPerc" ColumnName="autoDescPerc" />
-                <ScalarProperty Name="autoDescValor" ColumnName="autoDescValor" />
-                <ScalarProperty Name="maxDescPerc" ColumnName="maxDescPerc" />
-                <ScalarProperty Name="jurosPrazo3x" ColumnName="jurosPrazo3x" />
-                <ScalarProperty Name="jurosPrazo4x" ColumnName="jurosPrazo4x" />
-                <ScalarProperty Name="jurosPrazo5x" ColumnName="jurosPrazo5x" />
-                <ScalarProperty Name="jurosPrazo6x" ColumnName="jurosPrazo6x" />
-                <ScalarProperty Name="jurosPrazo7x" ColumnName="jurosPrazo7x" />
-                <ScalarProperty Name="jurosPrazo8x" ColumnName="jurosPrazo8x" />
-                <ScalarProperty Name="jurosPrazo9x" ColumnName="jurosPrazo9x" />
-                <ScalarProperty Name="jurosPrazo10x" ColumnName="jurosPrazo10x" />
-                <ScalarProperty Name="jurosPrazo11x" ColumnName="jurosPrazo11x" />
-                <ScalarProperty Name="jurosPrazo12x" ColumnName="jurosPrazo12x" />
-                <ScalarProperty Name="jurosCheque2x" ColumnName="jurosCheque2x" />
-                <ScalarProperty Name="jurosCheque3x" ColumnName="jurosCheque3x" />
-                <ScalarProperty Name="jurosCheque4x" ColumnName="jurosCheque4x" />
-                <ScalarProperty Name="jurosCheque5x" ColumnName="jurosCheque5x" />
-                <ScalarProperty Name="jurosCheque6x" ColumnName="jurosCheque6x" />
-                <ScalarProperty Name="jurosCheque7x" ColumnName="jurosCheque7x" />
-                <ScalarProperty Name="jurosCheque8x" ColumnName="jurosCheque8x" />
-                <ScalarProperty Name="jurosCheque9x" ColumnName="jurosCheque9x" />
-                <ScalarProperty Name="jurosCheque10x" ColumnName="jurosCheque10x" />
-                <ScalarProperty Name="jurosCheque11x" ColumnName="jurosCheque11x" />
-                <ScalarProperty Name="jurosCheque12x" ColumnName="jurosCheque12x" />
-                <ScalarProperty Name="lucroMinimo" ColumnName="lucroMinimo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1248,23 +1216,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vendas">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Vendas">
-              <MappingFragment StoreEntitySet="Vendas">
-                <ScalarProperty Name="NFP" ColumnName="NFP" />
-                <ScalarProperty Name="comissao" ColumnName="comissao" />
-                <ScalarProperty Name="desconto" ColumnName="desconto" />
-                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
-                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
-                <ScalarProperty Name="valor_Venda" ColumnName="valor_Venda" />
-                <ScalarProperty Name="ICMS" ColumnName="ICMS" />
-                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
-                <ScalarProperty Name="cpf" ColumnName="cpf" />
-                <ScalarProperty Name="data_Venda" ColumnName="data_Venda" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Contabilidade">
             <EntityTypeMapping TypeName="ServidorLojaModel.Contabilidade">
               <MappingFragment StoreEntitySet="Contabilidade">
@@ -1308,6 +1259,58 @@
                 <ScalarProperty Name="valorTotal" ColumnName="valorTotal" />
                 <ScalarProperty Name="formaPag" ColumnName="formaPag" />
                 <ScalarProperty Name="tipoPag" ColumnName="tipoPag" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gerenciamento">
+            <EntityTypeMapping TypeName="ServidorLojaModel.Gerenciamento">
+              <MappingFragment StoreEntitySet="Gerenciamento">
+                <ScalarProperty Name="lucroMinimo" ColumnName="lucroMinimo" />
+                <ScalarProperty Name="jurosCheque12x" ColumnName="jurosCheque12x" />
+                <ScalarProperty Name="jurosCheque11x" ColumnName="jurosCheque11x" />
+                <ScalarProperty Name="jurosCheque10x" ColumnName="jurosCheque10x" />
+                <ScalarProperty Name="jurosCheque9x" ColumnName="jurosCheque9x" />
+                <ScalarProperty Name="jurosCheque8x" ColumnName="jurosCheque8x" />
+                <ScalarProperty Name="jurosCheque7x" ColumnName="jurosCheque7x" />
+                <ScalarProperty Name="jurosCheque6x" ColumnName="jurosCheque6x" />
+                <ScalarProperty Name="jurosCheque5x" ColumnName="jurosCheque5x" />
+                <ScalarProperty Name="jurosCheque4x" ColumnName="jurosCheque4x" />
+                <ScalarProperty Name="jurosCheque3x" ColumnName="jurosCheque3x" />
+                <ScalarProperty Name="jurosCheque2x" ColumnName="jurosCheque2x" />
+                <ScalarProperty Name="jurosCheque1x" ColumnName="jurosCheque1x" />
+                <ScalarProperty Name="jurosPrazo12x" ColumnName="jurosPrazo12x" />
+                <ScalarProperty Name="jurosPrazo11x" ColumnName="jurosPrazo11x" />
+                <ScalarProperty Name="jurosPrazo10x" ColumnName="jurosPrazo10x" />
+                <ScalarProperty Name="jurosPrazo9x" ColumnName="jurosPrazo9x" />
+                <ScalarProperty Name="jurosPrazo8x" ColumnName="jurosPrazo8x" />
+                <ScalarProperty Name="jurosPrazo7x" ColumnName="jurosPrazo7x" />
+                <ScalarProperty Name="jurosPrazo6x" ColumnName="jurosPrazo6x" />
+                <ScalarProperty Name="jurosPrazo5x" ColumnName="jurosPrazo5x" />
+                <ScalarProperty Name="jurosPrazo4x" ColumnName="jurosPrazo4x" />
+                <ScalarProperty Name="jurosPrazo3x" ColumnName="jurosPrazo3x" />
+                <ScalarProperty Name="jurosPrazo2x" ColumnName="jurosPrazo2x" />
+                <ScalarProperty Name="maxDescPerc" ColumnName="maxDescPerc" />
+                <ScalarProperty Name="autoDescValor" ColumnName="autoDescValor" />
+                <ScalarProperty Name="autoDescPerc" ColumnName="autoDescPerc" />
+                <ScalarProperty Name="Tributacao" ColumnName="Tributacao" />
+                <ScalarProperty Name="comissao" ColumnName="comissao" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendas">
+            <EntityTypeMapping TypeName="ServidorLojaModel.Vendas">
+              <MappingFragment StoreEntitySet="Vendas">
+                <ScalarProperty Name="comissao" ColumnName="comissao" />
+                <ScalarProperty Name="desconto" ColumnName="desconto" />
+                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+                <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
+                <ScalarProperty Name="valor_Venda" ColumnName="valor_Venda" />
+                <ScalarProperty Name="ICMS" ColumnName="ICMS" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="data_Venda" ColumnName="data_Venda" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

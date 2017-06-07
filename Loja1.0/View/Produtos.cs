@@ -360,7 +360,7 @@ namespace Loja1._0
                     MessageBox.Show("O campo \"ICMS\" corresponde a mais de 25% do custo de compra, Edite o produto caso necessário.");
                 }
                 //Lucro minimo de 30% sobre o custo
-                if (Convert.ToDouble(txtPreco.Text) < (Convert.ToDouble(txtCusto.Text) + (Convert.ToDouble(txtCusto.Text) * gerencia.lucroMinimo)))
+                if (Convert.ToDecimal(txtPreco.Text) < (Convert.ToDecimal(txtCusto.Text) + (Convert.ToDecimal(txtCusto.Text) * (gerencia.lucroMinimo/100))))
                 {
                     MessageBox.Show("O campo \"Preco\" está com uma taxa de lucro inferior ao determinado pela Administração.");
                 }

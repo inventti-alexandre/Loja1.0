@@ -6,7 +6,6 @@ using Loja1._0.Control;
 using Bematech.Fiscal.ECF;
 using FiscalPrinterBematech;
 using Loja1._0.View;
-using System.Runtime.InteropServices;
 
 namespace Loja1._0
 {
@@ -28,23 +27,32 @@ namespace Loja1._0
         public static string chequeUlt;
         static decimal valorTotal = 0;
         static decimal custoAux = 0;
-        static decimal valorParcela = 0;
+        static decimal valorParcelaCred = 0;
+        static decimal valorParcelaCheq = 0;
         static int desconto = 0;
-        public bool vista = true;
-        public bool entrada = false;
-        public string Aliquota = "10,38";
+        public static bool vista = true;
+        public static bool entrada = false;
         public static decimal valorDesc = 0.00M;
+        public static decimal valorAcres = 0.00M;
         public static decimal valorPago = 0.00M;
-        public bool ultimoExcluido = false;
+        public static bool ultimoExcluido = false;
+        public static string AcrescimoDesconto = "";
+        public static string ValorAcrescimoDesconto = "";
+        static CupomFiscal PagDinheiro = new CupomFiscal();
+        static CupomFiscal PagDebito = new CupomFiscal();
+        static CupomFiscal PagPrePago = new CupomFiscal();
+        static CupomFiscal PagCredito = new CupomFiscal();
+        static CupomFiscal PagCheque = new CupomFiscal();
 
         public Caixa(Model.Usuarios user)
-        {            
+        {
             this.user = user;
             InitializeComponent();
             lblUser.Text = user.nome;
             txtPedidoNum1.Focus();
             AcceptButton = btnAdicionar1;
             txtRecebido.Text = "0,00";
+
             gerencia = controle.pesquisaGerenciamento(1);
         }
 
@@ -64,13 +72,36 @@ namespace Loja1._0
 
         private void btnAdicionar1_Click(object sender, EventArgs e)
         {
+            if (rdbNPsim.Checked && btnAtribuirCliente.Enabled == false)
+            {
+                adicionaPrimeiro();
+            }
+            else if (confirmaAssociacao())
+            {                
+                adicionaPrimeiro();
+            }
+        }
+
+        private void adicionaPrimeiro()
+        {
+            if (rdbNPsim.Checked)
+            {
+                //cnpj ou cpf do cliente
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
+            }
+            else
+            {
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(""));
+            }
+            pnlCliente.Enabled = false;
+
             if (txtPedidoNum1.Text.Equals(""))
             {
                 MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
             }
-            else if(controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text)) == null)
+            else if (controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text)) == null)
             {
-                MessageBox.Show("Os dados inseridos não correspondem a nenhum pedido de compra, por favor, verifique e tente novamente.","Ação Inválida");
+                MessageBox.Show("Os dados inseridos não correspondem a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
             }
             //validação da existencia de pagamento para o pedido inserido
             else if (pedidoPago(txtPedidoNum1.Text))
@@ -78,26 +109,25 @@ namespace Loja1._0
                 MessageBox.Show("Já existe um pagamento associado ao pedido nº" + txtPedidoNum1.Text + ", por favor, verifique e tente novamente", "Ação Inválida");
             }
             else
-            {               
+            {
                 venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text));
                 listaVendas.Add(venda);
 
                 if (venda.desconto != 0)
                 {
                     valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
-                }           
+                }
                 btnDesconto.Enabled = true;
-                btnLimpar.Enabled = true;                
+                btnLimpar.Enabled = true;
 
                 pnlPagamento.Enabled = true;
-                pnlCliente.Enabled = true;
                 btnAdicionar2.Enabled = true;
                 txtPedidoNum2.Enabled = true;
                 btnAdicionar1.Enabled = false;
                 txtPedidoNum1.Enabled = false;
 
-                if(venda.Clientes != null && cliente.cpf == null)
-                {                    
+                if (venda.Clientes != null && cliente.cpf == null)
+                {
                     btnAtribuirCliente.Enabled = false;
                     cliente = venda.Clientes;
                     txtCliente.Text = cliente.nome;
@@ -108,10 +138,17 @@ namespace Loja1._0
                         txtCreditosCliente.Text = "0,00";
                     }
                 }
-                acrescentaPedido();
+                acrescentaPedido();                               
                 AcceptButton = btnAdicionar2;
                 txtPedidoNum2.Focus();
-            }            
+
+                foreach (Vendas_Produtos result in controle.pesquisaProdutosVenda(Convert.ToInt32(txtPedidoNum1.Text)))
+                {
+                    Model.Produtos produto = controle.pesquisaProdutoId(Convert.ToInt32(result.id_produto));
+                    //adiciona ao cupom o item vendido                   
+                    BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.Tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, produto.preco_venda.ToString(), "%", "0"));
+                }
+            }
         }
 
         private void btnAdicionar2_Click(object sender, EventArgs e)
@@ -133,9 +170,9 @@ namespace Loja1._0
                 venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum2.Text));
                 bool existe = false;
 
-                foreach(Model.Vendas value in listaVendas)
+                foreach (Model.Vendas value in listaVendas)
                 {
-                    if(venda.id == value.id)
+                    if (venda.id == value.id)
                     {
                         existe = true;
                     }
@@ -164,15 +201,22 @@ namespace Loja1._0
                             txtCreditosCliente.Text = "0,00";
                         }
                     }
-                    acrescentaPedido();
+                    acrescentaPedido();                   
                     AcceptButton = btnAdicionar3;
                     txtPedidoNum3.Focus();
+
+                    foreach (Vendas_Produtos result in controle.pesquisaProdutosVenda(Convert.ToInt32(txtPedidoNum2.Text)))
+                    {
+                        Model.Produtos produto = controle.pesquisaProdutoId(Convert.ToInt32(result.id_produto));
+                        //adiciona ao cupom o item vendido                        
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.Tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, produto.preco_venda.ToString(), "%", "0"));
+                    }
                 }
                 else
                 {
                     MessageBox.Show("O número inserido já havia sido inserido, por favor, verifique e tente novamente.", "Ação Inválida");
                 }
-                
+
             }
         }
 
@@ -205,7 +249,7 @@ namespace Loja1._0
 
                 if (!existe)
                 {
-                    if (venda.desconto != 0 && venda.desconto != null)
+                    if (venda.desconto != 0)
                     {
                         valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
                     }
@@ -226,9 +270,16 @@ namespace Loja1._0
                             txtCreditosCliente.Text = "0,00";
                         }
                     }
-                    acrescentaPedido();
+                    acrescentaPedido();                  
                     AcceptButton = btnAdicionar4;
                     txtPedidoNum4.Focus();
+
+                    foreach (Vendas_Produtos result in controle.pesquisaProdutosVenda(Convert.ToInt32(txtPedidoNum3.Text)))
+                    {
+                        Model.Produtos produto = controle.pesquisaProdutoId(Convert.ToInt32(result.id_produto));
+                        //adiciona ao cupom o item vendido                        
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.Tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, produto.preco_venda.ToString(), "%", "0"));
+                    }
                 }
                 else
                 {
@@ -291,6 +342,13 @@ namespace Loja1._0
                     acrescentaPedido();
                     AcceptButton = btnAdicionar5;
                     txtPedidoNum5.Focus();
+
+                    foreach (Vendas_Produtos result in controle.pesquisaProdutosVenda(Convert.ToInt32(txtPedidoNum4.Text)))
+                    {
+                        Model.Produtos produto = controle.pesquisaProdutoId(Convert.ToInt32(result.id_produto));
+                        //adiciona ao cupom o item vendido                        
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.Tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, produto.preco_venda.ToString(), "%", "0"));
+                    }
                 }
                 else
                 {
@@ -331,7 +389,7 @@ namespace Loja1._0
                     if (venda.desconto != 0)
                     {
                         valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) / Convert.ToDecimal(venda.desconto);
-                    }                    
+                    }
                     listaVendas.Add(venda);
                     btnAdicionar5.Enabled = false;
                     txtPedidoNum5.Enabled = false;
@@ -346,9 +404,17 @@ namespace Loja1._0
                         {
                             txtCreditosCliente.Text = "0,00";
                         }
-                    }
-                    MessageBox.Show("Pedido Adicionado com sucesso. Para a cobrança de mais de 5 pedidos é necessário realizar mais de um faturamento, conclua este faturamento e inicie um novo.", "Atenção");
+                    }                    
                     acrescentaPedido();
+
+                    foreach (Vendas_Produtos result in controle.pesquisaProdutosVenda(Convert.ToInt32(txtPedidoNum5.Text)))
+                    {
+                        Model.Produtos produto = controle.pesquisaProdutoId(Convert.ToInt32(result.id_produto));
+                        //adiciona ao cupom o item vendido                        
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.Tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, produto.preco_venda.ToString(), "%", "0"));
+                    }
+
+                    MessageBox.Show("Pedido Adicionado com sucesso. Para a cobrança de mais de 5 pedidos é necessário realizar mais de um faturamento, conclua este faturamento e inicie um novo.", "Atenção");
                 }
                 else
                 {
@@ -388,23 +454,21 @@ namespace Loja1._0
                 txtSaldoPrePago.Text = txtPrePago.Text;
                 txtDebito.Text = (Convert.ToDecimal(txtDebito.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 txtSaldoDebito.Text = txtDebito.Text;
-                cmbNumParcCredito.SelectedItem = 1;
                 txtCredito.Text = (Convert.ToDecimal(txtCredito.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 txtParcCred.Text = txtCredito.Text;
-                cmbNumParcCheque.SelectedItem = 1;
-                txtCheque.Text = (Convert.ToDecimal(txtCheque.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
-                txtParcCheq.Text = txtCheque.Text;                
+                txtCheque.Text = (Convert.ToDecimal(txtCheque.Text) + Convert.ToDecimal(value.valor_Venda) + (Convert.ToDecimal(value.valor_Venda) * (gerencia.jurosCheque1x/100))).ToString("0.00");
+                txtParcCheq.Text = txtCheque.Text;
 
-                txtValorVenda.Text = (Convert.ToDecimal(txtValorVenda.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");                
+                txtValorVenda.Text = (Convert.ToDecimal(txtValorVenda.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 txtValorTotal.Text = (Convert.ToDecimal(txtValorTotal.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                 listaProdutosVenda = controle.pesquisaProdutosVenda(value.id);
-                
+
                 foreach (Vendas_Produtos result in listaProdutosVenda)
                 {
                     custoAux = custoAux + (result.Produtos.preco_compra * result.quantidade);
                 }
 
-                txtCustoTotal.Text = ((Convert.ToDecimal(txtCustoTotal.Text) + custoAux) + ((Convert.ToDecimal(txtCustoTotal.Text) + custoAux)) * 0.1039M).ToString("0.00");
+                txtCustoTotal.Text = ((Convert.ToDecimal(txtCustoTotal.Text) + custoAux) + ((Convert.ToDecimal(txtCustoTotal.Text) + custoAux)) * (gerencia.Tributacao / 100)).ToString("0.00");
                 txtTotal.Text = txtValorVenda.Text;
                 valorTotal = Convert.ToDecimal(txtTotal.Text);
 
@@ -435,7 +499,7 @@ namespace Loja1._0
                     txtCliente.Text = cliente.nome;
                     txtCpf.Text = cliente.cpf;
                     txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
-                    if(txtCpf.Text.Length == 11)
+                    if (txtCpf.Text.Length == 11)
                     {
                         venda.cpf = txtCpf.Text;
                         venda.cnpj = "";
@@ -504,13 +568,13 @@ namespace Loja1._0
             txtDescValor.Text = (Convert.ToDecimal(txtValorVenda.Text) * (Convert.ToDecimal(trkDesconto.Value) / 100)).ToString("0.00");
             txtPercDesc.Text = trkDesconto.Value.ToString();
             txtSaldoDinheiro.Text = txtDinheiro.Text = txtSaldoPrePago.Text = txtPrePago.Text = txtSaldoDebito.Text = txtDebito.Text = txtValorTotal.Text;
-            
+
             desconto = trkDesconto.Value;
         }
 
         private void btnPagamento_Click(object sender, EventArgs e)
         {
-            vista = true;                                                
+            vista = true;
             btnPagamento.Enabled = false;
 
             if (rdbDinheiro.Checked)
@@ -527,8 +591,7 @@ namespace Loja1._0
                     btnDesconto.Enabled = false;
                     pnlDesconto.Enabled = false;
                     rdbDinheiro.Enabled = false;
-                    pnlDinheiro.Enabled = false;
-                    //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text)/(Convert.ToDecimal(txtDinheiro.Text)/Convert.ToDecimal(txtDinheiro.Text))) * (Convert.ToDecimal(desconto) / 100);
+                    pnlDinheiro.Enabled = false;                    
                     salvaPagamentoDinheiro(Convert.ToDecimal(txtPagDinheiro.Text), sender, e);
                     if (!txtPagDinheiro.Text.Equals(""))
                     {
@@ -541,10 +604,9 @@ namespace Loja1._0
                     btnDesconto.Enabled = false;
                     pnlDesconto.Enabled = false;
                     rdbDinheiro.Enabled = false;
-                    pnlDinheiro.Enabled = false;
-                    //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtDinheiro.Text) / Convert.ToDecimal(txtPagDinheiro.Text))) * (Convert.ToDecimal(desconto) / 100);
+                    pnlDinheiro.Enabled = false;                   
                     salvaPagamentoDinheiro(Convert.ToDecimal(txtPagDinheiro.Text), sender, e);
-                    if (!txtPagDinheiro.Text.Equals(""))
+                    if (!txtPagDinheiro.Text.Equals("0,00"))
                     {
                         atualizaValores(Convert.ToDecimal(txtPagDinheiro.Text));
                     }
@@ -569,13 +631,12 @@ namespace Loja1._0
                         btnDesconto.Enabled = false;
                         pnlDesconto.Enabled = false;
                         rdbDebito.Enabled = false;
-                        pnlDebito.Enabled = false;
-                        //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtDebito.Text) / Convert.ToDecimal(txtPagDebito.Text))) * (Convert.ToDecimal(desconto) / 100);
+                        pnlDebito.Enabled = false;                        
                         salvaPagamentoDebito(Convert.ToDecimal(txtPagDebito.Text), sender, e);
-                        if (!txtPagDebito.Text.Equals(""))
+                        if (!txtPagDebito.Text.Equals("0,00"))
                         {
                             atualizaValores(Convert.ToDecimal(txtPagDebito.Text));
-                        }                                     
+                        }
                         txtPagDebito.Text = "";
                     }
                 }
@@ -596,10 +657,9 @@ namespace Loja1._0
                     btnDesconto.Enabled = false;
                     pnlDesconto.Enabled = false;
                     rdbPrePag.Enabled = false;
-                    pnlPrePag.Enabled = false;
-                    //valorDesc = valorDesc + (Convert.ToDecimal(txtTotal.Text) / (Convert.ToDecimal(txtPrePago.Text) / Convert.ToDecimal(txtPagPrePago.Text))) * (Convert.ToDecimal(desconto) / 100);
+                    pnlPrePag.Enabled = false;                   
                     salvaPagamentoPrePago(Convert.ToDecimal(txtPagPrePago.Text), sender, e);
-                    if (!txtPagPrePago.Text.Equals(""))
+                    if (!txtPagPrePago.Text.Equals("0,00"))
                     {
                         atualizaValores(Convert.ToDecimal(txtPagPrePago.Text));
                     }
@@ -621,7 +681,7 @@ namespace Loja1._0
                         rdbCredito.Enabled = false;
                         pnlCredito.Enabled = false;
                         salvaPagamentoCredito((Convert.ToDecimal(txtParcCred.Text) * Convert.ToInt32(cmbNumParcCredito.SelectedItem)), sender, e);
-                        if (!txtParcCred.Text.Equals(""))
+                        if (!txtParcCred.Text.Equals("0,00"))
                         {
                             atualizaValores(Convert.ToDecimal(txtParcCred.Text) * Convert.ToInt32(cmbNumParcCredito.SelectedItem));
                         }
@@ -646,7 +706,7 @@ namespace Loja1._0
                     rdbCheque.Enabled = false;
                     pnlCheque.Enabled = false;
                     salvaPagamentoCheque((Convert.ToDecimal(txtParcCheq.Text) * Convert.ToInt32(cmbNumParcCheque.SelectedItem)), sender, e);
-                    if (!txtParcCred.Equals(""))
+                    if (!txtParcCred.Equals("0,00"))
                     {
                         atualizaValores(Convert.ToDecimal(txtParcCheq.Text) * Convert.ToInt32(cmbNumParcCheque.SelectedItem));
                     }
@@ -656,18 +716,18 @@ namespace Loja1._0
                     btnPagamento.Enabled = true;
                     MessageBox.Show("É obrigatório o preenchimento da quantidade de parcelas", "Ação Inválida");
                 }
-            }            
+            }
         }
 
         private void atualizaValores(decimal valorRecebido)
         {
             if (vista)
-            {                
+            {
                 txtSaldoDinheiro.Text = (Convert.ToDecimal(txtSaldoDinheiro.Text) - valorRecebido).ToString("0.00");
                 txtSaldoPrePago.Text = (Convert.ToDecimal(txtSaldoPrePago.Text) - valorRecebido).ToString("0.00");
                 txtSaldoDebito.Text = (Convert.ToDecimal(txtSaldoDebito.Text) - valorRecebido).ToString("0.00");
                 valorRecebido = valorRecebido + ((Convert.ToDecimal(txtTotal.Text) / ((Convert.ToDecimal(txtTotal.Text) - (Convert.ToDecimal(txtTotal.Text) * (Convert.ToDecimal(desconto) / 100))) / valorRecebido)) * (Convert.ToDecimal(desconto) / 100));
-                txtParcCred.Text = ((Convert.ToDecimal(txtTotal.Text) - (Convert.ToDecimal(txtRecebido.Text) + valorRecebido))).ToString("0.00");               
+                txtParcCred.Text = ((Convert.ToDecimal(txtTotal.Text) - (Convert.ToDecimal(txtRecebido.Text) + valorRecebido))).ToString("0.00");
             }
             else
             {
@@ -675,7 +735,7 @@ namespace Loja1._0
                 txtSaldoDinheiro.Text = "0.00";
                 txtSaldoPrePago.Text = "0.00";
                 txtSaldoDebito.Text = "0.00";
-            }                                     
+            }
             txtParcCheq.Text = txtParcCred.Text;
             txtRecebido.Text = (Convert.ToDecimal(txtRecebido.Text) + valorRecebido).ToString("0.00");
         }
@@ -686,8 +746,8 @@ namespace Loja1._0
 
             if (valorDesc > 0)
             {
-                desconto = Convert.ToInt32( valorDesc/ (valorTotal / 100));
-                trkDesconto.SetRange(desconto, Convert.ToInt32((valorTotal - (Convert.ToDecimal(txtCustoTotal.Text) + (Convert.ToDecimal(txtCustoTotal.Text) * Convert.ToDecimal(gerencia.lucroMinimo)))) / (valorTotal/100) ));
+                desconto = Convert.ToInt32(valorDesc / (valorTotal / 100));
+                trkDesconto.SetRange(desconto, Convert.ToInt32((valorTotal - (Convert.ToDecimal(txtCustoTotal.Text) + (Convert.ToDecimal(txtCustoTotal.Text) * Convert.ToDecimal(gerencia.lucroMinimo)))) / (valorTotal / 100)));
             }
             if (pnlDesconto.Enabled)
             {
@@ -695,22 +755,21 @@ namespace Loja1._0
             }
             else
             {
-                pnlDesconto.Enabled = true;                
+                pnlDesconto.Enabled = true;
             }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
-            DialogResult = MessageBox.Show("Você tem certeza que deseja cancelar o último cupom emitido e excluir o registro de pagamento ?","Confirmação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult = MessageBox.Show("Você tem certeza que deseja cancelar o último cupom emitido e excluir o registro de pagamento ?", "Confirmação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (DialogResult.Equals(DialogResult.Yes))
             {
                 if (!ultimoExcluido)
                 {
-                    ultimoExcluido = true;                    
+                    ultimoExcluido = true;
                     List<Pagamentos> listaPagamentos = controle.pesquisaUltimoPagamento();
 
-                    foreach(Pagamentos value in listaPagamentos)
+                    foreach (Pagamentos value in listaPagamentos)
                     {
                         int idPag = value.id;
                         int idMov = Convert.ToInt32(value.id_movimento);
@@ -729,19 +788,19 @@ namespace Loja1._0
                         controle.salvaAtualiza();
 
                         List<Movimentos> ListaMovimento = controle.pesquisaMovimentoReferIdPagamento(idPag);
-                        foreach(Movimentos mov in ListaMovimento)
+                        foreach (Movimentos mov in ListaMovimento)
                         {
                             controle.removeMovimento(mov);
                             controle.salvaAtualiza();
-                        }                        
-                        
+                        }
+
                     }
                     BemaFI32.Bematech_FI_CancelaCupom();
-                    MessageBox.Show("Exclusão realizada com sucesso","Ação Bem Sucedida");
+                    MessageBox.Show("Exclusão realizada com sucesso", "Ação Bem Sucedida");
                     btnLimpar_Click(sender, e);
                 }
-                
-            } 
+
+            }
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
@@ -759,7 +818,7 @@ namespace Loja1._0
             pnlDebito.Enabled = false;
             pnlPrePag.Enabled = false;
             pnlCredito.Enabled = false;
-            pnlCheque.Enabled = false;
+            pnlCheque.Enabled = false;           
         }
 
         private void rdbDebito_CheckedChanged(object sender, EventArgs e)
@@ -792,7 +851,11 @@ namespace Loja1._0
         {
             AcceptButton = btnPagamento;
             cmbNumParcCredito.Focus();
-                        
+
+            if (cmbNumParcCredito.SelectedItem == null)
+            {
+                valorParcelaCred = Convert.ToDecimal(txtParcCred.Text);
+            }
             pnlPedidos.Enabled = false;
             btnPagamento.Enabled = true;
             pnlDinheiro.Enabled = false;
@@ -809,7 +872,7 @@ namespace Loja1._0
 
             if (cmbNumParcCheque.SelectedItem == null)
             {
-                valorParcela = Convert.ToDecimal(txtParcCheq.Text);
+                valorParcelaCheq = Convert.ToDecimal(txtParcCheq.Text);
             }
             pnlPedidos.Enabled = false;
             btnPagamento.Enabled = true;
@@ -822,26 +885,108 @@ namespace Loja1._0
 
         private void cmbNumParcCredito_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbNumParcCredito.SelectedItem != null)
+            decimal juros = 0;
+            if (cmbNumParcCredito.SelectedItem != null)
             {
-                txtParcCred.Text = (valorParcela / Convert.ToInt32(cmbNumParcCredito.SelectedItem)).ToString("0.00");
-            }      
-            valorParcela = Convert.ToDecimal(txtParcCred.Text) * Convert.ToDecimal(cmbNumParcCredito.SelectedItem);
+                switch (cmbNumParcCredito.SelectedItem)
+                {
+                    case "1":
+                        juros = 0;
+                        break;
+                    case "2":
+                        juros = gerencia.jurosPrazo2x / 100;
+                        break;
+                    case "3":
+                        juros = gerencia.jurosPrazo3x / 100;
+                        break;
+                    case "4":
+                        juros = gerencia.jurosPrazo4x / 100;
+                        break;
+                    case "5":
+                        juros = gerencia.jurosPrazo5x / 100;
+                        break;
+                    case "6":
+                        juros = gerencia.jurosPrazo6x / 100;
+                        break;
+                    case "7":
+                        juros = gerencia.jurosPrazo7x / 100;
+                        break;
+                    case "8":
+                        juros = gerencia.jurosPrazo8x / 100;
+                        break;
+                    case "9":
+                        juros = gerencia.jurosPrazo9x / 100;
+                        break;
+                    case "10":
+                        juros = gerencia.jurosPrazo10x / 100;
+                        break;
+                    case "11":
+                        juros = gerencia.jurosPrazo11x / 100;
+                        break;
+                    case "12":
+                        juros = gerencia.jurosPrazo12x / 100;
+                        break;
+                }
+                txtParcCred.Text = ((valorParcelaCred + (valorParcelaCred * juros))/ Convert.ToInt32(cmbNumParcCredito.SelectedItem)).ToString("0.00");
+            }
+            valorParcelaCred = Convert.ToDecimal(txtCredito.Text);            
         }
 
         private void cmbNumParcCheque_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal juros = 0;
             if (cmbNumParcCheque.SelectedItem != null)
-            {                
-                txtParcCheq.Text = (valorParcela / Convert.ToInt32(cmbNumParcCheque.SelectedItem)).ToString("0.00");
+            {
+                switch (cmbNumParcCheque.SelectedItem)
+                {
+                    case "1":
+                        juros = 0;
+                        break;
+                    case "2":
+                        juros = gerencia.jurosCheque2x / 100;
+                        break;
+                    case "3":
+                        juros = gerencia.jurosCheque3x / 100;
+                        break;
+                    case "4":
+                        juros = gerencia.jurosCheque4x / 100;
+                        break;
+                    case "5":
+                        juros = gerencia.jurosCheque5x / 100;
+                        break;
+                    case "6":
+                        juros = gerencia.jurosCheque6x / 100;
+                        break;
+                    case "7":
+                        juros = gerencia.jurosCheque7x / 100;
+                        break;
+                    case "8":
+                        juros = gerencia.jurosCheque8x / 100;
+                        break;
+                    case "9":
+                        juros = gerencia.jurosCheque9x / 100;
+                        break;
+                    case "10":
+                        juros = gerencia.jurosCheque10x / 100;
+                        break;
+                    case "11":
+                        juros = gerencia.jurosCheque11x / 100;
+                        break;
+                    case "12":
+                        juros = gerencia.jurosCheque12x / 100;
+                        break;
+                }
+                txtParcCheq.Text = ((valorParcelaCheq + (valorParcelaCheq * juros)) / Convert.ToInt32(cmbNumParcCheque.SelectedItem)).ToString("0.00");
             }
-            valorParcela = Convert.ToDecimal(txtParcCheq.Text) * Convert.ToDecimal(cmbNumParcCheque.SelectedItem);
+            valorParcelaCheq = Convert.ToDecimal(txtCheque.Text);
         }
         private void salvaPagamentoCheque(decimal valor, object sender, EventArgs e)
         {
             try
             {
-                valorPago = valorPago + valor;
+
+                valorAcres = (Convert.ToDecimal(txtParcCheq.Text) * Convert.ToDecimal(cmbNumParcCheque.SelectedItem)) - (valorParcelaCheq - valorPago);
+                valorPago = valorPago + valor;                
 
                 int ent = 0;
                 if (entrada)
@@ -849,6 +994,13 @@ namespace Loja1._0
                     ent = 1;
                 }
                 ShowMyDialogBox();
+
+                //Atribuição de valores ao objeto CupomFiscal PagCheque
+                PagCheque.formaPagamento = "Cheque";
+                PagCheque.acrescimo = valorAcres.ToString("0.00");
+                PagCheque.desconto = "0.00";
+                PagCheque.valorPagamento = valor.ToString("0.00");
+
                 for (int i = 0; i < Convert.ToInt32(cmbNumParcCheque.SelectedItem); i++)
                 {
                     Movimentos movimento = new Movimentos();
@@ -871,12 +1023,12 @@ namespace Loja1._0
                     controle.salvarPagamento(pagamento);
                     pagamento.id_movimento = movimento.id;
                     pagamento.dataPagamento = DateTime.Today.AddMonths(i + ent);
-                    pagamento.formaPag = "Cheque";
+                    pagamento.formaPag = "Cheque";                    
                     pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
-                    pagamento.valorParcela = valor / Convert.ToInt32(cmbNumParcCheque.SelectedItem);                    
+                    pagamento.valorParcela = valor / Convert.ToInt32(cmbNumParcCheque.SelectedItem);
 
                     pagamento.numChequePrimeiro = chequePrim;
-                    pagamento.numChequeUltimo = chequeUlt;
+                    pagamento.numChequeUltimo = chequeUlt;                    
 
                     if (!entrada && Convert.ToInt32(cmbNumParcCheque.SelectedItem) == 1)
                     {
@@ -899,7 +1051,7 @@ namespace Loja1._0
                     else if (entrada && Convert.ToInt32(cmbNumParcCheque.SelectedItem) >= 2)
                     {
                         pagamento.tipoPag = "Entrada + Parcelas";
-                        pagamento.numParcela = i+1;
+                        pagamento.numParcela = i + 1;
                         pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCheque.SelectedItem);
                     }
 
@@ -955,13 +1107,26 @@ namespace Loja1._0
         {
             try
             {
-                valorPago = valorPago + valor;
+                valorAcres = (Convert.ToDecimal(txtParcCred.Text) * Convert.ToDecimal(cmbNumParcCredito.SelectedItem)) - (valorParcelaCred - valorPago);
+                valorPago = valorPago + valor;                                
+
+                if(valorPago * Convert.ToInt32(cmbNumParcCredito.SelectedItem) < valorTotal)
+                {
+                    valorPago = valorPago + 0.01M;
+                }
 
                 int ent = 0;
                 if (entrada)
                 {
                     ent = 1;
                 }
+
+                //Atribuição de valores ao objeto CupomFiscal PagCredito
+                PagCredito.formaPagamento = "Crédito";
+                PagCredito.acrescimo = valorAcres.ToString("0.00");
+                PagCredito.desconto = "0.00";
+                PagCredito.valorPagamento = valor.ToString("0.00");
+
                 for (int i = 0; i < Convert.ToInt32(cmbNumParcCredito.SelectedItem); i++)
                 {
                     Movimentos movimento = new Movimentos();
@@ -984,18 +1149,20 @@ namespace Loja1._0
                     controle.salvarPagamento(pagamento);
                     pagamento.id_movimento = movimento.id;
                     pagamento.dataPagamento = DateTime.Today.AddMonths(i + ent);
-                    pagamento.formaPag = "C. Crédito";
+                    pagamento.formaPag = "C.Crédito";
                     pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
                     pagamento.valorParcela = valor / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     pagamento.numChequePrimeiro = "";
                     pagamento.numChequeUltimo = "";
+                    
+
                     if (!entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) == 1)
                     {
                         pagamento.tipoPag = "Total";
                         pagamento.numParcela = 1;
                         pagamento.qntParcelas = 1;
                     }
-                    else if(!entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) != 1 && i >= 1)
+                    else if (!entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) != 1 && i >= 1)
                     {
                         pagamento.tipoPag = "Parcelado";
                         pagamento.numParcela = i;
@@ -1010,7 +1177,7 @@ namespace Loja1._0
                     else if (entrada && Convert.ToInt32(cmbNumParcCredito.SelectedItem) >= 2)
                     {
                         pagamento.tipoPag = "Entrada + Parcelas";
-                        pagamento.numParcela = i+1;
+                        pagamento.numParcela = i + 1;
                         pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     }
                     controle.salvaAtualiza();
@@ -1064,8 +1231,18 @@ namespace Loja1._0
         private void salvaPagamentoPrePago(decimal valor, object sender, EventArgs e)
         {
             try
-            {
+            {                
                 valorPago = valorPago + valor;
+                if (valorPago * Convert.ToInt32(cmbNumParcCheque.SelectedItem) < valorTotal)
+                {
+                    valorPago = valorPago + 0.01M;
+                }
+
+                //Atribuição de valores ao objeto CupomFiscal PagPrePago
+                PagPrePago.formaPagamento = "Pré-Pago";
+                PagPrePago.acrescimo = valorAcres.ToString("0.00");
+                PagPrePago.desconto = "0.00";
+                PagPrePago.valorPagamento = valor.ToString("0.00");
 
                 Movimentos movimento = new Movimentos();
                 controle.salvarMovimento(movimento);
@@ -1076,11 +1253,15 @@ namespace Loja1._0
                 Pagamentos pagamento = new Pagamentos();
                 controle.salvarPagamento(pagamento);
                 pagamento.dataPagamento = DateTime.Now;
-                pagamento.formaPag = "Pré-Paga";
+                pagamento.formaPag = "Pré-Pago";
                 pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
                 pagamento.valorParcela = valor;
                 pagamento.numChequePrimeiro = "";
                 pagamento.numChequeUltimo = "";
+
+                //Bematech_FI_EfetuaFormaPagamento(string FormaPagamento, string ValorFormaPagamento);
+                //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_EfetuaFormaPagamento(pagamento.formaPag, valor.ToString("0.00")));
+
                 if (Convert.ToDecimal(txtSaldoPrePago.Text) <= valorPago)
                 {
                     movimento.desc = "Total Pré-Pago";
@@ -1146,6 +1327,12 @@ namespace Loja1._0
             {
                 valorPago = valorPago + valor;
 
+                //Atribuição de valores ao objeto CupomFiscal PagDebito
+                PagDebito.formaPagamento = "Débito";
+                PagDebito.acrescimo = valorAcres.ToString("0.00");
+                PagDebito.desconto = "0.00";
+                PagDebito.valorPagamento = valor.ToString("0.00");
+
                 Movimentos movimento = new Movimentos();
                 controle.salvarMovimento(movimento);
                 movimento.id_tipo = 33;
@@ -1155,11 +1342,12 @@ namespace Loja1._0
                 Pagamentos pagamento = new Pagamentos();
                 controle.salvarPagamento(pagamento);
                 pagamento.dataPagamento = DateTime.Now;
-                pagamento.formaPag = "Dinheiro";
+                pagamento.formaPag = "Débito";
                 pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
                 pagamento.valorParcela = valor;
                 pagamento.numChequePrimeiro = "";
                 pagamento.numChequeUltimo = "";
+
                 if (Convert.ToDecimal(txtSaldoDebito.Text) <= valorPago)
                 {
                     movimento.desc = "Total TEF Débito";
@@ -1225,6 +1413,12 @@ namespace Loja1._0
             {
                 valorPago = valorPago + valor;
 
+                //Atribuição de valores ao objeto CupomFiscal PagDinheiro
+                PagDinheiro.formaPagamento = "Dinheiro";
+                PagDinheiro.acrescimo = valorAcres.ToString("0.00");
+                PagDinheiro.desconto = "0.00";
+                PagDinheiro.valorPagamento = valor.ToString("0.00");
+
                 Movimentos movimento = new Movimentos();
                 controle.salvarMovimento(movimento);
                 movimento.id_tipo = 19;
@@ -1239,6 +1433,7 @@ namespace Loja1._0
                 pagamento.valorParcela = valor;
                 pagamento.numChequePrimeiro = "";
                 pagamento.numChequeUltimo = "";
+                
                 if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valorPago)
                 {
                     movimento.desc = "Total a dinheiro";
@@ -1254,7 +1449,7 @@ namespace Loja1._0
                     pagamento.qntParcelas = 0;
                 }
                 controle.salvaAtualiza();
-                pagamento.id_movimento = movimento.id;                
+                pagamento.id_movimento = movimento.id;
 
                 Movimentos movimentoImposto = new Movimentos();
                 controle.salvarMovimento(movimentoImposto);
@@ -1286,7 +1481,7 @@ namespace Loja1._0
                 }
 
                 if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valorPago)
-                {                    
+                {
                     imprimeCupomFiscal();
                     MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
                     btnLimpar_Click(sender, e);
@@ -1294,14 +1489,14 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Não foi possivel registrar o pagamento, por favor, tente novamente","Erro !");
+                MessageBox.Show("Não foi possivel registrar o pagamento, por favor, tente novamente", "Erro !");
             }
         }
 
         private bool realizaTEF()
         {
             //chamada e resposta enviada pelo gerenciador padrão de transação TEF
-            DialogResult = MessageBox.Show("Já foi realizada a transação de transferência de fundos ?","Ação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            DialogResult = MessageBox.Show("Já foi realizada a transação de transferência de fundos ?", "Ação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (DialogResult.Equals(DialogResult.Yes))
             {
                 return true;
@@ -1309,7 +1504,7 @@ namespace Loja1._0
             else
             {
                 return false;
-            }           
+            }
         }
 
         public void ShowMyDialogBox()
@@ -1330,7 +1525,6 @@ namespace Loja1._0
 
         private void imprimeCupomFiscal()
         {
-
             /*if (não existir configuração de aliquota)
             {
                 //Configuração inicial Impressora fiscal
@@ -1340,42 +1534,68 @@ namespace Loja1._0
                 BemaFI32.Bematech_FI_EspacoEntreLinhas(5);
                 BemaFI32.Bematech_FI_ProgramaArredondamento();
             }*/
+            valorDesc = Convert.ToDecimal(PagDinheiro.desconto) + Convert.ToDecimal(PagDebito.desconto) + Convert.ToDecimal(PagPrePago.desconto);
+            valorAcres = Convert.ToDecimal(PagCredito.acrescimo) + Convert.ToDecimal(PagCheque.acrescimo);
 
-            if (rdbNPsim.Checked)
+            string AcrescimoDesconto = "";
+            string ValorAcrescimoDesconto = "";
+
+            if (valorDesc > valorAcres)
             {
-                //cnpj ou cpf do cliente
-                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
+                AcrescimoDesconto = "D";
+                ValorAcrescimoDesconto = (valorDesc - valorAcres).ToString("0.00");
             }
             else
             {
-                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(""));
+                AcrescimoDesconto = "A";
+                ValorAcrescimoDesconto = (valorAcres - valorDesc).ToString("0.00");
             }
 
-            //Relação das ordens de serviço que compõem o pagamento efetuado
-            foreach (Vendas value in listaVendas)
+            //ABERTURA DO FECHAMENTO
+            //Bematech_FI_IniciaFechamentoCupom(string AcrescimoDesconto, string TipoAcrescimoDesconto, string ValorAcrescimoDesconto);
+            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_IniciaFechamentoCupom(AcrescimoDesconto, "$", ValorAcrescimoDesconto));
+
+
+            //PAGAMENTOS
+            //Bematech_FI_EfetuaFormaPagamento(string FormaPagamento, string ValorFormaPagamento);
+            if (Convert.ToDecimal(PagDinheiro.valorPagamento) > 0)
             {
-                listaProdutosVenda = controle.pesquisaProdutosVenda(value.id);
-
-                //Relação dos produtos que compõem cada uma das vendas                
-                foreach (Vendas_Produtos item in listaProdutosVenda)
-                {
-                    Model.Produtos produto = controle.pesquisaProdutoId(Convert.ToInt32(item.id_produto));
-                    //adiciona ao cupom o item vendido
-                    //public static extern int Bematech_FI_VendeItem(string Codigo, string Descricao, string Aliquota, string TipoQuantidade, string Quantidade, int CasasDecimais, string ValorUnitario, string TipoDesconto, string Desconto);
-                    BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, Aliquota, TipoQuantidade.Inteira.ToString(), item.quantidade.ToString(), 2, produto.preco_venda.ToString(), "%", "0"));
-                }
-
+                BemaFI32.Bematech_FI_EfetuaFormaPagamento("Dinheiro", PagDinheiro.valorPagamento);
+            }
+            if (Convert.ToDecimal(PagDebito.valorPagamento) > 0)
+            {
+                BemaFI32.Bematech_FI_EfetuaFormaPagamento("Débito", PagDebito.valorPagamento);
+            }
+            if (Convert.ToDecimal(PagPrePago.valorPagamento) > 0)
+            {
+                BemaFI32.Bematech_FI_EfetuaFormaPagamento("Pré-Pago", PagPrePago.valorPagamento);
+            }
+            if (Convert.ToDecimal(PagCredito.valorPagamento) > 0)
+            {
+                BemaFI32.Bematech_FI_EfetuaFormaPagamento("C.Crédito", PagCredito.valorPagamento);
+            }
+            if (Convert.ToDecimal(PagCheque.valorPagamento) > 0)
+            {
+                BemaFI32.Bematech_FI_EfetuaFormaPagamento("Cheque", PagCheque.valorPagamento);
             }
 
-            //Bematech_FI_FechaCupom(string FormaPagamento, string AcrescimoDesconto, string TipoAcrescimoDesconto, string ValorAcrescimoDesconto, string ValorPago, string Mensagem);
-            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_FechaCupom("Dinheiro", "D", "$", valorDesc.ToString("0.00"), valorPago.ToString("0.00"), "O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: "+ ((valorTotal - valorDesc) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal - valorDesc) * 0.0486M).ToString("0.00") +" Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
+
+            //CONCLUI O FECHAMENTO
+            if (AcrescimoDesconto.Equals("D"))
+            {
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal - Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal - Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
+            }
+            else
+            {
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
+            }
             
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             pnlPedidos.Enabled = true;
-            AcceptButton = btnAdicionar1;
+            
             txtPedidoNum1.Text = "";
             txtPedidoNum1.Enabled = true;
             btnAdicionar1.Enabled = true;
@@ -1398,7 +1618,7 @@ namespace Loja1._0
             txtPedidoNum5.Enabled = false;
             btnAdicionar5.Enabled = false;
 
-            pnlCliente.Enabled = false;
+            pnlCliente.Enabled = true;
             txtCreditosCliente.Text = "";
             txtCpf.Text = "";
             rdbNPnao.Checked = true;
@@ -1431,7 +1651,8 @@ namespace Loja1._0
             txtSaldoPrePago.Text = "0,00";
             txtPagPrePago.Text = "";
             txtCredito.Text = "0,00";
-            cmbNumParcCredito.SelectedItem = 1;
+            cmbNumParcCredito.SelectedItem = null;
+            cmbNumParcCheque.SelectedItem = null;
             txtParcCred.Text = "0,00";
             txtCheque.Text = "0,00";
             txtParcCheq.Text = "0,00";
@@ -1439,16 +1660,30 @@ namespace Loja1._0
             txtRecebido.Text = "0,00";
             txtTotal.Text = "R$";
 
+            AcrescimoDesconto = "";
+            ValorAcrescimoDesconto = "";
+
             listaVendas = new List<Vendas>();
             listaProdutosVenda = new List<Vendas_Produtos>();
             venda = new Vendas();
             cliente = new Model.Clientes();
+            PagDinheiro = new CupomFiscal();
+            PagDebito = new CupomFiscal();
+            PagPrePago = new CupomFiscal();
+            PagCredito = new CupomFiscal();
+            PagCheque = new CupomFiscal();
+            chequePrim = "";
+            chequeUlt = "";
+            valorParcelaCred = 0.00M;
+            valorParcelaCheq = 0.00M;
+            valorAcres = 0.00M;
             valorDesc = 0.00M;
             valorPago = 0.00M;
-            valorTotal = 0;
-            custoAux = 0;
+            valorTotal = 0.00M;
+            custoAux = 0.00M;
             desconto = 0;
             entrada = false;
+            vista = true;
             ultimoExcluido = false;
             txtPedidoNum1.Text = "";
             pnlCheque.Enabled = false;
@@ -1460,6 +1695,31 @@ namespace Loja1._0
             btnAdicionar1.Enabled = true;
             pnlPedidos.Enabled = true;
             btnPagamento.Enabled = false;
+            AcceptButton = btnAdicionar1;
+        }
+
+        private bool confirmaAssociacao()
+        {
+            DialogResult = MessageBox.Show("O cliente não deseja a identificação por CPF/CNPJ no Cupom Fiscal ?", "Ação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (DialogResult.Equals(DialogResult.Yes))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void btnCancelaAberto_Click(object sender, EventArgs e)
+        {
+            DialogResult = MessageBox.Show("Você tem certeza que deseja cancelar o cupom em aberto e limpar todos os dados ?", "Ação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (DialogResult.Equals(DialogResult.Yes))
+            {
+                BemaFI32.Bematech_FI_CancelaCupom();
+                MessageBox.Show("Cupom Fiscal cancelado com sucesso", "Ação Bem Sucedida");
+                btnLimpar_Click(sender, e);
+            }
         }
     }
 }

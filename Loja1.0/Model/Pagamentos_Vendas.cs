@@ -18,7 +18,7 @@ namespace Loja1._0.Model
         public int id_Venda { get; set; }
         public int id_Pagamento { get; set; }
     
-        public virtual Vendas Vendas { get; set; }
         public virtual Pagamentos Pagamentos { get; set; }
+        public virtual Vendas Vendas { get; set; }
     }
 }

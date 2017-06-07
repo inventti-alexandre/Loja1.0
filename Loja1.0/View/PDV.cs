@@ -412,7 +412,7 @@ namespace Loja1._0
             venda.id_Usuario = user.id;
             venda.valor_Venda = 0;
             venda.data_Venda = DateTime.Now;
-            venda.comissao = Convert.ToDecimal(Convert.ToDouble(txtTotal.Text) + (Convert.ToDouble(txtTotal.Text) * gerencia.comissao));
+            venda.comissao = Convert.ToDecimal(txtTotal.Text) + ((Convert.ToDecimal(txtTotal.Text) * gerencia.comissao));
             controle.salvaAtualiza();
 
             for (int i = 0; i < listaCompra.Count; i++)

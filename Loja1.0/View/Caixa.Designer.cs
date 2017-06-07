@@ -146,6 +146,7 @@
             this.btnTrocaUser = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.btnCancelaAberto = new System.Windows.Forms.Button();
             this.pnlPedidos.SuspendLayout();
             this.pnlPagamento.SuspendLayout();
             this.pnlCheque.SuspendLayout();
@@ -1101,7 +1102,6 @@
             this.pnlCliente.Controls.Add(this.txtCreditosCliente);
             this.pnlCliente.Controls.Add(this.lblCliente);
             this.pnlCliente.Controls.Add(this.lblCreditos);
-            this.pnlCliente.Enabled = false;
             this.pnlCliente.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.pnlCliente.Location = new System.Drawing.Point(355, 47);
@@ -1243,9 +1243,9 @@
             this.btnLimpar.Enabled = false;
             this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnLimpar.Location = new System.Drawing.Point(675, 406);
+            this.btnLimpar.Location = new System.Drawing.Point(675, 382);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(114, 46);
+            this.btnLimpar.Size = new System.Drawing.Size(114, 40);
             this.btnLimpar.TabIndex = 11;
             this.btnLimpar.Text = "Limpar Pagamento";
             this.btnLimpar.UseVisualStyleBackColor = false;
@@ -1256,13 +1256,13 @@
             this.btnCancelar.AutoEllipsis = true;
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancelar.Location = new System.Drawing.Point(674, 465);
+            this.btnCancelar.Location = new System.Drawing.Point(675, 427);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(114, 46);
+            this.btnCancelar.Size = new System.Drawing.Size(114, 40);
             this.btnCancelar.TabIndex = 12;
-            this.btnCancelar.Text = "Cancelar Último Cupom";
+            this.btnCancelar.Text = "Cancelar Último Cupom + Pag.";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -1296,9 +1296,9 @@
             this.btnDesconto.Enabled = false;
             this.btnDesconto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesconto.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDesconto.Location = new System.Drawing.Point(675, 349);
+            this.btnDesconto.Location = new System.Drawing.Point(675, 337);
             this.btnDesconto.Name = "btnDesconto";
-            this.btnDesconto.Size = new System.Drawing.Size(114, 46);
+            this.btnDesconto.Size = new System.Drawing.Size(114, 40);
             this.btnDesconto.TabIndex = 65;
             this.btnDesconto.Text = "Editar Desconto";
             this.btnDesconto.UseVisualStyleBackColor = false;
@@ -1314,7 +1314,7 @@
             this.btnPagamento.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnPagamento.Location = new System.Drawing.Point(675, 292);
             this.btnPagamento.Name = "btnPagamento";
-            this.btnPagamento.Size = new System.Drawing.Size(114, 46);
+            this.btnPagamento.Size = new System.Drawing.Size(114, 40);
             this.btnPagamento.TabIndex = 66;
             this.btnPagamento.Text = "Registrar Pagamento";
             this.btnPagamento.UseVisualStyleBackColor = false;
@@ -1622,6 +1622,21 @@
             this.pnlLogo.Size = new System.Drawing.Size(132, 61);
             this.pnlLogo.TabIndex = 1;
             // 
+            // btnCancelaAberto
+            // 
+            this.btnCancelaAberto.AutoEllipsis = true;
+            this.btnCancelaAberto.BackColor = System.Drawing.Color.White;
+            this.btnCancelaAberto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelaAberto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelaAberto.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelaAberto.Location = new System.Drawing.Point(675, 472);
+            this.btnCancelaAberto.Name = "btnCancelaAberto";
+            this.btnCancelaAberto.Size = new System.Drawing.Size(114, 40);
+            this.btnCancelaAberto.TabIndex = 79;
+            this.btnCancelaAberto.Text = "Cancelar Cupom Aberto";
+            this.btnCancelaAberto.UseVisualStyleBackColor = false;
+            this.btnCancelaAberto.Click += new System.EventHandler(this.btnCancelaAberto_Click);
+            // 
             // Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1629,6 +1644,7 @@
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnCancelaAberto);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlDesconto);
             this.Controls.Add(this.btnPagamento);
@@ -1802,6 +1818,7 @@
         private System.Windows.Forms.Label txtDescValor;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCancelaAberto;
     }
 }
 

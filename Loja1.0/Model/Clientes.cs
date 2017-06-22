@@ -28,6 +28,7 @@ namespace Loja1._0.Model
         public string email { get; set; }
         public string telefone { get; set; }
         public string celular { get; set; }
+        public string operadora { get; set; }
         public string recado { get; set; }
         public string endereço { get; set; }
         public string numeral { get; set; }
@@ -36,7 +37,6 @@ namespace Loja1._0.Model
         public Nullable<int> pessoa_fisica { get; set; }
         public int status { get; set; }
         public Nullable<double> creditos { get; set; }
-        public string operadora { get; set; }
     
         public virtual Cidades Cidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

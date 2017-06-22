@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Abertura));
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -46,20 +47,25 @@
             // 
             // Abertura
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(600, 400);
+            this.ControlBox = false;
             this.Controls.Add(this.label3);
-            this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Abertura";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Abertura";
             this.UseWaitCursor = true;
             this.ResumeLayout(false);
             this.PerformLayout();

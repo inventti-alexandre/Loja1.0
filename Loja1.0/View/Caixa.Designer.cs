@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Caixa));
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.pnlLogo = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlPedidos = new System.Windows.Forms.GroupBox();
@@ -117,11 +115,10 @@
             this.txtCreditosCliente = new System.Windows.Forms.TextBox();
             this.lblCliente = new System.Windows.Forms.Label();
             this.lblCreditos = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblOperador = new System.Windows.Forms.Label();
-            this.btnTrocaUser = new System.Windows.Forms.Button();
             this.btnDesconto = new System.Windows.Forms.Button();
             this.btnPagamento = new System.Windows.Forms.Button();
             this.pnlDesconto = new System.Windows.Forms.Panel();
@@ -146,6 +143,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtRecebido = new System.Windows.Forms.Label();
             this.lblSub = new System.Windows.Forms.Label();
+            this.btnTrocaUser = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.pnlLogo = new System.Windows.Forms.Panel();
+            this.btnCancelaAberto = new System.Windows.Forms.Button();
             this.pnlPedidos.SuspendLayout();
             this.pnlPagamento.SuspendLayout();
             this.pnlCheque.SuspendLayout();
@@ -174,33 +175,6 @@
             this.lblTitulo.Size = new System.Drawing.Size(473, 33);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Sistema Alemão da Construção 1.0";
-            // 
-            // pnlLogo
-            // 
-            this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
-            this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogo.Location = new System.Drawing.Point(6, 519);
-            this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(132, 61);
-            this.pnlLogo.TabIndex = 1;
-            // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.Khaki;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
-            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnExit.Location = new System.Drawing.Point(764, 3);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(0);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(34, 34);
-            this.btnExit.TabIndex = 2;
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // lblNome
             // 
@@ -284,6 +258,7 @@
             // 
             this.txtPedidoNum5.Enabled = false;
             this.txtPedidoNum5.Location = new System.Drawing.Point(49, 186);
+            this.txtPedidoNum5.MaxLength = 6;
             this.txtPedidoNum5.Name = "txtPedidoNum5";
             this.txtPedidoNum5.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum5.TabIndex = 18;
@@ -317,6 +292,7 @@
             // 
             this.txtPedidoNum4.Enabled = false;
             this.txtPedidoNum4.Location = new System.Drawing.Point(49, 144);
+            this.txtPedidoNum4.MaxLength = 6;
             this.txtPedidoNum4.Name = "txtPedidoNum4";
             this.txtPedidoNum4.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum4.TabIndex = 15;
@@ -350,6 +326,7 @@
             // 
             this.txtPedidoNum3.Enabled = false;
             this.txtPedidoNum3.Location = new System.Drawing.Point(49, 104);
+            this.txtPedidoNum3.MaxLength = 6;
             this.txtPedidoNum3.Name = "txtPedidoNum3";
             this.txtPedidoNum3.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum3.TabIndex = 12;
@@ -383,6 +360,7 @@
             // 
             this.txtPedidoNum2.Enabled = false;
             this.txtPedidoNum2.Location = new System.Drawing.Point(49, 64);
+            this.txtPedidoNum2.MaxLength = 6;
             this.txtPedidoNum2.Name = "txtPedidoNum2";
             this.txtPedidoNum2.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum2.TabIndex = 9;
@@ -414,6 +392,7 @@
             // txtPedidoNum1
             // 
             this.txtPedidoNum1.Location = new System.Drawing.Point(49, 25);
+            this.txtPedidoNum1.MaxLength = 6;
             this.txtPedidoNum1.Name = "txtPedidoNum1";
             this.txtPedidoNum1.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum1.TabIndex = 0;
@@ -833,6 +812,7 @@
             // txtPagPrePago
             // 
             this.txtPagPrePago.Location = new System.Drawing.Point(456, 3);
+            this.txtPagPrePago.MaxLength = 9;
             this.txtPagPrePago.Name = "txtPagPrePago";
             this.txtPagPrePago.Size = new System.Drawing.Size(87, 26);
             this.txtPagPrePago.TabIndex = 13;
@@ -930,6 +910,7 @@
             // txtPagDebito
             // 
             this.txtPagDebito.Location = new System.Drawing.Point(456, 3);
+            this.txtPagDebito.MaxLength = 9;
             this.txtPagDebito.Name = "txtPagDebito";
             this.txtPagDebito.Size = new System.Drawing.Size(87, 26);
             this.txtPagDebito.TabIndex = 11;
@@ -1027,6 +1008,7 @@
             // txtPagDinheiro
             // 
             this.txtPagDinheiro.Location = new System.Drawing.Point(457, 3);
+            this.txtPagDinheiro.MaxLength = 9;
             this.txtPagDinheiro.Name = "txtPagDinheiro";
             this.txtPagDinheiro.Size = new System.Drawing.Size(87, 26);
             this.txtPagDinheiro.TabIndex = 9;
@@ -1128,7 +1110,6 @@
             this.pnlCliente.Controls.Add(this.txtCreditosCliente);
             this.pnlCliente.Controls.Add(this.lblCliente);
             this.pnlCliente.Controls.Add(this.lblCreditos);
-            this.pnlCliente.Enabled = false;
             this.pnlCliente.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.pnlCliente.Location = new System.Drawing.Point(355, 47);
@@ -1191,6 +1172,7 @@
             // txtCpf
             // 
             this.txtCpf.Location = new System.Drawing.Point(110, 52);
+            this.txtCpf.MaxLength = 14;
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(322, 26);
             this.txtCpf.TabIndex = 73;
@@ -1262,36 +1244,36 @@
             this.lblCreditos.TabIndex = 69;
             this.lblCreditos.Text = "Créditos :";
             // 
+            // btnLimpar
+            // 
+            this.btnLimpar.AutoEllipsis = true;
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.Enabled = false;
+            this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnLimpar.Location = new System.Drawing.Point(675, 382);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(114, 40);
+            this.btnLimpar.TabIndex = 11;
+            this.btnLimpar.Text = "Limpar Pagamento";
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
             // btnCancelar
             // 
             this.btnCancelar.AutoEllipsis = true;
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.Enabled = false;
-            this.btnCancelar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancelar.Location = new System.Drawing.Point(675, 406);
+            this.btnCancelar.Location = new System.Drawing.Point(675, 427);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(114, 46);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.Text = "Cancelar Pagamento";
+            this.btnCancelar.Size = new System.Drawing.Size(114, 40);
+            this.btnCancelar.TabIndex = 12;
+            this.btnCancelar.Text = "Cancelar Último Cupom + Pag.";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.AutoEllipsis = true;
-            this.btnImprimir.BackColor = System.Drawing.Color.White;
-            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprimir.Location = new System.Drawing.Point(674, 465);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(114, 46);
-            this.btnImprimir.TabIndex = 12;
-            this.btnImprimir.Text = "Imprimir Leitura Fiscal";
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // lblUser
             // 
@@ -1315,22 +1297,6 @@
             this.lblOperador.TabIndex = 62;
             this.lblOperador.Text = "Operador : ";
             // 
-            // btnTrocaUser
-            // 
-            this.btnTrocaUser.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.btnTrocaUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnTrocaUser.BackgroundImage = global::Loja1._0.Properties.Resources.trocar;
-            this.btnTrocaUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTrocaUser.FlatAppearance.BorderSize = 0;
-            this.btnTrocaUser.ForeColor = System.Drawing.Color.Lime;
-            this.btnTrocaUser.Location = new System.Drawing.Point(727, 3);
-            this.btnTrocaUser.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTrocaUser.Name = "btnTrocaUser";
-            this.btnTrocaUser.Size = new System.Drawing.Size(34, 34);
-            this.btnTrocaUser.TabIndex = 64;
-            this.btnTrocaUser.UseVisualStyleBackColor = false;
-            this.btnTrocaUser.Click += new System.EventHandler(this.btnTrocaUser_Click);
-            // 
             // btnDesconto
             // 
             this.btnDesconto.AutoEllipsis = true;
@@ -1339,9 +1305,9 @@
             this.btnDesconto.Enabled = false;
             this.btnDesconto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesconto.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDesconto.Location = new System.Drawing.Point(675, 349);
+            this.btnDesconto.Location = new System.Drawing.Point(675, 337);
             this.btnDesconto.Name = "btnDesconto";
-            this.btnDesconto.Size = new System.Drawing.Size(114, 46);
+            this.btnDesconto.Size = new System.Drawing.Size(114, 40);
             this.btnDesconto.TabIndex = 65;
             this.btnDesconto.Text = "Editar Desconto";
             this.btnDesconto.UseVisualStyleBackColor = false;
@@ -1357,7 +1323,7 @@
             this.btnPagamento.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnPagamento.Location = new System.Drawing.Point(675, 292);
             this.btnPagamento.Name = "btnPagamento";
-            this.btnPagamento.Size = new System.Drawing.Size(114, 46);
+            this.btnPagamento.Size = new System.Drawing.Size(114, 40);
             this.btnPagamento.TabIndex = 66;
             this.btnPagamento.Text = "Registrar Pagamento";
             this.btnPagamento.UseVisualStyleBackColor = false;
@@ -1622,6 +1588,65 @@
             this.lblSub.Text = "Recebido : ";
             this.lblSub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnTrocaUser
+            // 
+            this.btnTrocaUser.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnTrocaUser.BackColor = System.Drawing.Color.Transparent;
+            this.btnTrocaUser.BackgroundImage = global::Loja1._0.Properties.Resources.trocar;
+            this.btnTrocaUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnTrocaUser.FlatAppearance.BorderSize = 0;
+            this.btnTrocaUser.ForeColor = System.Drawing.Color.Lime;
+            this.btnTrocaUser.Location = new System.Drawing.Point(727, 3);
+            this.btnTrocaUser.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTrocaUser.Name = "btnTrocaUser";
+            this.btnTrocaUser.Size = new System.Drawing.Size(34, 34);
+            this.btnTrocaUser.TabIndex = 64;
+            this.btnTrocaUser.UseVisualStyleBackColor = false;
+            this.btnTrocaUser.Click += new System.EventHandler(this.btnTrocaUser_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.Khaki;
+            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnExit.Location = new System.Drawing.Point(764, 3);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(34, 34);
+            this.btnExit.TabIndex = 2;
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // pnlLogo
+            // 
+            this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlLogo.Location = new System.Drawing.Point(6, 519);
+            this.pnlLogo.Name = "pnlLogo";
+            this.pnlLogo.Size = new System.Drawing.Size(132, 61);
+            this.pnlLogo.TabIndex = 1;
+            // 
+            // btnCancelaAberto
+            // 
+            this.btnCancelaAberto.AutoEllipsis = true;
+            this.btnCancelaAberto.BackColor = System.Drawing.Color.White;
+            this.btnCancelaAberto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelaAberto.Enabled = false;
+            this.btnCancelaAberto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelaAberto.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelaAberto.Location = new System.Drawing.Point(675, 472);
+            this.btnCancelaAberto.Name = "btnCancelaAberto";
+            this.btnCancelaAberto.Size = new System.Drawing.Size(114, 40);
+            this.btnCancelaAberto.TabIndex = 79;
+            this.btnCancelaAberto.Text = "Cancelar Cupom Aberto";
+            this.btnCancelaAberto.UseVisualStyleBackColor = false;
+            this.btnCancelaAberto.Click += new System.EventHandler(this.btnCancelaAberto_Click);
+            // 
             // Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1629,6 +1654,7 @@
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnCancelaAberto);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlDesconto);
             this.Controls.Add(this.btnPagamento);
@@ -1636,8 +1662,8 @@
             this.Controls.Add(this.lblOperador);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnTrocaUser);
+            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.pnlCliente);
             this.Controls.Add(this.pnlPagamento);
             this.Controls.Add(this.pnlPedidos);
@@ -1759,8 +1785,8 @@
         private System.Windows.Forms.Label lblReais1;
         private System.Windows.Forms.Label txtDinheiro;
         private System.Windows.Forms.GroupBox pnlCliente;
+        private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnImprimir;
         public System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.Button btnTrocaUser;
@@ -1802,6 +1828,7 @@
         private System.Windows.Forms.Label txtDescValor;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCancelaAberto;
     }
 }
 

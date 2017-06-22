@@ -75,7 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Control\BemaFI32.cs" />
+    <Compile Include="Control\classMovimento.cs" />
     <Compile Include="Control\Controle.cs" />
+    <Compile Include="Control\CupomFiscal.cs" />
     <Compile Include="Control\PrintablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,6 +98,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estoque.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fechamento.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fornecedores.cs">
@@ -172,11 +177,23 @@
     <Compile Include="View\Cadastro.Designer.cs">
       <DependentUpon>Cadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ConsultaPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConsultaPedido.Designer.cs">
+      <DependentUpon>ConsultaPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogoAberturaDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogoAberturaDia.Designer.cs">
+      <DependentUpon>DialogoAberturaDia.cs</DependentUpon>
     </Compile>
     <Compile Include="View\DialogoCheque.cs">
       <SubType>Form</SubType>
@@ -276,8 +293,14 @@
     <EmbeddedResource Include="View\Cadastro.resx">
       <DependentUpon>Cadastro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ConsultaPedido.resx">
+      <DependentUpon>ConsultaPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogoAberturaDia.resx">
+      <DependentUpon>DialogoAberturaDia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DialogoCheque.resx">
       <DependentUpon>DialogoCheque.cs</DependentUpon>

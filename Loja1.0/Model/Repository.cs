@@ -39,6 +39,12 @@ namespace Loja1._0.Model
                     select usuarios).SingleOrDefault();
         }
 
+        public List<Usuarios> pesquisaCompletaUsers()
+        {
+            return (from usuarios in dataEntity.Usuarios
+                    select usuarios).ToList();
+        }
+
         public List<Usuarios> pesquisaUsuariosInvalidos()
         {
             return (from usuarios in dataEntity.Usuarios
@@ -84,6 +90,13 @@ namespace Loja1._0.Model
             return (from cidade in dataEntity.Cidades
                     where cidade.Estados.estado.Equals(pesquisa)                                       
                     select cidade).ToList();
+        }
+
+        public Contabilidade pesquisaContabilidadeId(int v)
+        {
+            return (from contabil in dataEntity.Contabilidade
+                    where contabil.id == v
+                    select contabil).Single();
         }
 
         public List<Vendas_Produtos> pesquisaProdutosVendaById(int busca)
@@ -153,6 +166,13 @@ namespace Loja1._0.Model
             return listaAux;
         }
 
+        public List<Vendas_Produtos> pesquisaProdutosVendasByPedido(int id_Venda)
+        {
+            return (from prodVenda in dataEntity.Vendas_Produtos
+                    where (prodVenda.id_venda == id_Venda)
+                    select prodVenda).ToList();
+        }
+
         public Produtos pesquisaProdutoById(int pesquisa)
         {
             return (from produto in dataEntity.Produtos
@@ -179,7 +199,7 @@ namespace Loja1._0.Model
         public Gerenciamento pesquisaGerenciamento(int pesquisa)
         {
             return (from gerencia in dataEntity.Gerenciamento
-                    where gerencia.Id == pesquisa
+                    where gerencia.id == pesquisa
                     select gerencia).SingleOrDefault();
         }
 
@@ -202,6 +222,7 @@ namespace Loja1._0.Model
             return (from movimento in dataEntity.Movimentos
                     where movimento.data >= dtInicio
                     && movimento.data <= dtFim
+                    orderby movimento.id_tipo
                     select movimento).ToList();
         }
 
@@ -275,6 +296,109 @@ namespace Loja1._0.Model
         public void salvarNovoPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
         {
             dataEntity.Pagamentos_Vendas.Add(pagamentoPedido);
+        }
+
+        //SCRIPT FECHAMENTO
+        public void salvarNovoPedido(Fechamento pedido)
+        {
+            dataEntity.Fechamento.Add(pedido);
+        }
+
+        public bool pesquisaPagamentoVendaByIdVenda(int idVenda)
+        {
+            bool busca = true;
+            int teste = (from pagVenda in dataEntity.Pagamentos_Vendas
+                         where pagVenda.id_Venda == idVenda
+                         select pagVenda).Count();
+            if (teste == 0)
+            {
+                busca = false;
+            }
+            return busca;
+        }
+
+        public List<Movimentos> pesquisaMovimentoByTipoId(int id)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.id_tipo == id
+                    orderby movimento.id descending
+                    select movimento).ToList();
+        }
+
+        public Movimentos pesquisaMovimentoByID(int id)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.id == id
+                    select movimento).Single();
+        }
+
+        public void excluirMovimento(Movimentos movimento)
+        {
+            dataEntity.Movimentos.Remove(movimento);
+        }
+
+        public List<Movimentos> pesquisaMovimentosReferentePagamento(int idPagamento)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.desc.Contains(idPagamento.ToString())
+                    select movimento).ToList();
+        }
+
+        //SCRIPT FECHAMENTO
+        public bool pesquisaFechamentoByIdVenda(int idVenda)
+        {
+            bool busca = true;
+            int teste = (from fecha in dataEntity.Fechamento
+                         where fecha.id_venda == idVenda
+                         select fecha).Count();
+            if (teste == 0)
+            {
+                busca = false;
+            }
+            return busca;
+        }
+
+        public List<Pagamentos_Vendas> pesquisaPagamentoVendaByIdPagamento(int idPagamento)
+        {
+            return (from pagVend in dataEntity.Pagamentos_Vendas
+                    where pagVend.id_Pagamento == idPagamento
+                    select pagVend).ToList();
+        }
+
+        public void excluirPagamento(Pagamentos pag)
+        {
+            dataEntity.Pagamentos.Remove(pag);
+        }
+
+        public void excluirPagamento_Venda(Pagamentos_Vendas pagVend)
+        {
+            dataEntity.Pagamentos_Vendas.Remove(pagVend);
+        }
+
+        public List<Pagamentos> pesquisaPagamentosUltimo()
+        {
+            Pagamentos ultimoPag = (from pagamento in dataEntity.Pagamentos
+                                    orderby pagamento.id descending
+                                    select pagamento).First();
+            
+            int qntParcelas = Convert.ToInt32(ultimoPag.qntParcelas);
+
+            List<Pagamentos> listaRetorno = new List<Pagamentos>();
+
+            if (ultimoPag.tipoPag.Contains("Entrada +"))
+            {
+                qntParcelas++;
+            }
+
+            for (int i = 0; i < qntParcelas; i++)
+            {
+                Pagamentos pagamento = (from pag in dataEntity.Pagamentos
+                                        where pag.id == (ultimoPag.id - i)
+                                        select pag).Single();
+                listaRetorno.Add(pagamento);
+            }
+
+            return listaRetorno;
         }
 
         public UnidMedidas pesquisaMedidaId(int id)

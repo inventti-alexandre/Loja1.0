@@ -27,35 +27,42 @@ namespace Loja1._0
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if (txtLogin.Text.Equals(""))
+            try
             {
-                MessageBox.Show("Digite um valor válido para Login e Senha","Usuário/Senha inválido");
-            }
-            else
-            {
-                user = controle.pesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
-                if (user == null)
+                if (txtLogin.Text.Equals(""))
                 {
                     MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
                 }
                 else
                 {
-                    if (txtSenha.Text == user.senha && user.status != 0)
-                    {
-                        this.Hide();
-                        txtLogin.Text = "";
-                        txtSenha.Text = "";
-                        pdv.Show();
-                        pdv.user = user;
-                        pdv.lblUser.Text = user.nome;
-                    }
-
-                    else
+                    user = controle.pesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
+                    if (user == null)
                     {
                         MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
                     }
+                    else
+                    {
+                        if (txtSenha.Text == user.senha && user.status != 0)
+                        {
+                            this.Hide();
+                            txtLogin.Text = "";
+                            txtSenha.Text = "";
+                            pdv.Show();
+                            pdv.user = user;
+                            pdv.lblUser.Text = user.nome;
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
+                        }
+                    }
                 }
-            }            
+            }
+            catch
+            {
+                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

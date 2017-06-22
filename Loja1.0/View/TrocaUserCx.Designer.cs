@@ -94,6 +94,7 @@
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(176, 105);
+            this.txtLogin.MaxLength = 30;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(190, 20);
             this.txtLogin.TabIndex = 0;
@@ -102,6 +103,7 @@
             // 
             this.txtSenha.AcceptsTab = true;
             this.txtSenha.Location = new System.Drawing.Point(176, 150);
+            this.txtSenha.MaxLength = 8;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(190, 20);
@@ -158,12 +160,12 @@
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
             this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(162, 235);
+            this.pnlLogo.Location = new System.Drawing.Point(141, 235);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(169, 92);
-            this.pnlLogo.TabIndex = 1;
+            this.pnlLogo.Size = new System.Drawing.Size(190, 92);
+            this.pnlLogo.TabIndex = 7;
             // 
-            // TrocaUser
+            // TrocaUserCx
             // 
             this.AcceptButton = this.btnEntrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,6 +173,7 @@
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(501, 345);
+            this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.btnCancela);
             this.Controls.Add(this.txtSenha);
@@ -179,7 +182,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.lblNome);
-            this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.lblTitulo);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
@@ -187,7 +189,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TrocaUser";
+            this.Name = "TrocaUserCx";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Alemão da Construção 1.0";

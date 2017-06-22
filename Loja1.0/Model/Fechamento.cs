@@ -12,19 +12,10 @@ namespace Loja1._0.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Perfis
+    public partial class Fechamento
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Perfis()
-        {
-            this.Usuarios = new HashSet<Usuarios>();
-        }
-    
         public int id { get; set; }
-        public string desc { get; set; }
-        public int numero { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuarios> Usuarios { get; set; }
+        public int id_venda { get; set; }
+        public System.DateTime data_fechamento { get; set; }
     }
 }

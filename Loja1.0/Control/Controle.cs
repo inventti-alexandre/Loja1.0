@@ -32,6 +32,11 @@ namespace Loja1._0.Control
             return dbRepository.pesquisaSimplesUser(pesquisa);
         }
 
+        public List<Model.Usuarios> pesquisaGeralUser()
+        {
+            return dbRepository.pesquisaCompletaUsers();
+        }
+
         public List<Model.Usuarios> usuariosInvalidos()
         {
             return dbRepository.pesquisaUsuariosInvalidos();
@@ -95,6 +100,11 @@ namespace Loja1._0.Control
             int busca = id;
 
             return dbRepository.pesquisaProdutosVendaById(busca);
+        }
+
+        public Model.Contabilidade pesquisaContabilidadeById(int v)
+        {
+            return dbRepository.pesquisaContabilidadeId(v);
         }
 
         public List<UnidMedidas> pesquisaUnidades(string v)
@@ -166,6 +176,13 @@ namespace Loja1._0.Control
             string busca = valor;
 
             return dbRepository.pesquisaSubTiposMovimentoByDesc(busca);
+        }
+
+        public List<Vendas_Produtos> pesquisaProdutosPedido(int VendaId)
+        {
+            int id_Venda = VendaId;
+
+            return dbRepository.pesquisaProdutosVendasByPedido(id_Venda);
         }
 
         public void salvarCidade(Cidades cidade)
@@ -337,6 +354,75 @@ namespace Loja1._0.Control
         public void salvaPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
         {
             dbRepository.salvarNovoPagamentoPedido(pagamentoPedido);
+        }
+
+        public bool pesquisaPagamentoIdVenda(string numPedido)
+        {
+            int idVenda = Convert.ToInt32(numPedido);
+
+            return dbRepository.pesquisaPagamentoVendaByIdVenda(idVenda);
+        }
+
+        //SCRIPT FECHAMENTO
+        public void salvarFechamento(Fechamento pedido)
+        {
+            dbRepository.salvarNovoPedido(pedido);
+        }
+
+        public List<Movimentos> pesquisaMovimentoTipo(int id_tipo)
+        {
+            int id = id_tipo;
+
+            return dbRepository.pesquisaMovimentoByTipoId(id);
+        }
+
+        public List<Pagamentos> pesquisaUltimoPagamento()
+        {
+            return dbRepository.pesquisaPagamentosUltimo();
+        }
+
+        public Movimentos pesquisaMovimentoId(int? id_movimento)
+        {
+            int id = Convert.ToInt32(id_movimento);
+
+            return dbRepository.pesquisaMovimentoByID(id);
+        }
+
+        public void removeMovimento(Movimentos movimento)
+        {
+            dbRepository.excluirMovimento(movimento);
+        }
+
+        public List<Movimentos> pesquisaMovimentoReferIdPagamento(int id)
+        {
+            int idPagamento = id;
+
+            return dbRepository.pesquisaMovimentosReferentePagamento(idPagamento);
+        }
+
+        public List<Pagamentos_Vendas> pesquisaPagVendaIdPagamento(int id)
+        {
+            int idPagamento = id;
+
+            return dbRepository.pesquisaPagamentoVendaByIdPagamento(idPagamento);
+        }
+
+        public void removePagamentoVenda(Pagamentos_Vendas pagVend)
+        {
+            dbRepository.excluirPagamento_Venda(pagVend);
+        }
+
+        public void removePagamento(Pagamentos pag)
+        {
+            dbRepository.excluirPagamento(pag);
+        }
+
+        //SCRIPT FECHAMENTO
+        public bool pesquisaFechamentoIdVenda(string numPedido)
+        {
+            int idVenda = Convert.ToInt32(numPedido);
+
+            return dbRepository.pesquisaFechamentoByIdVenda(idVenda);
         }
     }
 }

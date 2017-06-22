@@ -1,13 +1,6 @@
 ﻿using Loja1._0.Control;
-using Loja1._0.Model;
 using Loja1._0.View;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,22 +14,29 @@ namespace Loja1._0
         static int exec = 0;
 
         public Login()
-        {            
-            if(exec == 0)
+        {
+            try
             {
-                tela.Show();
-                exec++;
-                var t = Task.Run(async delegate
+                if (exec == 0)
                 {
-                    await Task.Delay(4000);
+                    tela.Show();
+                    exec++;
+                    var t = Task.Run(async delegate
+                    {
+                        await Task.Delay(4000);
+                        InitializeComponent();
+                    });
+                    t.Wait();
+                }
+                else
+                {
                     InitializeComponent();
-                });
-                t.Wait();
+                }
             }
-            else
+            catch
             {
-                InitializeComponent();
-            }            
+                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -46,58 +46,65 @@ namespace Loja1._0
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            tela.Dispose();
+            try
+            {
+                tela.Dispose();
 
-            if (txtLogin.Text.Equals(""))
-            {
-                MessageBox.Show("Digite um valor válido para Login e Senha","Usuário/Senha inválido");
-            }
-            else
-            {
-                user = controle.pesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
-                if (user == null)
+                if (txtLogin.Text.Equals(""))
                 {
                     MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
                 }
                 else
                 {
-                    if (txtSenha.Text == user.senha && user.status != 0)
+                    user = controle.pesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
+                    if (user == null)
                     {
-                        this.Hide();
-
-                        Inicial form = new Inicial(user);
-                        txtLogin.Text = "";
-                        txtSenha.Text = "";
-                        form.Show();
-                        
+                        MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
                     }
-
-                    else if (txtSenha.Text == user.senha && user.status == 0)
+                    else
                     {
-                        if(controle.pesquisaUserValidos() == 0)
+                        if (txtSenha.Text == user.senha && user.status != 0)
                         {
                             this.Hide();
 
-                            user.status = 1;
-                            controle.salvaAtualiza();
                             Inicial form = new Inicial(user);
                             txtLogin.Text = "";
                             txtSenha.Text = "";
                             form.Show();
-                            
+
                         }
+
+                        else if (txtSenha.Text == user.senha && user.status == 0)
+                        {
+                            if (controle.pesquisaUserValidos() == 0)
+                            {
+                                this.Hide();
+
+                                user.status = 1;
+                                controle.salvaAtualiza();
+                                Inicial form = new Inicial(user);
+                                txtLogin.Text = "";
+                                txtSenha.Text = "";
+                                form.Show();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
+                            }
+                        }
+
                         else
                         {
                             MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
                         }
                     }
-
-                    else
-                    {
-                        MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
-                    }
                 }
-            }            
+            }
+            catch
+            {
+                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCadastro_Click(object sender, EventArgs e)

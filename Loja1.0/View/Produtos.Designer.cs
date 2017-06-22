@@ -158,6 +158,7 @@
             // 
             this.txtProduto.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtProduto.Location = new System.Drawing.Point(379, 48);
+            this.txtProduto.MaxLength = 30;
             this.txtProduto.Name = "txtProduto";
             this.txtProduto.Size = new System.Drawing.Size(399, 20);
             this.txtProduto.TabIndex = 1;
@@ -166,6 +167,7 @@
             // 
             this.txtCodigo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtCodigo.Location = new System.Drawing.Point(308, 81);
+            this.txtCodigo.MaxLength = 13;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(235, 20);
             this.txtCodigo.TabIndex = 2;
@@ -216,6 +218,7 @@
             this.txtCusto.Enabled = false;
             this.txtCusto.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtCusto.Location = new System.Drawing.Point(298, 115);
+            this.txtCusto.MaxLength = 10;
             this.txtCusto.Name = "txtCusto";
             this.txtCusto.Size = new System.Drawing.Size(119, 20);
             this.txtCusto.TabIndex = 4;
@@ -237,6 +240,7 @@
             this.txtIcms.Enabled = false;
             this.txtIcms.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtIcms.Location = new System.Drawing.Point(476, 115);
+            this.txtIcms.MaxLength = 10;
             this.txtIcms.Name = "txtIcms";
             this.txtIcms.Size = new System.Drawing.Size(119, 20);
             this.txtIcms.TabIndex = 5;
@@ -258,6 +262,7 @@
             this.txtPreco.Enabled = false;
             this.txtPreco.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtPreco.Location = new System.Drawing.Point(659, 116);
+            this.txtPreco.MaxLength = 10;
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(119, 20);
             this.txtPreco.TabIndex = 6;
@@ -315,6 +320,7 @@
             this.txtQntAtual.Enabled = false;
             this.txtQntAtual.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtQntAtual.Location = new System.Drawing.Point(327, 186);
+            this.txtQntAtual.MaxLength = 6;
             this.txtQntAtual.Name = "txtQntAtual";
             this.txtQntAtual.Size = new System.Drawing.Size(92, 20);
             this.txtQntAtual.TabIndex = 8;
@@ -336,6 +342,7 @@
             this.txtQntMinima.Enabled = false;
             this.txtQntMinima.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtQntMinima.Location = new System.Drawing.Point(504, 187);
+            this.txtQntMinima.MaxLength = 6;
             this.txtQntMinima.Name = "txtQntMinima";
             this.txtQntMinima.Size = new System.Drawing.Size(92, 20);
             this.txtQntMinima.TabIndex = 9;
@@ -357,6 +364,7 @@
             this.txtQntMaxima.Enabled = false;
             this.txtQntMaxima.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtQntMaxima.Location = new System.Drawing.Point(686, 188);
+            this.txtQntMaxima.MaxLength = 6;
             this.txtQntMaxima.Name = "txtQntMaxima";
             this.txtQntMaxima.Size = new System.Drawing.Size(92, 20);
             this.txtQntMaxima.TabIndex = 10;
@@ -378,6 +386,7 @@
             this.txtLocalRef.Enabled = false;
             this.txtLocalRef.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtLocalRef.Location = new System.Drawing.Point(535, 221);
+            this.txtLocalRef.MaxLength = 50;
             this.txtLocalRef.Name = "txtLocalRef";
             this.txtLocalRef.Size = new System.Drawing.Size(243, 20);
             this.txtLocalRef.TabIndex = 13;
@@ -411,6 +420,7 @@
             this.txtLocalNum.Enabled = false;
             this.txtLocalNum.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtLocalNum.Location = new System.Drawing.Point(359, 221);
+            this.txtLocalNum.MaxLength = 2;
             this.txtLocalNum.Name = "txtLocalNum";
             this.txtLocalNum.Size = new System.Drawing.Size(42, 20);
             this.txtLocalNum.TabIndex = 11;
@@ -432,6 +442,7 @@
             this.txtLocalSigla.Enabled = false;
             this.txtLocalSigla.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.txtLocalSigla.Location = new System.Drawing.Point(451, 221);
+            this.txtLocalSigla.MaxLength = 2;
             this.txtLocalSigla.Name = "txtLocalSigla";
             this.txtLocalSigla.Size = new System.Drawing.Size(42, 20);
             this.txtLocalSigla.TabIndex = 12;

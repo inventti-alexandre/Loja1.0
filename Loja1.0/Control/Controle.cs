@@ -32,6 +32,11 @@ namespace Loja1._0.Control
             return dbRepository.pesquisaSimplesUser(pesquisa);
         }
 
+        public List<Model.Usuarios> pesquisaGeralUser()
+        {
+            return dbRepository.pesquisaCompletaUsers();
+        }
+
         public List<Model.Usuarios> usuariosInvalidos()
         {
             return dbRepository.pesquisaUsuariosInvalidos();
@@ -95,6 +100,11 @@ namespace Loja1._0.Control
             int busca = id;
 
             return dbRepository.pesquisaProdutosVendaById(busca);
+        }
+
+        public Model.Contabilidade pesquisaContabilidadeById(int v)
+        {
+            return dbRepository.pesquisaContabilidadeId(v);
         }
 
         public List<UnidMedidas> pesquisaUnidades(string v)
@@ -166,6 +176,13 @@ namespace Loja1._0.Control
             string busca = valor;
 
             return dbRepository.pesquisaSubTiposMovimentoByDesc(busca);
+        }
+
+        public List<Vendas_Produtos> pesquisaProdutosPedido(int VendaId)
+        {
+            int id_Venda = VendaId;
+
+            return dbRepository.pesquisaProdutosVendasByPedido(id_Venda);
         }
 
         public void salvarCidade(Cidades cidade)
@@ -346,6 +363,19 @@ namespace Loja1._0.Control
             return dbRepository.pesquisaPagamentoVendaByIdVenda(idVenda);
         }
 
+        //SCRIPT FECHAMENTO
+        public void salvarFechamento(Fechamento pedido)
+        {
+            dbRepository.salvarNovoPedido(pedido);
+        }
+
+        public List<Movimentos> pesquisaMovimentoTipo(int id_tipo)
+        {
+            int id = id_tipo;
+
+            return dbRepository.pesquisaMovimentoByTipoId(id);
+        }
+
         public List<Pagamentos> pesquisaUltimoPagamento()
         {
             return dbRepository.pesquisaPagamentosUltimo();
@@ -385,6 +415,14 @@ namespace Loja1._0.Control
         public void removePagamento(Pagamentos pag)
         {
             dbRepository.excluirPagamento(pag);
+        }
+
+        //SCRIPT FECHAMENTO
+        public bool pesquisaFechamentoIdVenda(string numPedido)
+        {
+            int idVenda = Convert.ToInt32(numPedido);
+
+            return dbRepository.pesquisaFechamentoByIdVenda(idVenda);
         }
     }
 }

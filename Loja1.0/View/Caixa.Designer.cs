@@ -258,6 +258,7 @@
             // 
             this.txtPedidoNum5.Enabled = false;
             this.txtPedidoNum5.Location = new System.Drawing.Point(49, 186);
+            this.txtPedidoNum5.MaxLength = 6;
             this.txtPedidoNum5.Name = "txtPedidoNum5";
             this.txtPedidoNum5.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum5.TabIndex = 18;
@@ -291,6 +292,7 @@
             // 
             this.txtPedidoNum4.Enabled = false;
             this.txtPedidoNum4.Location = new System.Drawing.Point(49, 144);
+            this.txtPedidoNum4.MaxLength = 6;
             this.txtPedidoNum4.Name = "txtPedidoNum4";
             this.txtPedidoNum4.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum4.TabIndex = 15;
@@ -324,6 +326,7 @@
             // 
             this.txtPedidoNum3.Enabled = false;
             this.txtPedidoNum3.Location = new System.Drawing.Point(49, 104);
+            this.txtPedidoNum3.MaxLength = 6;
             this.txtPedidoNum3.Name = "txtPedidoNum3";
             this.txtPedidoNum3.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum3.TabIndex = 12;
@@ -357,6 +360,7 @@
             // 
             this.txtPedidoNum2.Enabled = false;
             this.txtPedidoNum2.Location = new System.Drawing.Point(49, 64);
+            this.txtPedidoNum2.MaxLength = 6;
             this.txtPedidoNum2.Name = "txtPedidoNum2";
             this.txtPedidoNum2.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum2.TabIndex = 9;
@@ -388,6 +392,7 @@
             // txtPedidoNum1
             // 
             this.txtPedidoNum1.Location = new System.Drawing.Point(49, 25);
+            this.txtPedidoNum1.MaxLength = 6;
             this.txtPedidoNum1.Name = "txtPedidoNum1";
             this.txtPedidoNum1.Size = new System.Drawing.Size(247, 26);
             this.txtPedidoNum1.TabIndex = 0;
@@ -807,6 +812,7 @@
             // txtPagPrePago
             // 
             this.txtPagPrePago.Location = new System.Drawing.Point(456, 3);
+            this.txtPagPrePago.MaxLength = 9;
             this.txtPagPrePago.Name = "txtPagPrePago";
             this.txtPagPrePago.Size = new System.Drawing.Size(87, 26);
             this.txtPagPrePago.TabIndex = 13;
@@ -904,6 +910,7 @@
             // txtPagDebito
             // 
             this.txtPagDebito.Location = new System.Drawing.Point(456, 3);
+            this.txtPagDebito.MaxLength = 9;
             this.txtPagDebito.Name = "txtPagDebito";
             this.txtPagDebito.Size = new System.Drawing.Size(87, 26);
             this.txtPagDebito.TabIndex = 11;
@@ -1001,6 +1008,7 @@
             // txtPagDinheiro
             // 
             this.txtPagDinheiro.Location = new System.Drawing.Point(457, 3);
+            this.txtPagDinheiro.MaxLength = 9;
             this.txtPagDinheiro.Name = "txtPagDinheiro";
             this.txtPagDinheiro.Size = new System.Drawing.Size(87, 26);
             this.txtPagDinheiro.TabIndex = 9;
@@ -1164,6 +1172,7 @@
             // txtCpf
             // 
             this.txtCpf.Location = new System.Drawing.Point(110, 52);
+            this.txtCpf.MaxLength = 14;
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(322, 26);
             this.txtCpf.TabIndex = 73;
@@ -1627,6 +1636,7 @@
             this.btnCancelaAberto.AutoEllipsis = true;
             this.btnCancelaAberto.BackColor = System.Drawing.Color.White;
             this.btnCancelaAberto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelaAberto.Enabled = false;
             this.btnCancelaAberto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelaAberto.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelaAberto.Location = new System.Drawing.Point(675, 472);

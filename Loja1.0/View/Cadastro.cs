@@ -1,13 +1,6 @@
 ﻿using Loja1._0.Control;
-using Loja1._0.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Loja1._0
@@ -21,6 +14,7 @@ namespace Loja1._0
         public Cadastro()
         {
             InitializeComponent();
+            txtLogin.Focus();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -30,19 +24,26 @@ namespace Loja1._0
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (validaCampos())
+            try
             {
-                user = new Model.Usuarios();
-                controle.salvarUsuario(user);
-                user.nome = txtLogin.Text;
-                user.senha = txtSenha.Text;
-                user.num_perfil = novoPerfil;
-                user.status = 0;
-                controle.salvaAtualiza();
-                MessageBox.Show("Criado novo usuário, login : " + txtLogin.Text + ", aguardando validação.", "Criação de usuário e senha");
-                Login form = new Login();
-                form.Show();
-                this.Hide();
+                if (validaCampos())
+                {
+                    user = new Model.Usuarios();
+                    controle.salvarUsuario(user);
+                    user.nome = txtLogin.Text;
+                    user.senha = txtSenha.Text;
+                    user.num_perfil = novoPerfil;
+                    user.status = 0;
+                    controle.salvaAtualiza();
+                    MessageBox.Show("Criado novo usuário, login : " + txtLogin.Text + ", aguardando validação.", "Criação de usuário e senha");
+                    Login form = new Login();
+                    form.Show();
+                    this.Hide();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

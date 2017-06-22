@@ -14,12 +14,12 @@ namespace Loja1._0.Model
     
     public partial class Gerenciamento
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public decimal comissao { get; set; }
-        public decimal Tributacao { get; set; }
+        public decimal tributacao { get; set; }
         public decimal autoDescPerc { get; set; }
         public decimal autoDescValor { get; set; }
-        public decimal maxDescPerc { get; set; }
+        public int maxDescPerc { get; set; }
         public decimal jurosPrazo2x { get; set; }
         public decimal jurosPrazo3x { get; set; }
         public decimal jurosPrazo4x { get; set; }

@@ -190,6 +190,7 @@
             // 
             this.txtBairro.Enabled = false;
             this.txtBairro.Location = new System.Drawing.Point(583, 98);
+            this.txtBairro.MaxLength = 30;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(185, 20);
             this.txtBairro.TabIndex = 17;
@@ -209,6 +210,7 @@
             // 
             this.txtNum.Enabled = false;
             this.txtNum.Location = new System.Drawing.Point(461, 98);
+            this.txtNum.MaxLength = 6;
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(57, 20);
             this.txtNum.TabIndex = 15;
@@ -228,6 +230,7 @@
             // 
             this.txtEndereco.Enabled = false;
             this.txtEndereco.Location = new System.Drawing.Point(96, 98);
+            this.txtEndereco.MaxLength = 50;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(327, 20);
             this.txtEndereco.TabIndex = 13;
@@ -329,6 +332,7 @@
             // txtCelular
             // 
             this.txtCelular.Location = new System.Drawing.Point(483, 18);
+            this.txtCelular.MaxLength = 20;
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(146, 20);
             this.txtCelular.TabIndex = 10;
@@ -347,6 +351,7 @@
             // txtTel2
             // 
             this.txtTel2.Location = new System.Drawing.Point(259, 18);
+            this.txtTel2.MaxLength = 20;
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(146, 20);
             this.txtTel2.TabIndex = 8;
@@ -365,6 +370,7 @@
             // txtTel1
             // 
             this.txtTel1.Location = new System.Drawing.Point(55, 18);
+            this.txtTel1.MaxLength = 20;
             this.txtTel1.Name = "txtTel1";
             this.txtTel1.Size = new System.Drawing.Size(146, 20);
             this.txtTel1.TabIndex = 6;
@@ -424,6 +430,7 @@
             // txtCnpj
             // 
             this.txtCnpj.Location = new System.Drawing.Point(96, 64);
+            this.txtCnpj.MaxLength = 14;
             this.txtCnpj.Name = "txtCnpj";
             this.txtCnpj.Size = new System.Drawing.Size(250, 20);
             this.txtCnpj.TabIndex = 6;
@@ -443,6 +450,7 @@
             // 
             this.txtContato.Enabled = false;
             this.txtContato.Location = new System.Drawing.Point(560, 29);
+            this.txtContato.MaxLength = 30;
             this.txtContato.Name = "txtContato";
             this.txtContato.Size = new System.Drawing.Size(208, 20);
             this.txtContato.TabIndex = 4;
@@ -461,6 +469,7 @@
             // txtFornecedor
             // 
             this.txtFornecedor.Location = new System.Drawing.Point(68, 29);
+            this.txtFornecedor.MaxLength = 30;
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(416, 20);
             this.txtFornecedor.TabIndex = 2;

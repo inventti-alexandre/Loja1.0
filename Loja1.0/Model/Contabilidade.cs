@@ -14,7 +14,7 @@ namespace Loja1._0.Model
     
     public partial class Contabilidade
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public Nullable<decimal> caixa { get; set; }
         public Nullable<decimal> banco { get; set; }
         public Nullable<decimal> a_receber_cp { get; set; }
@@ -24,13 +24,11 @@ namespace Loja1._0.Model
         public Nullable<decimal> imposto_recolher { get; set; }
         public Nullable<decimal> moveis_utensilios { get; set; }
         public Nullable<decimal> maquinario { get; set; }
+        public Nullable<decimal> imovel { get; set; }
         public Nullable<decimal> veiculos { get; set; }
         public Nullable<decimal> salarios { get; set; }
         public Nullable<decimal> fornecedores { get; set; }
         public Nullable<decimal> clientes { get; set; }
-        public Nullable<decimal> outras_entradas_cp { get; set; }
-        public Nullable<decimal> outras_saidas_lp { get; set; }
-        public Nullable<decimal> empréstimo { get; set; }
         public Nullable<decimal> despesas { get; set; }
         public Nullable<decimal> estoques { get; set; }
         public Nullable<decimal> cap_soc_integ { get; set; }

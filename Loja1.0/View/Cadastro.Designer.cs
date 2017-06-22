@@ -115,7 +115,7 @@
             this.btnConfirmar.Location = new System.Drawing.Point(265, 327);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(121, 39);
-            this.btnConfirmar.TabIndex = 14;
+            this.btnConfirmar.TabIndex = 7;
             this.btnConfirmar.Text = "CONFIRMA";
             this.btnConfirmar.UseVisualStyleBackColor = false;
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
@@ -125,12 +125,13 @@
             this.btnCancela.AutoEllipsis = true;
             this.btnCancela.BackColor = System.Drawing.Color.White;
             this.btnCancela.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancela.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancela.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancela.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnCancela.Location = new System.Drawing.Point(422, 327);
             this.btnCancela.Name = "btnCancela";
             this.btnCancela.Size = new System.Drawing.Size(121, 39);
-            this.btnCancela.TabIndex = 13;
+            this.btnCancela.TabIndex = 8;
             this.btnCancela.Text = "CANCELA";
             this.btnCancela.UseVisualStyleBackColor = false;
             this.btnCancela.Click += new System.EventHandler(this.btnCancela_Click);
@@ -138,9 +139,10 @@
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(338, 131);
+            this.txtLogin.MaxLength = 30;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(190, 20);
-            this.txtLogin.TabIndex = 12;
+            this.txtLogin.TabIndex = 0;
             // 
             // label1
             // 
@@ -157,9 +159,10 @@
             // txtSenha
             // 
             this.txtSenha.Location = new System.Drawing.Point(339, 180);
+            this.txtSenha.MaxLength = 8;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(190, 20);
-            this.txtSenha.TabIndex = 16;
+            this.txtSenha.TabIndex = 1;
             this.txtSenha.UseSystemPasswordChar = true;
             // 
             // lblSenha
@@ -177,9 +180,10 @@
             // txtConfirma
             // 
             this.txtConfirma.Location = new System.Drawing.Point(339, 215);
+            this.txtConfirma.MaxLength = 8;
             this.txtConfirma.Name = "txtConfirma";
             this.txtConfirma.Size = new System.Drawing.Size(190, 20);
-            this.txtConfirma.TabIndex = 18;
+            this.txtConfirma.TabIndex = 2;
             this.txtConfirma.UseSystemPasswordChar = true;
             // 
             // lblConfirma
@@ -216,7 +220,7 @@
             this.rdbOperador.Location = new System.Drawing.Point(425, 25);
             this.rdbOperador.Name = "rdbOperador";
             this.rdbOperador.Size = new System.Drawing.Size(79, 19);
-            this.rdbOperador.TabIndex = 4;
+            this.rdbOperador.TabIndex = 6;
             this.rdbOperador.TabStop = true;
             this.rdbOperador.Text = "Operador";
             this.rdbOperador.UseVisualStyleBackColor = true;
@@ -230,7 +234,7 @@
             this.rdbCaixa.Location = new System.Drawing.Point(292, 25);
             this.rdbCaixa.Name = "rdbCaixa";
             this.rdbCaixa.Size = new System.Drawing.Size(57, 19);
-            this.rdbCaixa.TabIndex = 3;
+            this.rdbCaixa.TabIndex = 5;
             this.rdbCaixa.TabStop = true;
             this.rdbCaixa.Text = "Caixa";
             this.rdbCaixa.UseVisualStyleBackColor = true;
@@ -244,7 +248,7 @@
             this.rdbGerente.Location = new System.Drawing.Point(153, 25);
             this.rdbGerente.Name = "rdbGerente";
             this.rdbGerente.Size = new System.Drawing.Size(70, 19);
-            this.rdbGerente.TabIndex = 2;
+            this.rdbGerente.TabIndex = 4;
             this.rdbGerente.TabStop = true;
             this.rdbGerente.Text = "Gerente";
             this.rdbGerente.UseVisualStyleBackColor = true;
@@ -258,7 +262,7 @@
             this.rdbAdministrador.Location = new System.Drawing.Point(8, 25);
             this.rdbAdministrador.Name = "rdbAdministrador";
             this.rdbAdministrador.Size = new System.Drawing.Size(106, 19);
-            this.rdbAdministrador.TabIndex = 1;
+            this.rdbAdministrador.TabIndex = 3;
             this.rdbAdministrador.TabStop = true;
             this.rdbAdministrador.Text = "Administrador";
             this.rdbAdministrador.UseVisualStyleBackColor = true;
@@ -277,11 +281,13 @@
             // 
             // Cadastro
             // 
+            this.AcceptButton = this.btnConfirmar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CancelButton = this.btnCancela;
             this.ClientSize = new System.Drawing.Size(800, 483);
             this.Controls.Add(this.pnlPerfil);
             this.Controls.Add(this.txtConfirma);

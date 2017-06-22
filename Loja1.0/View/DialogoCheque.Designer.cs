@@ -39,16 +39,18 @@
             // 
             // txtChequePrimeiro
             // 
-            this.txtChequePrimeiro.Location = new System.Drawing.Point(84, 65);
+            this.txtChequePrimeiro.Location = new System.Drawing.Point(12, 65);
+            this.txtChequePrimeiro.MaxLength = 50;
             this.txtChequePrimeiro.Name = "txtChequePrimeiro";
-            this.txtChequePrimeiro.Size = new System.Drawing.Size(188, 20);
+            this.txtChequePrimeiro.Size = new System.Drawing.Size(338, 20);
             this.txtChequePrimeiro.TabIndex = 0;
             // 
             // txtChequeUltimo
             // 
-            this.txtChequeUltimo.Location = new System.Drawing.Point(84, 127);
+            this.txtChequeUltimo.Location = new System.Drawing.Point(12, 127);
+            this.txtChequeUltimo.MaxLength = 50;
             this.txtChequeUltimo.Name = "txtChequeUltimo";
-            this.txtChequeUltimo.Size = new System.Drawing.Size(188, 20);
+            this.txtChequeUltimo.Size = new System.Drawing.Size(338, 20);
             this.txtChequeUltimo.TabIndex = 1;
             // 
             // button1
@@ -88,7 +90,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 2);
+            this.label1.Location = new System.Drawing.Point(20, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(321, 21);
             this.label1.TabIndex = 5;

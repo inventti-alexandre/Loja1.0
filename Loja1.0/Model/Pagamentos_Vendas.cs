@@ -14,7 +14,7 @@ namespace Loja1._0.Model
     
     public partial class Pagamentos_Vendas
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public int id_Venda { get; set; }
         public int id_Pagamento { get; set; }
     

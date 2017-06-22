@@ -38,6 +38,7 @@
             // txtValor
             // 
             this.txtValor.Location = new System.Drawing.Point(120, 93);
+            this.txtValor.MaxLength = 10;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(116, 20);
             this.txtValor.TabIndex = 0;
@@ -69,7 +70,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(96, -2);
+            this.label1.Location = new System.Drawing.Point(96, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 21);
             this.label1.TabIndex = 5;

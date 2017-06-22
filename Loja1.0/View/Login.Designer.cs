@@ -109,6 +109,7 @@
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(453, 165);
+            this.txtLogin.MaxLength = 30;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(190, 20);
             this.txtLogin.TabIndex = 0;
@@ -117,6 +118,7 @@
             // 
             this.txtSenha.AcceptsTab = true;
             this.txtSenha.Location = new System.Drawing.Point(453, 210);
+            this.txtSenha.MaxLength = 8;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(190, 20);
@@ -173,9 +175,9 @@
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
             this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(44, 138);
+            this.pnlLogo.Location = new System.Drawing.Point(24, 137);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(311, 169);
+            this.pnlLogo.Size = new System.Drawing.Size(343, 166);
             this.pnlLogo.TabIndex = 1;
             // 
             // Login

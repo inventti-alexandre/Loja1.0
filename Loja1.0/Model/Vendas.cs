@@ -25,7 +25,7 @@ namespace Loja1._0.Model
         public System.DateTime data_Venda { get; set; }
         public string cpf { get; set; }
         public string cnpj { get; set; }
-        public Nullable<double> ICMS { get; set; }
+        public Nullable<double> icms { get; set; }
         public Nullable<double> valor_Venda { get; set; }
         public int id_Usuario { get; set; }
         public Nullable<int> id_Cliente { get; set; }

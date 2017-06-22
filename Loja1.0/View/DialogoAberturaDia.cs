@@ -22,6 +22,7 @@ namespace Loja1._0.View
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Para o preenchimnto do troco , utilize o formato decimal, \"XXX,XX\" ","Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (txtValor.Equals(""))
             {
                 MessageBox.Show("É necessário o preenchimento do valor existênte no caixa no momento da abertura, caso ñão haja numerário no caixa digite \"0\"","Ação Inválida");

@@ -1,12 +1,6 @@
 ﻿using Loja1._0.Control;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Loja1._0
@@ -19,36 +13,46 @@ namespace Loja1._0
 
         public Inicial(Model.Usuarios user)
         {
-            this.user = user;
-            InitializeComponent();
-            perfil = user.num_perfil;
-            if (perfil > 1)
+            try
             {
-                btnUsuarios.Enabled = false;
-                btnGestao.Enabled = false;
-                btnRelatorios.Enabled = false;
-
-                if (perfil > 2)
+                this.user = user;
+                InitializeComponent();
+                perfil = user.num_perfil;
+                if (perfil > 1)
                 {
-                    btnContabil.Enabled = false;
-                    btnFolhaPg.Enabled = false;
+                    btnUsuarios.Enabled = false;
+                    btnGestao.Enabled = false;
+                    btnRelatorios.Enabled = false;
 
-                    if (perfil == 3)
+                    if (perfil > 2)
                     {
-                        btnFornecedores.Enabled = false;
-                        btnClientes.Enabled = false;
-                        btnProdutos.Enabled = false;
-                        btnPdv.Enabled = false;
-                    }
+                        btnContabil.Enabled = false;
+                        btnFolhaPg.Enabled = false;
 
-                    if (perfil == 4)
-                    {
-                        btnCaixa.Enabled = false;
+                        if (perfil == 3)
+                        {
+                            btnFornecedores.Enabled = false;
+                            btnClientes.Enabled = false;
+                            btnProdutos.Enabled = false;
+                            btnPdv.Enabled = false;
+                        }
+
+                        if (perfil == 4)
+                        {
+                            btnCaixa.Enabled = false;
+                        }
                     }
                 }
+                else
+                {
+                    alertaFaltaEstoque();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-               
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -128,5 +132,31 @@ namespace Loja1._0
             this.Hide();
         }
 
+        private void btnConsultaPedidos_Click(object sender, EventArgs e)
+        {
+            ConsultaPedido form = new ConsultaPedido(user);
+            form.Show();
+            this.Hide();
+        }
+
+        private void alertaFaltaEstoque()
+        {
+            List<Model.Produtos> relacaoCompleta = controle.pesquisaGeralProd();
+            bool faltando = false;
+
+            foreach(Model.Produtos value in relacaoCompleta)
+            {
+                if (value.Estoque.qnt_atual < value.Estoque.qnt_minima)
+                {
+                    faltando = true;
+                }
+            }
+
+            if (faltando)
+            {
+                faltando = false;
+                MessageBox.Show("Existem produtos esgotados ou abaixo da quantidade miníma, favor verificar no módulo \"Relatórios\" a relação de produtos nestas condições","Ação Necessária", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

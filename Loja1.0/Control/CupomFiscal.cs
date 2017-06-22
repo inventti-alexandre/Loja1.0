@@ -15,16 +15,10 @@ namespace Loja1._0.Control
 
         public CupomFiscal()// string formaPagamento, string valorPagamento, string valorTotal, string acrescimo, string desconto)
         {
-
-        }
-
-        public CupomFiscal(string formaPagamento, string valorPagamento, string acrescimo, string desconto)
-        {
             formaPagamento = "";
-            valorPagamento = "";
-            acrescimo = "";
-            desconto = "";
+            valorPagamento = "0";
+            acrescimo = "0";
+            desconto = "0";
         }
-
     }
 }

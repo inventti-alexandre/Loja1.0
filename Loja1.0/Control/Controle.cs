@@ -9,420 +9,507 @@ namespace Loja1._0.Control
 {
     class Controle
     {
+        #region Controles de uso geral
+
         Repository dbRepository = new Repository();
-        public void salvaAtualiza()
+
+        public void SalvaAtualiza()
         {
-            dbRepository.salvaAlteracao();
+            dbRepository.SalvaAlteracao();
         }
 
-        public void salvarUsuario(Model.Usuarios usuario)
+        #endregion
+
+        #region Controle do BD de Usuários
+
+        public int PesquisaUserValidos()
         {
-            dbRepository.salvarNovoUsuario(usuario);
+            return dbRepository.ContaUserValidos();
         }
 
-        public void excluiUsuario(Model.Usuarios usuario)
-        {
-            dbRepository.excluirUsuarioExistente(usuario);
-        }
-
-        public Model.Usuarios pesquisaUserLogin(string user)
-        {
-            string pesquisa = user;
-
-            return dbRepository.pesquisaSimplesUser(pesquisa);
-        }
-
-        public List<Model.Usuarios> pesquisaGeralUser()
-        {
-            return dbRepository.pesquisaCompletaUsers();
-        }
-
-        public List<Model.Usuarios> usuariosInvalidos()
-        {
-            return dbRepository.pesquisaUsuariosInvalidos();
-        }
-
-        public Model.Produtos pesquisaProdutoNome(string selectedValue)
-        {
-            string pesquisa = selectedValue;
-
-            return dbRepository.pesquisaProdutoByNome(pesquisa);
-        }
-
-        public List<Estados> pesquisaGeralEstados()
-        {
-            return dbRepository.pesquisaEstados();
-        }
-
-        public void salvarFornecedor(Model.Fornecedores fornecedor)
-        {
-            dbRepository.salvarNovoFornecedor(fornecedor);
-        }
-
-        public Model.Usuarios pesquisaUserId(int user)
+        public Model.Usuarios PesquisaUserId(int user)
         {
             int pesquisa = user;
 
-            return dbRepository.pesquisaUserById(pesquisa);
+            return dbRepository.PesquisaUserById(pesquisa);
         }
 
-        public Model.Produtos pesquisaProdutoCod(string cod)
+        public void SalvarUsuario(Model.Usuarios usuario)
+        {
+            dbRepository.SalvarNovoUsuario(usuario);
+        }
+
+        public void ExcluiUsuario(Model.Usuarios usuario)
+        {
+            dbRepository.ExcluirUsuarioExistente(usuario);
+        }
+
+        public Model.Usuarios PesquisaUserLogin(string user)
+        {
+            string pesquisa = user;
+
+            return dbRepository.PesquisaSimplesUser(pesquisa);
+        }
+
+        public List<Model.Usuarios> PesquisaGeralUser()
+        {
+            return dbRepository.PesquisaCompletaUsers();
+        }
+
+        public List<Model.Usuarios> UsuariosInvalidos()
+        {
+            return dbRepository.PesquisaUsuariosInvalidos();
+        }
+
+        #endregion
+
+        #region Controle do BD Produtos
+
+        public Model.Produtos PesquisaProdutoNome(string selectedValue)
+        {
+            string pesquisa = selectedValue;
+
+            return dbRepository.PesquisaProdutoByNome(pesquisa);
+        }
+
+        public Model.Produtos PesquisaProdutoCod(string cod)
         {
             string codigo = cod;
 
-            return dbRepository.pesquisaProdutoByCodigo(codigo);
+            return dbRepository.PesquisaProdutoByCodigo(codigo);
         }
 
-        public List<Estoque> pesquisaEstoqueRelatorio()
+        public void SalvarProduto(Model.Produtos produto)
         {
-            return dbRepository.pesquisaEstoqueOrdened();
+            dbRepository.SalvarNovoProduto(produto);
         }
 
-        public int pesquisaUserValidos()
+        public Model.Produtos PesquisaProdutoId(int id)
         {
-            return dbRepository.contaUserValidos();
+            int pesquisa = id;
+
+            return dbRepository.PesquisaProdutoById(pesquisa);
         }
 
-        public List<Tipos_Movimentacao> pesquisaTiposMovimento()
+        public List<Model.Produtos> PesquisaProdutosNomeId(string valor)
         {
-            return dbRepository.pesquisaTiposMov();
+            string busca = valor;
+
+            return dbRepository.PesquisaProdutoByNomeId(busca);
         }
 
-        public List<Cidades> pesquisaCidadesPorNomeUF(string estado)
+        public List<Model.Produtos> PesquisaGeralProd()
+        {
+            return dbRepository.PesquisaProdutos();
+        }
+
+        public List<Model.Produtos> PesquisaProdutosValidoNome(string busca)
+        {
+            string pesquisa = busca;
+
+            return dbRepository.PesquisaProdutosValidoByName(pesquisa);
+        }
+
+        #endregion
+
+        #region Controle do BD de Estados
+
+        public List<Estados> PesquisaGeralEstados()
+        {
+            return dbRepository.PesquisaEstados();
+        }
+
+        #endregion
+
+        #region Controle do BD Contabilidade
+
+        public List<Contabilidade> PesquisaContabilidade()
+        {
+            return dbRepository.PesquisaGeralContabilidade();
+        }
+
+        public void SalvaContabilidade(Contabilidade contabilidade)
+        {
+            dbRepository.SalvarNovaContabilidade(contabilidade);
+        }
+
+        public Model.Contabilidade PesquisaContabilidadeById(int v)
+        {
+            return dbRepository.PesquisaContabilidadeId(v);
+        }
+
+        #endregion
+
+        #region Controle do BD de Cidades
+
+        public List<Cidades> PesquisaCidadesPorNomeUF(string estado)
         {
             string pesquisa = estado;
 
-            return dbRepository.pesquisaCidadeByNameUF(pesquisa);
+            return dbRepository.PesquisaCidadeByNameUF(pesquisa);
         }
 
-        public List<Vendas_Produtos> pesquisaProdutosVenda(int id)
-        {
-            int busca = id;
-
-            return dbRepository.pesquisaProdutosVendaById(busca);
-        }
-
-        public Model.Contabilidade pesquisaContabilidadeById(int v)
-        {
-            return dbRepository.pesquisaContabilidadeId(v);
-        }
-
-        public List<UnidMedidas> pesquisaUnidades(string v)
-        {
-            return dbRepository.pesquisaMedidas();
-        }
-
-        public void salvarProduto(Model.Produtos produto)
-        {
-            dbRepository.salvarNovoProduto(produto);
-        }
-
-        public Model.Produtos pesquisaProdutoId(int id)
-        {
-            int pesquisa = id;
-
-            return dbRepository.pesquisaProdutoById(pesquisa);
-        }
-
-        public List<Model.Produtos> pesquisaProdutosNomeId(string valor)
-        {
-            string busca = valor;
-
-            return dbRepository.pesquisaProdutoByNomeId(busca);
-        }
-
-        public List<Model.Produtos> pesquisaGeralProd()
-        {
-            return dbRepository.pesquisaProdutos();
-        }
-
-        public List<Tipos_Movimentacao> pesquisaTiposMovimento(string pesquisa)
-        {
-            string busca = pesquisa;
-
-            return dbRepository.pesquisaTiposMovimentoByDesc(busca);
-        }
-
-        public Gerenciamento pesquisaGerenciamento(int id)
-        {
-            int pesquisa = id;
-
-            return dbRepository.pesquisaGerenciamento(pesquisa);
-        }
-
-        public List<Model.Fornecedores> pesquisaFornecedores(string pesquisa)
-        {
-            string busca = pesquisa;
-
-            return dbRepository.pesquisaFornecedoresByNomeCnpj(busca);
-        }
-
-        public Cidades pesquisaCidade(string cidade)
+        public Cidades PesquisaCidade(string cidade)
         {
             string pesquisa = cidade;
 
-            return dbRepository.pesquisaCidadeByName(pesquisa);
+            return dbRepository.PesquisaCidadeByName(pesquisa);
         }
 
-        public List<Cidades> pesquisaCidadesPorEstado(int idEstado)
+        public List<Cidades> PesquisaCidadesPorEstado(int idEstado)
         {
             int pesquisa = idEstado;
 
-            return dbRepository.pesquisaCidadesByEstado(pesquisa);
+            return dbRepository.PesquisaCidadesByEstado(pesquisa);
         }
 
-        public List<Tipos_Movimentacao> pesquisaSubTipoMov(string valor)
+        public void SalvarCidade(Cidades cidade)
         {
-            string busca = valor;
-
-            return dbRepository.pesquisaSubTiposMovimentoByDesc(busca);
+            dbRepository.SalvarNovaCidade(cidade);
         }
 
-        public List<Vendas_Produtos> pesquisaProdutosPedido(int VendaId)
+        public void ExcluirCidade(Cidades cidade)
         {
-            int id_Venda = VendaId;
-
-            return dbRepository.pesquisaProdutosVendasByPedido(id_Venda);
+            dbRepository.RemoverCidade(cidade);
         }
 
-        public void salvarCidade(Cidades cidade)
+        #endregion
+
+        #region Controle do BD de gerenciamento
+
+        public void SalvaGerenciamento(Gerenciamento gerencia)
         {
-            dbRepository.salvarNovaCidade(cidade);
+            dbRepository.SalvarNovoGerenciamento(gerencia);
         }
 
-        public void excluirCidade(Cidades cidade)
+        public Gerenciamento PesquisaGerenciamento(int id)
         {
-            dbRepository.removerCidade(cidade);
+            int pesquisa = id;
+
+            return dbRepository.PesquisaGerenciamento(pesquisa);
         }
 
-        public Model.Fornecedores pesquisaFornecedorById(int Id)
-        {
-            int valor = Id;
+        #endregion
 
-            return dbRepository.pesquisaFornecedoresID(valor);
-        }
+        #region Controle do BD de Clientes
 
-        public List<Movimentos> pesquisaMovPeriodo(DateTime txtDtInicio, DateTime txtDtFim)
-        {
-            DateTime dtInicio = txtDtInicio;
-            DateTime dtFim = txtDtFim;
-
-            return dbRepository.pesquisaMovimentoIntervalo(dtInicio, dtFim);
-        }
-
-        public Model.Fornecedores pesquisaFornecedorCpnj(string pesquisa)
-        {
-            string cnpj = pesquisa;
-
-            return dbRepository.pesquisaFornecedoresByCnpj(cnpj);
-        }
-
-        public List<Model.Fornecedores> pesquisaFornecedoresCompleta(string pesquisa)
-        {
-            string busca = pesquisa;
-
-            return dbRepository.pesquisaFornecedoresByNomeCnpjOfStatus(busca);
-        }
-
-        public Model.Clientes pesquisaClienteCpf(string pesquisa)
+        public Model.Clientes PesquisaClienteCpf(string pesquisa)
         {
             string cpf = pesquisa;
 
-            return dbRepository.pesquisaClienteByCpf(cpf);
+            return dbRepository.PesquisaClienteByCpf(cpf);
         }
 
-        public void salvarCliente(Model.Clientes cliente)
+        public void SalvarCliente(Model.Clientes cliente)
         {
-            dbRepository.salvarNovoCliente(cliente);
+            dbRepository.SalvarNovoCliente(cliente);
         }
 
-        public Model.Clientes pesquisaClienteById(int selectedIndex)
+        public Model.Clientes PesquisaClienteById(int selectedIndex)
         {
             int id = selectedIndex;
 
-            return dbRepository.pesquisaClienteId(id);
+            return dbRepository.PesquisaClienteId(id);
+        }        
+
+        public List<Model.Clientes> PesquisaClientesCompleta(string busca)
+        {
+            string pesquisa = busca;
+
+            return dbRepository.PesquisaClienteByCpfOrNome(pesquisa);
+        }
+        
+        #endregion
+
+        #region Controle do BD Vendas_Produtos
+
+        public List<Vendas_Produtos> PesquisaProdutosVenda(int id)
+        {
+            int busca = id;
+
+            return dbRepository.PesquisaProdutosVendaById(busca);
         }
 
-        public int pesquisaCompletaIDTipoMov(string descricao, string subTipo, string formaPg)
+        public List<Vendas_Produtos> PesquisaProdutosPedido(int VendaId)
+        {
+            int id_Venda = VendaId;
+
+            return dbRepository.PesquisaProdutosVendasByPedido(id_Venda);
+        }
+
+        public void SalvaProdutosVendidos(Vendas_Produtos prodVendido)
+        {
+            dbRepository.SalvarNovoProdutoVendido(prodVendido);
+        }
+
+        #endregion
+
+        #region Controle do BD de Estoques
+
+        public List<Estoque> PesquisaEstoqueRelatorio()
+        {
+            return dbRepository.PesquisaEstoqueOrdened();
+        }
+
+        public void SalvarEstoque(Estoque estoque)
+        {
+            dbRepository.SalvarNovoEstoque(estoque);
+        }
+
+        public Estoque PesquisaProdEstoqueId(int id)
+        {
+            int valor = id;
+
+            return dbRepository.PesquisaEstoqueByProdID(valor);
+        }
+
+        #endregion    
+
+        #region Controle do BD Tipos de Movimentos
+
+        public List<Tipos_Movimentacao> PesquisaTiposMovimento()
+        {
+            return dbRepository.PesquisaTiposMov();
+        }
+
+        public List<Tipos_Movimentacao> PesquisaTiposMovimento(string pesquisa)
+        {
+            string busca = pesquisa;
+
+            return dbRepository.PesquisaTiposMovimentoByDesc(busca);
+        }
+
+        public List<Tipos_Movimentacao> PesquisaSubTipoMov(string valor)
+        {
+            string busca = valor;
+
+            return dbRepository.PesquisaSubTiposMovimentoByDesc(busca);
+        }
+
+        public int PesquisaCompletaIDTipoMov(string descricao, string subTipo, string formaPg)
         {
             string desc = descricao;
             string tipo = subTipo;
             string form = formaPg;
 
-            return dbRepository.pesquisaMovimentoID(desc, tipo, form);
+            return dbRepository.PesquisaMovimentoID(desc, tipo, form);
         }
 
-        public List<Model.Clientes> pesquisaClientesCompleta(string busca)
+        public Tipos_Movimentacao PesquisaTiposMovimentoId(int? id_tipo)
         {
-            string pesquisa = busca;
-
-            return dbRepository.pesquisaClienteByCpfOrNome(pesquisa);
+            return dbRepository.PesquisaTipoMovById(id_tipo);
         }
+        
+        #endregion
 
-        public List<Model.Produtos> pesquisaProdutosValidoNome(string busca)
+        #region Controle do BD de Fornecedores
+
+        public void SalvarFornecedor(Model.Fornecedores fornecedor)
         {
-            string pesquisa = busca;
-
-            return dbRepository.pesquisaProdutosValidoByName(pesquisa);
+            dbRepository.SalvarNovoFornecedor(fornecedor);
         }
 
-        public void salvarVenda(Vendas venda)
+        public List<Model.Fornecedores> PesquisaFornecedores(string pesquisa)
         {
-            dbRepository.salvarNovaVenda(venda);
+            string busca = pesquisa;
+
+            return dbRepository.PesquisaFornecedoresByNomeCnpj(busca);
         }
 
-        public void salvarPagamento(Pagamentos pagamento)
+        public Model.Fornecedores PesquisaFornecedorById(int Id)
         {
-            dbRepository.salvarNovoPagamento(pagamento);
+            int valor = Id;
+
+            return dbRepository.PesquisaFornecedoresID(valor);
         }
 
-        public void salvaProdutosVendidos(Vendas_Produtos prodVendido)
+        public Model.Fornecedores PesquisaFornecedorCpnj(string pesquisa)
         {
-            dbRepository.salvarNovoProdutoVendido(prodVendido);
+            string cnpj = pesquisa;
+
+            return dbRepository.PesquisaFornecedoresByCnpj(cnpj);
         }
 
-        public bool pesquisaPagamentoId(Pagamentos pagamento)
+        public List<Model.Fornecedores> PesquisaFornecedoresCompleta(string pesquisa)
         {
-            return dbRepository.pesquisaIdPagamento(pagamento);
+            string busca = pesquisa;
+
+            return dbRepository.PesquisaFornecedoresByNomeCnpjOfStatus(busca);
         }
 
-        public Vendas pesquisaVendaID(int id)
-        {
-            int valor = id;
-
-            return dbRepository.pesquisaVendabyID(valor);
-        }
-
-        public void salvarEstoque(Estoque estoque)
-        {
-            dbRepository.salvarNovoEstoque(estoque);
-        }
-
-        public Estoque pesquisaProdEstoqueId(int id)
-        {
-            int valor = id;
-
-            return dbRepository.pesquisaEstoqueByProdID(valor);
-        }
-
-        public void salvarMovimento(Movimentos movimento)
-        {
-            dbRepository.salvarNovoMovimento(movimento);
-        }
-
-        public Tipos_Movimentacao pesquisaTiposMovimentoId(int? id_tipo)
-        {
-            return dbRepository.pesquisaTipoMovById(id_tipo);
-        }
-
-        public List<Vendas> pesquisaVendasGeral()
-        {
-            return dbRepository.pesquisaVendas();
-        }
-
-        public List<Pagamentos> pesquisaPagamentosGeral()
-        {
-            return dbRepository.pesquisaPagamentosTotais();
-        }
-
-        public List<Movimentos> pesquisaMovimentosGeral()
-        {
-            return dbRepository.pesquisaMovimentosTotais();
-        }
-
-        public Model.Fornecedores pesquisaFornecedorByNome(string pesquisa)
+        public Model.Fornecedores PesquisaFornecedorByNome(string pesquisa)
         {
             string nome = pesquisa;
 
-            return dbRepository.pesquisaFornecedorValidoByNome(nome);
+            return dbRepository.PesquisaFornecedorValidoByNome(nome);
         }
 
-        public UnidMedidas pesquisaMedidaByDesc(string desc)
+        #endregion
+
+        #region Controle do BD de Unidades de Medida
+
+        public List<UnidMedidas> PesquisaUnidades(string v)
+        {
+            return dbRepository.PesquisaMedidas();
+        }
+
+        public UnidMedidas PesquisaMedidaByDesc(string desc)
         {
             string nome = desc;
 
-            return dbRepository.pesquisaMedidaNome(nome);
+            return dbRepository.PesquisaMedidaNome(nome);
         }
 
-        public UnidMedidas pesquisaMedidaById(int id_medida)
+        public UnidMedidas PesquisaMedidaById(int id_medida)
         {
             int id = id_medida;
 
-            return dbRepository.pesquisaMedidaId(id);
+            return dbRepository.PesquisaMedidaId(id);
         }
 
-        public void salvaPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
+        #endregion
+
+        #region Controle do BD de Vendas
+
+        public void SalvarVenda(Vendas venda)
         {
-            dbRepository.salvarNovoPagamentoPedido(pagamentoPedido);
+            dbRepository.SalvarNovaVenda(venda);
         }
 
-        public bool pesquisaPagamentoIdVenda(string numPedido)
+        public Vendas PesquisaVendaID(int id)
         {
-            int idVenda = Convert.ToInt32(numPedido);
+            int valor = id;
 
-            return dbRepository.pesquisaPagamentoVendaByIdVenda(idVenda);
+            return dbRepository.PesquisaVendabyID(valor);
         }
 
-        //SCRIPT FECHAMENTO
-        public void salvarFechamento(Fechamento pedido)
+        public List<Vendas> PesquisaVendasGeral()
         {
-            dbRepository.salvarNovoPedido(pedido);
+            return dbRepository.PesquisaVendas();
         }
 
-        public List<Movimentos> pesquisaMovimentoTipo(int id_tipo)
+        #endregion
+
+        #region Controle do BD de Movimentos
+
+        public void SalvarMovimento(Movimentos movimento)
+        {
+            dbRepository.SalvarNovoMovimento(movimento);
+        }
+
+        public List<Movimentos> PesquisaMovPeriodo(DateTime txtDtInicio, DateTime txtDtFim)
+        {
+            DateTime dtInicio = txtDtInicio;
+            DateTime dtFim = txtDtFim;
+
+            return dbRepository.PesquisaMovimentoIntervalo(dtInicio, dtFim);
+        }
+
+        public List<Movimentos> PesquisaMovimentosGeral()
+        {
+            return dbRepository.PesquisaMovimentosTotais();
+        }
+
+        public List<Movimentos> PesquisaMovimentoTipo(int id_tipo)
         {
             int id = id_tipo;
 
-            return dbRepository.pesquisaMovimentoByTipoId(id);
+            return dbRepository.PesquisaMovimentoByTipoId(id);
         }
 
-        public List<Pagamentos> pesquisaUltimoPagamento()
-        {
-            return dbRepository.pesquisaPagamentosUltimo();
-        }
-
-        public Movimentos pesquisaMovimentoId(int? id_movimento)
+        public Movimentos PesquisaMovimentoId(int? id_movimento)
         {
             int id = Convert.ToInt32(id_movimento);
 
-            return dbRepository.pesquisaMovimentoByID(id);
+            return dbRepository.PesquisaMovimentoByID(id);
         }
 
-        public void removeMovimento(Movimentos movimento)
+        public void RemoveMovimento(Movimentos movimento)
         {
-            dbRepository.excluirMovimento(movimento);
+            dbRepository.ExcluirMovimento(movimento);
         }
 
-        public List<Movimentos> pesquisaMovimentoReferIdPagamento(int id)
-        {
-            int idPagamento = id;
-
-            return dbRepository.pesquisaMovimentosReferentePagamento(idPagamento);
-        }
-
-        public List<Pagamentos_Vendas> pesquisaPagVendaIdPagamento(int id)
+        public List<Movimentos> PesquisaMovimentoReferIdPagamento(int id)
         {
             int idPagamento = id;
 
-            return dbRepository.pesquisaPagamentoVendaByIdPagamento(idPagamento);
+            return dbRepository.PesquisaMovimentosReferentePagamento(idPagamento);
         }
 
-        public void removePagamentoVenda(Pagamentos_Vendas pagVend)
+        #endregion
+
+        #region Controle do BD Pagamentos_Vendas
+
+        public void SalvaPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
         {
-            dbRepository.excluirPagamento_Venda(pagVend);
+            dbRepository.SalvarNovoPagamentoPedido(pagamentoPedido);
         }
 
-        public void removePagamento(Pagamentos pag)
-        {
-            dbRepository.excluirPagamento(pag);
-        }
-
-        //SCRIPT FECHAMENTO
-        public bool pesquisaFechamentoIdVenda(string numPedido)
+        public bool PesquisaPagamentoIdVenda(string numPedido)
         {
             int idVenda = Convert.ToInt32(numPedido);
 
-            return dbRepository.pesquisaFechamentoByIdVenda(idVenda);
+            return dbRepository.PesquisaPagamentoVendaByIdVenda(idVenda);
         }
+
+        public List<Pagamentos_Vendas> PesquisaPagVendaIdPagamento(int id)
+        {
+            int idPagamento = id;
+
+            return dbRepository.PesquisaPagamentoVendaByIdPagamento(idPagamento);
+        }
+
+        public void RemovePagamentoVenda(Pagamentos_Vendas pagVend)
+        {
+            dbRepository.ExcluirPagamento_Venda(pagVend);
+        }
+
+        #endregion
+
+        #region Controle do BD de Pagamentos
+
+        public bool PesquisaPagamentoId(Pagamentos pagamento)
+        {
+            return dbRepository.PesquisaIdPagamento(pagamento);
+        }
+
+        public void SalvarPagamento(Pagamentos pagamento)
+        {
+            dbRepository.SalvarNovoPagamento(pagamento);
+        }
+
+        public List<Pagamentos> PesquisaPagamentosGeral()
+        {
+            return dbRepository.PesquisaPagamentosTotais();
+        }
+
+        public void RemovePagamento(Pagamentos pag)
+        {
+            dbRepository.ExcluirPagamento(pag);
+        }
+
+        public List<Pagamentos> PesquisaUltimoPagamento()
+        {
+            return dbRepository.PesquisaPagamentosUltimo();
+        }
+
+        #endregion
+
+        //SCRIPT FECHAMENTO
+        #region Controle do BD Pedido
+
+        public bool PesquisaFechamentoIdVenda(string numPedido)
+        {
+            int idVenda = Convert.ToInt32(numPedido);
+
+            return dbRepository.PesquisaFechamentoByIdVenda(idVenda);
+        }
+
+        public void SalvarFechamento(Fechamento pedido)
+        {
+            dbRepository.SalvarNovoPedido(pedido);
+        }
+
+        #endregion        
     }
 }

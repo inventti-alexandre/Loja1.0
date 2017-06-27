@@ -873,7 +873,6 @@
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblOperador);
             this.Controls.Add(this.btnOkPesquisa);
-            this.Controls.Add(this.btnCancelPesquisa);
             this.Controls.Add(this.cmbListaProdutos);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.txtQnt);
@@ -891,6 +890,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.btnCancelPesquisa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

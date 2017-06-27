@@ -67,6 +67,12 @@ namespace Loja1._0
             PDV form = new PDV(user);
             form.Show();
             this.Hide();
+            if (controle.PesquisaGerenciamento(1) == null)
+            {
+                MessageBox.Show("Não existem dados gerenciais cadastrados, por favor, cadastre-os e tente novamente", "Ação Inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                form.Dispose();
+                this.Show();
+            }
         }
 
         private void btnCaixa_Click(object sender, EventArgs e)
@@ -81,6 +87,12 @@ namespace Loja1._0
             Produtos form = new Produtos(user);
             form.Show();
             this.Hide();
+            if (Produtos.listaFornecedores.Count == 0)
+            {
+                MessageBox.Show("Não existem fornecedores cadastrados, por favor, cadastre-os e tente novamente", "Ação Inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                form.Dispose();
+                this.Show();                
+            }
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
@@ -141,7 +153,7 @@ namespace Loja1._0
 
         private void alertaFaltaEstoque()
         {
-            List<Model.Produtos> relacaoCompleta = controle.pesquisaGeralProd();
+            List<Model.Produtos> relacaoCompleta = controle.PesquisaGeralProd();
             bool faltando = false;
 
             foreach(Model.Produtos value in relacaoCompleta)

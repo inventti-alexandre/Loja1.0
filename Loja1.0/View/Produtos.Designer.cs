@@ -261,7 +261,7 @@
             // 
             this.txtPreco.Enabled = false;
             this.txtPreco.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.txtPreco.Location = new System.Drawing.Point(659, 116);
+            this.txtPreco.Location = new System.Drawing.Point(659, 115);
             this.txtPreco.MaxLength = 10;
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(119, 20);
@@ -273,7 +273,7 @@
             this.lblPreco.BackColor = System.Drawing.Color.Transparent;
             this.lblPreco.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPreco.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblPreco.Location = new System.Drawing.Point(601, 117);
+            this.lblPreco.Location = new System.Drawing.Point(600, 116);
             this.lblPreco.Name = "lblPreco";
             this.lblPreco.Size = new System.Drawing.Size(53, 16);
             this.lblPreco.TabIndex = 18;

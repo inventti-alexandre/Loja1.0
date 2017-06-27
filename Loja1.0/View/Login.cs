@@ -56,7 +56,7 @@ namespace Loja1._0
                 }
                 else
                 {
-                    user = controle.pesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
+                    user = controle.PesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
                     if (user == null)
                     {
                         MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");
@@ -76,12 +76,12 @@ namespace Loja1._0
 
                         else if (txtSenha.Text == user.senha && user.status == 0)
                         {
-                            if (controle.pesquisaUserValidos() == 0)
+                            if (controle.PesquisaUserValidos() == 0)
                             {
                                 this.Hide();
 
                                 user.status = 1;
-                                controle.salvaAtualiza();
+                                controle.SalvaAtualiza();
                                 Inicial form = new Inicial(user);
                                 txtLogin.Text = "";
                                 txtSenha.Text = "";

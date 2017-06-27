@@ -26,7 +26,7 @@ namespace Loja1._0.View
             try
             {
                 InitializeComponent();
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 this.pdv = pdv;
                 this.venda = venda;
                 printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
@@ -44,7 +44,7 @@ namespace Loja1._0.View
             try
             {
                 InitializeComponent();
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 this.pedido = pedido;
                 this.venda = venda;
                 printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
@@ -62,7 +62,7 @@ namespace Loja1._0.View
             {
                 txtDtPedido.Text = DateTime.Today.ToShortDateString();
                 txtDtLonga.Text = DateTime.Today.ToLongDateString() + " - " + DateTime.Now.ToLongTimeString();
-                txtUsuario.Text = controle.pesquisaUserId(venda.id_Usuario).nome;
+                txtUsuario.Text = controle.PesquisaUserId(venda.id_Usuario).nome;
                 txtNumPedido.Text = venda.id.ToString();
                 if (venda.Clientes != null)
                 {
@@ -91,7 +91,7 @@ namespace Loja1._0.View
             try
             {
                 List<Vendas_Produtos> listaProdutos = new List<Vendas_Produtos>();
-                listaProdutos = controle.pesquisaProdutosVenda(venda.id);
+                listaProdutos = controle.PesquisaProdutosVenda(venda.id);
 
                 DataTable dtProdutos = new DataTable();
                 dtProdutos.Columns.Add("produto", typeof(string));

@@ -30,7 +30,7 @@ namespace Loja1._0
 
         Controle controle = new Controle();
         static List<Model.Produtos> listaProdutos = new List<Model.Produtos>();
-        static List<Model.Fornecedores> listaFornecedores = new List<Model.Fornecedores>();
+        public static List<Model.Fornecedores> listaFornecedores = new List<Model.Fornecedores>();
         static Model.Produtos produto = new Model.Produtos();
         static Estoque estoque = new Estoque();
         static Gerenciamento gerencia = new Gerenciamento();
@@ -56,21 +56,23 @@ namespace Loja1._0
                 branco = pnlImagem.BackgroundImage;
                 limpaForm();
 
-                listaFornecedores = controle.pesquisaFornecedores("");
+                listaFornecedores = controle.PesquisaFornecedores("");                
+
                 cmbFornecedor.DataSource = listaFornecedores;
                 cmbFornecedor.ValueMember = "nome";
 
-                listaMedidas = controle.pesquisaUnidades("");
+                listaMedidas = controle.PesquisaUnidades("");
                 cmbUnidade.DataSource = listaMedidas;
                 cmbUnidade.ValueMember = "medida";
 
-                listaProdutos = controle.pesquisaGeralProd();
-                listaCompleta(listaProdutos);
+                listaProdutos = controle.PesquisaGeralProd();
+                listaCompleta(listaProdutos);                
             }
             catch
             {
                 MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
         
         private void btnExit_Click(object sender, EventArgs e)
@@ -158,6 +160,7 @@ namespace Loja1._0
             {
                 MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -166,7 +169,7 @@ namespace Loja1._0
             {
                 flagNovo = true;
                 limpaForm();
-                listaProdutos = controle.pesquisaGeralProd();
+                listaProdutos = controle.PesquisaGeralProd();
                 listaCompleta(listaProdutos);
                 lblMensagem.Text = "Relação de produtos";
             }
@@ -235,33 +238,33 @@ namespace Loja1._0
                 {
                     if (txtProduto.Text.Equals("") && !txtCodigo.Text.Equals(""))
                     {
-                        if (controle.pesquisaProdutosNomeId(txtCodigo.Text.ToUpper()).Count > 0)
+                        if (controle.PesquisaProdutosNomeId(txtCodigo.Text.ToUpper()).Count > 0)
                         {
                             txtCodigo.Enabled = false;
                             txtProduto.Enabled = false;
                             lblMensagem.Text = "Produto com o código: " + txtCodigo.Text;
-                            listaProdutos = controle.pesquisaProdutosNomeId(txtCodigo.Text.ToUpper());
+                            listaProdutos = controle.PesquisaProdutosNomeId(txtCodigo.Text.ToUpper().Trim());
                             listaCompleta(listaProdutos);
                         }
                         else
                         {
-                            MessageBox.Show("Não existem produtos com o código \"" + txtCodigo.Text + "\" ", "Ação inválida");
+                            MessageBox.Show("Não existem produtos com o código \"" + txtCodigo.Text.ToUpper().Trim() + "\" ", "Ação inválida");
                             btnLimpar_Click(sender, e);
                         }
                     }
-                    else if (txtCodigo.Text.Equals("") && !txtProduto.Text.Equals(""))
+                    else if (txtCodigo.Text.Trim().Equals("") && !txtProduto.Text.Trim().Equals(""))
                     {
-                        if (controle.pesquisaProdutosNomeId(txtProduto.Text.ToUpper()).Count > 0)
+                        if (controle.PesquisaProdutosNomeId(txtProduto.Text.ToUpper().Trim()).Count > 0)
                         {
                             txtCodigo.Enabled = false;
                             txtProduto.Enabled = false;
-                            lblMensagem.Text = "Relação de produtos que contém a expressão \"" + txtProduto.Text + "\" ";
-                            listaProdutos = controle.pesquisaProdutosNomeId(txtProduto.Text.ToUpper());
+                            lblMensagem.Text = "Relação de produtos que contém a expressão \"" + txtProduto.Text.ToUpper().Trim() + "\" ";
+                            listaProdutos = controle.PesquisaProdutosNomeId(txtProduto.Text.ToUpper().Trim());
                             listaCompleta(listaProdutos);
                         }
                         else
                         {
-                            MessageBox.Show("Não existem produtos com a expressão \"" + txtProduto.Text + "\" ");
+                            MessageBox.Show("Não existem produtos com a expressão \"" + txtProduto.Text.ToUpper().Trim() + "\" ");
                             btnLimpar_Click(sender, e);
                         }
                     }
@@ -279,7 +282,7 @@ namespace Loja1._0
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
-        {
+        {           
             limpaForm();
             dgvProdutos.Enabled = false;
             flagNovo = true;
@@ -333,9 +336,9 @@ namespace Loja1._0
             try
             {
                 produto.status = 0;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
                 limpaForm();
-                listaProdutos = controle.pesquisaGeralProd();
+                listaProdutos = controle.PesquisaGeralProd();
                 listaCompleta(listaProdutos);
             }
             catch
@@ -403,7 +406,7 @@ namespace Loja1._0
                     }
 
                     movimento = new Movimentos();
-                    controle.salvarMovimento(movimento);
+                    controle.SalvarMovimento(movimento);
 
                     dgvProdutos.Enabled = true;
 
@@ -420,20 +423,20 @@ namespace Loja1._0
                         txtIcms.Text = Convert.ToDecimal(txtIcms.Text).ToString("0.00");
 
                         produto = new Model.Produtos();
-                        controle.salvarProduto(produto);
+                        controle.SalvarProduto(produto);
                         produto.cod_produto = txtCodigo.Text.Trim();
                         produto.preco_compra = Convert.ToDecimal(txtCusto.Text.Trim());
                         produto.preco_venda = Convert.ToDecimal(txtPreco.Text.Trim());
                         produto.icms_pago = Convert.ToDecimal(txtIcms.Text.Trim());
                         produto.desc_produto = txtProduto.Text.Trim().ToUpper();
-                        produto.id_fornecedor = controle.pesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
-                        produto.id_medida = controle.pesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
+                        produto.id_fornecedor = controle.PesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
+                        produto.id_medida = controle.PesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
                         produto.imagem = bytes;
                         produto.status = 1;
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
 
                         estoque = new Estoque();
-                        controle.salvarEstoque(estoque);
+                        controle.SalvarEstoque(estoque);
                         estoque.id_produto = produto.id;
                         estoque.qnt_atual = Convert.ToInt32(txtQntAtual.Text.Trim());
                         estoque.qnt_minima = Convert.ToInt32(txtQntMinima.Text.Trim());
@@ -441,11 +444,11 @@ namespace Loja1._0
                         estoque.num_local = Convert.ToInt32(txtLocalNum.Text.Trim());
                         estoque.letra_local = txtLocalSigla.Text.Trim().ToUpper();
                         estoque.ref_local = txtLocalRef.Text.Trim().ToUpper();
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
 
                         limpaForm();
 
-                        listaProdutos = controle.pesquisaGeralProd();
+                        listaProdutos = controle.PesquisaGeralProd();
                         listaCompleta(listaProdutos);
                     }
 
@@ -463,29 +466,29 @@ namespace Loja1._0
 
                         int id = produto.id;
                         produto = new Model.Produtos();
-                        produto = controle.pesquisaProdutoId(id);
+                        produto = controle.PesquisaProdutoId(id);
                         produto.cod_produto = txtCodigo.Text;
                         produto.preco_compra = Convert.ToDecimal(txtCusto.Text);
                         produto.preco_venda = Convert.ToDecimal(txtPreco.Text);
                         produto.icms_pago = Convert.ToDecimal(txtIcms.Text);
                         produto.desc_produto = txtProduto.Text;
-                        produto.id_fornecedor = controle.pesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
-                        produto.id_medida = controle.pesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
+                        produto.id_fornecedor = controle.PesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
+                        produto.id_medida = controle.PesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
                         produto.imagem = bytes;
 
                         estoque = new Estoque();
-                        estoque = controle.pesquisaProdEstoqueId(id);
+                        estoque = controle.PesquisaProdEstoqueId(id);
                         estoque.qnt_atual = Convert.ToInt32(txtQntAtual.Text);
                         estoque.qnt_minima = Convert.ToInt32(txtQntMinima.Text);
                         estoque.qnt_maxima = Convert.ToInt32(txtQntMaxima.Text);
                         estoque.num_local = Convert.ToInt32(txtLocalNum.Text);
                         estoque.letra_local = txtLocalSigla.Text;
                         estoque.ref_local = txtLocalRef.Text;
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
 
                         limpaForm();
 
-                        listaProdutos = controle.pesquisaGeralProd();
+                        listaProdutos = controle.PesquisaGeralProd();
                         listaCompleta(listaProdutos);
                     }
                 }
@@ -525,7 +528,7 @@ namespace Loja1._0
             {
                 txtCodigo.Enabled = false;
                 txtProduto.Enabled = false;
-                produto = controle.pesquisaProdutoCod(dgvProdutos.SelectedCells[1].Value.ToString());
+                produto = controle.PesquisaProdutoCod(dgvProdutos.SelectedCells[1].Value.ToString());
                 if (produto != null)
                 {
                     btnNovo.Enabled = false;
@@ -542,8 +545,8 @@ namespace Loja1._0
                     txtLocalNum.Text = produto.Estoque.num_local.ToString();
                     txtLocalSigla.Text = produto.Estoque.letra_local.ToString();
                     txtLocalRef.Text = produto.Estoque.ref_local.ToString();
-                    cmbFornecedor.SelectedValue = controle.pesquisaFornecedorById(produto.id_fornecedor).nome;
-                    cmbUnidade.SelectedValue = controle.pesquisaMedidaById(produto.id_medida).medida;
+                    cmbFornecedor.SelectedValue = controle.PesquisaFornecedorById(produto.id_fornecedor).nome;
+                    cmbUnidade.SelectedValue = controle.PesquisaMedidaById(produto.id_medida).medida;
                     if (produto.imagem == null)
                     {
                         pnlImagem.BackgroundImage = branco;

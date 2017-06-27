@@ -32,7 +32,7 @@ namespace Loja1._0
             try
             {
                 this.user = user;
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 InitializeComponent();
                 AcceptButton = btnPesquisar;
                 lblUser.Text = user.nome;
@@ -105,7 +105,7 @@ namespace Loja1._0
                 else
                 {
                     venda = new Vendas();
-                    venda = controle.pesquisaVendaID(Convert.ToInt32(txtCodigo.Text));
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtCodigo.Text));
                     txtPedido.Text = txtCodigo.Text;
                     txtCodigo.Text = "";
                     if (venda == null)
@@ -137,10 +137,10 @@ namespace Loja1._0
                         listaCompraQnt = new List<int>();
                         produtosPedidos = new List<Vendas_Produtos>();
 
-                        produtosPedidos = controle.pesquisaProdutosPedido(venda.id);
+                        produtosPedidos = controle.PesquisaProdutosPedido(venda.id);
                         foreach (Vendas_Produtos value in produtosPedidos)
                         {
-                            listaCompra.Add(controle.pesquisaProdutoId(Convert.ToInt32(value.id_produto)));
+                            listaCompra.Add(controle.PesquisaProdutoId(Convert.ToInt32(value.id_produto)));
                             listaCompraQnt.Add(value.quantidade);
                         }
 
@@ -186,7 +186,7 @@ namespace Loja1._0
         {
             try
             {
-                produto = controle.pesquisaProdutoCod(listaCompra[e.RowIndex].cod_produto);
+                produto = controle.PesquisaProdutoCod(listaCompra[e.RowIndex].cod_produto);
                 carregaAdquirido(produto);
             }
             catch
@@ -257,7 +257,7 @@ namespace Loja1._0
             try
             {
                 venda = new Vendas();
-                venda = controle.pesquisaVendaID(Convert.ToInt32(txtCodigo.Text));
+                venda = controle.PesquisaVendaID(Convert.ToInt32(txtCodigo.Text));
 
                 if (desconto)
                 {
@@ -269,7 +269,7 @@ namespace Loja1._0
                 venda.data_Venda = DateTime.Now;
                 venda.comissao = (Convert.ToDecimal(txtTotal.Text) * gerencia.comissao);
 
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 IniciaImpressao(sender, e);
             }
@@ -293,7 +293,7 @@ namespace Loja1._0
             try
             {
                 venda = new Vendas();
-                venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedido.Text));
+                venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedido.Text));
 
                 if (venda == null)
                 {
@@ -313,19 +313,19 @@ namespace Loja1._0
                 else
                 {
                     Fechamento pedido = new Fechamento();
-                    controle.salvarFechamento(pedido);
+                    controle.SalvarFechamento(pedido);
                     pedido.id_venda = venda.id;
                     pedido.data_fechamento = DateTime.Now;
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     produtosPedidos = new List<Vendas_Produtos>();
-                    produtosPedidos = controle.pesquisaProdutosPedido(venda.id);
+                    produtosPedidos = controle.PesquisaProdutosPedido(venda.id);
                     foreach (Vendas_Produtos value in produtosPedidos)
                     {
-                        produto = controle.pesquisaProdutoId(Convert.ToInt32(value.id_produto));
+                        produto = controle.PesquisaProdutoId(Convert.ToInt32(value.id_produto));
                         produto.Estoque.qnt_atual = produto.Estoque.qnt_atual - value.quantidade;
 
-                        List<Movimentos> listaMov = controle.pesquisaMovimentoTipo(12);
+                        List<Movimentos> listaMov = controle.PesquisaMovimentoTipo(12);
                         decimal valor = value.quantidade * produto.preco_compra;
                         for (int i = 0; i < listaMov.Count; i++)
                         {
@@ -334,18 +334,18 @@ namespace Loja1._0
                                 if (valor > listaMov[i].valor)
                                 {
                                     valor = valor - Convert.ToDecimal(listaMov[i].valor);
-                                    controle.removeMovimento(listaMov[i]);
-                                    controle.salvaAtualiza();
+                                    controle.RemoveMovimento(listaMov[i]);
+                                    controle.SalvaAtualiza();
                                 }
                                 else
                                 {
                                     listaMov[i].valor = listaMov[i].valor - valor;
                                     valor = 0;
-                                    controle.salvaAtualiza();
+                                    controle.SalvaAtualiza();
                                 }
                             }
                         }
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
                     }
                     btnCancelar_Click(sender, e);
                 }
@@ -359,7 +359,7 @@ namespace Loja1._0
         private bool vendaFechada(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamento devolve true
-            if (controle.pesquisaFechamentoIdVenda(numPedido))
+            if (controle.PesquisaFechamentoIdVenda(numPedido))
             {
                 return true;
             }
@@ -370,7 +370,7 @@ namespace Loja1._0
         private bool pedidoPago(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamento devolve true
-            if (controle.pesquisaPagamentoIdVenda(numPedido))
+            if (controle.PesquisaPagamentoIdVenda(numPedido))
             {
                 return true;
             }

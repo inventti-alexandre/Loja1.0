@@ -30,7 +30,7 @@ namespace Loja1._0
                 this.user = user;
                 InitializeComponent();
 
-                listaFornecedores = controle.pesquisaFornecedores("");
+                listaFornecedores = controle.PesquisaFornecedores("");
                 preencheRelacao(listaFornecedores);
             }
             catch
@@ -84,52 +84,52 @@ namespace Loja1._0
         {
             try
             {
-                if (txtFornecedor.Text.Length < 3 && txtCnpj.Text.Equals(""))
+                if (txtFornecedor.Text.Trim().Length < 3 && txtCnpj.Text.Trim().Equals(""))
                 {
                     MessageBox.Show("É necessário ao menos 3 caracteres para realizar uma busca por nome", "Ação inválida");
                     btnLimpar_Click(sender, e);
                 }
 
-                else if ((txtCnpj.Text.Length < 11 || txtCnpj.Text.Length > 14) && txtFornecedor.Text.Equals(""))
+                else if ((txtCnpj.Text.Trim().Length < 11 || txtCnpj.Text.Trim().Length > 14) && txtFornecedor.Text.Trim().Equals(""))
                 {
                     MessageBox.Show("É necessário 13 caracteres para realizar uma busca por CNPJ/CPF", "Ação inválida");
                     btnLimpar_Click(sender, e);
                 }
                 else
                 {
-                    if (txtFornecedor.Text.Equals("") && !txtCnpj.Text.Equals(""))
+                    if (txtFornecedor.Text.Trim().Equals("") && !txtCnpj.Text.Trim().Equals(""))
                     {
-                        if (controle.pesquisaFornecedorCpnj(txtCnpj.Text) != null)
+                        if (controle.PesquisaFornecedorCpnj(txtCnpj.Text.Trim()) != null)
                         {
                             txtFornecedor.Enabled = false;
                             txtCnpj.Enabled = false;
                             lblMensagem.Text = "Fornecedor com o CNPJ: " + txtCnpj.Text;
-                            fornecedor = controle.pesquisaFornecedorCpnj(txtCnpj.Text);
+                            fornecedor = controle.PesquisaFornecedorCpnj(txtCnpj.Text);
                             preencheDados(fornecedor);
                         }
                         else
                         {
-                            MessageBox.Show("Não existem Fornecedores com o CNPJ/CPF " + txtCnpj.Text + ", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
+                            MessageBox.Show("Não existem Fornecedores com o CNPJ/CPF " + txtCnpj.Text.ToUpper().Trim() + ", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
                             btnLimpar_Click(sender, e);
                         }
                     }
-                    else if (!txtFornecedor.Text.Equals("") && txtCnpj.Text.Equals(""))
+                    else if (!txtFornecedor.Text.Trim().Equals("") && txtCnpj.Text.Trim().Equals(""))
                     {
-                        if (controle.pesquisaFornecedores(txtFornecedor.Text).Count > 0)
+                        if (controle.PesquisaFornecedores(txtFornecedor.Text.ToUpper().Trim()).Count > 0)
                         {
                             txtFornecedor.Enabled = false;
                             txtCnpj.Enabled = false;
-                            lblMensagem.Text = "Fornecedores que contém a expressão: " + txtFornecedor.Text + " no nome";
-                            listaFornecedores = controle.pesquisaFornecedores(txtFornecedor.Text);
+                            lblMensagem.Text = "Fornecedores que contém a expressão: " + txtFornecedor.Text.ToUpper().Trim() + " no nome";
+                            listaFornecedores = controle.PesquisaFornecedores(txtFornecedor.Text.ToUpper().Trim());
                             preencheRelacao(listaFornecedores);
                         }
                         else
                         {
-                            MessageBox.Show("Não existem fornecedores ativos com a expressão \"" + txtFornecedor.Text + "\", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
+                            MessageBox.Show("Não existem fornecedores ativos com a expressão \"" + txtFornecedor.Text.ToUpper().Trim() + "\", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
                             btnLimpar_Click(sender, e);
                         }
                     }
-                    else if (!txtFornecedor.Text.Equals("") && !txtCnpj.Text.Equals(""))
+                    else if (!txtFornecedor.Text.Trim().Equals("") && !txtCnpj.Text.Trim().Equals(""))
                     {
                         MessageBox.Show("Para pesquisa de fornecedor preencha somente um campo de busca, ou CNPJ/CPF, ou Nome", "Ação Inválida");
                         btnLimpar_Click(sender, e);
@@ -152,7 +152,7 @@ namespace Loja1._0
             try
             {
                 limpaForm();
-                listaEstado = controle.pesquisaGeralEstados();
+                listaEstado = controle.PesquisaGeralEstados();
                 cmbUf.DataSource = listaEstado;
                 cmbUf.ValueMember = "id";
                 cmbUf.DisplayMember = "sigla";
@@ -220,7 +220,7 @@ namespace Loja1._0
                     //se flag novo = false, novo elemento
                     if (flagNovo)
                     {
-                        if (validaDoc.validaTipoCpfCnpj(txtCnpj.Text))
+                        if (validaDoc.validaTipoCpfCnpj(txtCnpj.Text.Trim()))
                         {
                             btnPesquisa.Enabled = true;
                             btnSalvar.Enabled = false;
@@ -228,10 +228,10 @@ namespace Loja1._0
                             flagNovo = false;
 
                             Model.Fornecedores fornecedor = new Model.Fornecedores();
-                            controle.salvarFornecedor(fornecedor);
+                            controle.SalvarFornecedor(fornecedor);
 
                             fornecedor.cnpj = txtCnpj.Text;
-                            fornecedor.nome = txtFornecedor.Text;
+                            fornecedor.nome = txtFornecedor.Text.ToUpper().Trim();
                             if (chkAtivo.Checked)
                             {
                                 fornecedor.status = 1;
@@ -240,11 +240,11 @@ namespace Loja1._0
                             {
                                 fornecedor.status = 0;
                             }
-                            fornecedor.contato = txtContato.Text;
-                            fornecedor.endereço = txtEndereco.Text;
-                            fornecedor.numeral = txtNum.Text;
-                            fornecedor.bairro = txtBairro.Text;
-                            fornecedor.id_Cidade = controle.pesquisaCidade(cmbCidade.Text).id;
+                            fornecedor.contato = txtContato.Text.ToUpper().Trim();
+                            fornecedor.endereço = txtEndereco.Text.ToUpper().Trim();
+                            fornecedor.numeral = txtNum.Text.ToUpper().Trim();
+                            fornecedor.bairro = txtBairro.Text.ToUpper().Trim();
+                            fornecedor.id_Cidade = controle.PesquisaCidade(cmbCidade.Text).id;
                             fornecedor.telefone = txtTel1.Text;
                             fornecedor.recado = txtTel2.Text;
                             fornecedor.celular = txtCelular.Text;
@@ -264,10 +264,10 @@ namespace Loja1._0
                             {
                                 fornecedor.operadora = "Vivo";
                             }
-                            controle.salvaAtualiza();
+                            controle.SalvaAtualiza();
                             btnLimpar_Click(sender, e);
                             MessageBox.Show("Inclusão realizada com sucesso", "Ação bem sucedida");
-                            listaFornecedores = controle.pesquisaFornecedores("");
+                            listaFornecedores = controle.PesquisaFornecedores("");
                             preencheRelacao(listaFornecedores);
                         }
                     }
@@ -295,7 +295,7 @@ namespace Loja1._0
                             fornecedor.endereço = txtEndereco.Text;
                             fornecedor.numeral = txtNum.Text;
                             fornecedor.bairro = txtBairro.Text;
-                            fornecedor.id_Cidade = controle.pesquisaCidade(cmbCidade.Text).id;
+                            fornecedor.id_Cidade = controle.PesquisaCidade(cmbCidade.Text).id;
                             fornecedor.telefone = txtTel1.Text;
                             fornecedor.recado = txtTel2.Text;
                             fornecedor.celular = txtCelular.Text;
@@ -315,11 +315,11 @@ namespace Loja1._0
                             {
                                 fornecedor.operadora = "Vivo";
                             }
-                            controle.salvaAtualiza();
+                            controle.SalvaAtualiza();
                             limpaForm();
                             btnLimpar_Click(sender, e);
                             MessageBox.Show("Alteração realizada com sucesso", "Ação bem sucedida");
-                            listaFornecedores = controle.pesquisaFornecedores("");
+                            listaFornecedores = controle.PesquisaFornecedores("");
                             preencheRelacao(listaFornecedores);
                         }
                     }
@@ -350,7 +350,7 @@ namespace Loja1._0
             {
                 flagNovo = true;
                 limpaForm();
-                listaFornecedores = controle.pesquisaFornecedores("");
+                listaFornecedores = controle.PesquisaFornecedores("");
                 preencheRelacao(listaFornecedores);
                 lblMensagem.Text = "Relação de Fornecedores";
             }
@@ -400,7 +400,7 @@ namespace Loja1._0
             try
             {
                 cmbCidade.Enabled = true;
-                listaCidade = controle.pesquisaCidadesPorEstado(cmbUf.SelectedIndex + 1);
+                listaCidade = controle.PesquisaCidadesPorEstado(cmbUf.SelectedIndex + 1);
                 cmbCidade.DataSource = listaCidade;
                 cmbCidade.DisplayMember = "cidade";
                 cmbCidade.ValueMember = "id";
@@ -415,7 +415,7 @@ namespace Loja1._0
         {
             try
             {
-                fornecedor = controle.pesquisaFornecedorCpnj(dgvFornecedores.Rows[e.RowIndex].Cells[1].Value.ToString());
+                fornecedor = controle.PesquisaFornecedorCpnj(dgvFornecedores.Rows[e.RowIndex].Cells[1].Value.ToString());
                 btnLimpar_Click(sender, e);
                 btnPesquisa.Enabled = false;
                 preencheDados(fornecedor);

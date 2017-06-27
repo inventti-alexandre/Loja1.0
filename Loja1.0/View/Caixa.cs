@@ -60,7 +60,7 @@ namespace Loja1._0
 
             try
             {
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
             }
             catch
             {
@@ -87,13 +87,13 @@ namespace Loja1._0
             try
             {
                 houvePag = false;
-                venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text));
+                venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text));
 
                 if (txtPedidoNum1.Text.Equals(""))
                 {
                     MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
                 }
-                else if (controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text)) == null)
+                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text)) == null)
                 {
                     MessageBox.Show("Os dados inseridos não correspondem a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
                 }
@@ -181,7 +181,7 @@ namespace Loja1._0
                 {
                     MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
                 }
-                else if (controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum2.Text)) == null)
+                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum2.Text)) == null)
                 {
                     MessageBox.Show("O número inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
                 }
@@ -192,7 +192,7 @@ namespace Loja1._0
                 }
                 else
                 {
-                    venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum2.Text));
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum2.Text));
                     bool existe = false;
 
                     foreach (Model.Vendas value in listaVendas)
@@ -254,7 +254,7 @@ namespace Loja1._0
                 {
                     MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
                 }
-                else if (controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum3.Text)) == null)
+                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum3.Text)) == null)
                 {
                     MessageBox.Show("O inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
                 }
@@ -265,7 +265,7 @@ namespace Loja1._0
                 }
                 else
                 {
-                    venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum3.Text));
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum3.Text));
                     bool existe = false;
 
                     foreach (Model.Vendas value in listaVendas)
@@ -326,7 +326,7 @@ namespace Loja1._0
                 {
                     MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
                 }
-                else if (controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum4.Text)) == null)
+                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum4.Text)) == null)
                 {
                     MessageBox.Show("O inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
                 }
@@ -337,7 +337,7 @@ namespace Loja1._0
                 }
                 else
                 {
-                    venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum4.Text));
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum4.Text));
                     bool existe = false;
 
                     foreach (Model.Vendas value in listaVendas)
@@ -399,7 +399,7 @@ namespace Loja1._0
                 {
                     MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
                 }
-                else if (controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum5.Text)) == null)
+                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum5.Text)) == null)
                 {
                     MessageBox.Show("O inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
                 }
@@ -410,7 +410,7 @@ namespace Loja1._0
                 }
                 else
                 {
-                    venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedidoNum5.Text));
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum5.Text));
                     bool existe = false;
 
                     foreach (Model.Vendas value in listaVendas)
@@ -464,7 +464,7 @@ namespace Loja1._0
         private bool vendaFechada(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamento devolve true
-            if (controle.pesquisaFechamentoIdVenda(numPedido))
+            if (controle.PesquisaFechamentoIdVenda(numPedido))
             {
                 return true;
             }
@@ -474,7 +474,7 @@ namespace Loja1._0
         private bool pedidoPago(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamento devolve true
-            if (controle.pesquisaPagamentoIdVenda(numPedido))
+            if (controle.PesquisaPagamentoIdVenda(numPedido))
             {
                 return true;
             }
@@ -510,7 +510,7 @@ namespace Loja1._0
 
                     txtValorVenda.Text = (Convert.ToDecimal(txtValorVenda.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
                     txtValorTotal.Text = (Convert.ToDecimal(txtValorTotal.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
-                    listaProdutosVenda = controle.pesquisaProdutosVenda(value.id);
+                    listaProdutosVenda = controle.PesquisaProdutosVenda(value.id);
 
                     foreach (Vendas_Produtos result in listaProdutosVenda)
                     {
@@ -546,12 +546,12 @@ namespace Loja1._0
                 }
                 else if (validaCpf.validaTipoCpfCnpj(txtCpf.Text))
                 {
-                    if (controle.pesquisaClienteCpf(txtCpf.Text) != null)
+                    if (controle.PesquisaClienteCpf(txtCpf.Text) != null)
                     {
                         btnAtribuirCliente.Enabled = false;
                         btnAtribuirOutro.Enabled = false;
                         txtCpf.Enabled = false;
-                        cliente = controle.pesquisaClienteCpf(txtCpf.Text);
+                        cliente = controle.PesquisaClienteCpf(txtCpf.Text);
                         txtCliente.Text = cliente.nome;
                         txtCpf.Text = cliente.cpf;
                         txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
@@ -565,7 +565,7 @@ namespace Loja1._0
                             venda.cpf = "";
                             venda.cnpj = txtCpf.Text;
                         }
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
                     }
                     else
                     {
@@ -593,7 +593,7 @@ namespace Loja1._0
                 }
                 else if (validaCpf.validaTipoCpfCnpj(txtCpf.Text))
                 {
-                    if (controle.pesquisaClienteCpf(txtCpf.Text) != null)
+                    if (controle.PesquisaClienteCpf(txtCpf.Text) != null)
                     {
                         MessageBox.Show("Cnpj / Cpf informado pertence a um cliente previamente cadastrado, pressione \"Associar Cliente\"", "Ação Inválida");
                         btnAtribuirCliente.Enabled = true;
@@ -615,7 +615,7 @@ namespace Loja1._0
                             venda.cpf = "";
                             venda.cnpj = txtCpf.Text;
                         }
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
                     }
                 }
                 else
@@ -657,14 +657,14 @@ namespace Loja1._0
                     pedidosInclusos = true;
                     foreach (int value in listaNumPedidos)
                     {
-                        foreach (Vendas_Produtos result in controle.pesquisaProdutosVenda(value))
+                        foreach (Vendas_Produtos result in controle.PesquisaProdutosVenda(value))
                         {
-                            Model.Produtos produto = controle.pesquisaProdutoId(Convert.ToInt32(result.id_produto));
+                            Model.Produtos produto = controle.PesquisaProdutoId(Convert.ToInt32(result.id_produto));
                             //adiciona ao cupom o item vendido                        
                             BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, produto.preco_venda.ToString(), "%", "0"));
 
                             produto.Estoque.qnt_atual = produto.Estoque.qnt_atual - result.quantidade;
-                            controle.salvaAtualiza();
+                            controle.SalvaAtualiza();
                         }
                     }
                 }
@@ -905,7 +905,7 @@ namespace Loja1._0
                         if (houvePag)
                         {
                             houvePag = false;
-                            List<Pagamentos> listaPagamentos = controle.pesquisaUltimoPagamento();
+                            List<Pagamentos> listaPagamentos = controle.PesquisaUltimoPagamento();
                             List<int> vendasRealizadas = new List<int>();
                             foreach (Pagamentos value in listaPagamentos)
                             {
@@ -913,26 +913,26 @@ namespace Loja1._0
                                 int idMov = Convert.ToInt32(value.id_movimento);
                                 int vendaID = 0;
 
-                                List<Pagamentos_Vendas> listaPagVenda = controle.pesquisaPagVendaIdPagamento(value.id);
+                                List<Pagamentos_Vendas> listaPagVenda = controle.PesquisaPagVendaIdPagamento(value.id);
                                 foreach (Pagamentos_Vendas pagVend in listaPagVenda)
                                 {
-                                    controle.removePagamentoVenda(pagVend);
-                                    controle.salvaAtualiza();
+                                    controle.RemovePagamentoVenda(pagVend);
+                                    controle.SalvaAtualiza();
 
                                     vendaID = pagVend.id_Venda;
                                 }
-                                controle.removePagamento(value);
-                                controle.salvaAtualiza();
+                                controle.RemovePagamento(value);
+                                controle.SalvaAtualiza();
 
-                                Movimentos movimento = controle.pesquisaMovimentoId(idMov);
-                                controle.removeMovimento(movimento);
-                                controle.salvaAtualiza();
+                                Movimentos movimento = controle.PesquisaMovimentoId(idMov);
+                                controle.RemoveMovimento(movimento);
+                                controle.SalvaAtualiza();
 
-                                List<Movimentos> ListaMovimento = controle.pesquisaMovimentoReferIdPagamento(idPag);
+                                List<Movimentos> ListaMovimento = controle.PesquisaMovimentoReferIdPagamento(idPag);
                                 foreach (Movimentos mov in ListaMovimento)
                                 {
-                                    controle.removeMovimento(mov);
-                                    controle.salvaAtualiza();
+                                    controle.RemoveMovimento(mov);
+                                    controle.SalvaAtualiza();
                                 }
 
                                 bool novoElemento = true;
@@ -950,16 +950,16 @@ namespace Loja1._0
                             }
                             foreach (int value in vendasRealizadas)
                             {
-                                List<Vendas_Produtos> listaProdVendido = controle.pesquisaProdutosVenda(value);
+                                List<Vendas_Produtos> listaProdVendido = controle.PesquisaProdutosVenda(value);
                                 foreach (Vendas_Produtos prodVend in listaProdVendido)
                                 {
-                                    Model.Produtos prod = controle.pesquisaProdutoId(Convert.ToInt32(prodVend.id_produto));
+                                    Model.Produtos prod = controle.PesquisaProdutoId(Convert.ToInt32(prodVend.id_produto));
                                     prod.Estoque.qnt_atual = prod.Estoque.qnt_atual + prodVend.quantidade;
-                                    controle.salvaAtualiza();
+                                    controle.SalvaAtualiza();
                                 }
                             }
                             cliente.creditos = cliente.creditos + clienteCreditos;
-                            controle.salvaAtualiza();
+                            controle.SalvaAtualiza();
                             MessageBox.Show("Exclusão do pagamento realizada com sucesso", "Ação Bem Sucedida");
                         }
                     }
@@ -1188,7 +1188,7 @@ namespace Loja1._0
                 for (int i = 0; i < Convert.ToInt32(cmbNumParcCheque.SelectedItem); i++)
                 {
                     Movimentos movimento = new Movimentos();
-                    controle.salvarMovimento(movimento);
+                    controle.SalvarMovimento(movimento);
                     if (!entrada && i == 0)
                     {
                         movimento.id_tipo = 33;
@@ -1201,10 +1201,10 @@ namespace Loja1._0
                     }
                     movimento.valor = valor / Convert.ToInt32(cmbNumParcCheque.SelectedItem);
                     movimento.data = DateTime.Today.AddMonths(i + ent);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     Pagamentos pagamento = new Pagamentos();
-                    controle.salvarPagamento(pagamento);
+                    controle.SalvarPagamento(pagamento);
                     pagamento.id_movimento = movimento.id;
                     pagamento.dataPagamento = DateTime.Today.AddMonths(i + ent);
                     pagamento.formaPag = "Cheque";                    
@@ -1239,31 +1239,31 @@ namespace Loja1._0
                         pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCheque.SelectedItem);
                     }
 
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
                     Movimentos movimentoImposto = new Movimentos();
-                    controle.salvarMovimento(movimentoImposto);
+                    controle.SalvarMovimento(movimentoImposto);
                     movimentoImposto.data = DateTime.Today;
                     movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                     movimentoImposto.id_tipo = 11;
                     movimentoImposto.valor = pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCheque.SelectedItem);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     Movimentos movimentoMercadoria = new Movimentos();
-                    controle.salvarMovimento(movimentoMercadoria);
+                    controle.SalvarMovimento(movimentoMercadoria);
                     movimentoMercadoria.data = DateTime.Today;
                     movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
                     movimentoMercadoria.id_tipo = 65;
                     movimentoMercadoria.valor = custoAux / Convert.ToInt32(cmbNumParcCheque.SelectedItem);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     foreach (Vendas value in listaVendas)
                     {
                         Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                        controle.salvaPagamentoPedido(pagamentoPedido);
+                        controle.SalvaPagamentoPedido(pagamentoPedido);
                         pagamentoPedido.id_Venda = value.id;
                         pagamentoPedido.id_Pagamento = pagamento.id;
 
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
                     }
                 }
 
@@ -1306,7 +1306,7 @@ namespace Loja1._0
                 for (int i = 0; i < Convert.ToInt32(cmbNumParcCredito.SelectedItem); i++)
                 {
                     Movimentos movimento = new Movimentos();
-                    controle.salvarMovimento(movimento);
+                    controle.SalvarMovimento(movimento);
                     if (!entrada && i == 0)
                     {
                         movimento.id_tipo = 33;
@@ -1319,10 +1319,10 @@ namespace Loja1._0
                     }
                     movimento.valor = valor / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     movimento.data = DateTime.Today.AddMonths(i + ent);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     Pagamentos pagamento = new Pagamentos();
-                    controle.salvarPagamento(pagamento);
+                    controle.SalvarPagamento(pagamento);
                     pagamento.id_movimento = movimento.id;
                     pagamento.dataPagamento = DateTime.Today.AddMonths(i + ent);
                     pagamento.formaPag = "C.Crédito";
@@ -1356,31 +1356,31 @@ namespace Loja1._0
                         pagamento.numParcela = i + 1;
                         pagamento.qntParcelas = Convert.ToInt32(cmbNumParcCredito.SelectedItem);
                     }
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
                     Movimentos movimentoImposto = new Movimentos();
-                    controle.salvarMovimento(movimentoImposto);
+                    controle.SalvarMovimento(movimentoImposto);
                     movimentoImposto.data = DateTime.Today;
                     movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                     movimentoImposto.id_tipo = 11;
                     movimentoImposto.valor = pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     Movimentos movimentoMercadoria = new Movimentos();
-                    controle.salvarMovimento(movimentoMercadoria);
+                    controle.SalvarMovimento(movimentoMercadoria);
                     movimentoMercadoria.data = DateTime.Today;
                     movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
                     movimentoMercadoria.id_tipo = 65;
                     movimentoMercadoria.valor = custoAux / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     foreach (Vendas value in listaVendas)
                     {                       
                         Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                        controle.salvaPagamentoPedido(pagamentoPedido);
+                        controle.SalvaPagamentoPedido(pagamentoPedido);
                         pagamentoPedido.id_Venda = value.id;
                         pagamentoPedido.id_Pagamento = pagamento.id;
 
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
                     }
                 }
 
@@ -1408,13 +1408,13 @@ namespace Loja1._0
                 PagPrePago.valorPagamento = valor.ToString("0.00");
 
                 Movimentos movimento = new Movimentos();
-                controle.salvarMovimento(movimento);
+                controle.SalvarMovimento(movimento);
                 movimento.id_tipo = 30;
                 movimento.valor = valor;
                 movimento.data = DateTime.Now;
 
                 Pagamentos pagamento = new Pagamentos();
-                controle.salvarPagamento(pagamento);
+                controle.SalvarPagamento(pagamento);
                 pagamento.dataPagamento = DateTime.Now;
                 pagamento.formaPag = "Pré-Pago";
                 pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
@@ -1439,43 +1439,43 @@ namespace Loja1._0
                     pagamento.numParcela = 0;
                     pagamento.qntParcelas = 0;
                 }
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
                 pagamento.id_movimento = movimento.id;
 
                 Movimentos movimentoImposto = new Movimentos();
-                controle.salvarMovimento(movimentoImposto);
+                controle.SalvarMovimento(movimentoImposto);
                 movimentoImposto.data = DateTime.Today;
                 movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                 movimentoImposto.id_tipo = 11;
                 movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 Movimentos movimentoMercadoria = new Movimentos();
-                controle.salvarMovimento(movimentoMercadoria);
+                controle.SalvarMovimento(movimentoMercadoria);
                 movimentoMercadoria.data = DateTime.Today;
                 movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
                 movimentoMercadoria.id_tipo = 65;
                 movimentoMercadoria.valor = custoAux;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 PagPrePago.desconto = Convert.ToDecimal(PagPrePago.desconto) + Convert.ToDecimal((Convert.ToDecimal(txtTotal.Text) * trkDesconto.Value / 100) / (Convert.ToDecimal(txtValorTotal.Text) / valor)).ToString("0.00");
 
                 foreach (Vendas value in listaVendas)
                 {
-                    venda = controle.pesquisaVendaID(value.id);
+                    venda = controle.PesquisaVendaID(value.id);
                     venda.desconto = trkDesconto.Value;                    
 
                     Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                    controle.salvaPagamentoPedido(pagamentoPedido);
+                    controle.SalvaPagamentoPedido(pagamentoPedido);
                     pagamentoPedido.id_Venda = venda.id;
                     pagamentoPedido.id_Pagamento = pagamento.id;
 
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
                 }
 
                 clienteCreditos = Convert.ToDouble(valor);
                 cliente.creditos = cliente.creditos - Convert.ToDouble(valor);
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 if (Convert.ToDecimal(txtSaldoPrePago.Text) <= valorPago)
                 {
@@ -1503,13 +1503,13 @@ namespace Loja1._0
                 PagDebito.valorPagamento = valor.ToString("0.00");
 
                 Movimentos movimento = new Movimentos();
-                controle.salvarMovimento(movimento);
+                controle.SalvarMovimento(movimento);
                 movimento.id_tipo = 33;
                 movimento.valor = valor;
                 movimento.data = DateTime.Now;
 
                 Pagamentos pagamento = new Pagamentos();
-                controle.salvarPagamento(pagamento);
+                controle.SalvarPagamento(pagamento);
                 pagamento.dataPagamento = DateTime.Now;
                 pagamento.formaPag = "Débito";
                 pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
@@ -1531,38 +1531,38 @@ namespace Loja1._0
                     pagamento.numParcela = 0;
                     pagamento.qntParcelas = 0;
                 }
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
                 pagamento.id_movimento = movimento.id;
 
                 Movimentos movimentoImposto = new Movimentos();
-                controle.salvarMovimento(movimentoImposto);
+                controle.SalvarMovimento(movimentoImposto);
                 movimentoImposto.data = DateTime.Today;
                 movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                 movimentoImposto.id_tipo = 11;
                 movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 Movimentos movimentoMercadoria = new Movimentos();
-                controle.salvarMovimento(movimentoMercadoria);
+                controle.SalvarMovimento(movimentoMercadoria);
                 movimentoMercadoria.data = DateTime.Today;
                 movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
                 movimentoMercadoria.id_tipo = 65;
                 movimentoMercadoria.valor = custoAux;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 PagDebito.desconto = Convert.ToDecimal(PagDebito.desconto) + Convert.ToDecimal((Convert.ToDecimal(txtTotal.Text) * trkDesconto.Value / 100 ) / (Convert.ToDecimal(txtValorTotal.Text) / valor)).ToString("0.00");
 
                 foreach (Vendas value in listaVendas)
                 {
-                    venda = controle.pesquisaVendaID(value.id);
+                    venda = controle.PesquisaVendaID(value.id);
                     venda.desconto = trkDesconto.Value;                    
 
                     Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                    controle.salvaPagamentoPedido(pagamentoPedido);
+                    controle.SalvaPagamentoPedido(pagamentoPedido);
                     pagamentoPedido.id_Venda = venda.id;
                     pagamentoPedido.id_Pagamento = pagamento.id;
 
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
                 }
 
                 if (Convert.ToDecimal(txtSaldoDebito.Text) <= valorPago)
@@ -1591,13 +1591,13 @@ namespace Loja1._0
                 PagDinheiro.valorPagamento = valor.ToString("0.00");
 
                 Movimentos movimento = new Movimentos();
-                controle.salvarMovimento(movimento);
+                controle.SalvarMovimento(movimento);
                 movimento.id_tipo = 19;
                 movimento.valor = valor;
                 movimento.data = DateTime.Now;
 
                 Pagamentos pagamento = new Pagamentos();
-                controle.salvarPagamento(pagamento);
+                controle.SalvarPagamento(pagamento);
                 pagamento.dataPagamento = DateTime.Now;
                 pagamento.formaPag = "Dinheiro";
                 pagamento.valorTotal = Convert.ToDecimal(txtTotal.Text);
@@ -1619,38 +1619,38 @@ namespace Loja1._0
                     pagamento.numParcela = 0;
                     pagamento.qntParcelas = 0;
                 }
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
                 pagamento.id_movimento = movimento.id;
 
                 Movimentos movimentoImposto = new Movimentos();
-                controle.salvarMovimento(movimentoImposto);
+                controle.SalvarMovimento(movimentoImposto);
                 movimentoImposto.data = DateTime.Today;
                 movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                 movimentoImposto.id_tipo = 11;
                 movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 Movimentos movimentoMercadoria = new Movimentos();
-                controle.salvarMovimento(movimentoMercadoria);
+                controle.SalvarMovimento(movimentoMercadoria);
                 movimentoMercadoria.data = DateTime.Today;
                 movimentoMercadoria.desc = "Estoque Pag:" + pagamento.id;
                 movimentoMercadoria.id_tipo = 65;
                 movimentoMercadoria.valor = custoAux;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 PagDinheiro.desconto = Convert.ToDecimal(PagDinheiro.desconto) + Convert.ToDecimal((Convert.ToDecimal(txtTotal.Text) * trkDesconto.Value / 100) / (Convert.ToDecimal(txtValorTotal.Text) / valor)).ToString("0.00");
 
                 foreach (Vendas value in listaVendas)
                 {
-                    venda = controle.pesquisaVendaID(value.id);
+                    venda = controle.PesquisaVendaID(value.id);
                     venda.desconto = trkDesconto.Value;                    
 
                     Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
-                    controle.salvaPagamentoPedido(pagamentoPedido);
+                    controle.SalvaPagamentoPedido(pagamentoPedido);
                     pagamentoPedido.id_Venda = venda.id;
                     pagamentoPedido.id_Pagamento = pagamento.id;
 
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
                 }
 
                 if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valorPago)

@@ -32,7 +32,7 @@ namespace Loja1._0
             try
             {
                 this.user = user;
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 InitializeComponent();
                 lblUser.Text = user.nome;
             }
@@ -103,19 +103,19 @@ namespace Loja1._0
         {
             try
             {
-                if (txtCodigo.Text.Equals(""))
+                if (txtCodigo.Text.ToUpper().Trim().Equals(""))
                 {
                     MessageBox.Show("Para pesquisa de produto insira parte do nome/descrição", "Ação Inválida");
                 }
                 else
                 {
-                    listaProdutos = controle.pesquisaProdutosValidoNome(txtCodigo.Text);
+                    listaProdutos = controle.PesquisaProdutosValidoNome(txtCodigo.Text.ToUpper().Trim());
                     cmbListaProdutos.DataSource = listaProdutos;
                     cmbListaProdutos.ValueMember = "cod_produto";
                     cmbListaProdutos.DisplayMember = "desc_produto";
                     if (listaProdutos.Count == 0)
                     {
-                        MessageBox.Show("Não foram encontrados produtos com o termo \"" + txtCodigo.Text + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
+                        MessageBox.Show("Não foram encontrados produtos com o termo \"" + txtCodigo.Text.ToUpper().Trim() + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
                         txtCodigo.Text = "";
                     }
                     else if (listaProdutos.Count == 1)
@@ -183,13 +183,13 @@ namespace Loja1._0
                 {
                     txtCodigo.Focus();
                 }
-                else if (controle.pesquisaProdutoCod(txtCodigo.Text) == null)
+                else if (controle.PesquisaProdutoCod(txtCodigo.Text) == null)
                 {
                     btnPesquisar_Click(sender, e);
                 }
                 else
                 {
-                    int qnt = controle.pesquisaProdutoCod(txtCodigo.Text).Estoque.qnt_atual;
+                    int qnt = controle.PesquisaProdutoCod(txtCodigo.Text).Estoque.qnt_atual;
 
                     if (txtQnt.Text.Equals(""))
                     {
@@ -225,11 +225,29 @@ namespace Loja1._0
                         }
                         if (!repetido)
                         {
-                            listaCompra.Add(controle.pesquisaProdutoCod(txtCodigo.Text));
+                            listaCompra.Add(controle.PesquisaProdutoCod(txtCodigo.Text));
                             listaCompraQnt.Add(Convert.ToInt32(txtQnt.Text));
+                            
+                            //Script para encerrar e imprimir pedido ao atingir 25 itens e abrir novo com mesmas caracteristicas
+                            if (listaCompra.Count == 25)
+                            {
+                                string cliNome = "";
+                                if(cliente.cpf != null)
+                                {
+                                    cliNome = cliente.nome;
+                                }                        
+                                
+                                IniciaImpressao(sender, e);
+
+                                if (!cliNome.Equals(""))
+                                {
+                                    txtBuscaCliente.Text = cliNome;
+                                    btnPesquisaCliente_Click(sender, e);
+                                }
+                            }
                         }
                         carregaLista(listaCompra, listaCompraQnt);
-                        carregaAdquirido(controle.pesquisaProdutoCod(txtCodigo.Text));
+                        carregaAdquirido(controle.PesquisaProdutoCod(txtCodigo.Text));
                         txtCodigo.Text = "";
                         txtQnt.Text = "";
                         txtCodigo.Focus();
@@ -377,19 +395,19 @@ namespace Loja1._0
                 cmbCliente.Focus();
                 AcceptButton = btnOkCliente;
                 CancelButton = btnCancelCliente;
-                if (txtBuscaCliente.Text.Equals(""))
+                if (txtBuscaCliente.Text.ToUpper().Trim().Equals(""))
                 {
                     MessageBox.Show("Para pesquisa de cliente insira parte do nome, ou cpf completo", "Ação Inválida");
                 }
                 else
                 {
-                    listaClientes = controle.pesquisaClientesCompleta(txtBuscaCliente.Text);
+                    listaClientes = controle.PesquisaClientesCompleta(txtBuscaCliente.Text.ToUpper().Trim());
                     cmbCliente.DataSource = listaClientes;
                     cmbCliente.ValueMember = "cpf";
                     cmbCliente.DisplayMember = "nome";
                     if (listaClientes.Count == 0)
                     {
-                        MessageBox.Show("Não foram encontrados clientes com o termo \"" + txtBuscaCliente.Text + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
+                        MessageBox.Show("Não foram encontrados clientes com o termo \"" + txtBuscaCliente.Text.ToUpper().Trim() + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
                         txtBuscaCliente.Text = "";
                     }
                     else if (listaClientes.Count == 1)
@@ -426,7 +444,7 @@ namespace Loja1._0
             {
                 this.AcceptButton = btnAdicionar;
                 this.CancelButton = null;
-                cliente = controle.pesquisaClienteCpf(cmbListaProdutos.SelectedValue.ToString());
+                cliente = controle.PesquisaClienteCpf(cmbListaProdutos.SelectedValue.ToString());
                 lblCodigo.Text = "Cliente : ";
                 txtCliente.Visible = true;
                 btnPesquisaCliente.Visible = false;
@@ -458,7 +476,7 @@ namespace Loja1._0
             try
             {
                 venda = new Vendas();
-                controle.salvarVenda(venda);
+                controle.SalvarVenda(venda);
                 venda.cnpj = "";
                 venda.cpf = "";
                 if (cliente.id != 0)
@@ -485,21 +503,21 @@ namespace Loja1._0
                 venda.valor_Venda = 0;
                 venda.data_Venda = DateTime.Now;
                 venda.comissao = (Convert.ToDecimal(txtTotal.Text) * gerencia.comissao);
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 for (int i = 0; i < listaCompra.Count; i++)
                 {
                     produtosPedido = new Vendas_Produtos();
-                    controle.salvaProdutosVendidos(produtosPedido);
+                    controle.SalvaProdutosVendidos(produtosPedido);
                     produtosPedido.id_venda = venda.id;
                     produtosPedido.id_produto = listaCompra[i].id;
                     produtosPedido.num_item = i;
                     produtosPedido.quantidade = listaCompraQnt[i];
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     venda.icms = venda.icms + Convert.ToDouble(produtosPedido.Produtos.icms_pago * produtosPedido.quantidade);
                     venda.valor_Venda = venda.valor_Venda + Convert.ToDouble(produtosPedido.Produtos.preco_venda * produtosPedido.quantidade);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
                 }
                 IniciaImpressao(sender, e);
             }

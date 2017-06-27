@@ -27,7 +27,7 @@ namespace Loja1._0
                 this.user = user;
                 InitializeComponent();
 
-                listaClientes = controle.pesquisaClientesCompleta("");
+                listaClientes = controle.PesquisaClientesCompleta("");
                 preencheRelacao(listaClientes);
             }
             catch
@@ -81,52 +81,52 @@ namespace Loja1._0
         {
             try
             {
-                if (txtCliente.Text.Length < 3 && txtCpf.Text.Equals(""))
+                if (txtCliente.Text.Trim().Length < 3 && txtCpf.Text.Trim().Equals(""))
                 {
                     MessageBox.Show("É necessário ao menos 3 caracteres para realizar uma busca por nome", "Ação inválida");
                     btnLimpar_Click(sender, e);
                 }
 
-                else if ((txtCpf.Text.Length < 11 || txtCpf.Text.Length > 14) && txtCliente.Text.Equals(""))
+                else if ((txtCpf.Text.Trim().Length < 11 || txtCpf.Text.Trim().Length > 14) && txtCliente.Text.Trim().Equals(""))
                 {
                     MessageBox.Show("É necessário 13 caracteres para realizar uma busca por CNPJ/CPF", "Ação inválida");
                     btnLimpar_Click(sender, e);
                 }
                 else
                 {
-                    if (txtCliente.Text.Equals("") && !txtCpf.Text.Equals(""))
+                    if (txtCliente.Text.ToUpper().Trim().Equals("") && !txtCpf.Text.ToUpper().Trim().Equals(""))
                     {
-                        if (controle.pesquisaClienteCpf(txtCpf.Text) != null)
+                        if (controle.PesquisaClienteCpf(txtCpf.Text.ToUpper().Trim()) != null)
                         {
                             txtCliente.Enabled = false;
                             txtCpf.Enabled = false;
-                            lblMensagem.Text = "cliente com o CNPJ: " + txtCpf.Text;
-                            cliente = controle.pesquisaClienteCpf(txtCpf.Text);
+                            lblMensagem.Text = "cliente com o CPF/CNPJ: " + txtCpf.Text.ToUpper().Trim();
+                            cliente = controle.PesquisaClienteCpf(txtCpf.Text.ToUpper().Trim());
                             preencheDados(cliente);
                         }
                         else
                         {
-                            MessageBox.Show("Não existem clientes com o CNPJ/CPF " + txtCpf.Text + ", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
+                            MessageBox.Show("Não existem clientes com o CNPJ/CPF " + txtCpf.Text.ToUpper().Trim() + ", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
                             btnLimpar_Click(sender, e);
                         }
                     }
-                    else if (!txtCliente.Text.Equals("") && txtCpf.Text.Equals(""))
+                    else if (!txtCliente.Text.ToUpper().Trim().Equals("") && txtCpf.Text.ToUpper().Trim().Equals(""))
                     {
-                        if (controle.pesquisaClientesCompleta(txtCliente.Text).Count > 0)
+                        if (controle.PesquisaClientesCompleta(txtCliente.Text.ToUpper().Trim()).Count > 0)
                         {
                             txtCliente.Enabled = false;
                             txtCpf.Enabled = false;
-                            lblMensagem.Text = "Clientes que contém a expressão: " + txtCliente.Text + " no nome";
-                            listaClientes = controle.pesquisaClientesCompleta(txtCliente.Text);
+                            lblMensagem.Text = "Clientes que contém a expressão: " + txtCliente.Text.ToUpper().Trim() + " no nome";
+                            listaClientes = controle.PesquisaClientesCompleta(txtCliente.Text.ToUpper().Trim());
                             preencheRelacao(listaClientes);
                         }
                         else
                         {
-                            MessageBox.Show("Não existem clientes ativos com a expressão \"" + txtCliente.Text + "\", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
+                            MessageBox.Show("Não existem clientes ativos com a expressão \"" + txtCliente.Text.ToUpper().Trim() + "\", Por favor verifique e refaça sua pesquisa", "Pesquisa Inválida");
                             btnLimpar_Click(sender, e);
                         }
                     }
-                    else if (!txtCliente.Text.Equals("") && !txtCpf.Text.Equals(""))
+                    else if (!txtCliente.Text.ToUpper().Trim().Equals("") && !txtCpf.Text.ToUpper().Trim().Equals(""))
                     {
                         MessageBox.Show("Para pesquisa de cliente preencha somente um campo de busca, ou CNPJ/CPF, ou Nome", "Ação Inválida");
                         btnLimpar_Click(sender, e);
@@ -149,7 +149,7 @@ namespace Loja1._0
             try
             {
                 limpaForm();
-                listaEstado = controle.pesquisaGeralEstados();
+                listaEstado = controle.PesquisaGeralEstados();
                 cmbUf.DataSource = listaEstado;
                 cmbUf.ValueMember = "id";
                 cmbUf.DisplayMember = "sigla";
@@ -225,7 +225,7 @@ namespace Loja1._0
                     //se flag novo = false, novo elemento
                     if (flagNovo)
                     {
-                        if (validaDoc.validaTipoCpfCnpj(txtCpf.Text))
+                        if (validaDoc.validaTipoCpfCnpj(txtCpf.Text.Trim()))
                         {
                             btnPesquisa.Enabled = true;
                             btnSalvar.Enabled = false;
@@ -233,18 +233,18 @@ namespace Loja1._0
                             flagNovo = false;
 
                             Model.Clientes cliente = new Model.Clientes();
-                            controle.salvarCliente(cliente);
+                            controle.SalvarCliente(cliente);
 
-                            cliente.cpf = txtCpf.Text;
-                            cliente.nome = txtCliente.Text;
+                            cliente.cpf = txtCpf.Text.Trim();
+                            cliente.nome = txtCliente.Text.ToUpper().Trim();
                             cliente.status = 1;
-                            cliente.creditos = Convert.ToDouble(txtCreditos.Text);
-                            cliente.contato = txtContato.Text;
-                            cliente.email = txtEmail.Text;
-                            cliente.endereço = txtEndereco.Text;
-                            cliente.numeral = txtNum.Text;
-                            cliente.bairro = txtBairro.Text;
-                            cliente.id_Cidade = controle.pesquisaCidade(cmbCidade.Text).id;
+                            cliente.creditos = Convert.ToDouble(txtCreditos.Text.Trim());
+                            cliente.contato = txtContato.Text.ToUpper().Trim();
+                            cliente.email = txtEmail.Text.Trim();
+                            cliente.endereço = txtEndereco.Text.ToUpper().Trim();
+                            cliente.numeral = txtNum.Text.ToUpper().Trim();
+                            cliente.bairro = txtBairro.Text.ToUpper().Trim();
+                            cliente.id_Cidade = controle.PesquisaCidade(cmbCidade.Text).id;
                             cliente.telefone = txtTel1.Text;
                             cliente.recado = txtTel2.Text;
                             cliente.celular = txtCelular.Text;
@@ -264,14 +264,14 @@ namespace Loja1._0
                             {
                                 cliente.operadora = "Vivo";
                             }
-                            controle.salvaAtualiza();
+                            controle.SalvaAtualiza();
 
                             if (Convert.ToDouble(txtCreditos.Text) > 0)
                             {
                                 Movimentos movimento = new Movimentos();
-                                controle.salvarMovimento(movimento);
+                                controle.SalvarMovimento(movimento);
                                 movimento.data = DateTime.Now;
-                                movimento.desc = "Adição de crédito (" + txtCliente.Text + ")";
+                                movimento.desc = "Adição de crédito (" + txtCliente.Text.ToUpper().Trim() + ")";
                                 movimento.valor = Convert.ToDecimal(txtCreditos.Text);
                                 if (rdbDinheiro.Checked)
                                 {
@@ -281,11 +281,11 @@ namespace Loja1._0
                                 {
                                     movimento.id_tipo = 53;
                                 }
-                                controle.salvaAtualiza();
+                                controle.SalvaAtualiza();
                             }
                             btnLimpar_Click(sender, e);
                             MessageBox.Show("Inclusão realizada com sucesso", "Ação bem sucedida");
-                            listaClientes = controle.pesquisaClientesCompleta("");
+                            listaClientes = controle.PesquisaClientesCompleta("");
                             preencheRelacao(listaClientes);
                         }
                     }
@@ -308,7 +308,7 @@ namespace Loja1._0
                             cliente.endereço = txtEndereco.Text;
                             cliente.numeral = txtNum.Text;
                             cliente.bairro = txtBairro.Text;
-                            cliente.id_Cidade = controle.pesquisaCidade(cmbCidade.Text).id;
+                            cliente.id_Cidade = controle.PesquisaCidade(cmbCidade.Text).id;
                             cliente.telefone = txtTel1.Text;
                             cliente.recado = txtTel2.Text;
                             cliente.celular = txtCelular.Text;
@@ -332,7 +332,7 @@ namespace Loja1._0
                             if (Convert.ToDouble(txtCreditos.Text) > credito)
                             {
                                 Movimentos movimento = new Movimentos();
-                                controle.salvarMovimento(movimento);
+                                controle.SalvarMovimento(movimento);
                                 movimento.data = DateTime.Now;
                                 movimento.desc = "Adição de crédito (" + txtCliente.Text + ")";
                                 movimento.valor = Convert.ToDecimal(txtCreditos.Text) - Convert.ToDecimal(credito);
@@ -344,14 +344,14 @@ namespace Loja1._0
                                 {
                                     movimento.id_tipo = 53;
                                 }
-                                controle.salvaAtualiza();
+                                controle.SalvaAtualiza();
                                 limpaForm();
                                 btnLimpar_Click(sender, e);
                                 MessageBox.Show("Alteração realizada com sucesso", "Ação bem sucedida");
                             }
                             else if (Convert.ToDouble(txtCreditos.Text) == credito)
                             {
-                                controle.salvaAtualiza();
+                                controle.SalvaAtualiza();
                                 limpaForm();
                                 btnLimpar_Click(sender, e);
                                 MessageBox.Show("Alteração realizada com sucesso", "Ação bem sucedida");
@@ -361,7 +361,7 @@ namespace Loja1._0
                                 MessageBox.Show("Não é permitida a redução dos direta dos créditos de clientes", "Ação Inválida");
                             }
 
-                            listaClientes = controle.pesquisaClientesCompleta("");
+                            listaClientes = controle.PesquisaClientesCompleta("");
                             preencheRelacao(listaClientes);
                         }
                     }
@@ -390,7 +390,7 @@ namespace Loja1._0
         {
             flagNovo = true;
             limpaForm();
-            listaClientes = controle.pesquisaClientesCompleta("");
+            listaClientes = controle.PesquisaClientesCompleta("");
             preencheRelacao(listaClientes);
             lblMensagem.Text = "Relação de Clientes";
         }
@@ -441,7 +441,7 @@ namespace Loja1._0
             try
             {
                 cmbCidade.Enabled = true;
-                listaCidade = controle.pesquisaCidadesPorEstado(cmbUf.SelectedIndex + 1);
+                listaCidade = controle.PesquisaCidadesPorEstado(cmbUf.SelectedIndex + 1);
                 cmbCidade.DataSource = listaCidade;
                 cmbCidade.DisplayMember = "cidade";
                 cmbCidade.ValueMember = "id";
@@ -513,7 +513,7 @@ namespace Loja1._0
         {
             try
             {
-                cliente = controle.pesquisaClienteCpf(dgvClientes.Rows[e.RowIndex].Cells[1].Value.ToString());
+                cliente = controle.PesquisaClienteCpf(dgvClientes.Rows[e.RowIndex].Cells[1].Value.ToString());
                 btnLimpar_Click(sender, e);
                 btnPesquisa.Enabled = false;
                 preencheDados(cliente);
@@ -529,7 +529,7 @@ namespace Loja1._0
             try
             {
                 cliente.status = 0;
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
                 btnLimpar_Click(sender, e);
             }
             catch

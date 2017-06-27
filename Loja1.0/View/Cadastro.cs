@@ -29,13 +29,13 @@ namespace Loja1._0
                 if (validaCampos())
                 {
                     user = new Model.Usuarios();
-                    controle.salvarUsuario(user);
-                    user.nome = txtLogin.Text;
-                    user.senha = txtSenha.Text;
+                    controle.SalvarUsuario(user);
+                    user.nome = txtLogin.Text.ToUpper().Trim();
+                    user.senha = txtSenha.Text.Trim();
                     user.num_perfil = novoPerfil;
                     user.status = 0;
-                    controle.salvaAtualiza();
-                    MessageBox.Show("Criado novo usuário, login : " + txtLogin.Text + ", aguardando validação.", "Criação de usuário e senha");
+                    controle.SalvaAtualiza();
+                    MessageBox.Show("Criado novo usuário, login : " + txtLogin.Text.Trim().ToUpper() + ", aguardando validação.", "Criação de usuário e senha");
                     Login form = new Login();
                     form.Show();
                     this.Hide();

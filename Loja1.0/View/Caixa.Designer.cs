@@ -1643,7 +1643,7 @@
             this.btnCancelaAberto.Name = "btnCancelaAberto";
             this.btnCancelaAberto.Size = new System.Drawing.Size(114, 40);
             this.btnCancelaAberto.TabIndex = 79;
-            this.btnCancelaAberto.Text = "Cancelar Cupom Aberto";
+            this.btnCancelaAberto.Text = "Cancelar Último Cupom";
             this.btnCancelaAberto.UseVisualStyleBackColor = false;
             this.btnCancelaAberto.Click += new System.EventHandler(this.btnCancelaAberto_Click);
             // 

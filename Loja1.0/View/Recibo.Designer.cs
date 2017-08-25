@@ -1,6 +1,6 @@
 ﻿namespace Loja1._0.View
 {
-    partial class Pedido
+    partial class Recibo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,52 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.printablePanel1 = new Loja1._0.Control.PrintablePanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtTotalFinal = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.panel136 = new System.Windows.Forms.Panel();
-            this.txtDesc = new System.Windows.Forms.Label();
-            this.panel285 = new System.Windows.Forms.Panel();
-            this.panel130 = new System.Windows.Forms.Panel();
-            this.label32 = new System.Windows.Forms.Label();
-            this.panel131 = new System.Windows.Forms.Panel();
-            this.panel132 = new System.Windows.Forms.Panel();
-            this.panel127 = new System.Windows.Forms.Panel();
-            this.label31 = new System.Windows.Forms.Label();
-            this.panel128 = new System.Windows.Forms.Panel();
-            this.panel129 = new System.Windows.Forms.Panel();
-            this.panel124 = new System.Windows.Forms.Panel();
-            this.label30 = new System.Windows.Forms.Label();
-            this.panel125 = new System.Windows.Forms.Panel();
-            this.panel126 = new System.Windows.Forms.Panel();
-            this.panel225 = new System.Windows.Forms.Panel();
-            this.label68 = new System.Windows.Forms.Label();
-            this.panel140 = new System.Windows.Forms.Panel();
-            this.txtTotalImp = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblTotalItens = new System.Windows.Forms.Label();
-            this.panel31 = new System.Windows.Forms.Panel();
-            this.panel123 = new System.Windows.Forms.Panel();
-            this.panel141 = new System.Windows.Forms.Panel();
-            this.txtSubTotal = new System.Windows.Forms.Label();
-            this.panel142 = new System.Windows.Forms.Panel();
-            this.txtAcres = new System.Windows.Forms.Label();
-            this.panel121 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel99 = new System.Windows.Forms.Panel();
-            this.txtVlUnd = new System.Windows.Forms.Label();
-            this.panel77 = new System.Windows.Forms.Panel();
-            this.txtItemQnt = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblSubTituloCliente = new System.Windows.Forms.Label();
-            this.panel55 = new System.Windows.Forms.Panel();
-            this.txtItemUnd = new System.Windows.Forms.Label();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.txtItemNome = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtUsuario = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -123,21 +88,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.printablePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
-            this.panel136.SuspendLayout();
-            this.panel130.SuspendLayout();
-            this.panel127.SuspendLayout();
-            this.panel124.SuspendLayout();
-            this.panel225.SuspendLayout();
-            this.panel140.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel141.SuspendLayout();
-            this.panel142.SuspendLayout();
-            this.panel121.SuspendLayout();
-            this.panel99.SuspendLayout();
-            this.panel77.SuspendLayout();
-            this.panel55.SuspendLayout();
-            this.panel20.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -155,26 +105,16 @@
             // 
             this.printablePanel1.BackColor = System.Drawing.Color.Transparent;
             this.printablePanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.printablePanel1.Controls.Add(this.label10);
+            this.printablePanel1.Controls.Add(this.label9);
+            this.printablePanel1.Controls.Add(this.label8);
+            this.printablePanel1.Controls.Add(this.label6);
+            this.printablePanel1.Controls.Add(this.label5);
+            this.printablePanel1.Controls.Add(this.label2);
             this.printablePanel1.Controls.Add(this.txtTotalFinal);
             this.printablePanel1.Controls.Add(this.label33);
-            this.printablePanel1.Controls.Add(this.dgvProdutos);
-            this.printablePanel1.Controls.Add(this.panel136);
-            this.printablePanel1.Controls.Add(this.panel285);
-            this.printablePanel1.Controls.Add(this.panel130);
-            this.printablePanel1.Controls.Add(this.panel127);
-            this.printablePanel1.Controls.Add(this.panel124);
-            this.printablePanel1.Controls.Add(this.panel225);
-            this.printablePanel1.Controls.Add(this.panel140);
-            this.printablePanel1.Controls.Add(this.panel5);
-            this.printablePanel1.Controls.Add(this.panel141);
-            this.printablePanel1.Controls.Add(this.panel142);
-            this.printablePanel1.Controls.Add(this.panel121);
-            this.printablePanel1.Controls.Add(this.panel99);
-            this.printablePanel1.Controls.Add(this.panel77);
             this.printablePanel1.Controls.Add(this.label4);
             this.printablePanel1.Controls.Add(this.lblSubTituloCliente);
-            this.printablePanel1.Controls.Add(this.panel55);
-            this.printablePanel1.Controls.Add(this.panel20);
             this.printablePanel1.Controls.Add(this.panel6);
             this.printablePanel1.Controls.Add(this.panel8);
             this.printablePanel1.Controls.Add(this.panel9);
@@ -187,15 +127,80 @@
             this.printablePanel1.TabIndex = 0;
             this.printablePanel1.Text = "PrintablePanel";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label10.Location = new System.Drawing.Point(19, 507);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(819, 20);
+            this.label10.TabIndex = 174;
+            this.label10.Text = "*Este recibo somente terá valor se estiver assinado pelo atendente e com o carimb" +
+    "o com o CNPJ da Loja Emitente.";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(428, 424);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(221, 24);
+            this.label9.TabIndex = 179;
+            this.label9.Text = "Assinatura do Atendente ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(322, 400);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(440, 24);
+            this.label8.TabIndex = 178;
+            this.label8.Text = "___________________________________________";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(150, 332);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(474, 24);
+            this.label6.TabIndex = 177;
+            this.label6.Text = "nesta mesma loja, limitados ao referido valor, sem mais.";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(161, 308);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(744, 24);
+            this.label5.TabIndex = 176;
+            this.label5.Text = "Devendo este utilizar o valor como pagamento antecipado para a aquisição de produ" +
+    "tos";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(161, 269);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(757, 24);
+            this.label2.TabIndex = 175;
+            this.label2.Text = "Recebemos do cliente acima citado a quantia descrita no campo Total Final deste r" +
+    "ecibo.";
+            // 
             // txtTotalFinal
             // 
             this.txtTotalFinal.AutoSize = true;
             this.txtTotalFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalFinal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtTotalFinal.Location = new System.Drawing.Point(956, 605);
+            this.txtTotalFinal.Location = new System.Drawing.Point(957, 605);
             this.txtTotalFinal.Name = "txtTotalFinal";
             this.txtTotalFinal.Size = new System.Drawing.Size(100, 25);
-            this.txtTotalFinal.TabIndex = 89;
+            this.txtTotalFinal.TabIndex = 168;
             this.txtTotalFinal.Text = "totalFinal";
             // 
             // label33
@@ -208,369 +213,6 @@
             this.label33.Size = new System.Drawing.Size(176, 25);
             this.label33.TabIndex = 103;
             this.label33.Text = "Total Final (R$)";
-            // 
-            // dgvProdutos
-            // 
-            this.dgvProdutos.AllowUserToAddRows = false;
-            this.dgvProdutos.AllowUserToDeleteRows = false;
-            this.dgvProdutos.AllowUserToResizeColumns = false;
-            this.dgvProdutos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvProdutos.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dgvProdutos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProdutos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.ColumnHeadersVisible = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProdutos.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvProdutos.Enabled = false;
-            this.dgvProdutos.GridColor = System.Drawing.SystemColors.ControlText;
-            this.dgvProdutos.Location = new System.Drawing.Point(8, 250);
-            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(0);
-            this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.ReadOnly = true;
-            this.dgvProdutos.RowHeadersVisible = false;
-            this.dgvProdutos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvProdutos.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvProdutos.RowTemplate.Height = 15;
-            this.dgvProdutos.RowTemplate.ReadOnly = true;
-            this.dgvProdutos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProdutos.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.ShowCellErrors = false;
-            this.dgvProdutos.ShowCellToolTips = false;
-            this.dgvProdutos.ShowEditingIcon = false;
-            this.dgvProdutos.ShowRowErrors = false;
-            this.dgvProdutos.Size = new System.Drawing.Size(1101, 349);
-            this.dgvProdutos.TabIndex = 167;
-            // 
-            // panel136
-            // 
-            this.panel136.Controls.Add(this.txtDesc);
-            this.panel136.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel136.Location = new System.Drawing.Point(553, 616);
-            this.panel136.Name = "panel136";
-            this.panel136.Size = new System.Drawing.Size(101, 29);
-            this.panel136.TabIndex = 113;
-            // 
-            // txtDesc
-            // 
-            this.txtDesc.AutoSize = true;
-            this.txtDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDesc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtDesc.Location = new System.Drawing.Point(24, 0);
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(43, 20);
-            this.txtDesc.TabIndex = 89;
-            this.txtDesc.Text = "desc";
-            // 
-            // panel285
-            // 
-            this.panel285.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel285.Location = new System.Drawing.Point(3, 233);
-            this.panel285.Name = "panel285";
-            this.panel285.Size = new System.Drawing.Size(65, 17);
-            this.panel285.TabIndex = 166;
-            // 
-            // panel130
-            // 
-            this.panel130.Controls.Add(this.label32);
-            this.panel130.Controls.Add(this.panel131);
-            this.panel130.Controls.Add(this.panel132);
-            this.panel130.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel130.Location = new System.Drawing.Point(517, 599);
-            this.panel130.Name = "panel130";
-            this.panel130.Size = new System.Drawing.Size(149, 17);
-            this.panel130.TabIndex = 117;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label32.Location = new System.Drawing.Point(33, 0);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(106, 15);
-            this.label32.TabIndex = 103;
-            this.label32.Text = "Descontos (R$)";
-            // 
-            // panel131
-            // 
-            this.panel131.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel131.Location = new System.Drawing.Point(-2, 17);
-            this.panel131.Name = "panel131";
-            this.panel131.Size = new System.Drawing.Size(352, 17);
-            this.panel131.TabIndex = 9;
-            // 
-            // panel132
-            // 
-            this.panel132.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel132.Location = new System.Drawing.Point(-2, 33);
-            this.panel132.Name = "panel132";
-            this.panel132.Size = new System.Drawing.Size(352, 17);
-            this.panel132.TabIndex = 8;
-            // 
-            // panel127
-            // 
-            this.panel127.Controls.Add(this.label31);
-            this.panel127.Controls.Add(this.panel128);
-            this.panel127.Controls.Add(this.panel129);
-            this.panel127.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel127.Location = new System.Drawing.Point(345, 599);
-            this.panel127.Name = "panel127";
-            this.panel127.Size = new System.Drawing.Size(149, 17);
-            this.panel127.TabIndex = 116;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label31.Location = new System.Drawing.Point(25, 0);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(112, 15);
-            this.label31.TabIndex = 103;
-            this.label31.Text = "Acrescimos (R$)";
-            // 
-            // panel128
-            // 
-            this.panel128.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel128.Location = new System.Drawing.Point(-2, 17);
-            this.panel128.Name = "panel128";
-            this.panel128.Size = new System.Drawing.Size(352, 17);
-            this.panel128.TabIndex = 9;
-            // 
-            // panel129
-            // 
-            this.panel129.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel129.Location = new System.Drawing.Point(-2, 33);
-            this.panel129.Name = "panel129";
-            this.panel129.Size = new System.Drawing.Size(352, 17);
-            this.panel129.TabIndex = 8;
-            // 
-            // panel124
-            // 
-            this.panel124.Controls.Add(this.label30);
-            this.panel124.Controls.Add(this.panel125);
-            this.panel124.Controls.Add(this.panel126);
-            this.panel124.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel124.Location = new System.Drawing.Point(179, 599);
-            this.panel124.Name = "panel124";
-            this.panel124.Size = new System.Drawing.Size(149, 17);
-            this.panel124.TabIndex = 115;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label30.Location = new System.Drawing.Point(11, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(133, 15);
-            this.label30.TabIndex = 103;
-            this.label30.Text = "Total Impostos (R$)";
-            // 
-            // panel125
-            // 
-            this.panel125.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel125.Location = new System.Drawing.Point(-2, 17);
-            this.panel125.Name = "panel125";
-            this.panel125.Size = new System.Drawing.Size(352, 17);
-            this.panel125.TabIndex = 9;
-            // 
-            // panel126
-            // 
-            this.panel126.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel126.Location = new System.Drawing.Point(-2, 33);
-            this.panel126.Name = "panel126";
-            this.panel126.Size = new System.Drawing.Size(352, 17);
-            this.panel126.TabIndex = 8;
-            // 
-            // panel225
-            // 
-            this.panel225.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel225.Controls.Add(this.label68);
-            this.panel225.Location = new System.Drawing.Point(1010, 233);
-            this.panel225.Name = "panel225";
-            this.panel225.Size = new System.Drawing.Size(101, 17);
-            this.panel225.TabIndex = 130;
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label68.Location = new System.Drawing.Point(3, 0);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(61, 15);
-            this.label68.TabIndex = 88;
-            this.label68.Text = "R$ Total";
-            // 
-            // panel140
-            // 
-            this.panel140.Controls.Add(this.txtTotalImp);
-            this.panel140.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel140.Location = new System.Drawing.Point(197, 616);
-            this.panel140.Name = "panel140";
-            this.panel140.Size = new System.Drawing.Size(101, 29);
-            this.panel140.TabIndex = 110;
-            // 
-            // txtTotalImp
-            // 
-            this.txtTotalImp.AutoSize = true;
-            this.txtTotalImp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalImp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtTotalImp.Location = new System.Drawing.Point(16, 0);
-            this.txtTotalImp.Name = "txtTotalImp";
-            this.txtTotalImp.Size = new System.Drawing.Size(67, 20);
-            this.txtTotalImp.TabIndex = 89;
-            this.txtTotalImp.Text = "totalImp";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.lblTotalItens);
-            this.panel5.Controls.Add(this.panel31);
-            this.panel5.Controls.Add(this.panel123);
-            this.panel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel5.Location = new System.Drawing.Point(3, 599);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(149, 17);
-            this.panel5.TabIndex = 114;
-            // 
-            // lblTotalItens
-            // 
-            this.lblTotalItens.AutoSize = true;
-            this.lblTotalItens.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalItens.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTotalItens.Location = new System.Drawing.Point(12, 0);
-            this.lblTotalItens.Name = "lblTotalItens";
-            this.lblTotalItens.Size = new System.Drawing.Size(133, 15);
-            this.lblTotalItens.TabIndex = 103;
-            this.lblTotalItens.Text = "Total dos itens (R$)";
-            // 
-            // panel31
-            // 
-            this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel31.Location = new System.Drawing.Point(-2, 17);
-            this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(352, 17);
-            this.panel31.TabIndex = 9;
-            // 
-            // panel123
-            // 
-            this.panel123.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel123.Location = new System.Drawing.Point(-2, 33);
-            this.panel123.Name = "panel123";
-            this.panel123.Size = new System.Drawing.Size(352, 17);
-            this.panel123.TabIndex = 8;
-            // 
-            // panel141
-            // 
-            this.panel141.Controls.Add(this.txtSubTotal);
-            this.panel141.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel141.Location = new System.Drawing.Point(21, 616);
-            this.panel141.Name = "panel141";
-            this.panel141.Size = new System.Drawing.Size(101, 29);
-            this.panel141.TabIndex = 111;
-            // 
-            // txtSubTotal
-            // 
-            this.txtSubTotal.AutoSize = true;
-            this.txtSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubTotal.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtSubTotal.Location = new System.Drawing.Point(16, 0);
-            this.txtSubTotal.Name = "txtSubTotal";
-            this.txtSubTotal.Size = new System.Drawing.Size(76, 20);
-            this.txtSubTotal.TabIndex = 89;
-            this.txtSubTotal.Text = "totalItens";
-            // 
-            // panel142
-            // 
-            this.panel142.Controls.Add(this.txtAcres);
-            this.panel142.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel142.Location = new System.Drawing.Point(373, 616);
-            this.panel142.Name = "panel142";
-            this.panel142.Size = new System.Drawing.Size(101, 29);
-            this.panel142.TabIndex = 109;
-            // 
-            // txtAcres
-            // 
-            this.txtAcres.AutoSize = true;
-            this.txtAcres.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAcres.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtAcres.Location = new System.Drawing.Point(20, 0);
-            this.txtAcres.Name = "txtAcres";
-            this.txtAcres.Size = new System.Drawing.Size(48, 20);
-            this.txtAcres.TabIndex = 89;
-            this.txtAcres.Text = "acres";
-            // 
-            // panel121
-            // 
-            this.panel121.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel121.Controls.Add(this.label10);
-            this.panel121.Location = new System.Drawing.Point(912, 233);
-            this.panel121.Name = "panel121";
-            this.panel121.Size = new System.Drawing.Size(99, 17);
-            this.panel121.TabIndex = 76;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(3, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 15);
-            this.label10.TabIndex = 88;
-            this.label10.Text = "ICMS Pago";
-            // 
-            // panel99
-            // 
-            this.panel99.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel99.Controls.Add(this.txtVlUnd);
-            this.panel99.Location = new System.Drawing.Point(814, 233);
-            this.panel99.Name = "panel99";
-            this.panel99.Size = new System.Drawing.Size(99, 17);
-            this.panel99.TabIndex = 58;
-            // 
-            // txtVlUnd
-            // 
-            this.txtVlUnd.AutoSize = true;
-            this.txtVlUnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVlUnd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtVlUnd.Location = new System.Drawing.Point(3, 0);
-            this.txtVlUnd.Name = "txtVlUnd";
-            this.txtVlUnd.Size = new System.Drawing.Size(59, 15);
-            this.txtVlUnd.TabIndex = 87;
-            this.txtVlUnd.Text = "R$ Und.";
-            // 
-            // panel77
-            // 
-            this.panel77.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel77.Controls.Add(this.txtItemQnt);
-            this.panel77.Location = new System.Drawing.Point(731, 233);
-            this.panel77.Name = "panel77";
-            this.panel77.Size = new System.Drawing.Size(85, 17);
-            this.panel77.TabIndex = 40;
-            // 
-            // txtItemQnt
-            // 
-            this.txtItemQnt.AutoSize = true;
-            this.txtItemQnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemQnt.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtItemQnt.Location = new System.Drawing.Point(3, 0);
-            this.txtItemQnt.Name = "txtItemQnt";
-            this.txtItemQnt.Size = new System.Drawing.Size(33, 15);
-            this.txtItemQnt.TabIndex = 86;
-            this.txtItemQnt.Text = "Qnt.";
             // 
             // label4
             // 
@@ -593,46 +235,6 @@
             this.lblSubTituloCliente.Size = new System.Drawing.Size(185, 15);
             this.lblSubTituloCliente.TabIndex = 6;
             this.lblSubTituloCliente.Text = "Informações sobre o cliente";
-            // 
-            // panel55
-            // 
-            this.panel55.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel55.Controls.Add(this.txtItemUnd);
-            this.panel55.Location = new System.Drawing.Point(633, 233);
-            this.panel55.Name = "panel55";
-            this.panel55.Size = new System.Drawing.Size(99, 17);
-            this.panel55.TabIndex = 22;
-            // 
-            // txtItemUnd
-            // 
-            this.txtItemUnd.AutoSize = true;
-            this.txtItemUnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemUnd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtItemUnd.Location = new System.Drawing.Point(3, 0);
-            this.txtItemUnd.Name = "txtItemUnd";
-            this.txtItemUnd.Size = new System.Drawing.Size(89, 15);
-            this.txtItemUnd.TabIndex = 85;
-            this.txtItemUnd.Text = "Und. Medida";
-            // 
-            // panel20
-            // 
-            this.panel20.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel20.Controls.Add(this.txtItemNome);
-            this.panel20.Location = new System.Drawing.Point(67, 233);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(567, 17);
-            this.panel20.TabIndex = 5;
-            // 
-            // txtItemNome
-            // 
-            this.txtItemNome.AutoSize = true;
-            this.txtItemNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtItemNome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtItemNome.Location = new System.Drawing.Point(161, 0);
-            this.txtItemNome.Name = "txtItemNome";
-            this.txtItemNome.Size = new System.Drawing.Size(158, 15);
-            this.txtItemNome.TabIndex = 84;
-            this.txtItemNome.Text = "Descrição dos produtos";
             // 
             // panel6
             // 
@@ -1100,9 +702,9 @@
             this.txtNumPedido.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtNumPedido.Location = new System.Drawing.Point(2, 24);
             this.txtNumPedido.Name = "txtNumPedido";
-            this.txtNumPedido.Size = new System.Drawing.Size(91, 20);
+            this.txtNumPedido.Size = new System.Drawing.Size(71, 20);
             this.txtNumPedido.TabIndex = 1;
-            this.txtNumPedido.Text = "NumPedido";
+            this.txtNumPedido.Text = "RECIBO";
             // 
             // label1
             // 
@@ -1173,7 +775,7 @@
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.ImpressaoPagina);
             // 
-            // Pedido
+            // Recibo
             // 
             this.AcceptButton = this.btnImprimir;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1183,41 +785,12 @@
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.printablePanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Pedido";
+            this.Name = "Recibo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Pedido";
             this.Shown += new System.EventHandler(this.ImpressaoPagina);
             this.printablePanel1.ResumeLayout(false);
             this.printablePanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
-            this.panel136.ResumeLayout(false);
-            this.panel136.PerformLayout();
-            this.panel130.ResumeLayout(false);
-            this.panel130.PerformLayout();
-            this.panel127.ResumeLayout(false);
-            this.panel127.PerformLayout();
-            this.panel124.ResumeLayout(false);
-            this.panel124.PerformLayout();
-            this.panel225.ResumeLayout(false);
-            this.panel225.PerformLayout();
-            this.panel140.ResumeLayout(false);
-            this.panel140.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel141.ResumeLayout(false);
-            this.panel141.PerformLayout();
-            this.panel142.ResumeLayout(false);
-            this.panel142.PerformLayout();
-            this.panel121.ResumeLayout(false);
-            this.panel121.PerformLayout();
-            this.panel99.ResumeLayout(false);
-            this.panel99.PerformLayout();
-            this.panel77.ResumeLayout(false);
-            this.panel77.PerformLayout();
-            this.panel55.ResumeLayout(false);
-            this.panel55.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
@@ -1255,7 +828,6 @@
         private System.Windows.Forms.Label lblLojaCnpj;
         private System.Windows.Forms.Label lblLoja;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
@@ -1295,47 +867,16 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label txtDtLonga;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel121;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel99;
-        private System.Windows.Forms.Label txtVlUnd;
-        private System.Windows.Forms.Panel panel77;
-        private System.Windows.Forms.Label txtItemQnt;
-        private System.Windows.Forms.Panel panel55;
-        private System.Windows.Forms.Label txtItemUnd;
-        private System.Windows.Forms.Label txtItemNome;
-        private System.Windows.Forms.Panel panel136;
-        private System.Windows.Forms.Label txtDesc;
-        private System.Windows.Forms.Panel panel285;
-        private System.Windows.Forms.Panel panel130;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Panel panel131;
-        private System.Windows.Forms.Panel panel132;
-        private System.Windows.Forms.Label txtTotalFinal;
-        private System.Windows.Forms.Panel panel127;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Panel panel128;
-        private System.Windows.Forms.Panel panel129;
-        private System.Windows.Forms.Panel panel124;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Panel panel125;
-        private System.Windows.Forms.Panel panel126;
-        private System.Windows.Forms.Panel panel225;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.Panel panel140;
-        private System.Windows.Forms.Label txtTotalImp;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label lblTotalItens;
-        private System.Windows.Forms.Panel panel31;
-        private System.Windows.Forms.Panel panel123;
-        private System.Windows.Forms.Panel panel141;
-        private System.Windows.Forms.Label txtSubTotal;
-        private System.Windows.Forms.Panel panel142;
-        private System.Windows.Forms.Label txtAcres;
         private System.Windows.Forms.Panel panel287;
         private System.Windows.Forms.Label txtEmailCliente;
         private System.Windows.Forms.Label lblEmailCliente;
-        private System.Windows.Forms.DataGridView dgvProdutos;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label txtTotalFinal;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
     }
 }

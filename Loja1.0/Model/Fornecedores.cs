@@ -17,7 +17,7 @@ namespace Loja1._0.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Fornecedores()
         {
-            this.Produtos = new HashSet<Produtos>();
+            this.Compras = new HashSet<Compras>();
         }
     
         public int id { get; set; }
@@ -32,10 +32,11 @@ namespace Loja1._0.Model
         public string bairro { get; set; }
         public int id_Cidade { get; set; }
         public string contato { get; set; }
+        public string email { get; set; }
         public int status { get; set; }
     
         public virtual Cidades Cidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Produtos> Produtos { get; set; }
+        public virtual ICollection<Compras> Compras { get; set; }
     }
 }

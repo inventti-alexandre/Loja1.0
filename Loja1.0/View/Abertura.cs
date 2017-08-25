@@ -15,6 +15,7 @@ namespace Loja1._0.View
     {
         public Abertura()
         {            
+            //Criação de task com apresentação por tempo determinado de 4 segundos, estilo splash screen
             var t = Task.Run(async delegate
             {
                 InitializeComponent();

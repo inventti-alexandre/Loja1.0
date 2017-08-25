@@ -70,6 +70,8 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.dgvFornecedores = new System.Windows.Forms.DataGridView();
             this.lblMensagem = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.labelEmail = new System.Windows.Forms.Label();
             this.pnlDados.SuspendLayout();
             this.pnlTelefone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).BeginInit();
@@ -146,6 +148,8 @@
             // pnlDados
             // 
             this.pnlDados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlDados.Controls.Add(this.txtEmail);
+            this.pnlDados.Controls.Add(this.labelEmail);
             this.pnlDados.Controls.Add(this.chkAtivo);
             this.pnlDados.Controls.Add(this.txtBairro);
             this.pnlDados.Controls.Add(this.lblBairro);
@@ -167,7 +171,7 @@
             this.pnlDados.Controls.Add(this.lblDados);
             this.pnlDados.Location = new System.Drawing.Point(13, 59);
             this.pnlDados.Name = "pnlDados";
-            this.pnlDados.Size = new System.Drawing.Size(775, 193);
+            this.pnlDados.Size = new System.Drawing.Size(775, 221);
             this.pnlDados.TabIndex = 7;
             // 
             // chkAtivo
@@ -262,7 +266,7 @@
             this.pnlTelefone.Enabled = false;
             this.pnlTelefone.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlTelefone.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.pnlTelefone.Location = new System.Drawing.Point(15, 126);
+            this.pnlTelefone.Location = new System.Drawing.Point(15, 159);
             this.pnlTelefone.Name = "pnlTelefone";
             this.pnlTelefone.Size = new System.Drawing.Size(753, 54);
             this.pnlTelefone.TabIndex = 11;
@@ -504,7 +508,7 @@
             this.btnSalvar.Enabled = false;
             this.btnSalvar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSalvar.Location = new System.Drawing.Point(673, 418);
+            this.btnSalvar.Location = new System.Drawing.Point(673, 431);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(114, 35);
             this.btnSalvar.TabIndex = 25;
@@ -520,7 +524,7 @@
             this.btnAlterar.Enabled = false;
             this.btnAlterar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAlterar.Location = new System.Drawing.Point(674, 369);
+            this.btnAlterar.Location = new System.Drawing.Point(674, 391);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(114, 35);
             this.btnAlterar.TabIndex = 23;
@@ -535,7 +539,7 @@
             this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNovo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnNovo.Location = new System.Drawing.Point(674, 321);
+            this.btnNovo.Location = new System.Drawing.Point(674, 351);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(114, 35);
             this.btnNovo.TabIndex = 22;
@@ -550,7 +554,7 @@
             this.btnPesquisa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisa.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisa.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPesquisa.Location = new System.Drawing.Point(674, 275);
+            this.btnPesquisa.Location = new System.Drawing.Point(674, 311);
             this.btnPesquisa.Name = "btnPesquisa";
             this.btnPesquisa.Size = new System.Drawing.Size(114, 35);
             this.btnPesquisa.TabIndex = 21;
@@ -565,7 +569,7 @@
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnLimpar.Location = new System.Drawing.Point(674, 466);
+            this.btnLimpar.Location = new System.Drawing.Point(674, 471);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(114, 35);
             this.btnLimpar.TabIndex = 20;
@@ -584,7 +588,7 @@
             this.dgvFornecedores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvFornecedores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgvFornecedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFornecedores.Location = new System.Drawing.Point(13, 275);
+            this.dgvFornecedores.Location = new System.Drawing.Point(13, 311);
             this.dgvFornecedores.MultiSelect = false;
             this.dgvFornecedores.Name = "dgvFornecedores";
             this.dgvFornecedores.ReadOnly = true;
@@ -594,7 +598,7 @@
             this.dgvFornecedores.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFornecedores.ShowEditingIcon = false;
-            this.dgvFornecedores.Size = new System.Drawing.Size(650, 300);
+            this.dgvFornecedores.Size = new System.Drawing.Size(650, 264);
             this.dgvFornecedores.TabIndex = 45;
             this.dgvFornecedores.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gdvFornecedores_Click);
             // 
@@ -604,11 +608,31 @@
             this.lblMensagem.BackColor = System.Drawing.Color.Transparent;
             this.lblMensagem.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensagem.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblMensagem.Location = new System.Drawing.Point(10, 256);
+            this.lblMensagem.Location = new System.Drawing.Point(10, 292);
             this.lblMensagem.Name = "lblMensagem";
             this.lblMensagem.Size = new System.Drawing.Size(171, 16);
             this.lblMensagem.TabIndex = 44;
             this.lblMensagem.Text = "Relação de Fornecedores";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Enabled = false;
+            this.txtEmail.Location = new System.Drawing.Point(153, 130);
+            this.txtEmail.MaxLength = 50;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(615, 20);
+            this.txtEmail.TabIndex = 20;
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmail.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.labelEmail.Location = new System.Drawing.Point(12, 131);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(144, 16);
+            this.labelEmail.TabIndex = 19;
+            this.labelEmail.Text = "Email Fornecedor : ";
             // 
             // Fornecedores
             // 
@@ -691,6 +715,8 @@
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.DataGridView dgvFornecedores;
         private System.Windows.Forms.Label lblMensagem;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label labelEmail;
     }
 }
 

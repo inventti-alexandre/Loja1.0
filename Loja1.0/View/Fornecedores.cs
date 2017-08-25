@@ -175,7 +175,7 @@ namespace Loja1._0
                 txtNum.Enabled = true;
                 txtTel1.Enabled = true;
                 txtTel2.Enabled = true;
-
+                txtEmail.Enabled = true;
                 dgvFornecedores.Enabled = false;
             }
             catch
@@ -201,7 +201,7 @@ namespace Loja1._0
             txtNum.Enabled = true;
             txtTel1.Enabled = true;
             txtTel2.Enabled = true;
-
+            txtEmail.Enabled = true;
             dgvFornecedores.Enabled = false;
         }
 
@@ -248,6 +248,7 @@ namespace Loja1._0
                             fornecedor.telefone = txtTel1.Text;
                             fornecedor.recado = txtTel2.Text;
                             fornecedor.celular = txtCelular.Text;
+                            fornecedor.email = txtEmail.Text;
                             if (rdbClaro.Checked)
                             {
                                 fornecedor.operadora = "Claro";
@@ -299,6 +300,7 @@ namespace Loja1._0
                             fornecedor.telefone = txtTel1.Text;
                             fornecedor.recado = txtTel2.Text;
                             fornecedor.celular = txtCelular.Text;
+                            fornecedor.email = txtEmail.Text;
                             if (rdbClaro.Checked)
                             {
                                 fornecedor.operadora = "Claro";
@@ -376,6 +378,7 @@ namespace Loja1._0
             txtContato.Enabled = false;
             txtEndereco.Enabled = false;
             txtFornecedor.Enabled = true;
+            txtEmail.Enabled = false;
             txtNum.Enabled = false;
             rdbOi.Checked = false;
             rdbTim.Checked = false;
@@ -393,6 +396,7 @@ namespace Loja1._0
             txtCelular.Text = "";
             cmbUf.Text = "";
             cmbCidade.Text = "";
+            txtEmail.Text = "";
         }
 
         private void cmbUf_SelectedIndexChanged(object sender, EventArgs e)
@@ -446,6 +450,7 @@ namespace Loja1._0
                     txtCelular.Text = fornecedor.celular;
                     txtTel1.Text = fornecedor.telefone;
                     txtTel2.Text = fornecedor.recado;
+                    txtEmail.Text = fornecedor.email;
                     cmbUf.SelectedText = fornecedor.Cidades.Estados.sigla;
                     cmbCidade.SelectedText = fornecedor.Cidades.cidade;
 

@@ -4,42 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="30c45b6f4dae4423af59d92fd5961da6" Name="Diagram1" ZoomLevel="88">
-        
-        <!-- SCRIPT FECHAMENTO -->
-        <EntityTypeShape EntityType="ServidorLojaModel.Cidades" Width="1.5" PointX="2.5" PointY="6" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Clientes" Width="1.5" PointX="2.5" PointY="0.5" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Estados" Width="1.5" PointX="5" PointY="7.125" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Fechamento" Width="1.5" PointX="6.875" PointY="7.25" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Fornecedores" Width="1.5" PointX="2.5" PointY="8.875" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Movimentos" Width="1.5" PointX="9.625" PointY="4.375" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos" Width="1.5" PointX="9.625" PointY="0.5" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Tipos_Movimentacao" Width="1.5" PointX="9.625" PointY="7.375" />
-        <EntityTypeShape EntityType="ServidorLojaModel.UnidMedidas" Width="1.5" PointX="4.625" PointY="9.5" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Cidades__id_Esta__6AEFE058" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Clientes__id_Cid__793DFFAF" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Fornecedo__id_Ci__73852659" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Movimento__id_ti__7C1A6C5A" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Pagamento__id_mo__7EF6D905" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Contabilidade" Width="1.5" PointX="0.5" PointY="6.75" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Gerenciamento" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos_Vendas" Width="1.5" PointX="7" PointY="0.5" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Produtos" Width="1.5" PointX="7.5" PointY="9" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Produtos__id_for__2AD55B43" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Pagamento__id_Pa__2334397B" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Produtos__id_med__29E1370A" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Vendas_Produtos" Width="1.5" PointX="7.875" PointY="2.625" />
-        <AssociationConnector Association="ServidorLojaModel.id_produto" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Estoque" Width="1.5" PointX="9.625" PointY="9.875" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Estoque__id_prod__32767D0B" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Perfis" Width="1.5" PointX="6.75" PointY="5" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Usuarios" Width="1.5" PointX="4.625" PointY="4.25" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Usuarios__num_pe__39237A9A" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Vendas" Width="1.5" PointX="4.75" PointY="0.5" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__2057CCD0" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Pagamento__id_Ve__24285DB4" />
-        <AssociationConnector Association="ServidorLojaModel.id_usuario" />
-        <AssociationConnector Association="ServidorLojaModel.id_venda" />
+      <Diagram DiagramId="bfab5277d3b04110b90c662a6b7f795a" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Cidades" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Clientes" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Contabilidade" Width="1.5" PointX="9.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Estados" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Estoque" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Fechamento" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Fornecedores" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Gerenciamento" Width="1.5" PointX="11.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Movimentos" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Pagamentos" Width="1.5" PointX="7.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Pagamentos_Vendas" Width="1.5" PointX="9.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Perfis" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Produtos" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Tipos_Movimentacao" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UnidMedidas" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Usuarios" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Vendas_Produtos" Width="1.5" PointX="12.75" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Cidades__id_Esta__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Clientes__id_Cid__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Fornecedo__id_Ci__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Estoque__id_prod__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Produtos__id_for__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Movimento__id_ti__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Pagamento__id_mo__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Pagamento__id_Pa__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Usuarios__num_pe__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Produtos__id_med__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.id_produto" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Vendas" Width="1.5" PointX="7.5" PointY="3.5" />
+        <AssociationConnector Association="Model.FK__Vendas__id_Clien__4AB81AF0" />
+        <AssociationConnector Association="Model.FK__Pagamento__id_Ve__4E88ABD4" />
+        <AssociationConnector Association="Model.id_usuario" />
+        <AssociationConnector Association="Model.id_venda" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

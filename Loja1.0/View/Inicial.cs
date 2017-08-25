@@ -1,4 +1,5 @@
 ﻿using Loja1._0.Control;
+using Loja1._0.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -169,6 +170,13 @@ namespace Loja1._0
                 faltando = false;
                 MessageBox.Show("Existem produtos esgotados ou abaixo da quantidade miníma, favor verificar no módulo \"Relatórios\" a relação de produtos nestas condições","Ação Necessária", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnEntregas_Click(object sender, EventArgs e)
+        {
+            Entrega form = new Entrega(user);
+            form.Show();
+            this.Hide();
         }
     }
 }

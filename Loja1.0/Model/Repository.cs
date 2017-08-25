@@ -10,7 +10,7 @@ namespace Loja1._0.Model
     class Repository : DbContext
     {
         #region Repositório de itens de uso Genérico
-        ServidorLojaEntities dataEntity = new ServidorLojaEntities();
+        DbEntitiesLocal dataEntity = new DbEntitiesLocal();
         
         public void SalvaAlteracao()
         {
@@ -404,6 +404,7 @@ namespace Loja1._0.Model
                     where movimento.desc.Contains(idPagamento.ToString())
                     select movimento).ToList();
         }
+
         public List<Movimentos> PesquisaMovimentoIntervalo(DateTime dtInicio, DateTime dtFim)
         {
             return (from movimento in dataEntity.Movimentos
@@ -411,6 +412,27 @@ namespace Loja1._0.Model
                     && movimento.data <= dtFim
                     orderby movimento.id_tipo
                     select movimento).ToList();
+        }
+
+        public Compras PesquisaCompraByIdProduto(int idProduto)
+        {
+            return (from compra in dataEntity.Compras
+                    where compra.status == 1
+                    orderby compra.dt_compra descending
+                    select compra).First();
+        }
+
+        public Compras PesquisaCompraPendente(int id)
+        {
+            return (from compra in dataEntity.Compras
+                    where compra.qnt_compra > 0
+                    orderby compra.dt_compra ascending
+                    select compra).First();
+        }
+
+        public void RemoveProdVenda(Vendas_Produtos prodVend)
+        {
+            dataEntity.Vendas_Produtos.Remove(prodVend);
         }
 
         public int PesquisaMovimentoID(string desc, string tipo, string form)
@@ -596,8 +618,16 @@ namespace Loja1._0.Model
         }
         #endregion
 
+        #region Repositório do BD Compras
+
+        public void SalvarNovaCompra(Compras compra)
+        {
+            dataEntity.Compras.Add(compra);
+        }
+        #endregion
+
         //SCRIPT FECHAMENTO
-        # region Repositório do BD Pedidos
+        #region Repositório do BD Pedidos
 
         public void SalvarNovoPedido(Fechamento pedido)
         {

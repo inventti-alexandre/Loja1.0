@@ -35,12 +35,12 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.lblCopy = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnContabil = new System.Windows.Forms.Button();
             this.btnConsultaPedidos = new System.Windows.Forms.Button();
             this.btnGestao = new System.Windows.Forms.Button();
             this.btnFolhaPg = new System.Windows.Forms.Button();
-            this.btnReserva1 = new System.Windows.Forms.Button();
+            this.btnEntregas = new System.Windows.Forms.Button();
             this.btnRelatorios = new System.Windows.Forms.Button();
-            this.btnContabil = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnProdutos = new System.Windows.Forms.Button();
             this.btnFornecedores = new System.Windows.Forms.Button();
@@ -125,7 +125,7 @@
             this.panel1.Controls.Add(this.btnConsultaPedidos);
             this.panel1.Controls.Add(this.btnGestao);
             this.panel1.Controls.Add(this.btnFolhaPg);
-            this.panel1.Controls.Add(this.btnReserva1);
+            this.panel1.Controls.Add(this.btnEntregas);
             this.panel1.Controls.Add(this.btnRelatorios);
             this.panel1.Controls.Add(this.btnUsuarios);
             this.panel1.Controls.Add(this.btnProdutos);
@@ -137,6 +137,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(670, 239);
             this.panel1.TabIndex = 7;
+            // 
+            // btnContabil
+            // 
+            this.btnContabil.AutoEllipsis = true;
+            this.btnContabil.BackColor = System.Drawing.Color.White;
+            this.btnContabil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContabil.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContabil.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnContabil.Location = new System.Drawing.Point(341, 166);
+            this.btnContabil.Name = "btnContabil";
+            this.btnContabil.Size = new System.Drawing.Size(145, 45);
+            this.btnContabil.TabIndex = 10;
+            this.btnContabil.Text = "CONTÁBIL";
+            this.btnContabil.UseVisualStyleBackColor = false;
+            this.btnContabil.Click += new System.EventHandler(this.btnContabil_Click);
             // 
             // btnConsultaPedidos
             // 
@@ -176,7 +191,7 @@
             this.btnFolhaPg.Enabled = false;
             this.btnFolhaPg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFolhaPg.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnFolhaPg.Location = new System.Drawing.Point(98, 166);
+            this.btnFolhaPg.Location = new System.Drawing.Point(18, 166);
             this.btnFolhaPg.Name = "btnFolhaPg";
             this.btnFolhaPg.Size = new System.Drawing.Size(145, 45);
             this.btnFolhaPg.TabIndex = 8;
@@ -184,20 +199,20 @@
             this.btnFolhaPg.UseVisualStyleBackColor = false;
             this.btnFolhaPg.Click += new System.EventHandler(this.btnFolhaPag_Click);
             // 
-            // btnReserva1
+            // btnEntregas
             // 
-            this.btnReserva1.AutoEllipsis = true;
-            this.btnReserva1.BackColor = System.Drawing.Color.White;
-            this.btnReserva1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReserva1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReserva1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnReserva1.Location = new System.Drawing.Point(502, 166);
-            this.btnReserva1.Name = "btnReserva1";
-            this.btnReserva1.Size = new System.Drawing.Size(145, 45);
-            this.btnReserva1.TabIndex = 11;
-            this.btnReserva1.Text = "reserva";
-            this.btnReserva1.UseVisualStyleBackColor = false;
-            this.btnReserva1.Visible = false;
+            this.btnEntregas.AutoEllipsis = true;
+            this.btnEntregas.BackColor = System.Drawing.Color.White;
+            this.btnEntregas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntregas.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntregas.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnEntregas.Location = new System.Drawing.Point(502, 166);
+            this.btnEntregas.Name = "btnEntregas";
+            this.btnEntregas.Size = new System.Drawing.Size(145, 45);
+            this.btnEntregas.TabIndex = 11;
+            this.btnEntregas.Text = "ENTREGAS";
+            this.btnEntregas.UseVisualStyleBackColor = false;
+            this.btnEntregas.Click += new System.EventHandler(this.btnEntregas_Click);
             // 
             // btnRelatorios
             // 
@@ -206,28 +221,13 @@
             this.btnRelatorios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRelatorios.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRelatorios.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnRelatorios.Location = new System.Drawing.Point(260, 166);
+            this.btnRelatorios.Location = new System.Drawing.Point(180, 166);
             this.btnRelatorios.Name = "btnRelatorios";
             this.btnRelatorios.Size = new System.Drawing.Size(145, 45);
             this.btnRelatorios.TabIndex = 9;
             this.btnRelatorios.Text = "RELATÓRIOS";
             this.btnRelatorios.UseVisualStyleBackColor = false;
             this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorio_Click);
-            // 
-            // btnContabil
-            // 
-            this.btnContabil.AutoEllipsis = true;
-            this.btnContabil.BackColor = System.Drawing.Color.White;
-            this.btnContabil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContabil.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnContabil.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnContabil.Location = new System.Drawing.Point(421, 166);
-            this.btnContabil.Name = "btnContabil";
-            this.btnContabil.Size = new System.Drawing.Size(145, 45);
-            this.btnContabil.TabIndex = 10;
-            this.btnContabil.Text = "CONTÁBIL";
-            this.btnContabil.UseVisualStyleBackColor = false;
-            this.btnContabil.Click += new System.EventHandler(this.btnContabil_Click);
             // 
             // btnUsuarios
             // 
@@ -358,7 +358,7 @@
         private System.Windows.Forms.Button btnConsultaPedidos;
         private System.Windows.Forms.Button btnGestao;
         private System.Windows.Forms.Button btnFolhaPg;
-        private System.Windows.Forms.Button btnReserva1;
+        private System.Windows.Forms.Button btnEntregas;
         private System.Windows.Forms.Button btnRelatorios;
         private System.Windows.Forms.Button btnContabil;
         private System.Windows.Forms.Button btnUsuarios;

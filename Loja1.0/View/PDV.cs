@@ -53,11 +53,12 @@ namespace Loja1._0
                 valorSub = 0;
                 for (int i = 0; i < listaCompra.Count; i++)
                 {
+                    Compras compra = controle.PesquisaCompraAnterior(listaCompra[i].id);
                     dtProdutos.Rows.Add(listaCompra[i].desc_produto + "...............................................................................................................",
                        listaCompraQnt[i].ToString() + "x...................",
-                       "R$" + (Convert.ToDecimal(listaCompraQnt[i]) * listaCompra[i].preco_venda).ToString());
+                       "R$" + (Convert.ToDecimal(listaCompraQnt[i]) * compra.preco_venda).ToString());
 
-                    valorSub = valorSub + (Convert.ToDecimal(listaCompraQnt[i]) * listaCompra[i].preco_venda);
+                    valorSub = valorSub + (Convert.ToDecimal(listaCompraQnt[i]) * compra.preco_venda);
                     txtSub.Text = valorSub.ToString();
                 }
                 for (int i = 0; i < dgvClientes.Rows.Count; i++)
@@ -228,8 +229,8 @@ namespace Loja1._0
                             listaCompra.Add(controle.PesquisaProdutoCod(txtCodigo.Text));
                             listaCompraQnt.Add(Convert.ToInt32(txtQnt.Text));
                             
-                            //Script para encerrar e imprimir pedido ao atingir 25 itens e abrir novo com mesmas caracteristicas
-                            if (listaCompra.Count == 25)
+                            //Script para encerrar e imprimir pedido ao atingir 20 itens e abrir novo com mesmas caracteristicas
+                            if (listaCompra.Count == 20)
                             {
                                 string cliNome = "";
                                 if(cliente.cpf != null)
@@ -274,13 +275,15 @@ namespace Loja1._0
                     pnlImagem.BackgroundImage = Image.FromStream(new MemoryStream(produto.imagem));
                 }
 
+                Compras compra = controle.PesquisaCompraAnterior(produto.id);
+
                 txtDescricao.Text = produto.desc_produto;
                 txtCodAdquirido.Text = produto.cod_produto;
-                txtPreco.Text = produto.preco_venda.ToString();
+                txtPreco.Text = compra.preco_venda.ToString();
                 txtLocalNum.Text = produto.Estoque.num_local.ToString();
                 txtLocalSigla.Text = produto.Estoque.letra_local.ToString();
                 txtLocalRef.Text = produto.Estoque.ref_local.ToString();
-                txtFornecedor.Text = produto.Fornecedores.nome;
+                txtFornecedor.Text = compra.Fornecedores.nome;
                 txtUnidade.Text = produto.UnidMedidas.medida;
             }
             catch
@@ -356,7 +359,7 @@ namespace Loja1._0
             else if (Convert.ToDecimal(txtTotal.Text) > gerencia.autoDescValor)
             {
                 MessageBox.Show("Por favor, informe ao cliente que o desconto somente será válido para pagamento realizado à vista.", "Informação ao Cliente");
-                txtTotal.Text = (Convert.ToDecimal(txtSub.Text) - (Convert.ToDecimal(txtSub.Text) * Convert.ToDecimal(gerencia.autoDescPerc))).ToString("0.00");
+                txtTotal.Text = (Convert.ToDecimal(txtSub.Text) - (Convert.ToDecimal(txtSub.Text) * Convert.ToDecimal(gerencia.autoDescPerc/100))).ToString("0.00");
                 desconto = true;
             }
             else
@@ -506,7 +509,7 @@ namespace Loja1._0
                 controle.SalvaAtualiza();
 
                 for (int i = 0; i < listaCompra.Count; i++)
-                {
+                {                    
                     produtosPedido = new Vendas_Produtos();
                     controle.SalvaProdutosVendidos(produtosPedido);
                     produtosPedido.id_venda = venda.id;
@@ -515,8 +518,10 @@ namespace Loja1._0
                     produtosPedido.quantidade = listaCompraQnt[i];
                     controle.SalvaAtualiza();
 
-                    venda.icms = venda.icms + Convert.ToDouble(produtosPedido.Produtos.icms_pago * produtosPedido.quantidade);
-                    venda.valor_Venda = venda.valor_Venda + Convert.ToDouble(produtosPedido.Produtos.preco_venda * produtosPedido.quantidade);
+                    Compras compra = controle.PesquisaCompraAnterior(listaCompra[i].id);
+
+                    venda.icms = venda.icms + Convert.ToDouble(compra.icms_pago * produtosPedido.quantidade);
+                    venda.valor_Venda = venda.valor_Venda + Convert.ToDouble(compra.preco_venda * produtosPedido.quantidade);
                     controle.SalvaAtualiza();
                 }
                 IniciaImpressao(sender, e);

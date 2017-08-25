@@ -42,6 +42,7 @@ namespace Loja1._0
         static Image branco;
         static bool flagNovo = true;
         static int qntTemp = 0;
+        static Compras compra = new Compras();
 
         DataTable dtbProdutos;
         static Button selectProd = new Button();
@@ -124,11 +125,13 @@ namespace Loja1._0
 
                 foreach (Model.Produtos value in listaProdutos)
                 {
+                    compra = controle.PesquisaCompraAnterior(value.id);
+
                     detalheProd = new prod();
                     detalheProd.desc = value.desc_produto;
                     detalheProd.cod = value.cod_produto;
-                    detalheProd.custo = value.preco_compra.ToString();
-                    detalheProd.preco = value.preco_venda.ToString();
+                    detalheProd.custo = compra.preco_compra.ToString();
+                    detalheProd.preco = compra.preco_venda.ToString();
                     detalheProd.qntAtual = value.Estoque.qnt_atual.ToString();
                     detalheProd.qntMin = value.Estoque.qnt_minima.ToString();
                     detalheProd.localNum = value.Estoque.num_local.ToString();
@@ -329,6 +332,7 @@ namespace Loja1._0
             btnNovo.Enabled = false;
             btnSalvar.Enabled = true;            
             pnlImagem.Enabled = true;
+            qntTemp = Convert.ToInt32(txtQntAtual.Text);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -410,7 +414,7 @@ namespace Loja1._0
 
                     dgvProdutos.Enabled = true;
 
-                    //se flag novo = false, novo elemento
+                    //se flag novo = true, novo elemento
                     if (flagNovo)
                     {
                         movimento.data = DateTime.Today;
@@ -421,18 +425,26 @@ namespace Loja1._0
                         txtCusto.Text = Convert.ToDecimal(txtCusto.Text).ToString("0.00");
                         txtPreco.Text = Convert.ToDecimal(txtPreco.Text).ToString("0.00");
                         txtIcms.Text = Convert.ToDecimal(txtIcms.Text).ToString("0.00");
-
+                        
                         produto = new Model.Produtos();
                         controle.SalvarProduto(produto);
                         produto.cod_produto = txtCodigo.Text.Trim();
-                        produto.preco_compra = Convert.ToDecimal(txtCusto.Text.Trim());
-                        produto.preco_venda = Convert.ToDecimal(txtPreco.Text.Trim());
-                        produto.icms_pago = Convert.ToDecimal(txtIcms.Text.Trim());
                         produto.desc_produto = txtProduto.Text.Trim().ToUpper();
-                        produto.id_fornecedor = controle.PesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
                         produto.id_medida = controle.PesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
                         produto.imagem = bytes;
                         produto.status = 1;
+                        controle.SalvaAtualiza();
+
+                        compra = new Compras();
+                        controle.SalvarCompras(compra);
+                        compra.id_produto = produto.id;
+                        compra.preco_compra = Convert.ToDecimal(txtCusto.Text.Trim());
+                        compra.preco_venda = Convert.ToDecimal(txtPreco.Text.Trim());
+                        compra.icms_pago = Convert.ToDecimal(txtIcms.Text.Trim());
+                        compra.id_fornecedor = controle.PesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
+                        compra.qnt_compra = Convert.ToInt32(txtQntAtual.Text.Trim());
+                        compra.status = 1;
+                        compra.dt_compra = DateTime.Now;
                         controle.SalvaAtualiza();
 
                         estoque = new Estoque();
@@ -455,10 +467,18 @@ namespace Loja1._0
                     //alteração de elemento existente na base de dados
                     else if (!flagNovo)
                     {
-                        movimento.data = DateTime.Today;
-                        movimento.desc = "Aquisição de Estoque";
-                        movimento.id_tipo = 12;
-                        movimento.valor = Convert.ToDecimal(txtCusto.Text) * (Convert.ToInt32(txtQntAtual.Text.Trim()) - qntTemp);
+                        if (qntTemp < Convert.ToInt32(txtQntAtual.Text))
+                        {
+                            movimento.data = DateTime.Today;
+                            movimento.desc = "Aquisição de Estoque";
+                            movimento.id_tipo = 12;
+                            movimento.valor = Convert.ToDecimal(txtCusto.Text) * (Convert.ToInt32(txtQntAtual.Text.Trim()) - qntTemp);
+                        }
+                        else if(qntTemp > Convert.ToInt32(txtQntAtual.Text))
+                        {
+                            txtQntAtual.Text = qntTemp.ToString();
+                            MessageBox.Show("O campo \"Qnt Atual\" não aceita redução de quantidade de forma manual, a alteração será disfeita.");
+                        }
 
                         txtCusto.Text = Convert.ToDecimal(txtCusto.Text).ToString("0.00");
                         txtPreco.Text = Convert.ToDecimal(txtPreco.Text).ToString("0.00");
@@ -467,14 +487,40 @@ namespace Loja1._0
                         int id = produto.id;
                         produto = new Model.Produtos();
                         produto = controle.PesquisaProdutoId(id);
-                        produto.cod_produto = txtCodigo.Text;
-                        produto.preco_compra = Convert.ToDecimal(txtCusto.Text);
-                        produto.preco_venda = Convert.ToDecimal(txtPreco.Text);
-                        produto.icms_pago = Convert.ToDecimal(txtIcms.Text);
-                        produto.desc_produto = txtProduto.Text;
-                        produto.id_fornecedor = controle.PesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
+                        produto.cod_produto = txtCodigo.Text.Trim();
+                        produto.desc_produto = txtProduto.Text.Trim().ToUpper();
                         produto.id_medida = controle.PesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
                         produto.imagem = bytes;
+                        produto.status = 1;
+                        controle.SalvaAtualiza();
+
+                        if (qntTemp < Convert.ToInt32(txtQntAtual.Text))
+                        {
+                            compra = controle.PesquisaCompraAnterior(produto.id);
+                            compra.status = 0;
+                            controle.SalvaAtualiza();
+
+                            compra = new Compras();
+                            controle.SalvarCompras(compra);
+                            compra.id_produto = produto.id;
+                            compra.preco_compra = Convert.ToDecimal(txtCusto.Text.Trim());
+                            compra.preco_venda = Convert.ToDecimal(txtPreco.Text.Trim());
+                            compra.icms_pago = Convert.ToDecimal(txtIcms.Text.Trim());
+                            compra.id_fornecedor = controle.PesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
+                            compra.qnt_compra = Convert.ToInt32(txtQntAtual.Text.Trim()) - qntTemp;
+                            compra.status = 1;
+                            compra.dt_compra = DateTime.Now;
+                            controle.SalvaAtualiza();
+                        }
+                        else
+                        {
+                            compra = controle.PesquisaCompraAnterior(produto.id);
+                            compra.preco_compra = Convert.ToDecimal(txtCusto.Text.Trim());
+                            compra.preco_venda = Convert.ToDecimal(txtPreco.Text.Trim());
+                            compra.icms_pago = Convert.ToDecimal(txtIcms.Text.Trim());
+                            compra.id_fornecedor = controle.PesquisaFornecedorByNome(cmbFornecedor.SelectedValue.ToString()).id;
+                            controle.SalvaAtualiza();
+                        }
 
                         estoque = new Estoque();
                         estoque = controle.PesquisaProdEstoqueId(id);
@@ -531,21 +577,23 @@ namespace Loja1._0
                 produto = controle.PesquisaProdutoCod(dgvProdutos.SelectedCells[1].Value.ToString());
                 if (produto != null)
                 {
+                    compra = controle.PesquisaCompraAnterior(produto.id);
+
                     btnNovo.Enabled = false;
                     btnPesquisa.Enabled = false;
                     btnAlterar.Enabled = true;
                     txtCodigo.Text = produto.cod_produto;
-                    txtCusto.Text = produto.preco_compra.ToString();
+                    txtCusto.Text = compra.preco_compra.ToString();
                     txtProduto.Text = produto.desc_produto;
-                    txtIcms.Text = produto.icms_pago.ToString();
-                    txtPreco.Text = produto.preco_venda.ToString();
+                    txtIcms.Text = compra.icms_pago.ToString();
+                    txtPreco.Text = compra.preco_venda.ToString();
                     txtQntMinima.Text = produto.Estoque.qnt_minima.ToString();
                     txtQntMaxima.Text = produto.Estoque.qnt_maxima.ToString();
                     txtQntAtual.Text = produto.Estoque.qnt_atual.ToString();
                     txtLocalNum.Text = produto.Estoque.num_local.ToString();
                     txtLocalSigla.Text = produto.Estoque.letra_local.ToString();
                     txtLocalRef.Text = produto.Estoque.ref_local.ToString();
-                    cmbFornecedor.SelectedValue = controle.PesquisaFornecedorById(produto.id_fornecedor).nome;
+                    cmbFornecedor.SelectedValue = controle.PesquisaFornecedorById(compra.id_fornecedor).nome;
                     cmbUnidade.SelectedValue = controle.PesquisaMedidaById(produto.id_medida).medida;
                     if (produto.imagem == null)
                     {

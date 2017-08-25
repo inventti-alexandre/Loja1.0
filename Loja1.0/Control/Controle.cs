@@ -210,7 +210,7 @@ namespace Loja1._0.Control
             int id = selectedIndex;
 
             return dbRepository.PesquisaClienteId(id);
-        }        
+        }
 
         public List<Model.Clientes> PesquisaClientesCompleta(string busca)
         {
@@ -218,7 +218,7 @@ namespace Loja1._0.Control
 
             return dbRepository.PesquisaClienteByCpfOrNome(pesquisa);
         }
-        
+
         #endregion
 
         #region Controle do BD Vendas_Produtos
@@ -299,7 +299,7 @@ namespace Loja1._0.Control
         {
             return dbRepository.PesquisaTipoMovById(id_tipo);
         }
-        
+
         #endregion
 
         #region Controle do BD de Fornecedores
@@ -509,7 +509,30 @@ namespace Loja1._0.Control
         {
             dbRepository.SalvarNovoPedido(pedido);
         }
+        #endregion
 
-        #endregion        
+        public void removeProdutoVenda(Vendas_Produtos prodVend)
+        {
+            dbRepository.RemoveProdVenda(prodVend);
+        }
+
+        public void SalvarCompras(Compras compra)
+        {
+            dbRepository.SalvarNovaCompra(compra);
+        }
+
+        public Compras PesquisaCompraAnterior(int id)
+        {
+            int idProduto = id;
+
+            return dbRepository.PesquisaCompraByIdProduto(idProduto);
+        }
+
+        public Compras PesquisaIcmsCompra(int id_produto)
+        {
+            int id = id_produto;
+
+            return dbRepository.PesquisaCompraPendente(id);
+        }
     }
 }

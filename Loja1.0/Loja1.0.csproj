@@ -78,6 +78,7 @@
     <Compile Include="Control\classMovimento.cs" />
     <Compile Include="Control\Controle.cs" />
     <Compile Include="Control\CupomFiscal.cs" />
+    <Compile Include="Control\Email.cs" />
     <Compile Include="Control\PrintablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -86,28 +87,31 @@
     </Compile>
     <Compile Include="Control\Valida.cs" />
     <Compile Include="Model\Cidades.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Clientes.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Compras.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Contabilidade.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estados.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estoque.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fechamento.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fornecedores.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Gerenciamento.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -124,46 +128,56 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\ModelLocal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLocal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelLocal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelLocal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Model\Movimentos.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos_Vendas.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Perfis.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Produtos.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Repository.cs" />
     <Compile Include="Model\Tipos_Movimentacao.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UnidMedidas.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuarios.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas_Produtos.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="ServidorLojaDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ServidorLojaDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="View\Abertura.cs">
       <SubType>Form</SubType>
@@ -201,6 +215,12 @@
     <Compile Include="View\DialogoCheque.Designer.cs">
       <DependentUpon>DialogoCheque.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Entrega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Entrega.Designer.cs">
+      <DependentUpon>Entrega.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Inicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,11 +257,23 @@
     <Compile Include="View\Gestao.Designer.cs">
       <DependentUpon>Gestao.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Recibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Recibo.Designer.cs">
+      <DependentUpon>Recibo.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Pedido.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Pedido.Designer.cs">
       <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Relatórios\VendaData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Relatórios\VendaData.Designer.cs">
+      <DependentUpon>VendaData.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TrocaUserCx.cs">
       <SubType>Form</SubType>
@@ -305,6 +337,9 @@
     <EmbeddedResource Include="View\DialogoCheque.resx">
       <DependentUpon>DialogoCheque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Entrega.resx">
+      <DependentUpon>Entrega.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Inicial.resx">
       <DependentUpon>Inicial.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,8 +358,14 @@
     <EmbeddedResource Include="View\Gestao.resx">
       <DependentUpon>Gestao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Recibo.resx">
+      <DependentUpon>Recibo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Pedido.resx">
       <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Relatórios\VendaData.resx">
+      <DependentUpon>VendaData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TrocaUserCx.resx">
       <DependentUpon>TrocaUserCx.cs</DependentUpon>
@@ -359,6 +400,13 @@
     <None Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Model\ModelLocal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelLocal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ModelLocal.edmx.diagram">
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Produtos.prod.datasource" />
     <None Include="Properties\Settings.settings">
@@ -370,17 +418,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ServidorLojaDataSet.xsc">
-      <DependentUpon>ServidorLojaDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ServidorLojaDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ServidorLojaDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ServidorLojaDataSet.xss">
-      <DependentUpon>ServidorLojaDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -422,6 +459,17 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Model\ModelLocal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+      <LastGenOutput>ModelLocal.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ModelLocal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+      <LastGenOutput>ModelLocal.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

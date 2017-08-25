@@ -13,10 +13,10 @@ namespace Loja1._0.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbEntities : DbContext
+    public partial class DbEntitiesLocal : DbContext
     {
-        public DbEntities()
-            : base("name=DbEntities")
+        public DbEntitiesLocal()
+            : base("name=DbEntitiesLocal")
         {
         }
     
@@ -27,6 +27,7 @@ namespace Loja1._0.Model
     
         public virtual DbSet<Cidades> Cidades { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
+        public virtual DbSet<Compras> Compras { get; set; }
         public virtual DbSet<Contabilidade> Contabilidade { get; set; }
         public virtual DbSet<Estados> Estados { get; set; }
         public virtual DbSet<Estoque> Estoque { get; set; }
@@ -41,7 +42,7 @@ namespace Loja1._0.Model
         public virtual DbSet<Tipos_Movimentacao> Tipos_Movimentacao { get; set; }
         public virtual DbSet<UnidMedidas> UnidMedidas { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
-        public virtual DbSet<Vendas_Produtos> Vendas_Produtos { get; set; }
         public virtual DbSet<Vendas> Vendas { get; set; }
+        public virtual DbSet<Vendas_Produtos> Vendas_Produtos { get; set; }
     }
 }

@@ -167,8 +167,9 @@ namespace Loja1._0
 
                 if (listaMovimentos.Count > 0)
                 {
+                    listaStruct = new List<classMovimento>();
                     int j = 0;
-                    for (int i = 0; i < listaMovimentos.Count - 1; i++)
+                    for (int i = 0; i < listaMovimentos.Count; i++)
                     {
                         if (i == 0)
                         {
@@ -180,7 +181,7 @@ namespace Loja1._0
                         }
                         else if (listaStruct[j].id_tipo == listaMovimentos[i].id_tipo)
                         {
-                            listaStruct[j].valor = listaStruct[j].valor + Convert.ToDecimal(listaMovimentos[i + 1].valor);
+                            listaStruct[j].valor = listaStruct[j].valor + Convert.ToDecimal(listaMovimentos[i].valor);
                         }
                         else
                         {

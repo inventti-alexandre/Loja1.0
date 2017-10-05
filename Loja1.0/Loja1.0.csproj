@@ -215,6 +215,12 @@
     <Compile Include="View\DialogoCheque.Designer.cs">
       <DependentUpon>DialogoCheque.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Ponto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Ponto.Designer.cs">
+      <DependentUpon>Ponto.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Entrega.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,6 +343,9 @@
     <EmbeddedResource Include="View\DialogoCheque.resx">
       <DependentUpon>DialogoCheque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Ponto.resx">
+      <DependentUpon>Ponto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Entrega.resx">
       <DependentUpon>Entrega.cs</DependentUpon>
     </EmbeddedResource>
@@ -438,6 +447,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Image\Branco.jpg" />
+    <None Include="Image\Engrenagem.png" />
     <Content Include="Image\exit.png" />
     <Content Include="Image\Fundo.png" />
     <Content Include="Image\Icon.ico" />
@@ -448,7 +459,7 @@
     <Content Include="Image\NOK.png" />
     <Content Include="Image\OK.png" />
     <Content Include="Image\trocar.png" />
-    <Content Include="Image\voltar.png" />
+    <None Include="Image\voltar1.png" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -469,6 +480,7 @@
       <DependentUpon>ModelLocal.edmx</DependentUpon>
       <LastGenOutput>ModelLocal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\voltar1.bmp" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

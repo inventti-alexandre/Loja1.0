@@ -868,6 +868,9 @@ namespace Loja1._0
                 //atribui o valor das variáveis locais booleanas 
                 vista = true;
 
+                //altera o valor da váriavel de verificação de pagamento efetuado
+                ultimoExcluido = false;
+
                 //altera a visibilidade de itens do form
                 btnPagamento.Enabled = false;
 
@@ -923,6 +926,12 @@ namespace Loja1._0
                     if (txtPagDinheiro.Text.Equals(""))
                     {
                         MessageBox.Show("O valor do pagamento em dinheiro deve ser preenchido, por favor, corrija e tente novamente", "Ação Invalida");
+                    }
+
+                    //verifica se o valor de entrada é decimal
+                    else if (!validaValorEntrada(txtPagDinheiro.Text))
+                    {
+                        MessageBox.Show("O valor do pagamento não corresponde a um valor valido, por favor, corrija e tente novamente", "Ação Invalida");
                     }
 
                     //verifica se o valor registrado como pagamento excede o valor total
@@ -987,6 +996,12 @@ namespace Loja1._0
                         MessageBox.Show("O campo valor deve ser preenchido", "Ação Inválida");
                     }
 
+                    //verifica se o valor de entrada é decimal
+                    else if (!validaValorEntrada(txtPagDebito.Text))
+                    {
+                        MessageBox.Show("O valor do pagamento não corresponde a um valor valido, por favor, corrija e tente novamente", "Ação Invalida");
+                    }
+
                     //verifica se o valor registrado como pagamento excede o valor total
                     else if (Convert.ToDecimal(txtPagDebito.Text) > Convert.ToDecimal(txtSaldoDebito.Text) && rdbDebito.Checked)
                     {
@@ -1033,7 +1048,13 @@ namespace Loja1._0
                     {
                         MessageBox.Show("Pagamento pré-pago somente está habilitado para clientes cadastrados e com créditos", "Ação Inválida");
                     }
-                    
+
+                    //verifica se o valor de entrada é decimal
+                    else if (!validaValorEntrada(txtCreditosCliente.Text))
+                    {
+                        MessageBox.Show("O valor do pagamento não corresponde a um valor valido, por favor, corrija e tente novamente", "Ação Invalida");
+                    }
+
                     //caso o cliente possua créditos
                     else
                     {
@@ -1363,14 +1384,17 @@ namespace Loja1._0
                         cliente.creditos = cliente.creditos + clienteCreditos;
                         controle.SalvaAtualiza();
                         MessageBox.Show("Exclusão do pagamento realizada com sucesso", "Ação Bem Sucedida");
-                        //}
+
+                        //cancela o cupom em aberto ou último emitido na ausência deste
+                        BemaFI32.Bematech_FI_CancelaCupom();
+
+                        //limpa o formulário, retorma a codição inicial
+                        btnLimpar_Click(sender, e);
                     }
-
-                    //cancela o cupom em aberto ou último emitido na ausência deste
-                    BemaFI32.Bematech_FI_CancelaCupom();
-
-                    //limpa o formulário, retorma a codição inicial
-                    btnLimpar_Click(sender, e);
+                    else
+                    {
+                        MessageBox.Show("O último pagamento já foi excluído, para exclusão do cupom aberto utilize a opção \"Cancela Último Cupom\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }                    
                 }
             }
             catch
@@ -1393,7 +1417,8 @@ namespace Loja1._0
             pnlDebito.Enabled = false;
             pnlPrePag.Enabled = false;
             pnlCredito.Enabled = false;
-            pnlCheque.Enabled = false;           
+            pnlCheque.Enabled = false;
+            btnCancelaAberto.Enabled = true;
         }
 
         //alteração dos controle de visibilidade do form ao selecionar forma de pagamento em cartão de débito
@@ -1408,6 +1433,7 @@ namespace Loja1._0
             pnlPrePag.Enabled = false;
             pnlCredito.Enabled = false;
             pnlCheque.Enabled = false;
+            btnCancelaAberto.Enabled = true;
         }
 
         //alteração dos controle de visibilidade do form ao selecionar forma de pagamento para pré pago
@@ -1422,6 +1448,7 @@ namespace Loja1._0
             pnlPrePag.Enabled = true;
             pnlCredito.Enabled = false;
             pnlCheque.Enabled = false;
+            btnCancelaAberto.Enabled = true;
         }
 
         //alteração dos controle de visibilidade do form ao selecionar forma de pagamento em cartão de crédito
@@ -1441,6 +1468,7 @@ namespace Loja1._0
             pnlPrePag.Enabled = false;
             pnlCredito.Enabled = true;
             pnlCheque.Enabled = false;
+            btnCancelaAberto.Enabled = true;
         }
 
         //alteração dos controle de visibilidade do form ao selecionar forma de pagamento em cheque
@@ -1460,6 +1488,7 @@ namespace Loja1._0
             pnlPrePag.Enabled = false;
             pnlCredito.Enabled = false;
             pnlCheque.Enabled = true;
+            btnCancelaAberto.Enabled = true;
         }
 
         //ação realizada ao realizar alterações no combobox com o número de parcelas do cartão de crédito
@@ -1948,7 +1977,7 @@ namespace Loja1._0
                 pagamento.numChequeUltimo = "";
                 
                 //se o pagamento for superior ou igual ao valor pago
-                if (Convert.ToDecimal(txtSaldoPrePago.Text) <= valorPago)
+                if (Convert.ToDecimal(txtSaldoPrePago.Text) <= valor)
                 {
                     movimento.desc = "Total Pré-Pago";
                     pagamento.tipoPag = "Total";
@@ -2010,7 +2039,7 @@ namespace Loja1._0
                 controle.SalvaAtualiza();
 
                 //novamente verifica se o pagamento corresponde ao total devido em caso positivo concluí a venda
-                if (Convert.ToDecimal(txtSaldoPrePago.Text) <= valorPago)
+                if (Convert.ToDecimal(txtSaldoPrePago.Text) <= valor)
                 {
                     //informa ao usuário a conclusão bem sucedida
                     MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
@@ -2064,7 +2093,7 @@ namespace Loja1._0
                 pagamento.numChequeUltimo = "";
 
                 //se o pagamento for superior ou igual ao valor pago
-                if (Convert.ToDecimal(txtSaldoDebito.Text) <= valorPago)
+                if (Convert.ToDecimal(txtSaldoDebito.Text) <= valor)
                 {
                     movimento.desc = "Total TEF Débito";
                     pagamento.tipoPag = "Total";
@@ -2121,7 +2150,7 @@ namespace Loja1._0
                 }
 
                 //novamente verifica se o pagamento corresponde ao total devido em caso positivo concluí a venda
-                if (Convert.ToDecimal(txtSaldoDebito.Text) <= valorPago)
+                if (Convert.ToDecimal(txtSaldoDebito.Text) <= valor)
                 {
                     //informa ao usuário a conclusão bem sucedida
                     MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
@@ -2175,7 +2204,7 @@ namespace Loja1._0
                 pagamento.numChequeUltimo = "";
                 
                 //caso o pagamento seja superior ou equivalente ao total devido
-                if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valorPago)
+                if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valor)
                 {
                     movimento.desc = "Total a dinheiro";
                     pagamento.tipoPag = "Total";
@@ -2230,7 +2259,7 @@ namespace Loja1._0
                 }
 
                 //verifica se o valor pago corresponde ao valor devido, em caso positivo concluí a venda
-                if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valorPago)
+                if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valor)
                 {
                     //informa ao usuário a conclusão bem sucedida
                     MessageBox.Show("Venda concluída com sucesso, obrigado", "Ação Bem Sucedida");
@@ -2361,12 +2390,46 @@ namespace Loja1._0
         //função de limpeza do formulário, reestabelecendo as condições iniciais 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
+            //reinicializa as variaveis
+            listaVendas = new List<Vendas>();
+            listaNumPedidos = new List<int>();
+            listaProdutosVenda = new List<Vendas_Produtos>();
+            venda = new Vendas();
+            cliente = new Model.Clientes();
+            PagDinheiro = new CupomFiscal();
+            PagDebito = new CupomFiscal();
+            PagPrePago = new CupomFiscal();
+            PagCredito = new CupomFiscal();
+            PagCheque = new CupomFiscal();
+            chequePrim = "";
+            chequeUlt = "";
+            valorParcelaCred = 0.00M;
+            valorParcelaCheq = 0.00M;
+            valorAcres = 0.00M;
+            valorDesc = 0.00M;
+            valorPago = 0.00M;
+            valorTotal = 0.00M;
+            custoAux = 0.00M;
+            desconto = 0;
+            entrada = false;
+            vista = true;
+
             //altera as visibilidades do form
             pedidosInclusos = false;
             pnlPedidos.Enabled = true;
             btnPagamento.Enabled = false;
             btnDesconto.Enabled = false;
             btnLimpar.Enabled = false;
+            btnCancelaAberto.Enabled = false;
+            txtPedidoNum1.Text = "";
+            pnlCheque.Enabled = false;
+            pnlCredito.Enabled = false;
+            pnlDebito.Enabled = false;
+            pnlDinheiro.Enabled = false;
+            pnlPrePag.Enabled = false;
+            txtPedidoNum1.Enabled = true;
+            btnAdicionar1.Enabled = true;
+            AcceptButton = btnAdicionar1;
 
             //zera o valor referente aos descontos
             trkDesconto.Minimum = 0;
@@ -2435,41 +2498,7 @@ namespace Loja1._0
             txtTotal.Text = "R$";
             AcrescimoDesconto = "";
             ValorAcrescimoDesconto = "";
-
-            //reinicializa as variaveis
-            listaVendas = new List<Vendas>();
-            listaNumPedidos = new List<int>();
-            listaProdutosVenda = new List<Vendas_Produtos>();
-            venda = new Vendas();
-            cliente = new Model.Clientes();
-            PagDinheiro = new CupomFiscal();
-            PagDebito = new CupomFiscal();
-            PagPrePago = new CupomFiscal();
-            PagCredito = new CupomFiscal();
-            PagCheque = new CupomFiscal();
-            chequePrim = "";
-            chequeUlt = "";
-            valorParcelaCred = 0.00M;
-            valorParcelaCheq = 0.00M;
-            valorAcres = 0.00M;
-            valorDesc = 0.00M;
-            valorPago = 0.00M;
-            valorTotal = 0.00M;
-            custoAux = 0.00M;
-            desconto = 0;
-            entrada = false;
-            vista = true;
-            txtPedidoNum1.Text = "";
-            pnlCheque.Enabled = false;
-            pnlCredito.Enabled = false;
-            pnlDebito.Enabled = false;
-            pnlDinheiro.Enabled = false;
-            pnlPrePag.Enabled = false;
-            txtPedidoNum1.Enabled = true;
-            btnAdicionar1.Enabled = true;
-            pnlPedidos.Enabled = true;
-            btnPagamento.Enabled = false;
-            AcceptButton = btnAdicionar1;
+                       
         }
 
         //função responsável por confirmar a associação de cliente ou cpf/cnpj ao cupom fiscal
@@ -2492,8 +2521,7 @@ namespace Loja1._0
         }
 
         /* 
-         * Ação atribuida ao botão cancela aberto, 
-         * atualmente não visivel
+         * Ação atribuida ao botão cancela aberto
          */
         private void btnCancelaAberto_Click(object sender, EventArgs e)
         {
@@ -2504,6 +2532,16 @@ namespace Loja1._0
                 MessageBox.Show("Cupom Fiscal cancelado com sucesso", "Ação Bem Sucedida");
                 btnLimpar_Click(sender, e);
             }
+        }
+
+        private bool validaValorEntrada(string valor)
+        {
+            Decimal result = 0.00M;
+            if(Decimal.TryParse(valor,out result))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

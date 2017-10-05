@@ -30,6 +30,8 @@ namespace Loja1._0.View
                 gerencia = controle.PesquisaGerenciamento(1);
                 this.pdv = pdv;
                 this.venda = venda;
+                compra = new Compras();
+                controle.SalvarCompras(compra);
                 printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
                 preenchePedido(venda);
             }
@@ -101,14 +103,15 @@ namespace Loja1._0.View
                 dtProdutos.Columns.Add("preçoUnd", typeof(string));
                 dtProdutos.Columns.Add("impostos", typeof(string));
                 dtProdutos.Columns.Add("preçototal", typeof(string));
-
+                
                 for (int i = 0; i < listaProdutos.Count; i++)
                 {
                     compra = controle.PesquisaCompraAnterior(Convert.ToInt32(listaProdutos[i].id_produto));
-                    Compras compraPend = controle.PesquisaIcmsCompra(Convert.ToInt32(listaProdutos[i].id_produto));
-                    dtProdutos.Rows.Add(listaProdutos[i].Produtos.desc_produto, listaProdutos[i].Produtos.UnidMedidas.medida, listaProdutos[i].quantidade.ToString(), compra.preco_venda.ToString(), compraPend.icms_pago.ToString(), (listaProdutos[i].quantidade * compra.preco_venda).ToString());
+                    //Compras compraPend = controle.PesquisaIcmsCompra(Convert.ToInt32(listaProdutos[i].id_produto));
+                    //dtProdutos.Rows.Add(listaProdutos[i].Produtos.desc_produto, listaProdutos[i].Produtos.UnidMedidas.medida, listaProdutos[i].quantidade.ToString(), compra.preco_venda.ToString(), compraPend.icms_pago.ToString(), (listaProdutos[i].quantidade * compra.preco_venda).ToString());
+                    dtProdutos.Rows.Add(listaProdutos[i].Produtos.desc_produto, listaProdutos[i].Produtos.UnidMedidas.medida, listaProdutos[i].quantidade.ToString(), compra.preco_venda.ToString(), compra.icms_pago.ToString(), (listaProdutos[i].quantidade * compra.preco_venda).ToString());
                     valorAux = valorAux + (compra.preco_venda * listaProdutos[i].quantidade);
-                    if(compraPend.qnt_compra >= listaProdutos[i].quantidade)
+                    /*if(compraPend.qnt_compra >= listaProdutos[i].quantidade)
                     {
                         compraPend.qnt_compra = compraPend.qnt_compra - listaProdutos[i].quantidade;
                         controle.SalvaAtualiza();
@@ -121,7 +124,7 @@ namespace Loja1._0.View
 
                         while (quant > 0)
                         {
-                            compraPend = controle.PesquisaIcmsCompra(Convert.ToInt32(listaProdutos[i].id_produto));
+                           // compraPend = controle.PesquisaIcmsCompra(Convert.ToInt32(listaProdutos[i].id_produto));
                             if (compraPend.qnt_compra >= quant)
                             {
                                 compraPend.qnt_compra = compraPend.qnt_compra - quant;
@@ -135,7 +138,7 @@ namespace Loja1._0.View
                             }
                         }
                         
-                    }
+                    }*/
                 }
                 for (int i = listaProdutos.Count; i < 25; i++)
                 {

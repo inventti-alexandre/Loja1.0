@@ -37,7 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnContabil = new System.Windows.Forms.Button();
             this.btnConsultaPedidos = new System.Windows.Forms.Button();
-            this.btnGestao = new System.Windows.Forms.Button();
+            this.btnPonto = new System.Windows.Forms.Button();
             this.btnFolhaPg = new System.Windows.Forms.Button();
             this.btnEntregas = new System.Windows.Forms.Button();
             this.btnRelatorios = new System.Windows.Forms.Button();
@@ -47,6 +47,7 @@
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnCaixa = new System.Windows.Forms.Button();
             this.btnPdv = new System.Windows.Forms.Button();
+            this.btnConfig = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLogo.Location = new System.Drawing.Point(238, 409);
@@ -78,8 +79,8 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -123,7 +124,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel1.Controls.Add(this.btnContabil);
             this.panel1.Controls.Add(this.btnConsultaPedidos);
-            this.panel1.Controls.Add(this.btnGestao);
+            this.panel1.Controls.Add(this.btnPonto);
             this.panel1.Controls.Add(this.btnFolhaPg);
             this.panel1.Controls.Add(this.btnEntregas);
             this.panel1.Controls.Add(this.btnRelatorios);
@@ -160,7 +161,7 @@
             this.btnConsultaPedidos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConsultaPedidos.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultaPedidos.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnConsultaPedidos.Location = new System.Drawing.Point(18, 97);
+            this.btnConsultaPedidos.Location = new System.Drawing.Point(341, 26);
             this.btnConsultaPedidos.Name = "btnConsultaPedidos";
             this.btnConsultaPedidos.Size = new System.Drawing.Size(145, 45);
             this.btnConsultaPedidos.TabIndex = 4;
@@ -168,20 +169,20 @@
             this.btnConsultaPedidos.UseVisualStyleBackColor = false;
             this.btnConsultaPedidos.Click += new System.EventHandler(this.btnConsultaPedidos_Click);
             // 
-            // btnGestao
+            // btnPonto
             // 
-            this.btnGestao.AutoEllipsis = true;
-            this.btnGestao.BackColor = System.Drawing.Color.White;
-            this.btnGestao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGestao.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGestao.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnGestao.Location = new System.Drawing.Point(502, 97);
-            this.btnGestao.Name = "btnGestao";
-            this.btnGestao.Size = new System.Drawing.Size(145, 45);
-            this.btnGestao.TabIndex = 7;
-            this.btnGestao.Text = "GESTÃO SIST.";
-            this.btnGestao.UseVisualStyleBackColor = false;
-            this.btnGestao.Click += new System.EventHandler(this.btnGestao_Click);
+            this.btnPonto.AutoEllipsis = true;
+            this.btnPonto.BackColor = System.Drawing.Color.White;
+            this.btnPonto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPonto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPonto.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPonto.Location = new System.Drawing.Point(502, 97);
+            this.btnPonto.Name = "btnPonto";
+            this.btnPonto.Size = new System.Drawing.Size(145, 45);
+            this.btnPonto.TabIndex = 7;
+            this.btnPonto.Text = "PONTO DIÁRIO";
+            this.btnPonto.UseVisualStyleBackColor = false;
+            this.btnPonto.Click += new System.EventHandler(this.btnPonto_Click);
             // 
             // btnFolhaPg
             // 
@@ -236,11 +237,11 @@
             this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUsuarios.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuarios.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnUsuarios.Location = new System.Drawing.Point(179, 97);
+            this.btnUsuarios.Location = new System.Drawing.Point(341, 97);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(145, 45);
             this.btnUsuarios.TabIndex = 5;
-            this.btnUsuarios.Text = "USUÁRIOS";
+            this.btnUsuarios.Text = "FUNCIONÁRIOS";
             this.btnUsuarios.UseVisualStyleBackColor = false;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
@@ -251,7 +252,7 @@
             this.btnProdutos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProdutos.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProdutos.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnProdutos.Location = new System.Drawing.Point(341, 97);
+            this.btnProdutos.Location = new System.Drawing.Point(502, 26);
             this.btnProdutos.Name = "btnProdutos";
             this.btnProdutos.Size = new System.Drawing.Size(145, 45);
             this.btnProdutos.TabIndex = 6;
@@ -266,7 +267,7 @@
             this.btnFornecedores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFornecedores.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFornecedores.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnFornecedores.Location = new System.Drawing.Point(502, 26);
+            this.btnFornecedores.Location = new System.Drawing.Point(18, 97);
             this.btnFornecedores.Name = "btnFornecedores";
             this.btnFornecedores.Size = new System.Drawing.Size(145, 45);
             this.btnFornecedores.TabIndex = 3;
@@ -281,7 +282,7 @@
             this.btnClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClientes.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClientes.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnClientes.Location = new System.Drawing.Point(341, 26);
+            this.btnClientes.Location = new System.Drawing.Point(180, 97);
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(145, 45);
             this.btnClientes.TabIndex = 2;
@@ -296,7 +297,7 @@
             this.btnCaixa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCaixa.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCaixa.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCaixa.Location = new System.Drawing.Point(179, 26);
+            this.btnCaixa.Location = new System.Drawing.Point(18, 26);
             this.btnCaixa.Name = "btnCaixa";
             this.btnCaixa.Size = new System.Drawing.Size(145, 45);
             this.btnCaixa.TabIndex = 1;
@@ -311,7 +312,7 @@
             this.btnPdv.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPdv.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPdv.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPdv.Location = new System.Drawing.Point(18, 26);
+            this.btnPdv.Location = new System.Drawing.Point(180, 26);
             this.btnPdv.Name = "btnPdv";
             this.btnPdv.Size = new System.Drawing.Size(145, 45);
             this.btnPdv.TabIndex = 0;
@@ -319,14 +320,30 @@
             this.btnPdv.UseVisualStyleBackColor = false;
             this.btnPdv.Click += new System.EventHandler(this.btnPdv_Click);
             // 
+            // btnConfig
+            // 
+            this.btnConfig.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfig.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfig.BackgroundImage")));
+            this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnConfig.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnConfig.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnConfig.Location = new System.Drawing.Point(722, 4);
+            this.btnConfig.Margin = new System.Windows.Forms.Padding(0);
+            this.btnConfig.Name = "btnConfig";
+            this.btnConfig.Size = new System.Drawing.Size(34, 34);
+            this.btnConfig.TabIndex = 11;
+            this.btnConfig.UseVisualStyleBackColor = false;
+            this.btnConfig.Click += new System.EventHandler(this.btnConfig_Click);
+            // 
             // Inicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Loja1._0.Properties.Resources.Fundo;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnConfig);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblCopy);
             this.Controls.Add(this.lblNome);
@@ -356,7 +373,7 @@
         private System.Windows.Forms.Label lblCopy;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnConsultaPedidos;
-        private System.Windows.Forms.Button btnGestao;
+        private System.Windows.Forms.Button btnPonto;
         private System.Windows.Forms.Button btnFolhaPg;
         private System.Windows.Forms.Button btnEntregas;
         private System.Windows.Forms.Button btnRelatorios;
@@ -367,6 +384,7 @@
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnCaixa;
         private System.Windows.Forms.Button btnPdv;
+        private System.Windows.Forms.Button btnConfig;
     }
 }
 

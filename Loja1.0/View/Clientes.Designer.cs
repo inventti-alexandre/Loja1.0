@@ -35,6 +35,8 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlDados = new System.Windows.Forms.Panel();
+            this.txtRG = new System.Windows.Forms.TextBox();
+            this.lblRg = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.rdbDinheiro = new System.Windows.Forms.RadioButton();
@@ -77,8 +79,6 @@
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.lblMensagem = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.txtRG = new System.Windows.Forms.TextBox();
-            this.lblRg = new System.Windows.Forms.Label();
             this.pnlDados.SuspendLayout();
             this.pnlTelefone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -102,7 +102,7 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLogo.Location = new System.Drawing.Point(675, 529);
@@ -113,7 +113,7 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -185,6 +185,26 @@
             this.pnlDados.Name = "pnlDados";
             this.pnlDados.Size = new System.Drawing.Size(775, 246);
             this.pnlDados.TabIndex = 7;
+            // 
+            // txtRG
+            // 
+            this.txtRG.Enabled = false;
+            this.txtRG.Location = new System.Drawing.Point(52, 67);
+            this.txtRG.MaxLength = 30;
+            this.txtRG.Name = "txtRG";
+            this.txtRG.Size = new System.Drawing.Size(294, 20);
+            this.txtRG.TabIndex = 25;
+            // 
+            // lblRg
+            // 
+            this.lblRg.AutoSize = true;
+            this.lblRg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRg.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblRg.Location = new System.Drawing.Point(12, 68);
+            this.lblRg.Name = "lblRg";
+            this.lblRg.Size = new System.Drawing.Size(41, 16);
+            this.lblRg.TabIndex = 24;
+            this.lblRg.Text = "RG : ";
             // 
             // txtEmail
             // 
@@ -689,26 +709,6 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // txtRG
-            // 
-            this.txtRG.Enabled = false;
-            this.txtRG.Location = new System.Drawing.Point(52, 67);
-            this.txtRG.MaxLength = 30;
-            this.txtRG.Name = "txtRG";
-            this.txtRG.Size = new System.Drawing.Size(294, 20);
-            this.txtRG.TabIndex = 25;
-            // 
-            // lblRg
-            // 
-            this.lblRg.AutoSize = true;
-            this.lblRg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRg.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblRg.Location = new System.Drawing.Point(12, 68);
-            this.lblRg.Name = "lblRg";
-            this.lblRg.Size = new System.Drawing.Size(41, 16);
-            this.lblRg.TabIndex = 24;
-            this.lblRg.Text = "RG : ";
             // 
             // Clientes
             // 

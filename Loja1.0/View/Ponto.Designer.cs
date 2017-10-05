@@ -1,6 +1,6 @@
 ﻿namespace Loja1._0
 {
-    partial class Entrega
+    partial class Ponto
     {
         /// <summary>
         /// Variável de designer necessária.

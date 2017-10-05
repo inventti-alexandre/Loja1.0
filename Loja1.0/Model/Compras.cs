@@ -16,13 +16,13 @@ namespace Loja1._0.Model
     {
         public int id { get; set; }
         public int id_produto { get; set; }
+        public int qnt_compra { get; set; }
         public System.DateTime dt_compra { get; set; }
         public decimal preco_compra { get; set; }
         public decimal preco_venda { get; set; }
         public decimal icms_pago { get; set; }
         public int id_fornecedor { get; set; }
         public int status { get; set; }
-        public int qnt_compra { get; set; }
     
         public virtual Fornecedores Fornecedores { get; set; }
         public virtual Produtos Produtos { get; set; }

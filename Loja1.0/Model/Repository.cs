@@ -418,6 +418,7 @@ namespace Loja1._0.Model
         {
             return (from compra in dataEntity.Compras
                     where compra.status == 1
+                    && compra.id_produto == idProduto
                     orderby compra.dt_compra descending
                     select compra).First();
         }
@@ -426,6 +427,7 @@ namespace Loja1._0.Model
         {
             return (from compra in dataEntity.Compras
                     where compra.qnt_compra > 0
+                    && compra.id_produto == id
                     orderby compra.dt_compra ascending
                     select compra).First();
         }
@@ -528,7 +530,7 @@ namespace Loja1._0.Model
                 qntParcelas++;
             }
 
-            for (int i = 0; i < qntParcelas; i++)
+            for (int i = 0; i <= qntParcelas; i++)
             {
                 Pagamentos pagamento = (from pag in dataEntity.Pagamentos
                                         where pag.id == (ultimoPag.id - i)

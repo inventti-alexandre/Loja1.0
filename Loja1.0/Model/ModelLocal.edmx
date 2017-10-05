@@ -584,11 +584,11 @@
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Compras__id_forn__7BE56230" Association="ServidorLojaModel.FK__Compras__id_forn__7BE56230">
+          <AssociationSet Name="FK__Compras__id_forn__00AA174D" Association="ServidorLojaModel.FK__Compras__id_forn__00AA174D">
             <End Role="Fornecedores" EntitySet="Fornecedores" />
             <End Role="Compras" EntitySet="Compras" />
           </AssociationSet>
-          <AssociationSet Name="FK__Compras__id_prod__7CD98669" Association="ServidorLojaModel.FK__Compras__id_prod__7CD98669">
+          <AssociationSet Name="FK__Compras__id_prod__019E3B86" Association="ServidorLojaModel.FK__Compras__id_prod__019E3B86">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Compras" EntitySet="Compras" />
           </AssociationSet>
@@ -674,15 +674,15 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_produto" Type="Int32" Nullable="false" />
+          <Property Name="qnt_compra" Type="Int32" Nullable="false" />
           <Property Name="dt_compra" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="preco_compra" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="preco_venda" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="icms_pago" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
           <Property Name="id_fornecedor" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Fornecedores" Relationship="ServidorLojaModel.FK__Compras__id_forn__7BE56230" FromRole="Compras" ToRole="Fornecedores" />
-          <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK__Compras__id_prod__7CD98669" FromRole="Compras" ToRole="Produtos" />
-          <Property Name="qnt_compra" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fornecedores" Relationship="ServidorLojaModel.FK__Compras__id_forn__00AA174D" FromRole="Compras" ToRole="Fornecedores" />
+          <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK__Compras__id_prod__019E3B86" FromRole="Compras" ToRole="Produtos" />
         </EntityType>
         <EntityType Name="Contabilidade">
           <Key>
@@ -760,7 +760,7 @@
           <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cidades" Relationship="ServidorLojaModel.FK__Fornecedo__id_Ci__6ABAD62E" FromRole="Fornecedores" ToRole="Cidades" />
-          <NavigationProperty Name="Compras" Relationship="ServidorLojaModel.FK__Compras__id_forn__7BE56230" FromRole="Fornecedores" ToRole="Compras" />
+          <NavigationProperty Name="Compras" Relationship="ServidorLojaModel.FK__Compras__id_forn__00AA174D" FromRole="Fornecedores" ToRole="Compras" />
         </EntityType>
         <EntityType Name="Gerenciamento">
           <Key>
@@ -857,7 +857,7 @@
           <Property Name="id_medida" Type="Int32" Nullable="false" />
           <Property Name="imagem" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Compras" Relationship="ServidorLojaModel.FK__Compras__id_prod__7CD98669" FromRole="Produtos" ToRole="Compras" />
+          <NavigationProperty Name="Compras" Relationship="ServidorLojaModel.FK__Compras__id_prod__019E3B86" FromRole="Produtos" ToRole="Compras" />
           <NavigationProperty Name="Estoque" Relationship="ServidorLojaModel.FK__Estoque__id_prod__32767D0B" FromRole="Produtos" ToRole="Estoque" />
           <NavigationProperty Name="UnidMedidas" Relationship="ServidorLojaModel.FK__Produtos__id_med__29E1370A" FromRole="Produtos" ToRole="UnidMedidas" />
           <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.id_produto" FromRole="Produtos" ToRole="Vendas_Produtos" />
@@ -975,7 +975,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Compras__id_forn__7BE56230">
+        <Association Name="FK__Compras__id_forn__00AA174D">
           <End Type="ServidorLojaModel.Fornecedores" Role="Fornecedores" Multiplicity="1" />
           <End Type="ServidorLojaModel.Compras" Role="Compras" Multiplicity="*" />
           <ReferentialConstraint>
@@ -987,7 +987,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Compras__id_prod__7CD98669">
+        <Association Name="FK__Compras__id_prod__019E3B86">
           <End Type="ServidorLojaModel.Produtos" Role="Produtos" Multiplicity="1" />
           <End Type="ServidorLojaModel.Compras" Role="Compras" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1160,13 +1160,13 @@
           <EntitySetMapping Name="Compras">
             <EntityTypeMapping TypeName="ServidorLojaModel.Compras">
               <MappingFragment StoreEntitySet="Compras">
-                <ScalarProperty Name="qnt_compra" ColumnName="qnt_compra" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
                 <ScalarProperty Name="icms_pago" ColumnName="icms_pago" />
                 <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
                 <ScalarProperty Name="preco_compra" ColumnName="preco_compra" />
                 <ScalarProperty Name="dt_compra" ColumnName="dt_compra" />
+                <ScalarProperty Name="qnt_compra" ColumnName="qnt_compra" />
                 <ScalarProperty Name="id_produto" ColumnName="id_produto" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

@@ -22,7 +22,7 @@ namespace Loja1._0
                 if (perfil > 1)
                 {
                     btnUsuarios.Enabled = false;
-                    btnGestao.Enabled = false;
+                    btnPonto.Enabled = false;
                     btnRelatorios.Enabled = false;
 
                     if (perfil > 2)
@@ -124,13 +124,6 @@ namespace Loja1._0
             this.Hide();
         }
 
-        private void btnGestao_Click(object sender, EventArgs e)
-        {
-            Gestao form = new Gestao(user);
-            form.Show();
-            this.Hide();
-        }
-
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             Relatorios form = new Relatorios(user);
@@ -177,6 +170,18 @@ namespace Loja1._0
             Entrega form = new Entrega(user);
             form.Show();
             this.Hide();
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            Gestao form = new Gestao(user);
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnPonto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

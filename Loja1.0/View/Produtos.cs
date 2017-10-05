@@ -313,6 +313,7 @@ namespace Loja1._0
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            btnAlterar.Enabled = false;
             btnExcluir.Enabled = true;
             flagNovo = false;
             dgvProdutos.Enabled = false;

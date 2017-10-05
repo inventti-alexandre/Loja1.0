@@ -28,8 +28,8 @@
         <AssociationConnector Association="ServidorLojaModel.FK__Clientes__id_Cid__793DFFAF" />
         <AssociationConnector Association="ServidorLojaModel.FK__Fornecedo__id_Ci__6ABAD62E" />
         <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__2057CCD0" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Compras__id_forn__7BE56230" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Compras__id_prod__7CD98669" />
+        <AssociationConnector Association="ServidorLojaModel.FK__Compras__id_forn__00AA174D" />
+        <AssociationConnector Association="ServidorLojaModel.FK__Compras__id_prod__019E3B86" />
         <AssociationConnector Association="ServidorLojaModel.FK__Estoque__id_prod__32767D0B" />
         <AssociationConnector Association="ServidorLojaModel.FK__Movimento__id_ti__7C1A6C5A" />
         <AssociationConnector Association="ServidorLojaModel.FK__Pagamento__id_mo__7EF6D905" />

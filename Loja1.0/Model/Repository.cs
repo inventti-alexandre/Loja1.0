@@ -9,69 +9,166 @@ namespace Loja1._0.Model
 {
     class Repository : DbContext
     {
-        ServidorLojaEntities dataEntity = new ServidorLojaEntities();
-        public void salvaAlteracao()
+        #region Repositório de itens de uso Genérico
+        DbEntitiesLocal dataEntity = new DbEntitiesLocal();
+        
+        public void SalvaAlteracao()
         {
             dataEntity.SaveChanges();
         }
+        #endregion
 
-        public void salvarNovoUsuario(Usuarios usuario)
+        #region Repositório do BD de Usuários
+        public void SalvarNovoUsuario(Usuarios usuario)
         {
             dataEntity.Usuarios.Add(usuario);
         }
 
-        public void excluirUsuarioExistente(Usuarios usuario)
+        public void ExcluirUsuarioExistente(Usuarios usuario)
         {
             dataEntity.Usuarios.Remove(usuario);
         }
 
-        public Usuarios pesquisaSimplesUser(string valor)
+        public Usuarios PesquisaSimplesUser(string valor)
         {
             return (from usuarios in dataEntity.Usuarios
-                    where (usuarios.nome.Equals(valor))
+                    where (usuarios.login.Equals(valor))
                     select usuarios).SingleOrDefault();
         }
 
-        public Usuarios pesquisaUserById(int Id)
+        public Usuarios PesquisaUserById(int Id)
         {
             return (from usuarios in dataEntity.Usuarios
                     where (usuarios.id == Id)
                     select usuarios).SingleOrDefault();
         }
 
-        public List<Usuarios> pesquisaCompletaUsers()
+        public List<Usuarios> PesquisaCompletaUsers()
         {
             return (from usuarios in dataEntity.Usuarios
                     select usuarios).ToList();
         }
 
-        public List<Usuarios> pesquisaUsuariosInvalidos()
+        public Usuarios PesquisaNomeUser(string nomeCompleto)
+        {
+            return (from usuarios in dataEntity.Usuarios
+                    where (usuarios.nome.Equals(nomeCompleto))
+                    select usuarios).SingleOrDefault();
+
+        }
+
+        public List<Usuarios> PesquisaUsuariosInvalidos()
         {
             return (from usuarios in dataEntity.Usuarios
                     where (usuarios.status == 0)
                     select usuarios).ToList();
         }
 
-        public Produtos pesquisaProdutoByNome(string pesquisa)
+        public List<Usuarios> PesquisaUsersIdPerfil(int idMinus)
+        {
+            return (from usuarios in dataEntity.Usuarios
+                    where usuarios.id_Perfil >= idMinus
+                    && usuarios.status == 1
+                    select usuarios).ToList();
+        }
+
+        public int ContaUserValidos()
+        {
+            List<Usuarios> lista = (from usuarios in dataEntity.Usuarios
+                                    where (usuarios.status == 1)
+                                    select usuarios).ToList();
+            return lista.Count;
+        }
+        
+        #endregion
+
+        #region Repositório do BD de Clientes
+
+        public Clientes PesquisaClienteId(int id)
+        {
+            return (from cliente in dataEntity.Clientes
+                    where (cliente.id == (id))
+                    select cliente).SingleOrDefault();
+        }
+
+        public void SalvarNovoCliente(Clientes cliente)
+        {
+            dataEntity.Clientes.Add(cliente);
+        }
+
+        public List<Clientes> PesquisaClienteByCpfOrNome(string pesquisa)
+        {
+            return (from cliente in dataEntity.Clientes
+                    where (cliente.cpf.Equals(pesquisa)
+                    || (cliente.nome.Contains(pesquisa)
+                    && cliente.status == 1))
+                    select cliente).ToList();
+        }
+
+        public Clientes PesquisaClienteByCpf(string cpf)
+        {
+            return (from cliente in dataEntity.Clientes
+                    where (cliente.cpf.Equals(cpf))
+                    select cliente).SingleOrDefault();
+        }
+        #endregion
+
+        #region Repositório do BD de Produtos
+
+        public List<Produtos> PesquisaProdutosValidoByName(string pesquisa)
+        {
+            return (from produto in dataEntity.Produtos
+                    where (produto.desc_produto.Contains(pesquisa)
+                    && produto.status == 1)
+                    orderby produto.desc_produto
+                    select produto).ToList();
+        }
+
+        public List<Produtos> PesquisaProdutos()
+        {
+            return (from produto in dataEntity.Produtos
+                    where produto.status == 1
+                    select produto).ToList();
+        }
+
+        public List<Produtos> PesquisaProdutoByNomeId(string busca)
+        {
+            return (from produto in dataEntity.Produtos
+                    where (produto.desc_produto.Contains(busca)
+                    || produto.cod_produto == busca)
+                    select produto).ToList();
+        }
+
+        public Produtos PesquisaProdutoByNome(string pesquisa)
         {
             return (from produtos in dataEntity.Produtos
                     where (produtos.desc_produto.Equals(pesquisa))
                     select produtos).SingleOrDefault();
         }
 
-        public void salvarNovoProduto(Produtos produto)
+        public void SalvarNovoProduto(Produtos produto)
         {
             dataEntity.Produtos.Add(produto);
         }
 
-        public Produtos pesquisaProdutoByCodigo(string codigo)
+        public Produtos PesquisaProdutoByCodigo(string codigo)
         {
             return (from produtos in dataEntity.Produtos
                     where (produtos.cod_produto.Equals(codigo))
                     select produtos).SingleOrDefault();
         }
 
-        public List<Estoque> pesquisaEstoqueOrdened()
+        public Produtos PesquisaProdutoById(int pesquisa)
+        {
+            return (from produto in dataEntity.Produtos
+                    where (produto.id == pesquisa)
+                    select produto).SingleOrDefault();
+        }
+        #endregion
+
+        #region Repositório do BD de Estoques
+
+        public List<Estoque> PesquisaEstoqueOrdened()
         {
             return (from estoque in dataEntity.Estoque
                     where estoque.Produtos.status == 1
@@ -79,42 +176,143 @@ namespace Loja1._0.Model
                     select estoque).ToList();
         }
 
-        public List<UnidMedidas> pesquisaMedidas()
+        public Estoque PesquisaEstoqueByProdID(int valor)
         {
-            return (from unid in dataEntity.UnidMedidas
-                    select unid).ToList();
+            return (from estoque in dataEntity.Estoque
+                    where (estoque.id_produto == valor)
+                    select estoque).SingleOrDefault();
         }
 
-        public List<Cidades> pesquisaCidadeByNameUF(string pesquisa)
+        public void SalvarNovoEstoque(Estoque estoque)
         {
-            return (from cidade in dataEntity.Cidades
-                    where cidade.Estados.estado.Equals(pesquisa)                                       
-                    select cidade).ToList();
+            dataEntity.Estoque.Add(estoque);
+        }
+        #endregion
+
+        #region Repositório do BD de Contabilidade
+        public void SalvarNovaContabilidade(Contabilidade contabilidade)
+        {
+            dataEntity.Contabilidade.Add(contabilidade);
         }
 
-        public Contabilidade pesquisaContabilidadeId(int v)
+        public Contabilidade PesquisaContabilidadeId(int v)
         {
             return (from contabil in dataEntity.Contabilidade
                     where contabil.id == v
                     select contabil).Single();
         }
 
-        public List<Vendas_Produtos> pesquisaProdutosVendaById(int busca)
+        public List<Contabilidade> PesquisaGeralContabilidade()
+        {
+            return (from contabil in dataEntity.Contabilidade
+                    select contabil).ToList();
+        }
+        #endregion
+
+        #region Repositório do BD de UnidMedidas
+        public List<UnidMedidas> PesquisaMedidas()
+        {
+            return (from unid in dataEntity.UnidMedidas
+                    select unid).ToList();
+        }
+
+        public UnidMedidas PesquisaMedidaId(int id)
+        {
+            return (from unid in dataEntity.UnidMedidas
+                    where unid.id == id
+                    select unid).SingleOrDefault();
+        }
+
+        public UnidMedidas PesquisaMedidaNome(string nome)
+        {
+            return (from unid in dataEntity.UnidMedidas
+                    where unid.medida.Equals(nome)
+                    select unid).SingleOrDefault();
+        }
+        #endregion
+
+        #region Repositório do BD de Cidades
+        public List<Cidades> PesquisaCidadesByEstado(int pesquisa)
+        {
+            return (from cidade in dataEntity.Cidades
+                    where (cidade.id_Estado == (pesquisa)
+                    || cidade.id_Estado == 0)
+                    orderby cidade.cidade
+                    select cidade).ToList();
+        }
+
+        public Cidades PesquisaCidadeByName(string pesquisa)
+        {
+            return (from cidade in dataEntity.Cidades
+                    where (cidade.cidade.Equals(pesquisa))
+                    select cidade).SingleOrDefault();
+        }
+
+        internal Cidades PesquisaCidadeId(int pesquisa)
+        {
+            return (from cidade in dataEntity.Cidades
+                    where cidade.id == pesquisa
+                    select cidade).SingleOrDefault();
+        }
+
+        public void SalvarNovaCidade(Cidades cidade)
+        {
+            dataEntity.Cidades.Add(cidade);
+        }
+
+        public void RemoverCidade(Cidades cidade)
+        {
+            dataEntity.Cidades.Remove(cidade);
+        }
+
+        public List<Cidades> PesquisaCidadeByNameUF(string pesquisa)
+        {
+            return (from cidade in dataEntity.Cidades
+                    where cidade.Estados.estado.Equals(pesquisa)                                       
+                    select cidade).ToList();
+        }
+        #endregion
+
+        #region Repositório do BD Vendas_Produtos
+
+        public List<Vendas_Produtos> PesquisaProdutosVendaById(int busca)
         {
             return (from prodVenda in dataEntity.Vendas_Produtos
                     where prodVenda.id_venda == busca
                     select prodVenda).ToList();
         }
 
-        public int contaUserValidos()
+        public List<Vendas_Produtos> PesquisaProdutosVendasByPedido(int id_Venda)
         {
-            List<Usuarios> lista = (from usuarios in dataEntity.Usuarios
-                                    where (usuarios.status == 1)
-                                    select usuarios).ToList();
-            return lista.Count;
+            return (from prodVenda in dataEntity.Vendas_Produtos
+                    where (prodVenda.id_venda == id_Venda)
+                    select prodVenda).ToList();
         }
 
-        public List<Tipos_Movimentacao> pesquisaTiposMov()
+        public void SalvarNovoProdutoVendido(Vendas_Produtos prodVendido)
+        {
+            dataEntity.Vendas_Produtos.Add(prodVendido);
+        }
+
+        #endregion
+
+        #region Repositório do BD Tipos_Movimentacao
+        public Tipos_Movimentacao PesquisaTipoMovById(int? id_tipo)
+        {
+            return (from tipos in dataEntity.Tipos_Movimentacao
+                    where tipos.id == (id_tipo)
+                    select tipos).SingleOrDefault();
+        }
+
+        public List<Tipos_Movimentacao> PesquisaSubTiposMovimentoByDesc(string busca)
+        {
+            return (from tipos in dataEntity.Tipos_Movimentacao
+                    where tipos.sub_tipo.Equals(busca)
+                    orderby tipos.forma_pag
+                    select tipos).ToList();
+        }
+
+        public List<Tipos_Movimentacao> PesquisaTiposMov()
         {
             List<Tipos_Movimentacao> lista = (from tipoMov in dataEntity.Tipos_Movimentacao
                                               where tipoMov.mostrar == true
@@ -139,7 +337,7 @@ namespace Loja1._0.Model
             return listaAux;
         }
 
-        public List<Tipos_Movimentacao> pesquisaTiposMovimentoByDesc(string busca)
+        public List<Tipos_Movimentacao> PesquisaTiposMovimentoByDesc(string busca)
         {
 
             List<Tipos_Movimentacao> lista = (from tipos in dataEntity.Tipos_Movimentacao
@@ -165,59 +363,73 @@ namespace Loja1._0.Model
 
             return listaAux;
         }
+        #endregion
 
-        public List<Vendas_Produtos> pesquisaProdutosVendasByPedido(int id_Venda)
+        #region Repositório do BD Gerenciamento
+        public void SalvarNovoGerenciamento(Gerenciamento gerencia)
         {
-            return (from prodVenda in dataEntity.Vendas_Produtos
-                    where (prodVenda.id_venda == id_Venda)
-                    select prodVenda).ToList();
-        }
+            dataEntity.Gerenciamento.Add(gerencia);
+        }                                  
 
-        public Produtos pesquisaProdutoById(int pesquisa)
-        {
-            return (from produto in dataEntity.Produtos
-                    where (produto.id == pesquisa)
-                    select produto).SingleOrDefault();
-        }
-
-        public List<Tipos_Movimentacao> pesquisaSubTiposMovimentoByDesc(string busca)
-        {
-            return (from tipos in dataEntity.Tipos_Movimentacao
-                    where tipos.sub_tipo.Equals(busca)
-                    orderby tipos.forma_pag
-                    select tipos).ToList();
-        }
-
-        public List<Produtos> pesquisaProdutoByNomeId(string busca)
-        {
-            return (from produto in dataEntity.Produtos
-                    where (produto.desc_produto.Contains(busca)
-                    || produto.cod_produto == busca)
-                    select produto).ToList();
-        }
-
-        public Gerenciamento pesquisaGerenciamento(int pesquisa)
+        public Gerenciamento PesquisaGerenciamento(int pesquisa)
         {
             return (from gerencia in dataEntity.Gerenciamento
                     where gerencia.id == pesquisa
                     select gerencia).SingleOrDefault();
         }
+        #endregion
 
-        public List<Produtos> pesquisaProdutos()
-        {
-            return (from produto in dataEntity.Produtos
-                    where produto.status == 1
-                    select produto).ToList();
-        }
-
-        public List<Estados> pesquisaEstados()
+        #region Repositório do BD Estados
+        public List<Estados> PesquisaEstados()
         {
             return (from estados in dataEntity.Estados
-                    orderby estados.id
+                    orderby estados.id            
                     select estados).ToList();
         }
+        #endregion
 
-        public List<Movimentos> pesquisaMovimentoIntervalo(DateTime dtInicio, DateTime dtFim)
+        #region Repositório do BD de Movimentos
+
+        public void SalvarNovoMovimento(Movimentos movimento)
+        {
+            dataEntity.Movimentos.Add(movimento);
+        }
+
+        public List<Movimentos> PesquisaMovimentoByTipoId(int id)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.id_tipo == id
+                    orderby movimento.id descending
+                    select movimento).ToList();
+        }
+
+        public List<Movimentos> PesquisaMovimentosTotais()
+        {
+            return (from movimento in dataEntity.Movimentos
+                    orderby movimento.id_tipo
+                    select movimento).ToList();
+        }
+
+        public Movimentos PesquisaMovimentoByID(int id)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.id == id
+                    select movimento).Single();
+        }
+
+        public void ExcluirMovimento(Movimentos movimento)
+        {
+            dataEntity.Movimentos.Remove(movimento);
+        }
+
+        public List<Movimentos> PesquisaMovimentosReferentePagamento(int idPagamento)
+        {
+            return (from movimento in dataEntity.Movimentos
+                    where movimento.desc.Contains(idPagamento.ToString())
+                    select movimento).ToList();
+        }        
+
+        public List<Movimentos> PesquisaMovimentoIntervalo(DateTime dtInicio, DateTime dtFim)
         {
             return (from movimento in dataEntity.Movimentos
                     where movimento.data >= dtInicio
@@ -226,16 +438,30 @@ namespace Loja1._0.Model
                     select movimento).ToList();
         }
 
-        public List<Cidades> pesquisaCidadesByEstado(int pesquisa)
+        public Compras PesquisaCompraByIdProduto(int idProduto)
         {
-            return (from cidade in dataEntity.Cidades
-                    where (cidade.id_Estado == (pesquisa)
-                    || cidade.id_Estado == 0)
-                    orderby cidade.cidade
-                    select cidade).ToList();
+            return (from compra in dataEntity.Compras
+                    where compra.status == 1
+                    && compra.id_produto == idProduto
+                    orderby compra.dt_compra descending
+                    select compra).First();
         }
 
-        public int pesquisaMovimentoID(string desc, string tipo, string form)
+        public Compras PesquisaCompraPendente(int id)
+        {
+            return (from compra in dataEntity.Compras
+                    where compra.qnt_compra > 0
+                    && compra.id_produto == id
+                    orderby compra.dt_compra ascending
+                    select compra).First();
+        }        
+
+        public void RemoveProdVenda(Vendas_Produtos prodVend)
+        {
+            dataEntity.Vendas_Produtos.Remove(prodVend);
+        }
+
+        public int PesquisaMovimentoID(string desc, string tipo, string form)
         {
             if (form != null)
             {
@@ -254,253 +480,39 @@ namespace Loja1._0.Model
             }
 
         }
+        
+        #endregion
 
-        public Cidades pesquisaCidadeByName(string pesquisa)
-        {
-            return (from cidade in dataEntity.Cidades
-                    where (cidade.cidade.Equals(pesquisa))
-                    select cidade).SingleOrDefault();
-        }
+        #region Repositório do BD de Vendas
 
-        public void salvarNovaCidade(Cidades cidade)
-        {
-            dataEntity.Cidades.Add(cidade);
-        }
-
-        public void removerCidade(Cidades cidade)
-        {
-            dataEntity.Cidades.Remove(cidade);
-        }
-
-        public List<Vendas> pesquisaVendas()
+        public List<Vendas> PesquisaVendas()
         {
             return (from venda in dataEntity.Vendas
                     select venda).ToList();
         }
 
-        public List<Pagamentos> pesquisaPagamentosTotais()
-        {
-            return (from pagamento in dataEntity.Pagamentos
-                    where pagamento.tipoPag != null
-                    orderby pagamento.dataPagamento
-                    select pagamento).ToList();
-        }
-
-        public Fornecedores pesquisaFornecedorValidoByNome(string nome)
-        {
-            return (from fornecedor in dataEntity.Fornecedores
-                    where (fornecedor.nome.Equals(nome))
-                    select fornecedor).SingleOrDefault();
-        }
-
-        public void salvarNovoPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
-        {
-            dataEntity.Pagamentos_Vendas.Add(pagamentoPedido);
-        }
-
-        //SCRIPT FECHAMENTO
-        public void salvarNovoPedido(Fechamento pedido)
-        {
-            dataEntity.Fechamento.Add(pedido);
-        }
-
-        public bool pesquisaPagamentoVendaByIdVenda(int idVenda)
-        {
-            bool busca = true;
-            int teste = (from pagVenda in dataEntity.Pagamentos_Vendas
-                         where pagVenda.id_Venda == idVenda
-                         select pagVenda).Count();
-            if (teste == 0)
-            {
-                busca = false;
-            }
-            return busca;
-        }
-
-        public List<Movimentos> pesquisaMovimentoByTipoId(int id)
-        {
-            return (from movimento in dataEntity.Movimentos
-                    where movimento.id_tipo == id
-                    orderby movimento.id descending
-                    select movimento).ToList();
-        }
-
-        public Movimentos pesquisaMovimentoByID(int id)
-        {
-            return (from movimento in dataEntity.Movimentos
-                    where movimento.id == id
-                    select movimento).Single();
-        }
-
-        public void excluirMovimento(Movimentos movimento)
-        {
-            dataEntity.Movimentos.Remove(movimento);
-        }
-
-        public List<Movimentos> pesquisaMovimentosReferentePagamento(int idPagamento)
-        {
-            return (from movimento in dataEntity.Movimentos
-                    where movimento.desc.Contains(idPagamento.ToString())
-                    select movimento).ToList();
-        }
-
-        //SCRIPT FECHAMENTO
-        public bool pesquisaFechamentoByIdVenda(int idVenda)
-        {
-            bool busca = true;
-            int teste = (from fecha in dataEntity.Fechamento
-                         where fecha.id_venda == idVenda
-                         select fecha).Count();
-            if (teste == 0)
-            {
-                busca = false;
-            }
-            return busca;
-        }
-
-        public List<Pagamentos_Vendas> pesquisaPagamentoVendaByIdPagamento(int idPagamento)
-        {
-            return (from pagVend in dataEntity.Pagamentos_Vendas
-                    where pagVend.id_Pagamento == idPagamento
-                    select pagVend).ToList();
-        }
-
-        public void excluirPagamento(Pagamentos pag)
-        {
-            dataEntity.Pagamentos.Remove(pag);
-        }
-
-        public void excluirPagamento_Venda(Pagamentos_Vendas pagVend)
-        {
-            dataEntity.Pagamentos_Vendas.Remove(pagVend);
-        }
-
-        public List<Pagamentos> pesquisaPagamentosUltimo()
-        {
-            Pagamentos ultimoPag = (from pagamento in dataEntity.Pagamentos
-                                    orderby pagamento.id descending
-                                    select pagamento).First();
-            
-            int qntParcelas = Convert.ToInt32(ultimoPag.qntParcelas);
-
-            List<Pagamentos> listaRetorno = new List<Pagamentos>();
-
-            if (ultimoPag.tipoPag.Contains("Entrada +"))
-            {
-                qntParcelas++;
-            }
-
-            for (int i = 0; i < qntParcelas; i++)
-            {
-                Pagamentos pagamento = (from pag in dataEntity.Pagamentos
-                                        where pag.id == (ultimoPag.id - i)
-                                        select pag).Single();
-                listaRetorno.Add(pagamento);
-            }
-
-            return listaRetorno;
-        }
-
-        public UnidMedidas pesquisaMedidaId(int id)
-        {
-            return (from unid in dataEntity.UnidMedidas
-                    where unid.id == id
-                    select unid).SingleOrDefault();
-        }
-
-        public UnidMedidas pesquisaMedidaNome(string nome)
-        {
-            return (from unid in dataEntity.UnidMedidas
-                    where unid.medida.Equals(nome)
-                    select unid).SingleOrDefault();
-        }
-
-        public List<Movimentos> pesquisaMovimentosTotais()
-        {
-            return (from movimento in dataEntity.Movimentos
-                    orderby movimento.id_tipo
-                    select movimento).ToList();
-        }
-
-        public Clientes pesquisaClienteId(int id)
-        {
-            return (from cliente in dataEntity.Clientes
-                    where (cliente.id == (id))
-                    select cliente).SingleOrDefault();
-        }
-
-        public Tipos_Movimentacao pesquisaTipoMovById(int? id_tipo)
-        {
-            return (from tipos in dataEntity.Tipos_Movimentacao
-                    where tipos.id == (id_tipo)
-                    select tipos).SingleOrDefault();
-        }
-
-        public void salvarNovoCliente(Clientes cliente)
-        {
-            dataEntity.Clientes.Add(cliente);
-        }
-
-        public List<Clientes> pesquisaClienteByCpfOrNome(string pesquisa)
-        {
-            return (from cliente in dataEntity.Clientes
-                    where (cliente.cpf.Equals(pesquisa)
-                    || (cliente.nome.Contains(pesquisa)
-                    && cliente.status == 1))
-                    select cliente).ToList();
-        }
-
-        public Clientes pesquisaClienteByCpf(string cpf)
-        {
-            return (from cliente in dataEntity.Clientes
-                    where (cliente.cpf.Equals(cpf))
-                    select cliente).SingleOrDefault();
-        }
-
-        public List<Produtos> pesquisaProdutosValidoByName(string pesquisa)
-        {
-            return (from produto in dataEntity.Produtos
-                    where (produto.desc_produto.Contains(pesquisa)
-                    && produto.status == 1)
-                    orderby produto.desc_produto
-                    select produto).ToList();
-        }
-
-        public void salvarNovoPagamento(Pagamentos pagamento)
-        {
-            dataEntity.Pagamentos.Add(pagamento);
-        }
-
-        public void salvarNovoMovimento(Movimentos movimento)
-        {
-            dataEntity.Movimentos.Add(movimento);
-        }
-
-        public void salvarNovoProdutoVendido(Vendas_Produtos prodVendido)
-        {
-            dataEntity.Vendas_Produtos.Add(prodVendido);
-        }
-
-        public Vendas pesquisaVendabyID(int valor)
+        public Vendas PesquisaVendabyID(int valor)
         {
             return (from venda in dataEntity.Vendas
                     where (venda.id == valor)
                     select venda).SingleOrDefault();
         }
 
-        public Estoque pesquisaEstoqueByProdID(int valor)
+        public void SalvarNovaVenda(Vendas venda)
         {
-            return (from estoque in dataEntity.Estoque
-                    where (estoque.id_produto == valor)
-                    select estoque).SingleOrDefault();
+            dataEntity.Vendas.Add(venda);
         }
 
-        public void salvarNovoEstoque(Estoque estoque)
+        #endregion
+
+        #region Repositório do BD de Pagamentos
+
+        public void SalvarNovoPagamento(Pagamentos pagamento)
         {
-            dataEntity.Estoque.Add(estoque);
+            dataEntity.Pagamentos.Add(pagamento);
         }
 
-        public bool pesquisaIdPagamento(Pagamentos pagamento)
+        public bool PesquisaIdPagamento(Pagamentos pagamento)
         {
             List<Pagamentos> pag = (from pagamentos in dataEntity.Pagamentos
                                     where (pagamentos.id == (pagamento.id))
@@ -515,19 +527,62 @@ namespace Loja1._0.Model
             }
         }
 
-        public void salvarNovaVenda(Vendas venda)
+        public List<Pagamentos> PesquisaPagamentosTotais()
         {
-            dataEntity.Vendas.Add(venda);
+            return (from pagamento in dataEntity.Pagamentos
+                    where pagamento.tipoPag != null
+                    orderby pagamento.dataPagamento
+                    select pagamento).ToList();
         }
 
-        public Fornecedores pesquisaFornecedoresByCnpj(string cnpj)
+        public void ExcluirPagamento(Pagamentos pag)
+        {
+            dataEntity.Pagamentos.Remove(pag);
+        }
+
+        public List<Pagamentos> PesquisaPagamentosUltimo()
+        {
+            Pagamentos ultimoPag = (from pagamento in dataEntity.Pagamentos
+                                    orderby pagamento.id descending
+                                    select pagamento).First();
+
+            int qntParcelas = Convert.ToInt32(ultimoPag.qntParcelas);
+
+            List<Pagamentos> listaRetorno = new List<Pagamentos>();
+
+            if (ultimoPag.tipoPag.Contains("Entrada +"))
+            {
+                qntParcelas++;
+            }
+
+            for (int i = 0; i <= qntParcelas; i++)
+            {
+                Pagamentos pagamento = (from pag in dataEntity.Pagamentos
+                                        where pag.id == (ultimoPag.id - i)
+                                        select pag).Single();
+                listaRetorno.Add(pagamento);
+            }
+
+            return listaRetorno;
+        }
+        #endregion
+
+        #region Repositório do BD de Fornecedores
+        public Fornecedores PesquisaFornecedorValidoByNome(string nome)
+        {
+            return (from fornecedor in dataEntity.Fornecedores
+                    where (fornecedor.nome.Equals(nome))
+                    select fornecedor).SingleOrDefault();
+        }
+
+        public Fornecedores PesquisaFornecedoresByCnpj(string cnpj)
         {
             return (from fornecedor in dataEntity.Fornecedores
                     where (fornecedor.cnpj.Equals(cnpj))
                     select fornecedor).SingleOrDefault();
         }
 
-        public List<Fornecedores> pesquisaFornecedoresByNomeCnpjOfStatus(string pesquisa)
+        public List<Fornecedores> PesquisaFornecedoresByNomeCnpjOfStatus(string pesquisa)
         {
             return (from fornecedor in dataEntity.Fornecedores
                     where (fornecedor.cnpj.Equals(pesquisa)
@@ -536,14 +591,14 @@ namespace Loja1._0.Model
                     select fornecedor).ToList();
         }
 
-        public Fornecedores pesquisaFornecedoresID(int pesquisa)
+        public Fornecedores PesquisaFornecedoresID(int pesquisa)
         {
             return (from fornecedor in dataEntity.Fornecedores
                     where (fornecedor.id == (pesquisa))
                     select fornecedor).SingleOrDefault();
         }
 
-        public List<Fornecedores> pesquisaFornecedoresByNomeCnpj(string pesquisa)
+        public List<Fornecedores> PesquisaFornecedoresByNomeCnpj(string pesquisa)
         {
             return (from fornecedor in dataEntity.Fornecedores
                     where (fornecedor.cnpj.Equals(pesquisa)
@@ -552,9 +607,103 @@ namespace Loja1._0.Model
                     select fornecedor).ToList();
         }
 
-        public void salvarNovoFornecedor(Fornecedores fornecedor)
+        public void SalvarNovoFornecedor(Fornecedores fornecedor)
         {
             dataEntity.Fornecedores.Add(fornecedor);
         }
+        #endregion
+
+        #region Repositório do BD Pagamentos_Vendas
+        public List<Pagamentos_Vendas> PesquisaPagamentoVendaByIdPagamento(int idPagamento)
+        {
+            return (from pagVend in dataEntity.Pagamentos_Vendas
+                    where pagVend.id_Pagamento == idPagamento
+                    select pagVend).ToList();
+        }
+
+        public void ExcluirPagamento_Venda(Pagamentos_Vendas pagVend)
+        {
+            dataEntity.Pagamentos_Vendas.Remove(pagVend);
+        }
+
+        public void SalvarNovoPagamentoPedido(Pagamentos_Vendas pagamentoPedido)
+        {
+            dataEntity.Pagamentos_Vendas.Add(pagamentoPedido);
+        }
+
+        public bool PesquisaPagamentoVendaByIdVenda(int idVenda)
+        {
+            bool busca = true;
+            int teste = (from pagVenda in dataEntity.Pagamentos_Vendas
+                         where pagVenda.id_Venda == idVenda
+                         select pagVenda).Count();
+            if (teste == 0)
+            {
+                busca = false;
+            }
+            return busca;
+        }
+        #endregion
+
+        #region Repositório do BD Compras
+
+        public void SalvarNovaCompra(Compras compra)
+        {
+            dataEntity.Compras.Add(compra);
+        }
+        #endregion
+
+        public List<CtrlPonto> PesquisaPontoPeriodo(int idUser, int month, int year)
+        {
+            return (from ponto in dataEntity.CtrlPonto
+                    where ponto.Dt_Ponto.Month == month
+                    && ponto.Dt_Ponto.Year == year
+                    && ponto.Id_User == idUser
+                    orderby ponto.Dt_Ponto ascending
+                    select ponto).ToList();
+        }
+
+        public CtrlPonto PesquisaPontoPeriodoDia(int id, int dia, int mes, int ano)
+        {
+            return (from ponto in dataEntity.CtrlPonto
+                    where ponto.Dt_Ponto.Day == dia
+                    && ponto.Dt_Ponto.Month == mes
+                    && ponto.Dt_Ponto.Year == ano
+                    && ponto.Id_User == id
+                    orderby ponto.Dt_Ponto ascending
+                    select ponto).SingleOrDefault();
+        }
+
+        public void SalvarNovoPonto(CtrlPonto ponto)
+        {
+            dataEntity.CtrlPonto.Add(ponto);
+        }
+
+        public void SalvarNovoLog(LogPonto log)
+        {
+            dataEntity.LogPonto.Add(log);
+        }        
+
+        //SCRIPT FECHAMENTO
+        #region Repositório do BD Pedidos
+
+        public void SalvarNovoPedido(Fechamento pedido)
+        {
+            dataEntity.Fechamento.Add(pedido);
+        }                 
+
+        public bool PesquisaFechamentoByIdVenda(int idVenda)
+        {
+            bool busca = true;
+            int teste = (from fecha in dataEntity.Fechamento
+                         where fecha.id_venda == idVenda
+                         select fecha).Count();
+            if (teste == 0)
+            {
+                busca = false;
+            }
+            return busca;
+        }
+        #endregion                                                          
     }
 }

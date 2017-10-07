@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,7 +59,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.exit;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -173,7 +174,7 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.Location = new System.Drawing.Point(24, 137);
             this.pnlLogo.Name = "pnlLogo";

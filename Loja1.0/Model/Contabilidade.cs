@@ -35,6 +35,5 @@ namespace Loja1._0.Model
         public Nullable<decimal> cap_soc_n_integ { get; set; }
         public Nullable<decimal> lucro { get; set; }
         public Nullable<decimal> pro_labore { get; set; }
-        public Nullable<decimal> reserva_lucro { get; set; }
     }
 }

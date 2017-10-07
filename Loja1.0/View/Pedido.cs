@@ -20,15 +20,18 @@ namespace Loja1._0.View
         public Model.Usuarios user = new Model.Usuarios();
         decimal valorAux = 0;
         Bitmap memoryImage;
+        static Compras compra = new Compras();
 
         public Pedido(PDV pdv, Model.Vendas venda)
         {
             try
             {
                 InitializeComponent();
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 this.pdv = pdv;
                 this.venda = venda;
+                compra = new Compras();
+                controle.SalvarCompras(compra);
                 printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
                 preenchePedido(venda);
             }
@@ -44,7 +47,7 @@ namespace Loja1._0.View
             try
             {
                 InitializeComponent();
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 this.pedido = pedido;
                 this.venda = venda;
                 printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
@@ -62,7 +65,7 @@ namespace Loja1._0.View
             {
                 txtDtPedido.Text = DateTime.Today.ToShortDateString();
                 txtDtLonga.Text = DateTime.Today.ToLongDateString() + " - " + DateTime.Now.ToLongTimeString();
-                txtUsuario.Text = controle.pesquisaUserId(venda.id_Usuario).nome;
+                txtUsuario.Text = controle.PesquisaUserId(venda.id_Usuario).nome;
                 txtNumPedido.Text = venda.id.ToString();
                 if (venda.Clientes != null)
                 {
@@ -91,7 +94,7 @@ namespace Loja1._0.View
             try
             {
                 List<Vendas_Produtos> listaProdutos = new List<Vendas_Produtos>();
-                listaProdutos = controle.pesquisaProdutosVenda(venda.id);
+                listaProdutos = controle.PesquisaProdutosVenda(venda.id);
 
                 DataTable dtProdutos = new DataTable();
                 dtProdutos.Columns.Add("produto", typeof(string));
@@ -100,11 +103,42 @@ namespace Loja1._0.View
                 dtProdutos.Columns.Add("preçoUnd", typeof(string));
                 dtProdutos.Columns.Add("impostos", typeof(string));
                 dtProdutos.Columns.Add("preçototal", typeof(string));
-
+                
                 for (int i = 0; i < listaProdutos.Count; i++)
                 {
-                    dtProdutos.Rows.Add(listaProdutos[i].Produtos.desc_produto, listaProdutos[i].Produtos.UnidMedidas.medida, listaProdutos[i].quantidade.ToString(), listaProdutos[i].Produtos.preco_venda.ToString(), listaProdutos[i].Produtos.icms_pago.ToString(), (listaProdutos[i].quantidade * listaProdutos[i].Produtos.preco_venda).ToString());
-                    valorAux = valorAux + (listaProdutos[i].Produtos.preco_venda * listaProdutos[i].quantidade);
+                    compra = controle.PesquisaCompraAnterior(Convert.ToInt32(listaProdutos[i].id_produto));
+                    //Compras compraPend = controle.PesquisaIcmsCompra(Convert.ToInt32(listaProdutos[i].id_produto));
+                    //dtProdutos.Rows.Add(listaProdutos[i].Produtos.desc_produto, listaProdutos[i].Produtos.UnidMedidas.medida, listaProdutos[i].quantidade.ToString(), compra.preco_venda.ToString(), compraPend.icms_pago.ToString(), (listaProdutos[i].quantidade * compra.preco_venda).ToString());
+                    dtProdutos.Rows.Add(listaProdutos[i].Produtos.desc_produto, listaProdutos[i].Produtos.UnidMedidas.medida, listaProdutos[i].quantidade.ToString(), compra.preco_venda.ToString(), compra.icms_pago.ToString(), (listaProdutos[i].quantidade * compra.preco_venda).ToString());
+                    valorAux = valorAux + (compra.preco_venda * listaProdutos[i].quantidade);
+                    /*if(compraPend.qnt_compra >= listaProdutos[i].quantidade)
+                    {
+                        compraPend.qnt_compra = compraPend.qnt_compra - listaProdutos[i].quantidade;
+                        controle.SalvaAtualiza();
+                    }
+                    else
+                    {
+                        int quant = listaProdutos[i].quantidade - compraPend.qnt_compra;
+                        compraPend.qnt_compra = 0;
+                        controle.SalvaAtualiza();
+
+                        while (quant > 0)
+                        {
+                           // compraPend = controle.PesquisaIcmsCompra(Convert.ToInt32(listaProdutos[i].id_produto));
+                            if (compraPend.qnt_compra >= quant)
+                            {
+                                compraPend.qnt_compra = compraPend.qnt_compra - quant;
+                                controle.SalvaAtualiza();
+                            }
+                            else
+                            {
+                                quant = quant - compraPend.qnt_compra;
+                                compraPend.qnt_compra = 0;
+                                controle.SalvaAtualiza();
+                            }
+                        }
+                        
+                    }*/
                 }
                 for (int i = listaProdutos.Count; i < 25; i++)
                 {

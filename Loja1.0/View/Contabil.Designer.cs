@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contabil));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,13 +60,13 @@
             this.dgvAtvNCirc = new System.Windows.Forms.DataGridView();
             this.dgvPassCirc = new System.Windows.Forms.DataGridView();
             this.dgvAtvCirc = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pnlAtualizar = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.txtDtFim = new System.Windows.Forms.TextBox();
             this.txtDtInicio = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pnlMovimento = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.txtData = new System.Windows.Forms.TextBox();
@@ -87,8 +88,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtvNCirc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPassCirc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtvCirc)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.pnlAtualizar.SuspendLayout();
+            this.pnlMovimento.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -109,7 +110,7 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLogo.Location = new System.Drawing.Point(649, 3);
@@ -120,7 +121,7 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Khaki;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -496,21 +497,21 @@
             this.dgvAtvCirc.Size = new System.Drawing.Size(271, 218);
             this.dgvAtvCirc.TabIndex = 0;
             // 
-            // groupBox2
+            // pnlAtualizar
             // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.btnAtualizar);
-            this.groupBox2.Controls.Add(this.txtDtFim);
-            this.groupBox2.Controls.Add(this.txtDtInicio);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox2.Location = new System.Drawing.Point(577, 54);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(214, 149);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Periodo";
+            this.pnlAtualizar.Controls.Add(this.label2);
+            this.pnlAtualizar.Controls.Add(this.label1);
+            this.pnlAtualizar.Controls.Add(this.btnAtualizar);
+            this.pnlAtualizar.Controls.Add(this.txtDtFim);
+            this.pnlAtualizar.Controls.Add(this.txtDtInicio);
+            this.pnlAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlAtualizar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlAtualizar.Location = new System.Drawing.Point(577, 54);
+            this.pnlAtualizar.Name = "pnlAtualizar";
+            this.pnlAtualizar.Size = new System.Drawing.Size(214, 149);
+            this.pnlAtualizar.TabIndex = 8;
+            this.pnlAtualizar.TabStop = false;
+            this.pnlAtualizar.Text = "Periodo";
             // 
             // label2
             // 
@@ -561,31 +562,31 @@
             this.txtDtInicio.Size = new System.Drawing.Size(106, 26);
             this.txtDtInicio.TabIndex = 0;
             // 
-            // groupBox3
+            // pnlMovimento
             // 
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.txtDescricao);
-            this.groupBox3.Controls.Add(this.txtData);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.txtValor);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.btnLimpar);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.cmbFormaPg);
-            this.groupBox3.Controls.Add(this.cmbOrigem);
-            this.groupBox3.Controls.Add(this.txtTipo);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.cmbMovimento);
-            this.groupBox3.Controls.Add(this.btnIncluir);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox3.Location = new System.Drawing.Point(577, 209);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(214, 370);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Nova Movimentação";
+            this.pnlMovimento.Controls.Add(this.label10);
+            this.pnlMovimento.Controls.Add(this.txtDescricao);
+            this.pnlMovimento.Controls.Add(this.txtData);
+            this.pnlMovimento.Controls.Add(this.label9);
+            this.pnlMovimento.Controls.Add(this.txtValor);
+            this.pnlMovimento.Controls.Add(this.label8);
+            this.pnlMovimento.Controls.Add(this.btnLimpar);
+            this.pnlMovimento.Controls.Add(this.label7);
+            this.pnlMovimento.Controls.Add(this.label6);
+            this.pnlMovimento.Controls.Add(this.cmbFormaPg);
+            this.pnlMovimento.Controls.Add(this.cmbOrigem);
+            this.pnlMovimento.Controls.Add(this.txtTipo);
+            this.pnlMovimento.Controls.Add(this.label4);
+            this.pnlMovimento.Controls.Add(this.cmbMovimento);
+            this.pnlMovimento.Controls.Add(this.btnIncluir);
+            this.pnlMovimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlMovimento.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlMovimento.Location = new System.Drawing.Point(577, 209);
+            this.pnlMovimento.Name = "pnlMovimento";
+            this.pnlMovimento.Size = new System.Drawing.Size(214, 370);
+            this.pnlMovimento.TabIndex = 9;
+            this.pnlMovimento.TabStop = false;
+            this.pnlMovimento.Text = "Nova Movimentação";
             // 
             // label10
             // 
@@ -689,6 +690,7 @@
             this.cmbFormaPg.Name = "cmbFormaPg";
             this.cmbFormaPg.Size = new System.Drawing.Size(202, 28);
             this.cmbFormaPg.TabIndex = 18;
+            this.cmbFormaPg.SelectedIndexChanged += new System.EventHandler(this.cmbFormaPg_SelectedIndexChanged);
             // 
             // cmbOrigem
             // 
@@ -698,26 +700,26 @@
             this.cmbOrigem.Name = "cmbOrigem";
             this.cmbOrigem.Size = new System.Drawing.Size(202, 28);
             this.cmbOrigem.TabIndex = 17;
+            this.cmbOrigem.SelectedIndexChanged += new System.EventHandler(this.cmbOrigem_SelectedIndexChanged);
             // 
             // txtTipo
             // 
             this.txtTipo.AutoSize = true;
             this.txtTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTipo.Location = new System.Drawing.Point(48, 53);
+            this.txtTipo.Location = new System.Drawing.Point(128, 53);
             this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(70, 15);
+            this.txtTipo.Size = new System.Drawing.Size(0, 15);
             this.txtTipo.TabIndex = 15;
-            this.txtTipo.Text = "ENTRADA";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(2, 53);
+            this.label4.Location = new System.Drawing.Point(6, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 15);
+            this.label4.Size = new System.Drawing.Size(117, 15);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Tipo : ";
+            this.label4.Text = "Direção do Capital : ";
             // 
             // cmbMovimento
             // 
@@ -726,6 +728,7 @@
             this.cmbMovimento.Name = "cmbMovimento";
             this.cmbMovimento.Size = new System.Drawing.Size(202, 28);
             this.cmbMovimento.TabIndex = 16;
+            this.cmbMovimento.SelectedIndexChanged += new System.EventHandler(this.cmbMovimento_SelectedIndexChanged);
             // 
             // btnIncluir
             // 
@@ -741,6 +744,7 @@
             this.btnIncluir.TabIndex = 15;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = false;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // Contabil
             // 
@@ -749,8 +753,8 @@
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.pnlMovimento);
+            this.Controls.Add(this.pnlAtualizar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblNome);
@@ -763,7 +767,7 @@
             this.Name = "Contabil";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sistema Alemão da Construção 1.0";
+            this.Text = " ";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatrLiq)).EndInit();
@@ -771,10 +775,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtvNCirc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPassCirc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtvCirc)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.pnlAtualizar.ResumeLayout(false);
+            this.pnlAtualizar.PerformLayout();
+            this.pnlMovimento.ResumeLayout(false);
+            this.pnlMovimento.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -798,10 +802,10 @@
         private System.Windows.Forms.DataGridView dgvAtvNCirc;
         private System.Windows.Forms.DataGridView dgvPassCirc;
         private System.Windows.Forms.DataGridView dgvAtvCirc;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox pnlAtualizar;
         private System.Windows.Forms.TextBox txtDtFim;
         private System.Windows.Forms.TextBox txtDtInicio;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox pnlMovimento;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAtualizar;

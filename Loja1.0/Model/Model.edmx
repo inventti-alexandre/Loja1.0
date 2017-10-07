@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ServidorLojaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cidades">
           <Key>
             <PropertyRef Name="id" />
@@ -18,10 +18,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="cpf" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="rg" Type="varchar" MaxLength="50" />
-          <Property Name="contato" Type="varchar" MaxLength="50" />
+          <Property Name="nome" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="cpf" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="rg" Type="varchar" MaxLength="20" />
+          <Property Name="contato" Type="varchar" MaxLength="30" />
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="telefone" Type="varchar" MaxLength="20" />
           <Property Name="celular" Type="varchar" MaxLength="20" Nullable="false" />
@@ -29,7 +29,7 @@
           <Property Name="recado" Type="varchar" MaxLength="20" />
           <Property Name="endereço" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="numeral" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="bairro" Type="varchar" MaxLength="50" />
+          <Property Name="bairro" Type="varchar" MaxLength="30" />
           <Property Name="id_Cidade" Type="int" Nullable="false" />
           <Property Name="pessoa_fisica" Type="int" />
           <Property Name="status" Type="int" Nullable="false" />
@@ -60,7 +60,6 @@
           <Property Name="cap_soc_n_integ" Type="decimal" Precision="9" Scale="2" />
           <Property Name="lucro" Type="decimal" Precision="9" Scale="2" />
           <Property Name="pro_labore" Type="decimal" Precision="9" Scale="2" />
-          <Property Name="reserva_lucro" Type="decimal" Precision="9" Scale="2" />
         </EntityType>
         <EntityType Name="Estados">
           <Key>
@@ -169,6 +168,7 @@
           <Property Name="numChequePrimeiro" Type="varchar" MaxLength="50" />
           <Property Name="numChequeUltimo" Type="varchar" MaxLength="50" />
           <Property Name="id_movimento" Type="int" />
+          <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Pagamentos_Vendas">
           <Key>
@@ -243,7 +243,7 @@
           <Property Name="valor_Venda" Type="float" />
           <Property Name="id_Usuario" Type="int" Nullable="false" />
           <Property Name="id_Cliente" Type="int" />
-          <Property Name="desconto" Type="int" Nullable="false" />
+          <Property Name="desconto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="comissao" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="Vendas_Produtos">
@@ -256,7 +256,7 @@
           <Property Name="id_produto" Type="int" />
           <Property Name="quantidade" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Cidades__id_Esta__6AEFE058">
+        <Association Name="FK__Cidades__id_Esta__30F848ED">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
           <End Role="Cidades" Type="Self.Cidades" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +268,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Clientes__id_Cid__793DFFAF">
+        <Association Name="FK__Clientes__id_Cid__3F466844">
           <End Role="Cidades" Type="Self.Cidades" Multiplicity="1" />
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
           <ReferentialConstraint>
@@ -280,7 +280,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Estoque__id_prod__32767D0B">
+        <Association Name="FK__Estoque__id_prod__5812160E">
           <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
           <End Role="Estoque" Type="Self.Estoque" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -292,7 +292,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Fornecedo__id_Ci__73852659">
+        <Association Name="FK__Fornecedo__id_Ci__398D8EEE">
           <End Role="Cidades" Type="Self.Cidades" Multiplicity="1" />
           <End Role="Fornecedores" Type="Self.Fornecedores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -304,7 +304,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Movimento__id_ti__7C1A6C5A">
+        <Association Name="FK__Movimento__id_ti__4222D4EF">
           <End Role="Tipos_Movimentacao" Type="Self.Tipos_Movimentacao" Multiplicity="0..1" />
           <End Role="Movimentos" Type="Self.Movimentos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -316,7 +316,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagamento__id_mo__7EF6D905">
+        <Association Name="FK__Pagamento__id_mo__45F365D3">
           <End Role="Movimentos" Type="Self.Movimentos" Multiplicity="0..1" />
           <End Role="Pagamentos" Type="Self.Pagamentos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -328,7 +328,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagamento__id_Pa__2334397B">
+        <Association Name="FK__Pagamento__id_Pa__4D94879B">
           <End Role="Pagamentos" Type="Self.Pagamentos" Multiplicity="1" />
           <End Role="Pagamentos_Vendas" Type="Self.Pagamentos_Vendas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -340,7 +340,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagamento__id_Ve__24285DB4">
+        <Association Name="FK__Pagamento__id_Ve__4E88ABD4">
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="1" />
           <End Role="Pagamentos_Vendas" Type="Self.Pagamentos_Vendas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -352,7 +352,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Produtos__id_for__2AD55B43">
+        <Association Name="FK__Produtos__id_for__5535A963">
           <End Role="Fornecedores" Type="Self.Fornecedores" Multiplicity="1" />
           <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -364,7 +364,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Produtos__id_med__29E1370A">
+        <Association Name="FK__Produtos__id_med__5441852A">
           <End Role="UnidMedidas" Type="Self.UnidMedidas" Multiplicity="1" />
           <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -376,7 +376,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Usuarios__num_pe__39237A9A">
+        <Association Name="FK__Usuarios__num_pe__34C8D9D1">
           <End Role="Perfis" Type="Self.Perfis" Multiplicity="1" />
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -388,7 +388,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vendas__id_Clien__2057CCD0">
+        <Association Name="FK__Vendas__id_Clien__4AB81AF0">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -436,7 +436,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ServidorLojaModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Cidades" EntityType="Self.Cidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contabilidade" EntityType="Self.Contabilidade" Schema="dbo" store:Type="Tables" />
@@ -455,51 +455,51 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas_Produtos" EntityType="Self.Vendas_Produtos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Cidades__id_Esta__6AEFE058" Association="Self.FK__Cidades__id_Esta__6AEFE058">
+          <AssociationSet Name="FK__Cidades__id_Esta__30F848ED" Association="Self.FK__Cidades__id_Esta__30F848ED">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Cidades" EntitySet="Cidades" />
           </AssociationSet>
-          <AssociationSet Name="FK__Clientes__id_Cid__793DFFAF" Association="Self.FK__Clientes__id_Cid__793DFFAF">
+          <AssociationSet Name="FK__Clientes__id_Cid__3F466844" Association="Self.FK__Clientes__id_Cid__3F466844">
             <End Role="Cidades" EntitySet="Cidades" />
             <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Estoque__id_prod__32767D0B" Association="Self.FK__Estoque__id_prod__32767D0B">
+          <AssociationSet Name="FK__Estoque__id_prod__5812160E" Association="Self.FK__Estoque__id_prod__5812160E">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Estoque" EntitySet="Estoque" />
           </AssociationSet>
-          <AssociationSet Name="FK__Fornecedo__id_Ci__73852659" Association="Self.FK__Fornecedo__id_Ci__73852659">
+          <AssociationSet Name="FK__Fornecedo__id_Ci__398D8EEE" Association="Self.FK__Fornecedo__id_Ci__398D8EEE">
             <End Role="Cidades" EntitySet="Cidades" />
             <End Role="Fornecedores" EntitySet="Fornecedores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Movimento__id_ti__7C1A6C5A" Association="Self.FK__Movimento__id_ti__7C1A6C5A">
+          <AssociationSet Name="FK__Movimento__id_ti__4222D4EF" Association="Self.FK__Movimento__id_ti__4222D4EF">
             <End Role="Tipos_Movimentacao" EntitySet="Tipos_Movimentacao" />
             <End Role="Movimentos" EntitySet="Movimentos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pagamento__id_mo__7EF6D905" Association="Self.FK__Pagamento__id_mo__7EF6D905">
+          <AssociationSet Name="FK__Pagamento__id_mo__45F365D3" Association="Self.FK__Pagamento__id_mo__45F365D3">
             <End Role="Movimentos" EntitySet="Movimentos" />
             <End Role="Pagamentos" EntitySet="Pagamentos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pagamento__id_Pa__2334397B" Association="Self.FK__Pagamento__id_Pa__2334397B">
+          <AssociationSet Name="FK__Pagamento__id_Pa__4D94879B" Association="Self.FK__Pagamento__id_Pa__4D94879B">
             <End Role="Pagamentos" EntitySet="Pagamentos" />
             <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Pagamento__id_Ve__24285DB4" Association="Self.FK__Pagamento__id_Ve__24285DB4">
+          <AssociationSet Name="FK__Pagamento__id_Ve__4E88ABD4" Association="Self.FK__Pagamento__id_Ve__4E88ABD4">
             <End Role="Vendas" EntitySet="Vendas" />
             <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Produtos__id_for__2AD55B43" Association="Self.FK__Produtos__id_for__2AD55B43">
+          <AssociationSet Name="FK__Produtos__id_for__5535A963" Association="Self.FK__Produtos__id_for__5535A963">
             <End Role="Fornecedores" EntitySet="Fornecedores" />
             <End Role="Produtos" EntitySet="Produtos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Produtos__id_med__29E1370A" Association="Self.FK__Produtos__id_med__29E1370A">
+          <AssociationSet Name="FK__Produtos__id_med__5441852A" Association="Self.FK__Produtos__id_med__5441852A">
             <End Role="UnidMedidas" EntitySet="UnidMedidas" />
             <End Role="Produtos" EntitySet="Produtos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Usuarios__num_pe__39237A9A" Association="Self.FK__Usuarios__num_pe__39237A9A">
+          <AssociationSet Name="FK__Usuarios__num_pe__34C8D9D1" Association="Self.FK__Usuarios__num_pe__34C8D9D1">
             <End Role="Perfis" EntitySet="Perfis" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vendas__id_Clien__2057CCD0" Association="Self.FK__Vendas__id_Clien__2057CCD0">
+          <AssociationSet Name="FK__Vendas__id_Clien__4AB81AF0" Association="Self.FK__Vendas__id_Clien__4AB81AF0">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
@@ -519,270 +519,42 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ServidorLojaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ServidorLojaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cidades" EntityType="ServidorLojaModel.Cidades" />
-          <EntitySet Name="Clientes" EntityType="ServidorLojaModel.Clientes" />
-          <EntitySet Name="Estados" EntityType="ServidorLojaModel.Estados" />
-          <EntitySet Name="Fechamento" EntityType="ServidorLojaModel.Fechamento" />
-          <EntitySet Name="Fornecedores" EntityType="ServidorLojaModel.Fornecedores" />
-          <EntitySet Name="Movimentos" EntityType="ServidorLojaModel.Movimentos" />
-          <EntitySet Name="Pagamentos" EntityType="ServidorLojaModel.Pagamentos" />
-          <EntitySet Name="Tipos_Movimentacao" EntityType="ServidorLojaModel.Tipos_Movimentacao" />
-          <EntitySet Name="UnidMedidas" EntityType="ServidorLojaModel.UnidMedidas" />
-          <AssociationSet Name="FK__Cidades__id_Esta__6AEFE058" Association="ServidorLojaModel.FK__Cidades__id_Esta__6AEFE058">
-            <End Role="Estados" EntitySet="Estados" />
-            <End Role="Cidades" EntitySet="Cidades" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Clientes__id_Cid__793DFFAF" Association="ServidorLojaModel.FK__Clientes__id_Cid__793DFFAF">
-            <End Role="Cidades" EntitySet="Cidades" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Fornecedo__id_Ci__73852659" Association="ServidorLojaModel.FK__Fornecedo__id_Ci__73852659">
-            <End Role="Cidades" EntitySet="Cidades" />
-            <End Role="Fornecedores" EntitySet="Fornecedores" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Movimento__id_ti__7C1A6C5A" Association="ServidorLojaModel.FK__Movimento__id_ti__7C1A6C5A">
-            <End Role="Tipos_Movimentacao" EntitySet="Tipos_Movimentacao" />
-            <End Role="Movimentos" EntitySet="Movimentos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Pagamento__id_mo__7EF6D905" Association="ServidorLojaModel.FK__Pagamento__id_mo__7EF6D905">
-            <End Role="Movimentos" EntitySet="Movimentos" />
-            <End Role="Pagamentos" EntitySet="Pagamentos" />
-          </AssociationSet>
-          <EntitySet Name="Contabilidade" EntityType="ServidorLojaModel.Contabilidade" />
-          <EntitySet Name="Gerenciamento" EntityType="ServidorLojaModel.Gerenciamento" />
-          <EntitySet Name="Pagamentos_Vendas" EntityType="ServidorLojaModel.Pagamentos_Vendas" />
-          <EntitySet Name="Produtos" EntityType="ServidorLojaModel.Produtos" />
-          <AssociationSet Name="FK__Produtos__id_for__2AD55B43" Association="ServidorLojaModel.FK__Produtos__id_for__2AD55B43">
-            <End Role="Fornecedores" EntitySet="Fornecedores" />
-            <End Role="Produtos" EntitySet="Produtos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Pagamento__id_Pa__2334397B" Association="ServidorLojaModel.FK__Pagamento__id_Pa__2334397B">
-            <End Role="Pagamentos" EntitySet="Pagamentos" />
-            <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Produtos__id_med__29E1370A" Association="ServidorLojaModel.FK__Produtos__id_med__29E1370A">
-            <End Role="UnidMedidas" EntitySet="UnidMedidas" />
-            <End Role="Produtos" EntitySet="Produtos" />
-          </AssociationSet>
-          <EntitySet Name="Vendas_Produtos" EntityType="ServidorLojaModel.Vendas_Produtos" />
-          <AssociationSet Name="id_produto" Association="ServidorLojaModel.id_produto">
-            <End Role="Produtos" EntitySet="Produtos" />
-            <End Role="Vendas_Produtos" EntitySet="Vendas_Produtos" />
-          </AssociationSet>
-          <EntitySet Name="Estoque" EntityType="ServidorLojaModel.Estoque" />
-          <AssociationSet Name="FK__Estoque__id_prod__32767D0B" Association="ServidorLojaModel.FK__Estoque__id_prod__32767D0B">
-            <End Role="Produtos" EntitySet="Produtos" />
-            <End Role="Estoque" EntitySet="Estoque" />
-          </AssociationSet>
-          <EntitySet Name="Perfis" EntityType="ServidorLojaModel.Perfis" />
-          <EntitySet Name="Usuarios" EntityType="ServidorLojaModel.Usuarios" />
-          <AssociationSet Name="FK__Usuarios__num_pe__39237A9A" Association="ServidorLojaModel.FK__Usuarios__num_pe__39237A9A">
-            <End Role="Perfis" EntitySet="Perfis" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-          <EntitySet Name="Vendas" EntityType="ServidorLojaModel.Vendas" />
-          <AssociationSet Name="FK__Vendas__id_Clien__2057CCD0" Association="ServidorLojaModel.FK__Vendas__id_Clien__2057CCD0">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Vendas" EntitySet="Vendas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Pagamento__id_Ve__24285DB4" Association="ServidorLojaModel.FK__Pagamento__id_Ve__24285DB4">
-            <End Role="Vendas" EntitySet="Vendas" />
-            <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
-          </AssociationSet>
-          <AssociationSet Name="id_usuario" Association="ServidorLojaModel.id_usuario">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Vendas" EntitySet="Vendas" />
-          </AssociationSet>
-          <AssociationSet Name="id_venda" Association="ServidorLojaModel.id_venda">
-            <End Role="Vendas" EntitySet="Vendas" />
-            <End Role="Vendas_Produtos" EntitySet="Vendas_Produtos" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cidades">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="id_Estado" Type="Int32" Nullable="false" />
-          <Property Name="cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Estados" Relationship="ServidorLojaModel.FK__Cidades__id_Esta__6AEFE058" FromRole="Cidades" ToRole="Estados" />
-          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Clientes__id_Cid__793DFFAF" FromRole="Cidades" ToRole="Clientes" />
-          <NavigationProperty Name="Fornecedores" Relationship="ServidorLojaModel.FK__Fornecedo__id_Ci__73852659" FromRole="Cidades" ToRole="Fornecedores" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Estados" Relationship="Self.FK__Cidades__id_Esta__30F848ED" FromRole="Cidades" ToRole="Estados" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK__Clientes__id_Cid__3F466844" FromRole="Cidades" ToRole="Clientes" />
+          <NavigationProperty Name="Fornecedores" Relationship="Self.FK__Fornecedo__id_Ci__398D8EEE" FromRole="Cidades" ToRole="Fornecedores" />
         </EntityType>
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cpf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="rg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="contato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cpf" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="contato" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="celular" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="operadora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="recado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="endereço" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="numeral" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="endereço" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numeral" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="id_Cidade" Type="Int32" Nullable="false" />
           <Property Name="pessoa_fisica" Type="Int32" />
           <Property Name="status" Type="Int32" Nullable="false" />
           <Property Name="creditos" Type="Double" />
-          <NavigationProperty Name="Cidades" Relationship="ServidorLojaModel.FK__Clientes__id_Cid__793DFFAF" FromRole="Clientes" ToRole="Cidades" />
-          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__2057CCD0" FromRole="Clientes" ToRole="Vendas" />
+          <NavigationProperty Name="Cidades" Relationship="Self.FK__Clientes__id_Cid__3F466844" FromRole="Clientes" ToRole="Cidades" />
+          <NavigationProperty Name="Vendas" Relationship="Model.FK__Vendas__id_Clien__4AB81AF0" FromRole="Clientes" ToRole="Vendas" />
         </EntityType>
-        <EntityType Name="Estados">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="estado" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="sigla" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cidades" Relationship="ServidorLojaModel.FK__Cidades__id_Esta__6AEFE058" FromRole="Estados" ToRole="Cidades" />
-        </EntityType>
-        <EntityType Name="Fechamento">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_venda" Type="Int32" Nullable="false" />
-          <Property Name="data_fechamento" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Fornecedores">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cnpj" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="celular" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="operadora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="recado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="endereço" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="numeral" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_Cidade" Type="Int32" Nullable="false" />
-          <Property Name="contato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cidades" Relationship="ServidorLojaModel.FK__Fornecedo__id_Ci__73852659" FromRole="Fornecedores" ToRole="Cidades" />
-          <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK__Produtos__id_for__2AD55B43" FromRole="Fornecedores" ToRole="Produtos" />
-        </EntityType>
-        <EntityType Name="Movimentos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="valor" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="data" Type="DateTime" Precision="0" />
-          <Property Name="id_tipo" Type="Int32" />
-          <NavigationProperty Name="Tipos_Movimentacao" Relationship="ServidorLojaModel.FK__Movimento__id_ti__7C1A6C5A" FromRole="Movimentos" ToRole="Tipos_Movimentacao" />
-          <NavigationProperty Name="Pagamentos" Relationship="ServidorLojaModel.FK__Pagamento__id_mo__7EF6D905" FromRole="Movimentos" ToRole="Pagamentos" />
-        </EntityType>
-        <EntityType Name="Pagamentos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tipoPag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="formaPag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="valorTotal" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="qntParcelas" Type="Int32" />
-          <Property Name="dataPagamento" Type="DateTime" Precision="3" />
-          <Property Name="numParcela" Type="Int32" />
-          <Property Name="valorParcela" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="numChequePrimeiro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="numChequeUltimo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_movimento" Type="Int32" />
-          <NavigationProperty Name="Movimentos" Relationship="ServidorLojaModel.FK__Pagamento__id_mo__7EF6D905" FromRole="Pagamentos" ToRole="Movimentos" />
-          <NavigationProperty Name="Pagamentos_Vendas" Relationship="ServidorLojaModel.FK__Pagamento__id_Pa__2334397B" FromRole="Pagamentos" ToRole="Pagamentos_Vendas" />
-        </EntityType>
-        <EntityType Name="Tipos_Movimentacao">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="direcao" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="sub_tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="conta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="forma_pag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="mostrar" Type="Boolean" />
-          <NavigationProperty Name="Movimentos" Relationship="ServidorLojaModel.FK__Movimento__id_ti__7C1A6C5A" FromRole="Tipos_Movimentacao" ToRole="Movimentos" />
-        </EntityType>
-        <EntityType Name="UnidMedidas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="medida" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK__Produtos__id_med__29E1370A" FromRole="UnidMedidas" ToRole="Produtos" />
-        </EntityType>
-        <Association Name="FK__Cidades__id_Esta__6AEFE058">
-          <End Type="ServidorLojaModel.Estados" Role="Estados" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Cidades" Role="Cidades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estados">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Cidades">
-              <PropertyRef Name="id_Estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Clientes__id_Cid__793DFFAF">
-          <End Type="ServidorLojaModel.Cidades" Role="Cidades" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cidades">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Clientes">
-              <PropertyRef Name="id_Cidade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Fornecedo__id_Ci__73852659">
-          <End Type="ServidorLojaModel.Cidades" Role="Cidades" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Fornecedores" Role="Fornecedores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cidades">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Fornecedores">
-              <PropertyRef Name="id_Cidade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Movimento__id_ti__7C1A6C5A">
-          <End Type="ServidorLojaModel.Tipos_Movimentacao" Role="Tipos_Movimentacao" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Movimentos" Role="Movimentos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tipos_Movimentacao">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Movimentos">
-              <PropertyRef Name="id_tipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Pagamento__id_mo__7EF6D905">
-          <End Type="ServidorLojaModel.Movimentos" Role="Movimentos" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Pagamentos" Role="Pagamentos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Movimentos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Pagamentos">
-              <PropertyRef Name="id_movimento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Contabilidade">
           <Key>
             <PropertyRef Name="id" />
@@ -808,132 +580,16 @@
           <Property Name="cap_soc_n_integ" Type="Decimal" Precision="9" Scale="2" />
           <Property Name="lucro" Type="Decimal" Precision="9" Scale="2" />
           <Property Name="pro_labore" Type="Decimal" Precision="9" Scale="2" />
-          <Property Name="reserva_lucro" Type="Decimal" Precision="9" Scale="2" />
         </EntityType>
-        <EntityType Name="Gerenciamento">
+        <EntityType Name="Estados">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="comissao" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="tributacao" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="autoDescPerc" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="autoDescValor" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="maxDescPerc" Type="Int32" Nullable="false" />
-          <Property Name="jurosPrazo2x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo3x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo4x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo5x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo6x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo7x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo8x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo9x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo10x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo11x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosPrazo12x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque1x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque2x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque3x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque4x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque5x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque6x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque7x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque8x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque9x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque10x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque11x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="jurosCheque12x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
-          <Property Name="lucroMinimo" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+          <Property Name="estado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sigla" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cidades" Relationship="Self.FK__Cidades__id_Esta__30F848ED" FromRole="Estados" ToRole="Cidades" />
         </EntityType>
-        <EntityType Name="Pagamentos_Vendas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_Venda" Type="Int32" Nullable="false" />
-          <Property Name="id_Pagamento" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Pagamentos" Relationship="ServidorLojaModel.FK__Pagamento__id_Pa__2334397B" FromRole="Pagamentos_Vendas" ToRole="Pagamentos" />
-          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK__Pagamento__id_Ve__24285DB4" FromRole="Pagamentos_Vendas" ToRole="Vendas" />
-        </EntityType>
-        <EntityType Name="Produtos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cod_produto" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="desc_produto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="id_medida" Type="Int32" Nullable="false" />
-          <Property Name="preco_compra" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
-          <Property Name="preco_venda" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
-          <Property Name="icms_pago" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
-          <Property Name="imagem" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="id_fornecedor" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Fornecedores" Relationship="ServidorLojaModel.FK__Produtos__id_for__2AD55B43" FromRole="Produtos" ToRole="Fornecedores" />
-          <NavigationProperty Name="UnidMedidas" Relationship="ServidorLojaModel.FK__Produtos__id_med__29E1370A" FromRole="Produtos" ToRole="UnidMedidas" />
-          <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.id_produto" FromRole="Produtos" ToRole="Vendas_Produtos" />
-          <NavigationProperty Name="Estoque" Relationship="ServidorLojaModel.FK__Estoque__id_prod__32767D0B" FromRole="Produtos" ToRole="Estoque" />
-        </EntityType>
-        <Association Name="FK__Produtos__id_for__2AD55B43">
-          <End Type="ServidorLojaModel.Fornecedores" Role="Fornecedores" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Produtos" Role="Produtos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Fornecedores">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Produtos">
-              <PropertyRef Name="id_fornecedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Pagamento__id_Pa__2334397B">
-          <End Type="ServidorLojaModel.Pagamentos" Role="Pagamentos" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Pagamentos_Vendas" Role="Pagamentos_Vendas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pagamentos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Pagamentos_Vendas">
-              <PropertyRef Name="id_Pagamento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Produtos__id_med__29E1370A">
-          <End Type="ServidorLojaModel.UnidMedidas" Role="UnidMedidas" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Produtos" Role="Produtos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UnidMedidas">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Produtos">
-              <PropertyRef Name="id_medida" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Vendas_Produtos">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_venda" Type="Int32" />
-          <Property Name="num_item" Type="Int32" />
-          <Property Name="id_produto" Type="Int32" />
-          <Property Name="quantidade" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.id_produto" FromRole="Vendas_Produtos" ToRole="Produtos" />
-          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.id_venda" FromRole="Vendas_Produtos" ToRole="Vendas" />
-        </EntityType>
-        <Association Name="id_produto">
-          <End Type="ServidorLojaModel.Produtos" Role="Produtos" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Vendas_Produtos" Role="Vendas_Produtos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Produtos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vendas_Produtos">
-              <PropertyRef Name="id_produto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Estoque">
           <Key>
             <PropertyRef Name="id_produto" />
@@ -946,28 +602,160 @@
           <Property Name="num_local" Type="Int32" />
           <Property Name="letra_local" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="ref_local" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK__Estoque__id_prod__32767D0B" FromRole="Estoque" ToRole="Produtos" />
+          <NavigationProperty Name="Produtos" Relationship="Self.FK__Estoque__id_prod__5812160E" FromRole="Estoque" ToRole="Produtos" />
         </EntityType>
-        <Association Name="FK__Estoque__id_prod__32767D0B">
-          <End Type="ServidorLojaModel.Produtos" Role="Produtos" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Estoque" Role="Estoque" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Produtos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Estoque">
-              <PropertyRef Name="id_produto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Fechamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_venda" Type="Int32" Nullable="false" />
+          <Property Name="data_fechamento" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Fornecedores">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cnpj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="operadora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="recado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="endereço" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numeral" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Cidade" Type="Int32" Nullable="false" />
+          <Property Name="contato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cidades" Relationship="Self.FK__Fornecedo__id_Ci__398D8EEE" FromRole="Fornecedores" ToRole="Cidades" />
+          <NavigationProperty Name="Produtos" Relationship="Self.FK__Produtos__id_for__5535A963" FromRole="Fornecedores" ToRole="Produtos" />
+        </EntityType>
+        <EntityType Name="Gerenciamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="comissao" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="tributacao" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="autoDescPerc" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="autoDescValor" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="maxDescPerc" Type="Int32" Nullable="false" />
+          <Property Name="jurosPrazo2x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo3x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo4x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo5x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo6x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo7x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo8x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo9x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo10x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo11x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosPrazo12x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque1x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque2x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque3x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque4x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque5x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque6x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque7x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque8x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque9x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque10x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque11x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="jurosCheque12x" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="lucroMinimo" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movimentos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valor" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="data" Type="DateTime" Precision="0" />
+          <Property Name="id_tipo" Type="Int32" />
+          <NavigationProperty Name="Tipos_Movimentacao" Relationship="Self.FK__Movimento__id_ti__4222D4EF" FromRole="Movimentos" ToRole="Tipos_Movimentacao" />
+          <NavigationProperty Name="Pagamentos" Relationship="Self.FK__Pagamento__id_mo__45F365D3" FromRole="Movimentos" ToRole="Pagamentos" />
+        </EntityType>
+        <EntityType Name="Pagamentos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoPag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="formaPag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="valorTotal" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="qntParcelas" Type="Int32" />
+          <Property Name="dataPagamento" Type="DateTime" Precision="3" />
+          <Property Name="numParcela" Type="Int32" />
+          <Property Name="valorParcela" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="numChequePrimeiro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numChequeUltimo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_movimento" Type="Int32" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Movimentos" Relationship="Self.FK__Pagamento__id_mo__45F365D3" FromRole="Pagamentos" ToRole="Movimentos" />
+          <NavigationProperty Name="Pagamentos_Vendas" Relationship="Self.FK__Pagamento__id_Pa__4D94879B" FromRole="Pagamentos" ToRole="Pagamentos_Vendas" />
+        </EntityType>
+        <EntityType Name="Pagamentos_Vendas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Venda" Type="Int32" Nullable="false" />
+          <Property Name="id_Pagamento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pagamentos" Relationship="Self.FK__Pagamento__id_Pa__4D94879B" FromRole="Pagamentos_Vendas" ToRole="Pagamentos" />
+          <NavigationProperty Name="Vendas" Relationship="Model.FK__Pagamento__id_Ve__4E88ABD4" FromRole="Pagamentos_Vendas" ToRole="Vendas" />
+        </EntityType>
         <EntityType Name="Perfis">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="desc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="desc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="numero" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.FK__Usuarios__num_pe__39237A9A" FromRole="Perfis" ToRole="Usuarios" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Usuarios__num_pe__34C8D9D1" FromRole="Perfis" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_produto" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="desc_produto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_medida" Type="Int32" Nullable="false" />
+          <Property Name="preco_compra" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="preco_venda" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="icms_pago" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="imagem" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="id_fornecedor" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Estoque" Relationship="Self.FK__Estoque__id_prod__5812160E" FromRole="Produtos" ToRole="Estoque" />
+          <NavigationProperty Name="Fornecedores" Relationship="Self.FK__Produtos__id_for__5535A963" FromRole="Produtos" ToRole="Fornecedores" />
+          <NavigationProperty Name="UnidMedidas" Relationship="Self.FK__Produtos__id_med__5441852A" FromRole="Produtos" ToRole="UnidMedidas" />
+          <NavigationProperty Name="Vendas_Produtos" Relationship="Self.id_produto" FromRole="Produtos" ToRole="Vendas_Produtos" />
+        </EntityType>
+        <EntityType Name="Tipos_Movimentacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direcao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sub_tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="conta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="forma_pag" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="mostrar" Type="Boolean" />
+          <NavigationProperty Name="Movimentos" Relationship="Self.FK__Movimento__id_ti__4222D4EF" FromRole="Tipos_Movimentacao" ToRole="Movimentos" />
+        </EntityType>
+        <EntityType Name="UnidMedidas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="medida" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Produtos" Relationship="Self.FK__Produtos__id_med__5441852A" FromRole="UnidMedidas" ToRole="Produtos" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -979,12 +767,120 @@
           <Property Name="senha" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="num_perfil" Type="Int32" Nullable="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Perfis" Relationship="ServidorLojaModel.FK__Usuarios__num_pe__39237A9A" FromRole="Usuarios" ToRole="Perfis" />
-          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.id_usuario" FromRole="Usuarios" ToRole="Vendas" />
+          <NavigationProperty Name="Perfis" Relationship="Self.FK__Usuarios__num_pe__34C8D9D1" FromRole="Usuarios" ToRole="Perfis" />
+          <NavigationProperty Name="Vendas" Relationship="Model.id_usuario" FromRole="Usuarios" ToRole="Vendas" />
         </EntityType>
-        <Association Name="FK__Usuarios__num_pe__39237A9A">
-          <End Type="ServidorLojaModel.Perfis" Role="Perfis" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+        <EntityType Name="Vendas_Produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_venda" Type="Int32" />
+          <Property Name="num_item" Type="Int32" />
+          <Property Name="id_produto" Type="Int32" />
+          <Property Name="quantidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Produtos" Relationship="Self.id_produto" FromRole="Vendas_Produtos" ToRole="Produtos" />
+          <NavigationProperty Name="Vendas" Relationship="Model.id_venda" FromRole="Vendas_Produtos" ToRole="Vendas" />
+        </EntityType>
+        <Association Name="FK__Cidades__id_Esta__30F848ED">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Cidades">
+              <PropertyRef Name="id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clientes__id_Cid__3F466844">
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="id_Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Fornecedo__id_Ci__398D8EEE">
+          <End Role="Cidades" Type="Self.Cidades" Multiplicity="1" />
+          <End Role="Fornecedores" Type="Self.Fornecedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Fornecedores">
+              <PropertyRef Name="id_Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Estoque__id_prod__5812160E">
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
+          <End Role="Estoque" Type="Self.Estoque" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Estoque">
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Produtos__id_for__5535A963">
+          <End Role="Fornecedores" Type="Self.Fornecedores" Multiplicity="1" />
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fornecedores">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Produtos">
+              <PropertyRef Name="id_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Movimento__id_ti__4222D4EF">
+          <End Role="Tipos_Movimentacao" Type="Self.Tipos_Movimentacao" Multiplicity="0..1" />
+          <End Role="Movimentos" Type="Self.Movimentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipos_Movimentacao">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Movimentos">
+              <PropertyRef Name="id_tipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pagamento__id_mo__45F365D3">
+          <End Role="Movimentos" Type="Self.Movimentos" Multiplicity="0..1" />
+          <End Role="Pagamentos" Type="Self.Pagamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimentos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pagamentos">
+              <PropertyRef Name="id_movimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pagamento__id_Pa__4D94879B">
+          <End Role="Pagamentos" Type="Self.Pagamentos" Multiplicity="1" />
+          <End Role="Pagamentos_Vendas" Type="Self.Pagamentos_Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pagamentos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Pagamentos_Vendas">
+              <PropertyRef Name="id_Pagamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuarios__num_pe__34C8D9D1">
+          <End Role="Perfis" Type="Self.Perfis" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Perfis">
               <PropertyRef Name="id" />
@@ -994,6 +890,110 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Produtos__id_med__5441852A">
+          <End Role="UnidMedidas" Type="Self.UnidMedidas" Multiplicity="1" />
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidMedidas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Produtos">
+              <PropertyRef Name="id_medida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="id_produto">
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="0..1" />
+          <End Role="Vendas_Produtos" Type="Self.Vendas_Produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vendas_Produtos">
+              <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cidades" EntityType="Self.Cidades" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Contabilidade" EntityType="Self.Contabilidade" />
+          <EntitySet Name="Estados" EntityType="Self.Estados" />
+          <EntitySet Name="Estoque" EntityType="Self.Estoque" />
+          <EntitySet Name="Fechamento" EntityType="Self.Fechamento" />
+          <EntitySet Name="Fornecedores" EntityType="Self.Fornecedores" />
+          <EntitySet Name="Gerenciamento" EntityType="Self.Gerenciamento" />
+          <EntitySet Name="Movimentos" EntityType="Self.Movimentos" />
+          <EntitySet Name="Pagamentos" EntityType="Self.Pagamentos" />
+          <EntitySet Name="Pagamentos_Vendas" EntityType="Self.Pagamentos_Vendas" />
+          <EntitySet Name="Perfis" EntityType="Self.Perfis" />
+          <EntitySet Name="Produtos" EntityType="Self.Produtos" />
+          <EntitySet Name="Tipos_Movimentacao" EntityType="Self.Tipos_Movimentacao" />
+          <EntitySet Name="UnidMedidas" EntityType="Self.UnidMedidas" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Vendas_Produtos" EntityType="Self.Vendas_Produtos" />
+          <AssociationSet Name="FK__Cidades__id_Esta__30F848ED" Association="Self.FK__Cidades__id_Esta__30F848ED">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Cidades" EntitySet="Cidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clientes__id_Cid__3F466844" Association="Self.FK__Clientes__id_Cid__3F466844">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Fornecedo__id_Ci__398D8EEE" Association="Self.FK__Fornecedo__id_Ci__398D8EEE">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Fornecedores" EntitySet="Fornecedores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Estoque__id_prod__5812160E" Association="Self.FK__Estoque__id_prod__5812160E">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="Estoque" EntitySet="Estoque" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Produtos__id_for__5535A963" Association="Self.FK__Produtos__id_for__5535A963">
+            <End Role="Fornecedores" EntitySet="Fornecedores" />
+            <End Role="Produtos" EntitySet="Produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Movimento__id_ti__4222D4EF" Association="Self.FK__Movimento__id_ti__4222D4EF">
+            <End Role="Tipos_Movimentacao" EntitySet="Tipos_Movimentacao" />
+            <End Role="Movimentos" EntitySet="Movimentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pagamento__id_mo__45F365D3" Association="Self.FK__Pagamento__id_mo__45F365D3">
+            <End Role="Movimentos" EntitySet="Movimentos" />
+            <End Role="Pagamentos" EntitySet="Pagamentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pagamento__id_Pa__4D94879B" Association="Self.FK__Pagamento__id_Pa__4D94879B">
+            <End Role="Pagamentos" EntitySet="Pagamentos" />
+            <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuarios__num_pe__34C8D9D1" Association="Self.FK__Usuarios__num_pe__34C8D9D1">
+            <End Role="Perfis" EntitySet="Perfis" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Produtos__id_med__5441852A" Association="Self.FK__Produtos__id_med__5441852A">
+            <End Role="UnidMedidas" EntitySet="UnidMedidas" />
+            <End Role="Produtos" EntitySet="Produtos" />
+          </AssociationSet>
+          <AssociationSet Name="id_produto" Association="Self.id_produto">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="Vendas_Produtos" EntitySet="Vendas_Produtos" />
+          </AssociationSet>
+          <EntitySet Name="Vendas" EntityType="Model.Vendas" />
+          <AssociationSet Name="FK__Vendas__id_Clien__4AB81AF0" Association="Model.FK__Vendas__id_Clien__4AB81AF0">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Vendas" EntitySet="Vendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pagamento__id_Ve__4E88ABD4" Association="Model.FK__Pagamento__id_Ve__4E88ABD4">
+            <End Role="Vendas" EntitySet="Vendas" />
+            <End Role="Pagamentos_Vendas" EntitySet="Pagamentos_Vendas" />
+          </AssociationSet>
+          <AssociationSet Name="id_usuario" Association="Model.id_usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Vendas" EntitySet="Vendas" />
+          </AssociationSet>
+          <AssociationSet Name="id_venda" Association="Model.id_venda">
+            <End Role="Vendas" EntitySet="Vendas" />
+            <End Role="Vendas_Produtos" EntitySet="Vendas_Produtos" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Vendas">
           <Key>
             <PropertyRef Name="id" />
@@ -1006,16 +1006,16 @@
           <Property Name="valor_Venda" Type="Double" />
           <Property Name="id_Usuario" Type="Int32" Nullable="false" />
           <Property Name="id_Cliente" Type="Int32" />
-          <Property Name="desconto" Type="Int32" Nullable="false" />
+          <Property Name="desconto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="comissao" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__2057CCD0" FromRole="Vendas" ToRole="Clientes" />
-          <NavigationProperty Name="Pagamentos_Vendas" Relationship="ServidorLojaModel.FK__Pagamento__id_Ve__24285DB4" FromRole="Vendas" ToRole="Pagamentos_Vendas" />
-          <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.id_usuario" FromRole="Vendas" ToRole="Usuarios" />
-          <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.id_venda" FromRole="Vendas" ToRole="Vendas_Produtos" />
+          <NavigationProperty Name="Clientes" Relationship="Model.FK__Vendas__id_Clien__4AB81AF0" FromRole="Vendas" ToRole="Clientes" />
+          <NavigationProperty Name="Pagamentos_Vendas" Relationship="Model.FK__Pagamento__id_Ve__4E88ABD4" FromRole="Vendas" ToRole="Pagamentos_Vendas" />
+          <NavigationProperty Name="Usuarios" Relationship="Model.id_usuario" FromRole="Vendas" ToRole="Usuarios" />
+          <NavigationProperty Name="Vendas_Produtos" Relationship="Model.id_venda" FromRole="Vendas" ToRole="Vendas_Produtos" />
         </EntityType>
-        <Association Name="FK__Vendas__id_Clien__2057CCD0">
-          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
+        <Association Name="FK__Vendas__id_Clien__4AB81AF0">
+          <End Type="Model.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="Model.Vendas" Role="Vendas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clientes">
               <PropertyRef Name="id" />
@@ -1025,9 +1025,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Pagamento__id_Ve__24285DB4">
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Pagamentos_Vendas" Role="Pagamentos_Vendas" Multiplicity="*" />
+        <Association Name="FK__Pagamento__id_Ve__4E88ABD4">
+          <End Type="Model.Vendas" Role="Vendas" Multiplicity="1" />
+          <End Type="Model.Pagamentos_Vendas" Role="Pagamentos_Vendas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vendas">
               <PropertyRef Name="id" />
@@ -1038,8 +1038,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="id_usuario">
-          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
+          <End Type="Model.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="Model.Vendas" Role="Vendas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="id" />
@@ -1050,8 +1050,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="id_venda">
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Vendas_Produtos" Role="Vendas_Produtos" Multiplicity="*" />
+          <End Type="Model.Vendas" Role="Vendas" Multiplicity="0..1" />
+          <End Type="Model.Vendas_Produtos" Role="Vendas_Produtos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vendas">
               <PropertyRef Name="id" />
@@ -1066,262 +1066,262 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ServidorLojaModelStoreContainer" CdmEntityContainer="ServidorLojaEntities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="DbEntities">
           <EntitySetMapping Name="Cidades">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Cidades">
+            <EntityTypeMapping TypeName="Model.Cidades">
               <MappingFragment StoreEntitySet="Cidades">
-                <ScalarProperty Name="cidade" ColumnName="cidade" />
-                <ScalarProperty Name="id_Estado" ColumnName="id_Estado" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Estado" ColumnName="id_Estado" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Clientes">
+            <EntityTypeMapping TypeName="Model.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="creditos" ColumnName="creditos" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="pessoa_fisica" ColumnName="pessoa_fisica" />
-                <ScalarProperty Name="id_Cidade" ColumnName="id_Cidade" />
-                <ScalarProperty Name="bairro" ColumnName="bairro" />
-                <ScalarProperty Name="numeral" ColumnName="numeral" />
-                <ScalarProperty Name="endereço" ColumnName="endereço" />
-                <ScalarProperty Name="recado" ColumnName="recado" />
-                <ScalarProperty Name="operadora" ColumnName="operadora" />
-                <ScalarProperty Name="celular" ColumnName="celular" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="contato" ColumnName="contato" />
-                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="cpf" ColumnName="cpf" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Estados">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Estados">
-              <MappingFragment StoreEntitySet="Estados">
-                <ScalarProperty Name="sigla" ColumnName="sigla" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Fechamento">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Fechamento">
-              <MappingFragment StoreEntitySet="Fechamento">
-                <ScalarProperty Name="data_fechamento" ColumnName="data_fechamento" />
-                <ScalarProperty Name="id_venda" ColumnName="id_venda" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Fornecedores">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Fornecedores">
-              <MappingFragment StoreEntitySet="Fornecedores">
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
                 <ScalarProperty Name="contato" ColumnName="contato" />
-                <ScalarProperty Name="id_Cidade" ColumnName="id_Cidade" />
-                <ScalarProperty Name="bairro" ColumnName="bairro" />
-                <ScalarProperty Name="numeral" ColumnName="numeral" />
-                <ScalarProperty Name="endereço" ColumnName="endereço" />
-                <ScalarProperty Name="recado" ColumnName="recado" />
-                <ScalarProperty Name="operadora" ColumnName="operadora" />
-                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Movimentos">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Movimentos">
-              <MappingFragment StoreEntitySet="Movimentos">
-                <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
-                <ScalarProperty Name="data" ColumnName="data" />
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="desc" ColumnName="desc" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pagamentos">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Pagamentos">
-              <MappingFragment StoreEntitySet="Pagamentos">
-                <ScalarProperty Name="id_movimento" ColumnName="id_movimento" />
-                <ScalarProperty Name="numChequeUltimo" ColumnName="numChequeUltimo" />
-                <ScalarProperty Name="numChequePrimeiro" ColumnName="numChequePrimeiro" />
-                <ScalarProperty Name="valorParcela" ColumnName="valorParcela" />
-                <ScalarProperty Name="numParcela" ColumnName="numParcela" />
-                <ScalarProperty Name="dataPagamento" ColumnName="dataPagamento" />
-                <ScalarProperty Name="qntParcelas" ColumnName="qntParcelas" />
-                <ScalarProperty Name="valorTotal" ColumnName="valorTotal" />
-                <ScalarProperty Name="formaPag" ColumnName="formaPag" />
-                <ScalarProperty Name="tipoPag" ColumnName="tipoPag" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tipos_Movimentacao">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Tipos_Movimentacao">
-              <MappingFragment StoreEntitySet="Tipos_Movimentacao">
-                <ScalarProperty Name="mostrar" ColumnName="mostrar" />
-                <ScalarProperty Name="forma_pag" ColumnName="forma_pag" />
-                <ScalarProperty Name="conta" ColumnName="conta" />
-                <ScalarProperty Name="sub_tipo" ColumnName="sub_tipo" />
-                <ScalarProperty Name="direcao" ColumnName="direcao" />
-                <ScalarProperty Name="descricao" ColumnName="descricao" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UnidMedidas">
-            <EntityTypeMapping TypeName="ServidorLojaModel.UnidMedidas">
-              <MappingFragment StoreEntitySet="UnidMedidas">
-                <ScalarProperty Name="medida" ColumnName="medida" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="operadora" ColumnName="operadora" />
+                <ScalarProperty Name="recado" ColumnName="recado" />
+                <ScalarProperty Name="endereço" ColumnName="endereço" />
+                <ScalarProperty Name="numeral" ColumnName="numeral" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="id_Cidade" ColumnName="id_Cidade" />
+                <ScalarProperty Name="pessoa_fisica" ColumnName="pessoa_fisica" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="creditos" ColumnName="creditos" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contabilidade">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Contabilidade">
+            <EntityTypeMapping TypeName="Model.Contabilidade">
               <MappingFragment StoreEntitySet="Contabilidade">
-                <ScalarProperty Name="reserva_lucro" ColumnName="reserva_lucro" />
-                <ScalarProperty Name="pro_labore" ColumnName="pro_labore" />
-                <ScalarProperty Name="lucro" ColumnName="lucro" />
-                <ScalarProperty Name="cap_soc_n_integ" ColumnName="cap_soc_n_integ" />
-                <ScalarProperty Name="cap_soc_integ" ColumnName="cap_soc_integ" />
-                <ScalarProperty Name="estoques" ColumnName="estoques" />
-                <ScalarProperty Name="despesas" ColumnName="despesas" />
-                <ScalarProperty Name="clientes" ColumnName="clientes" />
-                <ScalarProperty Name="fornecedores" ColumnName="fornecedores" />
-                <ScalarProperty Name="salarios" ColumnName="salarios" />
-                <ScalarProperty Name="veiculos" ColumnName="veiculos" />
-                <ScalarProperty Name="imovel" ColumnName="imovel" />
-                <ScalarProperty Name="maquinario" ColumnName="maquinario" />
-                <ScalarProperty Name="moveis_utensilios" ColumnName="moveis_utensilios" />
-                <ScalarProperty Name="imposto_recolher" ColumnName="imposto_recolher" />
-                <ScalarProperty Name="a_pagar_lp" ColumnName="a_pagar_lp" />
-                <ScalarProperty Name="a_receber_lp" ColumnName="a_receber_lp" />
-                <ScalarProperty Name="a_pagar_cp" ColumnName="a_pagar_cp" />
-                <ScalarProperty Name="a_receber_cp" ColumnName="a_receber_cp" />
-                <ScalarProperty Name="banco" ColumnName="banco" />
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="caixa" ColumnName="caixa" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="banco" ColumnName="banco" />
+                <ScalarProperty Name="a_receber_cp" ColumnName="a_receber_cp" />
+                <ScalarProperty Name="a_pagar_cp" ColumnName="a_pagar_cp" />
+                <ScalarProperty Name="a_receber_lp" ColumnName="a_receber_lp" />
+                <ScalarProperty Name="a_pagar_lp" ColumnName="a_pagar_lp" />
+                <ScalarProperty Name="imposto_recolher" ColumnName="imposto_recolher" />
+                <ScalarProperty Name="moveis_utensilios" ColumnName="moveis_utensilios" />
+                <ScalarProperty Name="maquinario" ColumnName="maquinario" />
+                <ScalarProperty Name="imovel" ColumnName="imovel" />
+                <ScalarProperty Name="veiculos" ColumnName="veiculos" />
+                <ScalarProperty Name="salarios" ColumnName="salarios" />
+                <ScalarProperty Name="fornecedores" ColumnName="fornecedores" />
+                <ScalarProperty Name="clientes" ColumnName="clientes" />
+                <ScalarProperty Name="despesas" ColumnName="despesas" />
+                <ScalarProperty Name="estoques" ColumnName="estoques" />
+                <ScalarProperty Name="cap_soc_integ" ColumnName="cap_soc_integ" />
+                <ScalarProperty Name="cap_soc_n_integ" ColumnName="cap_soc_n_integ" />
+                <ScalarProperty Name="lucro" ColumnName="lucro" />
+                <ScalarProperty Name="pro_labore" ColumnName="pro_labore" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Gerenciamento">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Gerenciamento">
-              <MappingFragment StoreEntitySet="Gerenciamento">
-                <ScalarProperty Name="lucroMinimo" ColumnName="lucroMinimo" />
-                <ScalarProperty Name="jurosCheque12x" ColumnName="jurosCheque12x" />
-                <ScalarProperty Name="jurosCheque11x" ColumnName="jurosCheque11x" />
-                <ScalarProperty Name="jurosCheque10x" ColumnName="jurosCheque10x" />
-                <ScalarProperty Name="jurosCheque9x" ColumnName="jurosCheque9x" />
-                <ScalarProperty Name="jurosCheque8x" ColumnName="jurosCheque8x" />
-                <ScalarProperty Name="jurosCheque7x" ColumnName="jurosCheque7x" />
-                <ScalarProperty Name="jurosCheque6x" ColumnName="jurosCheque6x" />
-                <ScalarProperty Name="jurosCheque5x" ColumnName="jurosCheque5x" />
-                <ScalarProperty Name="jurosCheque4x" ColumnName="jurosCheque4x" />
-                <ScalarProperty Name="jurosCheque3x" ColumnName="jurosCheque3x" />
-                <ScalarProperty Name="jurosCheque2x" ColumnName="jurosCheque2x" />
-                <ScalarProperty Name="jurosCheque1x" ColumnName="jurosCheque1x" />
-                <ScalarProperty Name="jurosPrazo12x" ColumnName="jurosPrazo12x" />
-                <ScalarProperty Name="jurosPrazo11x" ColumnName="jurosPrazo11x" />
-                <ScalarProperty Name="jurosPrazo10x" ColumnName="jurosPrazo10x" />
-                <ScalarProperty Name="jurosPrazo9x" ColumnName="jurosPrazo9x" />
-                <ScalarProperty Name="jurosPrazo8x" ColumnName="jurosPrazo8x" />
-                <ScalarProperty Name="jurosPrazo7x" ColumnName="jurosPrazo7x" />
-                <ScalarProperty Name="jurosPrazo6x" ColumnName="jurosPrazo6x" />
-                <ScalarProperty Name="jurosPrazo5x" ColumnName="jurosPrazo5x" />
-                <ScalarProperty Name="jurosPrazo4x" ColumnName="jurosPrazo4x" />
-                <ScalarProperty Name="jurosPrazo3x" ColumnName="jurosPrazo3x" />
-                <ScalarProperty Name="jurosPrazo2x" ColumnName="jurosPrazo2x" />
-                <ScalarProperty Name="maxDescPerc" ColumnName="maxDescPerc" />
-                <ScalarProperty Name="autoDescValor" ColumnName="autoDescValor" />
-                <ScalarProperty Name="autoDescPerc" ColumnName="autoDescPerc" />
-                <ScalarProperty Name="tributacao" ColumnName="tributacao" />
-                <ScalarProperty Name="comissao" ColumnName="comissao" />
+          <EntitySetMapping Name="Estados">
+            <EntityTypeMapping TypeName="Model.Estados">
+              <MappingFragment StoreEntitySet="Estados">
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pagamentos_Vendas">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Pagamentos_Vendas">
-              <MappingFragment StoreEntitySet="Pagamentos_Vendas">
-                <ScalarProperty Name="id_Pagamento" ColumnName="id_Pagamento" />
-                <ScalarProperty Name="id_Venda" ColumnName="id_Venda" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Produtos">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Produtos">
-              <MappingFragment StoreEntitySet="Produtos">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
-                <ScalarProperty Name="imagem" ColumnName="imagem" />
-                <ScalarProperty Name="icms_pago" ColumnName="icms_pago" />
-                <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
-                <ScalarProperty Name="preco_compra" ColumnName="preco_compra" />
-                <ScalarProperty Name="id_medida" ColumnName="id_medida" />
-                <ScalarProperty Name="desc_produto" ColumnName="desc_produto" />
-                <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vendas_Produtos">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Vendas_Produtos">
-              <MappingFragment StoreEntitySet="Vendas_Produtos">
-                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
-                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
-                <ScalarProperty Name="num_item" ColumnName="num_item" />
-                <ScalarProperty Name="id_venda" ColumnName="id_venda" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="sigla" ColumnName="sigla" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Estoque">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Estoque">
+            <EntityTypeMapping TypeName="Model.Estoque">
               <MappingFragment StoreEntitySet="Estoque">
-                <ScalarProperty Name="ref_local" ColumnName="ref_local" />
-                <ScalarProperty Name="letra_local" ColumnName="letra_local" />
-                <ScalarProperty Name="num_local" ColumnName="num_local" />
-                <ScalarProperty Name="qnt_maxima" ColumnName="qnt_maxima" />
-                <ScalarProperty Name="qnt_minima" ColumnName="qnt_minima" />
-                <ScalarProperty Name="qnt_atual" ColumnName="qnt_atual" />
-                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="qnt_atual" ColumnName="qnt_atual" />
+                <ScalarProperty Name="qnt_minima" ColumnName="qnt_minima" />
+                <ScalarProperty Name="qnt_maxima" ColumnName="qnt_maxima" />
+                <ScalarProperty Name="num_local" ColumnName="num_local" />
+                <ScalarProperty Name="letra_local" ColumnName="letra_local" />
+                <ScalarProperty Name="ref_local" ColumnName="ref_local" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fechamento">
+            <EntityTypeMapping TypeName="Model.Fechamento">
+              <MappingFragment StoreEntitySet="Fechamento">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+                <ScalarProperty Name="data_fechamento" ColumnName="data_fechamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fornecedores">
+            <EntityTypeMapping TypeName="Model.Fornecedores">
+              <MappingFragment StoreEntitySet="Fornecedores">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="operadora" ColumnName="operadora" />
+                <ScalarProperty Name="recado" ColumnName="recado" />
+                <ScalarProperty Name="endereço" ColumnName="endereço" />
+                <ScalarProperty Name="numeral" ColumnName="numeral" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="id_Cidade" ColumnName="id_Cidade" />
+                <ScalarProperty Name="contato" ColumnName="contato" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gerenciamento">
+            <EntityTypeMapping TypeName="Model.Gerenciamento">
+              <MappingFragment StoreEntitySet="Gerenciamento">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comissao" ColumnName="comissao" />
+                <ScalarProperty Name="tributacao" ColumnName="tributacao" />
+                <ScalarProperty Name="autoDescPerc" ColumnName="autoDescPerc" />
+                <ScalarProperty Name="autoDescValor" ColumnName="autoDescValor" />
+                <ScalarProperty Name="maxDescPerc" ColumnName="maxDescPerc" />
+                <ScalarProperty Name="jurosPrazo2x" ColumnName="jurosPrazo2x" />
+                <ScalarProperty Name="jurosPrazo3x" ColumnName="jurosPrazo3x" />
+                <ScalarProperty Name="jurosPrazo4x" ColumnName="jurosPrazo4x" />
+                <ScalarProperty Name="jurosPrazo5x" ColumnName="jurosPrazo5x" />
+                <ScalarProperty Name="jurosPrazo6x" ColumnName="jurosPrazo6x" />
+                <ScalarProperty Name="jurosPrazo7x" ColumnName="jurosPrazo7x" />
+                <ScalarProperty Name="jurosPrazo8x" ColumnName="jurosPrazo8x" />
+                <ScalarProperty Name="jurosPrazo9x" ColumnName="jurosPrazo9x" />
+                <ScalarProperty Name="jurosPrazo10x" ColumnName="jurosPrazo10x" />
+                <ScalarProperty Name="jurosPrazo11x" ColumnName="jurosPrazo11x" />
+                <ScalarProperty Name="jurosPrazo12x" ColumnName="jurosPrazo12x" />
+                <ScalarProperty Name="jurosCheque1x" ColumnName="jurosCheque1x" />
+                <ScalarProperty Name="jurosCheque2x" ColumnName="jurosCheque2x" />
+                <ScalarProperty Name="jurosCheque3x" ColumnName="jurosCheque3x" />
+                <ScalarProperty Name="jurosCheque4x" ColumnName="jurosCheque4x" />
+                <ScalarProperty Name="jurosCheque5x" ColumnName="jurosCheque5x" />
+                <ScalarProperty Name="jurosCheque6x" ColumnName="jurosCheque6x" />
+                <ScalarProperty Name="jurosCheque7x" ColumnName="jurosCheque7x" />
+                <ScalarProperty Name="jurosCheque8x" ColumnName="jurosCheque8x" />
+                <ScalarProperty Name="jurosCheque9x" ColumnName="jurosCheque9x" />
+                <ScalarProperty Name="jurosCheque10x" ColumnName="jurosCheque10x" />
+                <ScalarProperty Name="jurosCheque11x" ColumnName="jurosCheque11x" />
+                <ScalarProperty Name="jurosCheque12x" ColumnName="jurosCheque12x" />
+                <ScalarProperty Name="lucroMinimo" ColumnName="lucroMinimo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimentos">
+            <EntityTypeMapping TypeName="Model.Movimentos">
+              <MappingFragment StoreEntitySet="Movimentos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="id_tipo" ColumnName="id_tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagamentos">
+            <EntityTypeMapping TypeName="Model.Pagamentos">
+              <MappingFragment StoreEntitySet="Pagamentos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipoPag" ColumnName="tipoPag" />
+                <ScalarProperty Name="formaPag" ColumnName="formaPag" />
+                <ScalarProperty Name="valorTotal" ColumnName="valorTotal" />
+                <ScalarProperty Name="qntParcelas" ColumnName="qntParcelas" />
+                <ScalarProperty Name="dataPagamento" ColumnName="dataPagamento" />
+                <ScalarProperty Name="numParcela" ColumnName="numParcela" />
+                <ScalarProperty Name="valorParcela" ColumnName="valorParcela" />
+                <ScalarProperty Name="numChequePrimeiro" ColumnName="numChequePrimeiro" />
+                <ScalarProperty Name="numChequeUltimo" ColumnName="numChequeUltimo" />
+                <ScalarProperty Name="id_movimento" ColumnName="id_movimento" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagamentos_Vendas">
+            <EntityTypeMapping TypeName="Model.Pagamentos_Vendas">
+              <MappingFragment StoreEntitySet="Pagamentos_Vendas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_Venda" ColumnName="id_Venda" />
+                <ScalarProperty Name="id_Pagamento" ColumnName="id_Pagamento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Perfis">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Perfis">
+            <EntityTypeMapping TypeName="Model.Perfis">
               <MappingFragment StoreEntitySet="Perfis">
-                <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="desc" ColumnName="desc" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produtos">
+            <EntityTypeMapping TypeName="Model.Produtos">
+              <MappingFragment StoreEntitySet="Produtos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
+                <ScalarProperty Name="desc_produto" ColumnName="desc_produto" />
+                <ScalarProperty Name="id_medida" ColumnName="id_medida" />
+                <ScalarProperty Name="preco_compra" ColumnName="preco_compra" />
+                <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
+                <ScalarProperty Name="icms_pago" ColumnName="icms_pago" />
+                <ScalarProperty Name="imagem" ColumnName="imagem" />
+                <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipos_Movimentacao">
+            <EntityTypeMapping TypeName="Model.Tipos_Movimentacao">
+              <MappingFragment StoreEntitySet="Tipos_Movimentacao">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="direcao" ColumnName="direcao" />
+                <ScalarProperty Name="sub_tipo" ColumnName="sub_tipo" />
+                <ScalarProperty Name="conta" ColumnName="conta" />
+                <ScalarProperty Name="forma_pag" ColumnName="forma_pag" />
+                <ScalarProperty Name="mostrar" ColumnName="mostrar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidMedidas">
+            <EntityTypeMapping TypeName="Model.UnidMedidas">
+              <MappingFragment StoreEntitySet="UnidMedidas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="medida" ColumnName="medida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Usuarios">
+            <EntityTypeMapping TypeName="Model.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="num_perfil" ColumnName="num_perfil" />
-                <ScalarProperty Name="senha" ColumnName="senha" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="registro" ColumnName="registro" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="registro" ColumnName="registro" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="num_perfil" ColumnName="num_perfil" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendas_Produtos">
+            <EntityTypeMapping TypeName="Model.Vendas_Produtos">
+              <MappingFragment StoreEntitySet="Vendas_Produtos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_venda" ColumnName="id_venda" />
+                <ScalarProperty Name="num_item" ColumnName="num_item" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vendas">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Vendas">
+            <EntityTypeMapping TypeName="Model.Vendas">
               <MappingFragment StoreEntitySet="Vendas">
                 <ScalarProperty Name="comissao" ColumnName="comissao" />
                 <ScalarProperty Name="desconto" ColumnName="desconto" />

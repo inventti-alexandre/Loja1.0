@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cadastro));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
@@ -66,7 +67,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(762, 2);
@@ -285,7 +286,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CancelButton = this.btnCancela;
             this.ClientSize = new System.Drawing.Size(800, 483);

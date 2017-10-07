@@ -32,7 +32,7 @@ namespace Loja1._0
             try
             {
                 this.user = user;
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 InitializeComponent();
                 AcceptButton = btnPesquisar;
                 lblUser.Text = user.nome;
@@ -54,11 +54,12 @@ namespace Loja1._0
                 valorSub = 0;
                 for (int i = 0; i < listaCompra.Count; i++)
                 {
+                    Compras compra = controle.PesquisaCompraAnterior(listaCompra[i].id);
                     dtProdutos.Rows.Add(listaCompra[i].desc_produto + " ...............................................................................................................",
                        listaCompraQnt[i].ToString() + "x ...................",
-                       "R$" + (Convert.ToDecimal(listaCompraQnt[i]) * listaCompra[i].preco_venda).ToString());
+                       "R$" + (Convert.ToDecimal(listaCompraQnt[i]) * compra.preco_venda).ToString());
 
-                    valorSub = valorSub + (Convert.ToDecimal(listaCompraQnt[i]) * listaCompra[i].preco_venda);
+                    valorSub = valorSub + (Convert.ToDecimal(listaCompraQnt[i]) * compra.preco_venda);
                     txtSub.Text = valorSub.ToString();
                 }
                 for (int i = 0; i < dgvPedido.Rows.Count; i++)
@@ -100,12 +101,12 @@ namespace Loja1._0
             {
                 if (txtCodigo.Text.Equals(""))
                 {
-                    MessageBox.Show("Para pesquisa de pedido insira o númedo desde", "Ação Inválida");
+                    MessageBox.Show("Para pesquisa de pedido insira o número deste", "Ação Inválida");
                 }
                 else
                 {
                     venda = new Vendas();
-                    venda = controle.pesquisaVendaID(Convert.ToInt32(txtCodigo.Text));
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtCodigo.Text));
                     txtPedido.Text = txtCodigo.Text;
                     txtCodigo.Text = "";
                     if (venda == null)
@@ -120,9 +121,12 @@ namespace Loja1._0
                         btnImprimir.Enabled = true;
                         btnAjuste.Enabled = true;
 
-                        if (venda.Clientes.id != 0)
+                        if (venda.Clientes != null)
                         {
-                            txtCliente.Text = venda.Clientes.nome;
+                            if (venda.Clientes.id != 0)
+                            {
+                                txtCliente.Text = venda.Clientes.nome;
+                            }
                         }
                         if (venda.desconto != 0)
                         {
@@ -137,10 +141,10 @@ namespace Loja1._0
                         listaCompraQnt = new List<int>();
                         produtosPedidos = new List<Vendas_Produtos>();
 
-                        produtosPedidos = controle.pesquisaProdutosPedido(venda.id);
+                        produtosPedidos = controle.PesquisaProdutosPedido(venda.id);
                         foreach (Vendas_Produtos value in produtosPedidos)
                         {
-                            listaCompra.Add(controle.pesquisaProdutoId(Convert.ToInt32(value.id_produto)));
+                            listaCompra.Add(controle.PesquisaProdutoId(Convert.ToInt32(value.id_produto)));
                             listaCompraQnt.Add(value.quantidade);
                         }
 
@@ -167,13 +171,15 @@ namespace Loja1._0
                     pnlImagem.BackgroundImage = Image.FromStream(new MemoryStream(produto.imagem));
                 }
 
+                Compras compra = controle.PesquisaCompraAnterior(produto.id);
+
                 txtDescricao.Text = produto.desc_produto;
                 txtCodAdquirido.Text = produto.cod_produto;
-                txtPreco.Text = produto.preco_venda.ToString();
+                txtPreco.Text = compra.preco_venda.ToString();
                 txtLocalNum.Text = produto.Estoque.num_local.ToString();
                 txtLocalSigla.Text = produto.Estoque.letra_local.ToString();
                 txtLocalRef.Text = produto.Estoque.ref_local.ToString();
-                txtFornecedor.Text = produto.Fornecedores.nome;
+                txtFornecedor.Text = compra.Fornecedores.nome;
                 txtUnidade.Text = produto.UnidMedidas.medida;
             }
             catch
@@ -186,7 +192,7 @@ namespace Loja1._0
         {
             try
             {
-                produto = controle.pesquisaProdutoCod(listaCompra[e.RowIndex].cod_produto);
+                produto = controle.PesquisaProdutoCod(listaCompra[e.RowIndex].cod_produto);
                 carregaAdquirido(produto);
             }
             catch
@@ -207,8 +213,10 @@ namespace Loja1._0
                 else if (Convert.ToDecimal(txtTotal.Text) > gerencia.autoDescValor)
                 {
                     MessageBox.Show("Por favor, informe ao cliente que o desconto somente será válido para pagamento realizado à vista.", "Informação ao Cliente");
-                    txtTotal.Text = (Convert.ToDecimal(txtSub.Text) - (Convert.ToDecimal(txtSub.Text) * Convert.ToDecimal(gerencia.autoDescPerc))).ToString("0.00");
+                    txtTotal.Text = (Convert.ToDecimal(txtSub.Text) - (Convert.ToDecimal(txtSub.Text) * Convert.ToDecimal(gerencia.autoDescPerc / 100))).ToString("0.00");
                     desconto = true;
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedido.Text));
+                    venda.desconto = gerencia.autoDescPerc;
                 }
                 else
                 {
@@ -257,7 +265,7 @@ namespace Loja1._0
             try
             {
                 venda = new Vendas();
-                venda = controle.pesquisaVendaID(Convert.ToInt32(txtCodigo.Text));
+                venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedido.Text));
 
                 if (desconto)
                 {
@@ -269,7 +277,7 @@ namespace Loja1._0
                 venda.data_Venda = DateTime.Now;
                 venda.comissao = (Convert.ToDecimal(txtTotal.Text) * gerencia.comissao);
 
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 IniciaImpressao(sender, e);
             }
@@ -293,7 +301,7 @@ namespace Loja1._0
             try
             {
                 venda = new Vendas();
-                venda = controle.pesquisaVendaID(Convert.ToInt32(txtPedido.Text));
+                venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedido.Text));
 
                 if (venda == null)
                 {
@@ -313,20 +321,22 @@ namespace Loja1._0
                 else
                 {
                     Fechamento pedido = new Fechamento();
-                    controle.salvarFechamento(pedido);
+                    controle.SalvarFechamento(pedido);
                     pedido.id_venda = venda.id;
                     pedido.data_fechamento = DateTime.Now;
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
                     produtosPedidos = new List<Vendas_Produtos>();
-                    produtosPedidos = controle.pesquisaProdutosPedido(venda.id);
+                    produtosPedidos = controle.PesquisaProdutosPedido(venda.id);
                     foreach (Vendas_Produtos value in produtosPedidos)
                     {
-                        produto = controle.pesquisaProdutoId(Convert.ToInt32(value.id_produto));
+                        produto = controle.PesquisaProdutoId(Convert.ToInt32(value.id_produto));
                         produto.Estoque.qnt_atual = produto.Estoque.qnt_atual - value.quantidade;
 
-                        List<Movimentos> listaMov = controle.pesquisaMovimentoTipo(12);
-                        decimal valor = value.quantidade * produto.preco_compra;
+                        Compras compra = controle.PesquisaCompraAnterior(produto.id);
+
+                        List<Movimentos> listaMov = controle.PesquisaMovimentoTipo(12);
+                        decimal valor = value.quantidade * compra.preco_compra;
                         for (int i = 0; i < listaMov.Count; i++)
                         {
                             if (valor != 0)
@@ -334,18 +344,18 @@ namespace Loja1._0
                                 if (valor > listaMov[i].valor)
                                 {
                                     valor = valor - Convert.ToDecimal(listaMov[i].valor);
-                                    controle.removeMovimento(listaMov[i]);
-                                    controle.salvaAtualiza();
+                                    controle.RemoveMovimento(listaMov[i]);
+                                    controle.SalvaAtualiza();
                                 }
                                 else
                                 {
                                     listaMov[i].valor = listaMov[i].valor - valor;
                                     valor = 0;
-                                    controle.salvaAtualiza();
+                                    controle.SalvaAtualiza();
                                 }
                             }
                         }
-                        controle.salvaAtualiza();
+                        controle.SalvaAtualiza();
                     }
                     btnCancelar_Click(sender, e);
                 }
@@ -359,7 +369,7 @@ namespace Loja1._0
         private bool vendaFechada(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamento devolve true
-            if (controle.pesquisaFechamentoIdVenda(numPedido))
+            if (controle.PesquisaFechamentoIdVenda(numPedido))
             {
                 return true;
             }
@@ -370,7 +380,7 @@ namespace Loja1._0
         private bool pedidoPago(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamento devolve true
-            if (controle.pesquisaPagamentoIdVenda(numPedido))
+            if (controle.PesquisaPagamentoIdVenda(numPedido))
             {
                 return true;
             }

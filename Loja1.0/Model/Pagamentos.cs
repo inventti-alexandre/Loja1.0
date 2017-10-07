@@ -31,6 +31,7 @@ namespace Loja1._0.Model
         public string numChequePrimeiro { get; set; }
         public string numChequeUltimo { get; set; }
         public Nullable<int> id_movimento { get; set; }
+        public int status { get; set; }
     
         public virtual Movimentos Movimentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

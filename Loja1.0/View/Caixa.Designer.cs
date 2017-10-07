@@ -1592,7 +1592,7 @@
             // 
             this.btnTrocaUser.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnTrocaUser.BackColor = System.Drawing.Color.Transparent;
-            this.btnTrocaUser.BackgroundImage = global::Loja1._0.Properties.Resources.trocar;
+            this.btnTrocaUser.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrocaUser.BackgroundImage")));
             this.btnTrocaUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnTrocaUser.FlatAppearance.BorderSize = 0;
             this.btnTrocaUser.ForeColor = System.Drawing.Color.Lime;
@@ -1607,7 +1607,7 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Khaki;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
@@ -1623,7 +1623,7 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLogo.Location = new System.Drawing.Point(6, 519);
@@ -1643,7 +1643,7 @@
             this.btnCancelaAberto.Name = "btnCancelaAberto";
             this.btnCancelaAberto.Size = new System.Drawing.Size(114, 40);
             this.btnCancelaAberto.TabIndex = 79;
-            this.btnCancelaAberto.Text = "Cancelar Cupom Aberto";
+            this.btnCancelaAberto.Text = "Cancelar Último Cupom";
             this.btnCancelaAberto.UseVisualStyleBackColor = false;
             this.btnCancelaAberto.Click += new System.EventHandler(this.btnCancelaAberto_Click);
             // 

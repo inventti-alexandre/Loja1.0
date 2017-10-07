@@ -1,4 +1,5 @@
 ﻿using Loja1._0.Control;
+using Loja1._0.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -17,11 +18,11 @@ namespace Loja1._0
             {
                 this.user = user;
                 InitializeComponent();
-                perfil = user.num_perfil;
+                perfil = Convert.ToInt32(user.id_Perfil);
                 if (perfil > 1)
                 {
                     btnUsuarios.Enabled = false;
-                    btnGestao.Enabled = false;
+                    btnPonto.Enabled = false;
                     btnRelatorios.Enabled = false;
 
                     if (perfil > 2)
@@ -67,6 +68,12 @@ namespace Loja1._0
             PDV form = new PDV(user);
             form.Show();
             this.Hide();
+            if (controle.PesquisaGerenciamento(1) == null)
+            {
+                MessageBox.Show("Não existem dados gerenciais cadastrados, por favor, cadastre-os e tente novamente", "Ação Inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                form.Dispose();
+                this.Show();
+            }
         }
 
         private void btnCaixa_Click(object sender, EventArgs e)
@@ -81,6 +88,12 @@ namespace Loja1._0
             Produtos form = new Produtos(user);
             form.Show();
             this.Hide();
+            if (Produtos.listaFornecedores.Count == 0)
+            {
+                MessageBox.Show("Não existem fornecedores cadastrados, por favor, cadastre-os e tente novamente", "Ação Inválida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                form.Dispose();
+                this.Show();                
+            }
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
@@ -111,13 +124,6 @@ namespace Loja1._0
             this.Hide();
         }
 
-        private void btnGestao_Click(object sender, EventArgs e)
-        {
-            Gestao form = new Gestao(user);
-            form.Show();
-            this.Hide();
-        }
-
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             Relatorios form = new Relatorios(user);
@@ -141,7 +147,7 @@ namespace Loja1._0
 
         private void alertaFaltaEstoque()
         {
-            List<Model.Produtos> relacaoCompleta = controle.pesquisaGeralProd();
+            List<Model.Produtos> relacaoCompleta = controle.PesquisaGeralProd();
             bool faltando = false;
 
             foreach(Model.Produtos value in relacaoCompleta)
@@ -157,6 +163,25 @@ namespace Loja1._0
                 faltando = false;
                 MessageBox.Show("Existem produtos esgotados ou abaixo da quantidade miníma, favor verificar no módulo \"Relatórios\" a relação de produtos nestas condições","Ação Necessária", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnEntregas_Click(object sender, EventArgs e)
+        {
+            Entrega form = new Entrega(user);
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            Gestao form = new Gestao(user);
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnPonto_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,8 +22,11 @@ namespace Loja1._0
             {
                 this.user = user;
                 InitializeComponent();
-                gerencia = controle.pesquisaGerenciamento(1);
-                preencheDados(gerencia);
+                gerencia = controle.PesquisaGerenciamento(1);
+                if (gerencia != null)
+                {
+                    preencheDados(gerencia);
+                }
             }
             catch
             {
@@ -46,16 +49,23 @@ namespace Loja1._0
 
         private void btnAliquota_Click(object sender, EventArgs e)
         {
-            //Configuração inicial Impressora fiscal
-            BemaFI32.Bematech_FI_AlteraSimboloMoeda("R");
-            BemaFI32.Bematech_FI_ProgramaAliquota("10,38", 0);
-            BemaFI32.Bematech_FI_LinhasEntreCupons(0);
-            BemaFI32.Bematech_FI_EspacoEntreLinhas(0);
-            //Configuração pagamentos
-            BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("C.Crédito", "1");
-            BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("Cheque", "0");
-            BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("Débito", "1");
-            BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("Pré-Pago", "0");            
+            if (gerencia != null)
+            {
+                //Configuração inicial Impressora fiscal
+                BemaFI32.Bematech_FI_AlteraSimboloMoeda("R");
+                BemaFI32.Bematech_FI_ProgramaAliquota(gerencia.tributacao.ToString(), 0);
+                BemaFI32.Bematech_FI_LinhasEntreCupons(0);
+                BemaFI32.Bematech_FI_EspacoEntreLinhas(0);
+                //Configuração pagamentos
+                BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("C.Crédito", "1");
+                BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("Cheque", "0");
+                BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("Débito", "1");
+                BemaFI32.Bematech_FI_ProgramaFormaPagamentoMFD("Pré-Pago", "0");
+            }
+            else
+            {
+                MessageBox.Show("Para atribuição de aliquota é necessário salvar as definições antes, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void ShowMyDialogBox()
@@ -88,15 +98,21 @@ namespace Loja1._0
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
-            {
-                btnAlterar.Enabled = true;
-                btnSalvar.Enabled = false;
-                pnlBasico.Enabled = false;
-                pnlCredito.Enabled = false;
-                pnlCheque.Enabled = false;
-
+            {                
                 if (validaCampos())
                 {
+                    btnAlterar.Enabled = true;
+                    btnSalvar.Enabled = false;
+                    pnlBasico.Enabled = false;
+                    pnlCredito.Enabled = false;
+                    pnlCheque.Enabled = false;
+
+                    if (gerencia == null)
+                    {
+                        gerencia = new Gerenciamento();
+                        controle.SalvaGerenciamento(gerencia);
+                        gerencia.id = 1;
+                    }                    
                     gerencia.lucroMinimo = Convert.ToDecimal(txtLucroMin.Text);
                     gerencia.tributacao = Convert.ToDecimal(txtTributacao.Text);
                     gerencia.comissao = Convert.ToDecimal(txtComissao.Text);
@@ -128,7 +144,7 @@ namespace Loja1._0
                     gerencia.jurosCheque10x = Convert.ToDecimal(txtJurosCheque10.Text);
                     gerencia.jurosCheque11x = Convert.ToDecimal(txtJurosCheque11.Text);
                     gerencia.jurosCheque12x = Convert.ToDecimal(txtJurosCheque12.Text);
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
                 }
             }
             catch
@@ -139,7 +155,52 @@ namespace Loja1._0
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
+            gerencia = controle.PesquisaGerenciamento(1);
+            if (gerencia != null)
+            {
+                preencheDados(gerencia);
+            }
+            else
+            {
+                txtLucroMin.Text = "";
+                txtTributacao.Text = "";
+                txtComissao.Text = "";
+                txtPercDescAuto.Text = "";
+                txtValorDescAuto.Text = "";
+                txtDescMaximo.Text = "";
+
+                txtJurosCC2.Text = "";
+                txtJurosCC3.Text = "";
+                txtJurosCC4.Text = "";
+                txtJurosCC5.Text = "";
+                txtJurosCC6.Text = "";
+                txtJurosCC7.Text = "";
+                txtJurosCC8.Text = "";
+                txtJurosCC9.Text = "";
+                txtJurosCC10.Text = "";
+                txtJurosCC11.Text = "";
+                txtJurosCC12.Text = "";
+
+                txtJurosCheque1.Text = "";
+                txtJurosCheque2.Text = "";
+                txtJurosCheque3.Text = "";
+                txtJurosCheque4.Text = "";
+                txtJurosCheque5.Text = "";
+                txtJurosCheque6.Text = "";
+                txtJurosCheque7.Text = "";
+                txtJurosCheque8.Text = "";
+                txtJurosCheque9.Text = "";
+                txtJurosCheque10.Text = "";
+                txtJurosCheque11.Text = "";
+                txtJurosCheque12.Text = "";
+            }
+            btnAlterar.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnCancelar.Enabled = true;
+
+            pnlBasico.Enabled = false;
+            pnlCheque.Enabled = false;
+            pnlCredito.Enabled = false;
         }
 
         private bool validaCampos()

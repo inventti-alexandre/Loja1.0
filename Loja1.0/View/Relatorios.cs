@@ -27,5 +27,57 @@ namespace Loja1._0
             form.Show();
             Dispose();
         }
+
+        private void btnVendaData_Click(object sender, EventArgs e)
+        {
+            VendaData form = new VendaData(user);
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnCompraData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMovimentoData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFornecedores_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPagReceb_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPagPendente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPagEfetuado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVendaUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVendaProd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVendaPag_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

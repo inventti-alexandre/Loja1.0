@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gestao));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -153,7 +154,7 @@
             this.btnAliquota.BackColor = System.Drawing.Color.White;
             this.btnAliquota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAliquota.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAliquota.Location = new System.Drawing.Point(326, 52);
+            this.btnAliquota.Location = new System.Drawing.Point(289, 52);
             this.btnAliquota.Name = "btnAliquota";
             this.btnAliquota.Size = new System.Drawing.Size(152, 50);
             this.btnAliquota.TabIndex = 7;
@@ -166,7 +167,7 @@
             this.btnAbertura.BackColor = System.Drawing.Color.White;
             this.btnAbertura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbertura.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAbertura.Location = new System.Drawing.Point(484, 52);
+            this.btnAbertura.Location = new System.Drawing.Point(447, 52);
             this.btnAbertura.Name = "btnAbertura";
             this.btnAbertura.Size = new System.Drawing.Size(152, 50);
             this.btnAbertura.TabIndex = 8;
@@ -176,11 +177,11 @@
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.exit;
+            this.btnExit.BackColor = System.Drawing.Color.Khaki;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.Location = new System.Drawing.Point(764, 3);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
             this.btnExit.Name = "btnExit";
@@ -192,7 +193,7 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLogo.Location = new System.Drawing.Point(607, 504);
@@ -205,7 +206,7 @@
             this.btnFechamento.BackColor = System.Drawing.Color.White;
             this.btnFechamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechamento.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnFechamento.Location = new System.Drawing.Point(642, 52);
+            this.btnFechamento.Location = new System.Drawing.Point(605, 52);
             this.btnFechamento.Name = "btnFechamento";
             this.btnFechamento.Size = new System.Drawing.Size(152, 50);
             this.btnFechamento.TabIndex = 9;
@@ -894,7 +895,7 @@
             this.label31.BackColor = System.Drawing.Color.Khaki;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label31.Location = new System.Drawing.Point(54, 60);
+            this.label31.Location = new System.Drawing.Point(32, 60);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(251, 29);
             this.label31.TabIndex = 16;

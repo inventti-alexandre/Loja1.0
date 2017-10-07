@@ -594,7 +594,7 @@
             // btnPesquisar
             // 
             this.btnPesquisar.BackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisar.BackgroundImage = global::Loja1._0.Properties.Resources.lupa;
+            this.btnPesquisar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.BackgroundImage")));
             this.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPesquisar.FlatAppearance.BorderSize = 0;
             this.btnPesquisar.Location = new System.Drawing.Point(462, 531);
@@ -609,10 +609,11 @@
             // 
             this.btnExit.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(764, 3);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
@@ -625,7 +626,7 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLogo.Location = new System.Drawing.Point(682, 529);

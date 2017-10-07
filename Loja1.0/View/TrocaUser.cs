@@ -35,7 +35,7 @@ namespace Loja1._0
                 }
                 else
                 {
-                    user = controle.pesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
+                    user = controle.PesquisaUserLogin(txtLogin.Text.Trim().ToUpper());
                     if (user == null)
                     {
                         MessageBox.Show("Digite um valor válido para Login e Senha", "Usuário/Senha inválido");

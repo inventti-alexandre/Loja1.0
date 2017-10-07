@@ -50,12 +50,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(600, 400);
             this.ControlBox = false;
             this.Controls.Add(this.label3);
+            this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

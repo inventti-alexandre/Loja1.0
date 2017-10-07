@@ -29,14 +29,14 @@ namespace Loja1._0.Model
         public Nullable<double> valor_Venda { get; set; }
         public int id_Usuario { get; set; }
         public Nullable<int> id_Cliente { get; set; }
-        public int desconto { get; set; }
+        public decimal desconto { get; set; }
         public Nullable<decimal> comissao { get; set; }
     
         public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pagamentos_Vendas> Pagamentos_Vendas { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendas_Produtos> Vendas_Produtos { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

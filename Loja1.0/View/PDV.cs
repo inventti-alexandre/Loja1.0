@@ -26,19 +26,24 @@ namespace Loja1._0
         static decimal valorSub = 0;
         static bool desconto = false;
         bool repetido = false;
+        Email email = new Email();
+        public string erro;
 
         public PDV(Model.Usuarios user)
         {
             try
             {
                 this.user = user;
-                gerencia = controle.pesquisaGerenciamento(1);
+                gerencia = controle.PesquisaGerenciamento(1);
                 InitializeComponent();
                 lblUser.Text = user.nome;
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução de abertura";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução de abertura, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -53,11 +58,12 @@ namespace Loja1._0
                 valorSub = 0;
                 for (int i = 0; i < listaCompra.Count; i++)
                 {
+                    Compras compra = controle.PesquisaCompraAnterior(listaCompra[i].id);
                     dtProdutos.Rows.Add(listaCompra[i].desc_produto + "...............................................................................................................",
                        listaCompraQnt[i].ToString() + "x...................",
-                       "R$" + (Convert.ToDecimal(listaCompraQnt[i]) * listaCompra[i].preco_venda).ToString());
+                       "R$" + (Convert.ToDecimal(listaCompraQnt[i]) * compra.preco_venda).ToString());
 
-                    valorSub = valorSub + (Convert.ToDecimal(listaCompraQnt[i]) * listaCompra[i].preco_venda);
+                    valorSub = valorSub + (Convert.ToDecimal(listaCompraQnt[i]) * compra.preco_venda);
                     txtSub.Text = valorSub.ToString();
                 }
                 for (int i = 0; i < dgvClientes.Rows.Count; i++)
@@ -82,7 +88,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"carregaLista\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"carregaLista\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -103,19 +112,19 @@ namespace Loja1._0
         {
             try
             {
-                if (txtCodigo.Text.Equals(""))
+                if (txtCodigo.Text.ToUpper().Trim().Equals(""))
                 {
                     MessageBox.Show("Para pesquisa de produto insira parte do nome/descrição", "Ação Inválida");
                 }
                 else
                 {
-                    listaProdutos = controle.pesquisaProdutosValidoNome(txtCodigo.Text);
+                    listaProdutos = controle.PesquisaProdutosValidoNome(txtCodigo.Text.ToUpper().Trim());
                     cmbListaProdutos.DataSource = listaProdutos;
                     cmbListaProdutos.ValueMember = "cod_produto";
                     cmbListaProdutos.DisplayMember = "desc_produto";
                     if (listaProdutos.Count == 0)
                     {
-                        MessageBox.Show("Não foram encontrados produtos com o termo \"" + txtCodigo.Text + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
+                        MessageBox.Show("Não foram encontrados produtos com o termo \"" + txtCodigo.Text.ToUpper().Trim() + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
                         txtCodigo.Text = "";
                     }
                     else if (listaProdutos.Count == 1)
@@ -139,7 +148,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"btnPesquisa_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnPesquisa_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -171,7 +183,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"btnOkPesquisa_CLick\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnOkPesquisa_CLick\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -183,13 +198,13 @@ namespace Loja1._0
                 {
                     txtCodigo.Focus();
                 }
-                else if (controle.pesquisaProdutoCod(txtCodigo.Text) == null)
+                else if (controle.PesquisaProdutoCod(txtCodigo.Text) == null)
                 {
                     btnPesquisar_Click(sender, e);
                 }
                 else
                 {
-                    int qnt = controle.pesquisaProdutoCod(txtCodigo.Text).Estoque.qnt_atual;
+                    int qnt = controle.PesquisaProdutoCod(txtCodigo.Text).Estoque.qnt_atual;
 
                     if (txtQnt.Text.Equals(""))
                     {
@@ -225,11 +240,29 @@ namespace Loja1._0
                         }
                         if (!repetido)
                         {
-                            listaCompra.Add(controle.pesquisaProdutoCod(txtCodigo.Text));
+                            listaCompra.Add(controle.PesquisaProdutoCod(txtCodigo.Text));
                             listaCompraQnt.Add(Convert.ToInt32(txtQnt.Text));
+                            
+                            //Script para encerrar e imprimir pedido ao atingir 20 itens e abrir novo com mesmas caracteristicas
+                            if (listaCompra.Count == 20)
+                            {
+                                string cliNome = "";
+                                if(cliente.cpf != null)
+                                {
+                                    cliNome = cliente.nome;
+                                }                        
+                                
+                                IniciaImpressao(sender, e);
+
+                                if (!cliNome.Equals(""))
+                                {
+                                    txtBuscaCliente.Text = cliNome;
+                                    btnPesquisaCliente_Click(sender, e);
+                                }
+                            }
                         }
                         carregaLista(listaCompra, listaCompraQnt);
-                        carregaAdquirido(controle.pesquisaProdutoCod(txtCodigo.Text));
+                        carregaAdquirido(controle.PesquisaProdutoCod(txtCodigo.Text));
                         txtCodigo.Text = "";
                         txtQnt.Text = "";
                         txtCodigo.Focus();
@@ -239,7 +272,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"btnAdicionar_CLick\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnAdicionar_CLick\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -256,18 +292,23 @@ namespace Loja1._0
                     pnlImagem.BackgroundImage = Image.FromStream(new MemoryStream(produto.imagem));
                 }
 
+                Compras compra = controle.PesquisaCompraAnterior(produto.id);
+
                 txtDescricao.Text = produto.desc_produto;
                 txtCodAdquirido.Text = produto.cod_produto;
-                txtPreco.Text = produto.preco_venda.ToString();
+                txtPreco.Text = compra.preco_venda.ToString();
                 txtLocalNum.Text = produto.Estoque.num_local.ToString();
                 txtLocalSigla.Text = produto.Estoque.letra_local.ToString();
                 txtLocalRef.Text = produto.Estoque.ref_local.ToString();
-                txtFornecedor.Text = produto.Fornecedores.nome;
+                txtFornecedor.Text = compra.Fornecedores.nome;
                 txtUnidade.Text = produto.UnidMedidas.medida;
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"carregaAdquirido\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"carregaAdquirido\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -318,7 +359,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"btnRemover_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnRemover_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -335,15 +379,14 @@ namespace Loja1._0
                 txtTotal.Text = txtSub.Text;
                 desconto = false;
             }
-            else if (Convert.ToDecimal(txtTotal.Text) > gerencia.autoDescValor)
+            else if (Convert.ToDecimal(txtTotal.Text) < gerencia.autoDescValor)
             {
-                MessageBox.Show("Por favor, informe ao cliente que o desconto somente será válido para pagamento realizado à vista.", "Informação ao Cliente");
-                txtTotal.Text = (Convert.ToDecimal(txtSub.Text) - (Convert.ToDecimal(txtSub.Text) * Convert.ToDecimal(gerencia.autoDescPerc))).ToString("0.00");
-                desconto = true;
+                MessageBox.Show("Não é possível conceder descontos para compras abaixo de R$" + gerencia.autoDescValor.ToString("0.00"), "Ação Inválida");
             }
             else
             {
-                MessageBox.Show("Não é possível conceder descontos para compras abaixo de R$" + gerencia.autoDescValor.ToString("0.00"), "Ação Inválida");
+                txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) - (Convert.ToDecimal(txtTotal.Text) * gerencia.autoDescPerc / 100)).ToString("0.00");
+                desconto = true;
             }
         }
 
@@ -377,19 +420,19 @@ namespace Loja1._0
                 cmbCliente.Focus();
                 AcceptButton = btnOkCliente;
                 CancelButton = btnCancelCliente;
-                if (txtBuscaCliente.Text.Equals(""))
+                if (txtBuscaCliente.Text.ToUpper().Trim().Equals(""))
                 {
                     MessageBox.Show("Para pesquisa de cliente insira parte do nome, ou cpf completo", "Ação Inválida");
                 }
                 else
                 {
-                    listaClientes = controle.pesquisaClientesCompleta(txtBuscaCliente.Text);
+                    listaClientes = controle.PesquisaClientesCompleta(txtBuscaCliente.Text.ToUpper().Trim());
                     cmbCliente.DataSource = listaClientes;
                     cmbCliente.ValueMember = "cpf";
                     cmbCliente.DisplayMember = "nome";
                     if (listaClientes.Count == 0)
                     {
-                        MessageBox.Show("Não foram encontrados clientes com o termo \"" + txtBuscaCliente.Text + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
+                        MessageBox.Show("Não foram encontrados clientes com o termo \"" + txtBuscaCliente.Text.ToUpper().Trim() + "\" em sua descrição, por favor, altere o termo e tente novamente.", "Pesquisa Inválida");
                         txtBuscaCliente.Text = "";
                     }
                     else if (listaClientes.Count == 1)
@@ -417,7 +460,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"btnPesquisaCliente_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnPesquisaCliente_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnOkCliente_Click(object sender, EventArgs e)
@@ -426,7 +472,7 @@ namespace Loja1._0
             {
                 this.AcceptButton = btnAdicionar;
                 this.CancelButton = null;
-                cliente = controle.pesquisaClienteCpf(cmbListaProdutos.SelectedValue.ToString());
+                cliente = controle.PesquisaClienteCpf(cmbCliente.SelectedValue.ToString());
                 lblCodigo.Text = "Cliente : ";
                 txtCliente.Visible = true;
                 btnPesquisaCliente.Visible = false;
@@ -437,7 +483,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"btnOkCliente_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnOkCliente_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -458,7 +507,7 @@ namespace Loja1._0
             try
             {
                 venda = new Vendas();
-                controle.salvarVenda(venda);
+                controle.SalvarVenda(venda);
                 venda.cnpj = "";
                 venda.cpf = "";
                 if (cliente.id != 0)
@@ -478,34 +527,39 @@ namespace Loja1._0
                 }
                 if (desconto)
                 {
-                    venda.desconto = Convert.ToInt32(gerencia.autoDescPerc * 100);
+                    venda.desconto = Convert.ToInt32(gerencia.autoDescPerc);
                 }
                 venda.icms = 0;
                 venda.id_Usuario = user.id;
                 venda.valor_Venda = 0;
                 venda.data_Venda = DateTime.Now;
                 venda.comissao = (Convert.ToDecimal(txtTotal.Text) * gerencia.comissao);
-                controle.salvaAtualiza();
+                controle.SalvaAtualiza();
 
                 for (int i = 0; i < listaCompra.Count; i++)
-                {
+                {                    
                     produtosPedido = new Vendas_Produtos();
-                    controle.salvaProdutosVendidos(produtosPedido);
+                    controle.SalvaProdutosVendidos(produtosPedido);
                     produtosPedido.id_venda = venda.id;
                     produtosPedido.id_produto = listaCompra[i].id;
                     produtosPedido.num_item = i;
                     produtosPedido.quantidade = listaCompraQnt[i];
-                    controle.salvaAtualiza();
+                    controle.SalvaAtualiza();
 
-                    venda.icms = venda.icms + Convert.ToDouble(produtosPedido.Produtos.icms_pago * produtosPedido.quantidade);
-                    venda.valor_Venda = venda.valor_Venda + Convert.ToDouble(produtosPedido.Produtos.preco_venda * produtosPedido.quantidade);
-                    controle.salvaAtualiza();
+                    Compras compra = controle.PesquisaCompraAnterior(listaCompra[i].id);
+
+                    venda.icms = venda.icms + Convert.ToDouble(compra.icms_pago * produtosPedido.quantidade);
+                    venda.valor_Venda = venda.valor_Venda + Convert.ToDouble(compra.preco_venda * produtosPedido.quantidade);
+                    controle.SalvaAtualiza();
                 }
                 IniciaImpressao(sender, e);
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "PDV.cs, instrução \"btnImprimir_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnImprimir_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

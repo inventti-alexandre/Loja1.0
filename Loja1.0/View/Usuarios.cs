@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Loja1._0.Control;
+using Loja1._0.Model;
 
 namespace Loja1._0
 {
@@ -12,6 +13,7 @@ namespace Loja1._0
         private Model.Usuarios user;
         public static Model.Usuarios usuario;
         Controle controle = new Controle();
+        Valida validacao = new Valida();
         public static List<Model.Usuarios> listaUser = new List<Model.Usuarios>();
 
         public Usuarios(Model.Usuarios user)
@@ -29,7 +31,11 @@ namespace Loja1._0
 
                 DataTable dtUsers = new DataTable();
                 dtUsers.Columns.Add("Registro", typeof(string));
+                dtUsers.Columns.Add("Login", typeof(string));
                 dtUsers.Columns.Add("Nome", typeof(string));
+                dtUsers.Columns.Add("CPF", typeof(string));
+                dtUsers.Columns.Add("RG", typeof(string));
+                dtUsers.Columns.Add("Salário", typeof(string));
                 dtUsers.Columns.Add("Perfil", typeof(string));
                 dtUsers.Columns.Add("Status", typeof(string));
 
@@ -48,19 +54,19 @@ namespace Loja1._0
                         registro = (value.registro).ToString();
                     }
 
-                    if (value.num_perfil == 1)
+                    if (value.id_Perfil == 1)
                     {
                         perfil = "Administrador";
                     }
-                    else if (value.num_perfil == 2)
+                    else if (value.id_Perfil == 2)
                     {
                         perfil = "Gerente";
                     }
-                    else if (value.num_perfil == 3)
+                    else if (value.id_Perfil == 4)
                     {
                         perfil = "Operador";
                     }
-                    else if (value.num_perfil == 4)
+                    else if (value.id_Perfil == 3)
                     {
                         perfil = "Caixa";
                     }
@@ -74,15 +80,19 @@ namespace Loja1._0
                         status = "Inativo";
                     }
 
-                    dtUsers.Rows.Add(registro, value.nome, perfil, status);
+                    dtUsers.Rows.Add(registro, value.login, value.nome, value.cpf, value.rg, value.salario.ToString(), perfil, status);
                 }
 
                 dgvUsuarios.DataSource = dtUsers;
 
                 dgvUsuarios.Columns[0].Width = 100;
-                dgvUsuarios.Columns[1].Width = 250;
-                dgvUsuarios.Columns[2].Width = 120;
-                dgvUsuarios.Columns[3].Width = 100;
+                dgvUsuarios.Columns[1].Width = 150;
+                dgvUsuarios.Columns[2].Width = 400;
+                dgvUsuarios.Columns[3].Width = 150;
+                dgvUsuarios.Columns[4].Width = 150;
+                dgvUsuarios.Columns[5].Width = 120;
+                dgvUsuarios.Columns[6].Width = 120;
+                dgvUsuarios.Columns[7].Width = 120;
             }
             catch
             {
@@ -119,8 +129,13 @@ namespace Loja1._0
             {
                 btnAlterar.Enabled = true;
                 pnlDetalhe.Enabled = false;
-                txtLogin.Text = usuario.nome;
-                txtRegistro.Text = (usuario.registro).ToString();
+                txtLogin.Text = usuario.login;
+                txtRegistro.Text = usuario.registro;
+                txtSalario.Text = (usuario.salario).ToString();
+                txtCpf.Text = usuario.cpf;
+                txtRg.Text = usuario.rg;
+                txtNome.Text = usuario.nome;
+                txtBancoHoras.Text = usuario.bancoHoras.ToString();
 
                 if (usuario.status == 1)
                 {
@@ -131,19 +146,19 @@ namespace Loja1._0
                     chkStatus.Checked = false;
                 }
 
-                if (usuario.num_perfil == 1)
+                if (usuario.id_Perfil == 1)
                 {
                     rdbAdministrador.Checked = true;
                 }
-                else if (usuario.num_perfil == 2)
+                else if (usuario.id_Perfil == 2)
                 {
                     rdbGerente.Checked = true;
                 }
-                else if (usuario.num_perfil == 3)
+                else if (usuario.id_Perfil == 4)
                 {
                     rdbOperador.Checked = true;
                 }
-                else if (usuario.num_perfil == 4)
+                else if (usuario.id_Perfil == 3)
                 {
                     rdbCaixa.Checked = true;
                 }
@@ -159,6 +174,14 @@ namespace Loja1._0
             try
             {
                 pnlDetalhe.Enabled = true;
+                txtLogin.Enabled = true;
+                txtRegistro.Enabled = true;
+                txtNome.Enabled = true;
+                txtCpf.Enabled = true;
+                txtRg.Enabled = true;
+                txtSalario.Enabled = true;
+                chkStatus.Enabled = true;
+
                 btnSalvar.Enabled = true;
                 btnCancelar.Enabled = true;
                 btnAlterar.Enabled = false;
@@ -166,7 +189,7 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado, por favor, verifique os campos e tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -176,8 +199,16 @@ namespace Loja1._0
             {
                 if (validaCampos())
                 {
-                    usuario.nome = txtLogin.Text.ToUpper().Trim();
-                    usuario.registro = Convert.ToInt32(txtRegistro.Text.Trim());
+                    usuario.login = txtLogin.Text.ToUpper().Trim();
+                    usuario.registro = txtRegistro.Text.ToUpper().Trim();
+                    usuario.rg = txtRg.Text.ToUpper().Trim();
+                    usuario.salario = Convert.ToDecimal(txtSalario.Text);
+                    usuario.nome = txtNome.Text.ToUpper().Trim();
+
+                    if (validacao.validaTipoCpfCnpj(txtCpf.Text))
+                    {
+                        usuario.cpf = txtCpf.Text;
+                    }
 
                     if (chkStatus.Checked)
                     {
@@ -190,19 +221,19 @@ namespace Loja1._0
 
                     if (rdbAdministrador.Checked)
                     {
-                        usuario.num_perfil = 1;
+                        usuario.id_Perfil = 1;
                     }
                     else if (rdbGerente.Checked)
                     {
-                        usuario.num_perfil = 2;
+                        usuario.id_Perfil = 2;
                     }
                     else if (rdbOperador.Checked)
                     {
-                        usuario.num_perfil = 3;
+                        usuario.id_Perfil = 4;
                     }
                     else if (rdbCaixa.Checked)
                     {
-                        usuario.num_perfil = 4;
+                        usuario.id_Perfil = 3;
                     }
 
                     controle.SalvaAtualiza();
@@ -210,7 +241,7 @@ namespace Loja1._0
                 }
                 else
                 {
-                    MessageBox.Show("Todos os campos são de preenchimento obrigatório, e o campo \"Registro\" é exclusivamente numérico, por favor verifique e tente novamente", "Ação Inválida");
+                    MessageBox.Show("Todos os campos são de preenchimento obrigatório, por favor verifique e tente novamente", "Ação Inválida");
                 }
             }
             catch
@@ -225,8 +256,19 @@ namespace Loja1._0
             btnSalvar.Enabled = false;
             btnCancelar.Enabled = false;
             pnlDetalhe.Enabled = false;
+
+            txtLogin.Enabled = false;
+            txtRegistro.Enabled = false;
+            txtNome.Enabled = false;
+            txtCpf.Enabled = false;
+            txtRg.Enabled = false;
+            txtSalario.Enabled = false;
             txtLogin.Text = "";
             txtRegistro.Text = "";
+            txtNome.Text = "";
+            txtCpf.Text = "";
+            txtRg.Text = "";
+            txtSalario.Text = "";
             chkStatus.Checked = false;
             rdbAdministrador.Checked = false;
             rdbCaixa.Checked = false;
@@ -238,7 +280,7 @@ namespace Loja1._0
 
         private bool validaCampos()
         {
-            if(!txtLogin.Text.Equals("") && !txtRegistro.Text.Equals("") && txtRegistro.Text.All(char.IsDigit))
+            if (!txtLogin.Text.Equals("") && !txtRegistro.Text.Equals(""))
             {
                 return true;
             }

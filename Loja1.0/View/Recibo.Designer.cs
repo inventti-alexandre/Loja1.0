@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Recibo));
             this.printablePanel1 = new Loja1._0.Control.PrintablePanel();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -752,7 +753,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Location = new System.Drawing.Point(11, 0);
             this.panel2.Name = "panel2";

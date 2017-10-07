@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrocaUser));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblLogin = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -158,9 +159,9 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlLogo.Location = new System.Drawing.Point(141, 235);
+            this.pnlLogo.Location = new System.Drawing.Point(148, 235);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(190, 92);
             this.pnlLogo.TabIndex = 1;

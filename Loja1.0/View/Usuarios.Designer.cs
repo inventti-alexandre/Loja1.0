@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuarios));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
@@ -53,6 +54,16 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBancoHoras = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSalario = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRg = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCpf = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.pnlDetalhe.SuspendLayout();
@@ -77,18 +88,18 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogo.Location = new System.Drawing.Point(612, 489);
+            this.pnlLogo.Location = new System.Drawing.Point(659, 511);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(176, 86);
+            this.pnlLogo.Size = new System.Drawing.Size(129, 64);
             this.pnlLogo.TabIndex = 1;
             // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Khaki;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -132,9 +143,9 @@
             this.groupBox1.Controls.Add(this.dgvUsuarios);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox1.Location = new System.Drawing.Point(5, 163);
+            this.groupBox1.Location = new System.Drawing.Point(5, 221);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(601, 416);
+            this.groupBox1.Size = new System.Drawing.Size(648, 355);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Usuários";
@@ -147,44 +158,54 @@
             this.dgvUsuarios.AllowUserToResizeRows = false;
             this.dgvUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsuarios.GridColor = System.Drawing.Color.Khaki;
             this.dgvUsuarios.Location = new System.Drawing.Point(6, 22);
             this.dgvUsuarios.MultiSelect = false;
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(589, 388);
+            this.dgvUsuarios.Size = new System.Drawing.Size(636, 327);
             this.dgvUsuarios.TabIndex = 0;
             this.dgvUsuarios.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsuarios_CellMouseClick);
             // 
             // pnlDetalhe
             // 
+            this.pnlDetalhe.Controls.Add(this.txtBancoHoras);
+            this.pnlDetalhe.Controls.Add(this.label6);
+            this.pnlDetalhe.Controls.Add(this.txtSalario);
+            this.pnlDetalhe.Controls.Add(this.label5);
+            this.pnlDetalhe.Controls.Add(this.txtRg);
+            this.pnlDetalhe.Controls.Add(this.label4);
+            this.pnlDetalhe.Controls.Add(this.txtCpf);
+            this.pnlDetalhe.Controls.Add(this.label2);
+            this.pnlDetalhe.Controls.Add(this.txtNome);
+            this.pnlDetalhe.Controls.Add(this.label1);
             this.pnlDetalhe.Controls.Add(this.txtRegistro);
             this.pnlDetalhe.Controls.Add(this.lblRegistro);
             this.pnlDetalhe.Controls.Add(this.chkStatus);
@@ -196,7 +217,7 @@
             this.pnlDetalhe.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.pnlDetalhe.Location = new System.Drawing.Point(5, 55);
             this.pnlDetalhe.Name = "pnlDetalhe";
-            this.pnlDetalhe.Size = new System.Drawing.Size(783, 102);
+            this.pnlDetalhe.Size = new System.Drawing.Size(783, 160);
             this.pnlDetalhe.TabIndex = 8;
             this.pnlDetalhe.TabStop = false;
             this.pnlDetalhe.Text = "Detalhes do Usuário";
@@ -238,9 +259,9 @@
             this.pnlPerfil.Controls.Add(this.rdbGerente);
             this.pnlPerfil.Controls.Add(this.rdbAdministrador);
             this.pnlPerfil.Controls.Add(this.lblSelecione);
-            this.pnlPerfil.Location = new System.Drawing.Point(106, 52);
+            this.pnlPerfil.Location = new System.Drawing.Point(149, 110);
             this.pnlPerfil.Name = "pnlPerfil";
-            this.pnlPerfil.Size = new System.Drawing.Size(551, 43);
+            this.pnlPerfil.Size = new System.Drawing.Size(482, 43);
             this.pnlPerfil.TabIndex = 20;
             // 
             // rdbOperador
@@ -248,7 +269,7 @@
             this.rdbOperador.AutoSize = true;
             this.rdbOperador.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbOperador.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.rdbOperador.Location = new System.Drawing.Point(462, 19);
+            this.rdbOperador.Location = new System.Drawing.Point(380, 19);
             this.rdbOperador.Name = "rdbOperador";
             this.rdbOperador.Size = new System.Drawing.Size(79, 19);
             this.rdbOperador.TabIndex = 6;
@@ -261,7 +282,7 @@
             this.rdbCaixa.AutoSize = true;
             this.rdbCaixa.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbCaixa.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.rdbCaixa.Location = new System.Drawing.Point(314, 19);
+            this.rdbCaixa.Location = new System.Drawing.Point(266, 19);
             this.rdbCaixa.Name = "rdbCaixa";
             this.rdbCaixa.Size = new System.Drawing.Size(57, 19);
             this.rdbCaixa.TabIndex = 5;
@@ -274,7 +295,7 @@
             this.rdbGerente.AutoSize = true;
             this.rdbGerente.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbGerente.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.rdbGerente.Location = new System.Drawing.Point(166, 19);
+            this.rdbGerente.Location = new System.Drawing.Point(144, 19);
             this.rdbGerente.Name = "rdbGerente";
             this.rdbGerente.Size = new System.Drawing.Size(70, 19);
             this.rdbGerente.TabIndex = 4;
@@ -331,9 +352,9 @@
             this.btnSalvar.Enabled = false;
             this.btnSalvar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSalvar.Location = new System.Drawing.Point(612, 286);
+            this.btnSalvar.Location = new System.Drawing.Point(659, 278);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(176, 73);
+            this.btnSalvar.Size = new System.Drawing.Size(129, 51);
             this.btnSalvar.TabIndex = 25;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
@@ -347,9 +368,9 @@
             this.btnAlterar.Enabled = false;
             this.btnAlterar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAlterar.Location = new System.Drawing.Point(612, 185);
+            this.btnAlterar.Location = new System.Drawing.Point(659, 221);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(176, 73);
+            this.btnAlterar.Size = new System.Drawing.Size(129, 51);
             this.btnAlterar.TabIndex = 23;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
@@ -363,13 +384,99 @@
             this.btnCancelar.Enabled = false;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancelar.Location = new System.Drawing.Point(612, 387);
+            this.btnCancelar.Location = new System.Drawing.Point(659, 335);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(176, 73);
+            this.btnCancelar.Size = new System.Drawing.Size(129, 51);
             this.btnCancelar.TabIndex = 26;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(76, 51);
+            this.txtNome.MaxLength = 30;
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(447, 23);
+            this.txtNome.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Nome : ";
+            // 
+            // txtBancoHoras
+            // 
+            this.txtBancoHoras.Enabled = false;
+            this.txtBancoHoras.Location = new System.Drawing.Point(684, 52);
+            this.txtBancoHoras.MaxLength = 30;
+            this.txtBancoHoras.Name = "txtBancoHoras";
+            this.txtBancoHoras.Size = new System.Drawing.Size(90, 23);
+            this.txtBancoHoras.TabIndex = 41;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(562, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(116, 17);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Banco Horas : ";
+            // 
+            // txtSalario
+            // 
+            this.txtSalario.Location = new System.Drawing.Point(654, 84);
+            this.txtSalario.MaxLength = 30;
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(120, 23);
+            this.txtSalario.TabIndex = 39;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(574, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(74, 17);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Salário : ";
+            // 
+            // txtRg
+            // 
+            this.txtRg.Location = new System.Drawing.Point(342, 81);
+            this.txtRg.MaxLength = 30;
+            this.txtRg.Name = "txtRg";
+            this.txtRg.Size = new System.Drawing.Size(226, 23);
+            this.txtRg.TabIndex = 37;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(296, 84);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "RG : ";
+            // 
+            // txtCpf
+            // 
+            this.txtCpf.Location = new System.Drawing.Point(64, 81);
+            this.txtCpf.MaxLength = 30;
+            this.txtCpf.Name = "txtCpf";
+            this.txtCpf.Size = new System.Drawing.Size(226, 23);
+            this.txtCpf.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 17);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "CPF : ";
             // 
             // Usuarios
             // 
@@ -430,6 +537,16 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TextBox txtBancoHoras;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtSalario;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtRg;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCpf;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Label label1;
     }
 }
 

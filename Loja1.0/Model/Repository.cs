@@ -32,7 +32,7 @@ namespace Loja1._0.Model
         public Usuarios PesquisaSimplesUser(string valor)
         {
             return (from usuarios in dataEntity.Usuarios
-                    where (usuarios.nome.Equals(valor))
+                    where (usuarios.login.Equals(valor))
                     select usuarios).SingleOrDefault();
         }
 
@@ -49,10 +49,26 @@ namespace Loja1._0.Model
                     select usuarios).ToList();
         }
 
+        public Usuarios PesquisaNomeUser(string nomeCompleto)
+        {
+            return (from usuarios in dataEntity.Usuarios
+                    where (usuarios.nome.Equals(nomeCompleto))
+                    select usuarios).SingleOrDefault();
+
+        }
+
         public List<Usuarios> PesquisaUsuariosInvalidos()
         {
             return (from usuarios in dataEntity.Usuarios
                     where (usuarios.status == 0)
+                    select usuarios).ToList();
+        }
+
+        public List<Usuarios> PesquisaUsersIdPerfil(int idMinus)
+        {
+            return (from usuarios in dataEntity.Usuarios
+                    where usuarios.id_Perfil >= idMinus
+                    && usuarios.status == 1
                     select usuarios).ToList();
         }
 
@@ -63,6 +79,7 @@ namespace Loja1._0.Model
                                     select usuarios).ToList();
             return lista.Count;
         }
+        
         #endregion
 
         #region Repositório do BD de Clientes
@@ -231,6 +248,13 @@ namespace Loja1._0.Model
                     select cidade).SingleOrDefault();
         }
 
+        internal Cidades PesquisaCidadeId(int pesquisa)
+        {
+            return (from cidade in dataEntity.Cidades
+                    where cidade.id == pesquisa
+                    select cidade).SingleOrDefault();
+        }
+
         public void SalvarNovaCidade(Cidades cidade)
         {
             dataEntity.Cidades.Add(cidade);
@@ -359,7 +383,7 @@ namespace Loja1._0.Model
         public List<Estados> PesquisaEstados()
         {
             return (from estados in dataEntity.Estados
-                    orderby estados.id
+                    orderby estados.id            
                     select estados).ToList();
         }
         #endregion
@@ -403,7 +427,7 @@ namespace Loja1._0.Model
             return (from movimento in dataEntity.Movimentos
                     where movimento.desc.Contains(idPagamento.ToString())
                     select movimento).ToList();
-        }
+        }        
 
         public List<Movimentos> PesquisaMovimentoIntervalo(DateTime dtInicio, DateTime dtFim)
         {
@@ -430,7 +454,7 @@ namespace Loja1._0.Model
                     && compra.id_produto == id
                     orderby compra.dt_compra ascending
                     select compra).First();
-        }
+        }        
 
         public void RemoveProdVenda(Vendas_Produtos prodVend)
         {
@@ -456,6 +480,7 @@ namespace Loja1._0.Model
             }
 
         }
+        
         #endregion
 
         #region Repositório do BD de Vendas
@@ -627,6 +652,37 @@ namespace Loja1._0.Model
             dataEntity.Compras.Add(compra);
         }
         #endregion
+
+        public List<CtrlPonto> PesquisaPontoPeriodo(int idUser, int month, int year)
+        {
+            return (from ponto in dataEntity.CtrlPonto
+                    where ponto.Dt_Ponto.Month == month
+                    && ponto.Dt_Ponto.Year == year
+                    && ponto.Id_User == idUser
+                    orderby ponto.Dt_Ponto ascending
+                    select ponto).ToList();
+        }
+
+        public CtrlPonto PesquisaPontoPeriodoDia(int id, int dia, int mes, int ano)
+        {
+            return (from ponto in dataEntity.CtrlPonto
+                    where ponto.Dt_Ponto.Day == dia
+                    && ponto.Dt_Ponto.Month == mes
+                    && ponto.Dt_Ponto.Year == ano
+                    && ponto.Id_User == id
+                    orderby ponto.Dt_Ponto ascending
+                    select ponto).SingleOrDefault();
+        }
+
+        public void SalvarNovoPonto(CtrlPonto ponto)
+        {
+            dataEntity.CtrlPonto.Add(ponto);
+        }
+
+        public void SalvarNovoLog(LogPonto log)
+        {
+            dataEntity.LogPonto.Add(log);
+        }        
 
         //SCRIPT FECHAMENTO
         #region Repositório do BD Pedidos

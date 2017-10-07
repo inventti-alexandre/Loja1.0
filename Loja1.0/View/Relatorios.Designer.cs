@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Relatorios));
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -107,7 +108,7 @@
             this.panel1.Controls.Add(this.btnMovimentoData);
             this.panel1.Controls.Add(this.btnCompraData);
             this.panel1.Controls.Add(this.btnVendaData);
-            this.panel1.Location = new System.Drawing.Point(61, 131);
+            this.panel1.Location = new System.Drawing.Point(61, 94);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(670, 239);
             this.panel1.TabIndex = 8;
@@ -296,7 +297,7 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Khaki;
-            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.voltar1;
+            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -311,10 +312,10 @@
             // pnlLogo
             // 
             this.pnlLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pnlLogo.BackgroundImage = global::Loja1._0.Properties.Resources.LgAlemão;
+            this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogo.Location = new System.Drawing.Point(227, 396);
+            this.pnlLogo.Location = new System.Drawing.Point(227, 383);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(329, 168);
             this.pnlLogo.TabIndex = 1;

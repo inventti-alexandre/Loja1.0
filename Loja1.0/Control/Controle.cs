@@ -51,6 +51,13 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaSimplesUser(pesquisa);
         }
 
+        public Model.Usuarios PesquisaUserNome(string nome)
+        {
+            string nomeCompleto = nome;
+
+            return dbRepository.PesquisaNomeUser(nomeCompleto);
+        }
+
         public List<Model.Usuarios> PesquisaGeralUser()
         {
             return dbRepository.PesquisaCompletaUsers();
@@ -59,6 +66,13 @@ namespace Loja1._0.Control
         public List<Model.Usuarios> UsuariosInvalidos()
         {
             return dbRepository.PesquisaUsuariosInvalidos();
+        }
+
+        public List<Model.Usuarios> PesquisaUserPerfilId(int id_Perfil)
+        {
+            int idMinus = id_Perfil;
+
+            return dbRepository.PesquisaUsersIdPerfil(idMinus);
         }
 
         #endregion
@@ -147,6 +161,13 @@ namespace Loja1._0.Control
             string pesquisa = estado;
 
             return dbRepository.PesquisaCidadeByNameUF(pesquisa);
+        }
+
+        internal Cidades PesquisaCidadeById(int id_Cidade)
+        {
+            int pesquisa = id_Cidade;
+
+            return dbRepository.PesquisaCidadeId(pesquisa);
         }
 
         public Cidades PesquisaCidade(string cidade)
@@ -486,7 +507,7 @@ namespace Loja1._0.Control
         public void RemovePagamento(Pagamentos pag)
         {
             dbRepository.ExcluirPagamento(pag);
-        }
+        }        
 
         public List<Pagamentos> PesquisaUltimoPagamento()
         {
@@ -533,6 +554,35 @@ namespace Loja1._0.Control
             int id = id_produto;
 
             return dbRepository.PesquisaCompraPendente(id);
+        }
+
+        public void salvarLog(LogPonto log)
+        {
+            dbRepository.SalvarNovoLog(log);
+        }
+
+        public CtrlPonto PesquisaPontoDia(int id, string Mes, string Ano, string Dia)
+        {
+            int idUser = id;
+            int dia = Convert.ToInt32(Dia);
+            int mes = Convert.ToInt32(Mes);
+            int ano = Convert.ToInt32(Ano);
+
+            return dbRepository.PesquisaPontoPeriodoDia(id, dia, mes, ano);
+        }
+
+        internal void SalvaPonto(CtrlPonto ponto)
+        {
+            dbRepository.SalvarNovoPonto(ponto);
+        }
+
+        public List<CtrlPonto> PesquisaPonto(int id, string mes, string ano)
+        {
+            int idUser = id;
+            int month = Convert.ToInt32(mes);
+            int year = Convert.ToInt32(ano);
+
+            return dbRepository.PesquisaPontoPeriodo(idUser, month, year);
         }
     }
 }

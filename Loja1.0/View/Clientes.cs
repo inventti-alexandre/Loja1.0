@@ -16,11 +16,11 @@ namespace Loja1._0
         private Model.Usuarios user;
         Controle controle = new Controle();
         Valida validaDoc = new Valida();
-        static public Model.Clientes cliente = new Model.Clientes();
         List<Estados> listaEstado = new List<Estados>();
         List<Cidades> listaCidade = new List<Cidades>();
         List<Model.Clientes> listaClientes = new List<Model.Clientes>();
         Email email = new Email();
+        public static Model.Clientes cliente;
 
         //declaração de variaveis locais de uso exclusivo
         bool flagNovo = true;
@@ -217,6 +217,7 @@ namespace Loja1._0
                 cmbUf.DataSource = listaEstado;
                 cmbUf.ValueMember = "id";
                 cmbUf.DisplayMember = "sigla";
+                cmbUf.SelectedText = "";
 
                 //altera a variavel local booleana para verdadeiro
                 flagNovo = true;
@@ -311,7 +312,7 @@ namespace Loja1._0
                             flagNovo = false;
 
                             //instancia e salva novo cliente
-                            Model.Clientes cliente = new Model.Clientes();
+                            cliente = new Model.Clientes();
                             controle.SalvarCliente(cliente);
                             cliente.cpf = txtCpf.Text.Trim();
                             cliente.nome = txtCliente.Text.ToUpper().Trim();
@@ -572,9 +573,9 @@ namespace Loja1._0
             {
                 cmbCidade.Enabled = true;
                 listaCidade = controle.PesquisaCidadesPorEstado(cmbUf.SelectedIndex + 1);
-                cmbCidade.DataSource = listaCidade;
                 cmbCidade.DisplayMember = "cidade";
                 cmbCidade.ValueMember = "id";
+                cmbCidade.DataSource = listaCidade;
             }
             catch
             {

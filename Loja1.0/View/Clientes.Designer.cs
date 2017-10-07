@@ -189,18 +189,18 @@
             // txtRG
             // 
             this.txtRG.Enabled = false;
-            this.txtRG.Location = new System.Drawing.Point(52, 67);
+            this.txtRG.Location = new System.Drawing.Point(52, 126);
             this.txtRG.MaxLength = 30;
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(294, 20);
-            this.txtRG.TabIndex = 25;
+            this.txtRG.TabIndex = 8;
             // 
             // lblRg
             // 
             this.lblRg.AutoSize = true;
             this.lblRg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRg.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblRg.Location = new System.Drawing.Point(12, 68);
+            this.lblRg.Location = new System.Drawing.Point(12, 127);
             this.lblRg.Name = "lblRg";
             this.lblRg.Size = new System.Drawing.Size(41, 16);
             this.lblRg.TabIndex = 24;
@@ -213,7 +213,7 @@
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(647, 20);
-            this.txtEmail.TabIndex = 23;
+            this.txtEmail.TabIndex = 7;
             // 
             // lblEmail
             // 
@@ -236,7 +236,7 @@
             this.rdbDinheiro.Location = new System.Drawing.Point(651, 49);
             this.rdbDinheiro.Name = "rdbDinheiro";
             this.rdbDinheiro.Size = new System.Drawing.Size(71, 18);
-            this.rdbDinheiro.TabIndex = 21;
+            this.rdbDinheiro.TabIndex = 3;
             this.rdbDinheiro.TabStop = true;
             this.rdbDinheiro.Text = "Dinheiro";
             this.rdbDinheiro.UseVisualStyleBackColor = false;
@@ -250,7 +250,7 @@
             this.rdbTef.Location = new System.Drawing.Point(721, 49);
             this.rdbTef.Name = "rdbTef";
             this.rdbTef.Size = new System.Drawing.Size(44, 18);
-            this.rdbTef.TabIndex = 20;
+            this.rdbTef.TabIndex = 4;
             this.rdbTef.Text = "TEF";
             this.rdbTef.UseVisualStyleBackColor = false;
             // 
@@ -261,7 +261,7 @@
             this.txtContato.MaxLength = 30;
             this.txtContato.Name = "txtContato";
             this.txtContato.Size = new System.Drawing.Size(337, 20);
-            this.txtContato.TabIndex = 19;
+            this.txtContato.TabIndex = 6;
             // 
             // lblContato
             // 
@@ -281,7 +281,7 @@
             this.txtBairro.MaxLength = 30;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(185, 20);
-            this.txtBairro.TabIndex = 17;
+            this.txtBairro.TabIndex = 13;
             // 
             // lblBairro
             // 
@@ -301,7 +301,7 @@
             this.txtNum.MaxLength = 6;
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(57, 20);
-            this.txtNum.TabIndex = 15;
+            this.txtNum.TabIndex = 12;
             // 
             // lblNum
             // 
@@ -321,7 +321,7 @@
             this.txtEndereco.MaxLength = 50;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(327, 20);
-            this.txtEndereco.TabIndex = 13;
+            this.txtEndereco.TabIndex = 11;
             // 
             // lblEndereco
             // 
@@ -366,7 +366,7 @@
             this.rdbClaro.Location = new System.Drawing.Point(692, 31);
             this.rdbClaro.Name = "rdbClaro";
             this.rdbClaro.Size = new System.Drawing.Size(55, 17);
-            this.rdbClaro.TabIndex = 14;
+            this.rdbClaro.TabIndex = 20;
             this.rdbClaro.TabStop = true;
             this.rdbClaro.Text = "Claro";
             this.rdbClaro.UseVisualStyleBackColor = true;
@@ -380,7 +380,7 @@
             this.rdbVivo.Location = new System.Drawing.Point(692, 11);
             this.rdbVivo.Name = "rdbVivo";
             this.rdbVivo.Size = new System.Drawing.Size(52, 17);
-            this.rdbVivo.TabIndex = 13;
+            this.rdbVivo.TabIndex = 18;
             this.rdbVivo.TabStop = true;
             this.rdbVivo.Text = "Vivo";
             this.rdbVivo.UseVisualStyleBackColor = true;
@@ -394,7 +394,7 @@
             this.rdbOi.Location = new System.Drawing.Point(644, 31);
             this.rdbOi.Name = "rdbOi";
             this.rdbOi.Size = new System.Drawing.Size(40, 17);
-            this.rdbOi.TabIndex = 12;
+            this.rdbOi.TabIndex = 19;
             this.rdbOi.TabStop = true;
             this.rdbOi.Text = "Oi";
             this.rdbOi.UseVisualStyleBackColor = true;
@@ -408,7 +408,7 @@
             this.rdbTim.Location = new System.Drawing.Point(644, 11);
             this.rdbTim.Name = "rdbTim";
             this.rdbTim.Size = new System.Drawing.Size(46, 17);
-            this.rdbTim.TabIndex = 11;
+            this.rdbTim.TabIndex = 17;
             this.rdbTim.TabStop = true;
             this.rdbTim.Text = "Tim";
             this.rdbTim.UseVisualStyleBackColor = true;
@@ -419,7 +419,7 @@
             this.txtCelular.MaxLength = 20;
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(146, 20);
-            this.txtCelular.TabIndex = 10;
+            this.txtCelular.TabIndex = 16;
             // 
             // lblCelular
             // 
@@ -438,7 +438,7 @@
             this.txtTel2.MaxLength = 20;
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(146, 20);
-            this.txtTel2.TabIndex = 8;
+            this.txtTel2.TabIndex = 15;
             // 
             // lblTel2
             // 
@@ -457,7 +457,7 @@
             this.txtTel1.MaxLength = 20;
             this.txtTel1.Name = "txtTel1";
             this.txtTel1.Size = new System.Drawing.Size(146, 20);
-            this.txtTel1.TabIndex = 6;
+            this.txtTel1.TabIndex = 14;
             // 
             // lblTel1
             // 
@@ -497,7 +497,7 @@
             this.cmbUf.Location = new System.Drawing.Point(388, 126);
             this.cmbUf.Name = "cmbUf";
             this.cmbUf.Size = new System.Drawing.Size(55, 21);
-            this.cmbUf.TabIndex = 8;
+            this.cmbUf.TabIndex = 9;
             this.cmbUf.SelectedIndexChanged += new System.EventHandler(this.cmbUf_SelectedIndexChanged);
             // 
             // lblUf
@@ -513,18 +513,18 @@
             // 
             // txtCpf
             // 
-            this.txtCpf.Location = new System.Drawing.Point(96, 126);
+            this.txtCpf.Location = new System.Drawing.Point(96, 66);
             this.txtCpf.MaxLength = 14;
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(250, 20);
-            this.txtCpf.TabIndex = 6;
+            this.txtCpf.TabIndex = 5;
             // 
             // lblCpf
             // 
             this.lblCpf.AutoSize = true;
             this.lblCpf.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCpf.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblCpf.Location = new System.Drawing.Point(12, 127);
+            this.lblCpf.Location = new System.Drawing.Point(12, 67);
             this.lblCpf.Name = "lblCpf";
             this.lblCpf.Size = new System.Drawing.Size(89, 16);
             this.lblCpf.TabIndex = 5;
@@ -537,7 +537,7 @@
             this.txtCreditos.MaxLength = 9;
             this.txtCreditos.Name = "txtCreditos";
             this.txtCreditos.Size = new System.Drawing.Size(80, 20);
-            this.txtCreditos.TabIndex = 4;
+            this.txtCreditos.TabIndex = 2;
             // 
             // lblCreditos
             // 
@@ -556,7 +556,7 @@
             this.txtCliente.MaxLength = 30;
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(540, 20);
-            this.txtCliente.TabIndex = 2;
+            this.txtCliente.TabIndex = 1;
             // 
             // lblCliente
             // 
@@ -652,7 +652,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(674, 496);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(114, 30);
-            this.btnLimpar.TabIndex = 20;
+            this.btnLimpar.TabIndex = 26;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -705,7 +705,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(674, 428);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(114, 30);
-            this.btnExcluir.TabIndex = 46;
+            this.btnExcluir.TabIndex = 24;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);

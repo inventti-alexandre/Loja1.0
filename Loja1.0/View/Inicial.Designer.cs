@@ -72,7 +72,7 @@
             this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogo.Location = new System.Drawing.Point(238, 409);
+            this.pnlLogo.Location = new System.Drawing.Point(238, 404);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(315, 156);
             this.pnlLogo.TabIndex = 1;
@@ -134,7 +134,7 @@
             this.panel1.Controls.Add(this.btnClientes);
             this.panel1.Controls.Add(this.btnCaixa);
             this.panel1.Controls.Add(this.btnPdv);
-            this.panel1.Location = new System.Drawing.Point(64, 135);
+            this.panel1.Location = new System.Drawing.Point(64, 123);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(670, 239);
             this.panel1.TabIndex = 7;

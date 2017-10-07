@@ -45,10 +45,11 @@ namespace Loja1._0
                     user = new Model.Usuarios();
                     controle.SalvarUsuario(user);
                     //determina os parametros dessa nova instancia
-                    user.nome = txtLogin.Text.ToUpper().Trim();
+                    user.login = txtLogin.Text.ToUpper().Trim();
                     user.senha = txtSenha.Text.Trim();
-                    user.num_perfil = novoPerfil;
+                    user.id_Perfil = novoPerfil;
                     user.status = 0;
+                    user.dt_Inclusao = DateTime.Now;
                     //salva esta instancia da memória para o banco de dados
                     controle.SalvaAtualiza();
                     //informa ao usuário a criação de novo usuário
@@ -61,8 +62,8 @@ namespace Loja1._0
             }
             catch
             {
-                //Envio de email como parametro string do método da classe Email
-                email.EnviaEmail("Cadastro.cs, linha 36 a 58");
+                /*/Envio de email como parametro string do método da classe Email
+                email.EnviaEmail("Cadastro.cs, linha 36 a 58");*/
 
                 //mensagem genérica de erro 
                 MessageBox.Show("Erro não identificado em Cadastro.cs, linha 36 a 58, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);

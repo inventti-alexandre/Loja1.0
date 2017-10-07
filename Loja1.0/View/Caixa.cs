@@ -935,7 +935,7 @@ namespace Loja1._0
                     }
 
                     //verifica se o valor registrado como pagamento excede o valor total
-                    else if (Convert.ToDecimal(txtPagDinheiro.Text) > Convert.ToDecimal(txtSaldoDinheiro.Text) && rdbDinheiro.Checked)
+                    else if (Convert.ToDecimal(txtPagDinheiro.Text) > Convert.ToDecimal(txtSaldoDinheiro.Text))
                     {
                         //informa o valor do troco
                         MessageBox.Show("O valor do pagamento em dinheiro excedeu o saldo, TROCO = R$" + (Convert.ToDecimal(txtPagDinheiro.Text) - Convert.ToDecimal(txtSaldoDinheiro.Text)).ToString("0.00"), "Ação Necessária");
@@ -1003,7 +1003,7 @@ namespace Loja1._0
                     }
 
                     //verifica se o valor registrado como pagamento excede o valor total
-                    else if (Convert.ToDecimal(txtPagDebito.Text) > Convert.ToDecimal(txtSaldoDebito.Text) && rdbDebito.Checked)
+                    else if (Convert.ToDecimal(txtPagDebito.Text) > Convert.ToDecimal(txtSaldoDebito.Text))
                     {
                         //informa e restringe esse tipo de ação
                         MessageBox.Show("O valor do pagamento não deve exceder o valor da compra para pagamentos no débito", "Ação Inválida");
@@ -1062,12 +1062,14 @@ namespace Loja1._0
                         if (txtPagPrePago.Text.Equals(""))
                         {
                             MessageBox.Show("O campo valor deve ser preenchido", "Ação Inválida");
+                            btnPagamento.Enabled = true;
                         }
 
                         //verifica se o valor registrado como pagamento excede o valor total
-                        else if (Convert.ToDecimal(txtPagPrePago.Text) > Convert.ToDecimal(txtSaldoPrePago.Text) && rdbDinheiro.Checked)
+                        else if (Convert.ToDecimal(txtPagPrePago.Text) > Convert.ToDecimal(txtSaldoPrePago.Text))
                         {
                             MessageBox.Show("O valor do pagamento não deve exceder o valor da compra para os pagamentos pré-pagos", "Ação Inválida");
+                            btnPagamento.Enabled = true;
                         }
 
                         //verifica se o valor registrado como paramento excede o valor dos créditos do cliente
@@ -1093,10 +1095,10 @@ namespace Loja1._0
                             {
                                 //chamada da função que realiza essas alterações
                                 atualizaValores(Convert.ToDecimal(txtPagPrePago.Text));
-                            }
 
-                            //altera o valor total dos créditos do cliente no panel cliente
-                            txtCreditosCliente.Text = (Convert.ToDecimal(txtCreditosCliente.Text) - Convert.ToDecimal(txtPrePago.Text)).ToString("0.00");
+                                //altera o valor total dos créditos do cliente no panel cliente
+                                txtCreditosCliente.Text = (Convert.ToDecimal(txtCreditosCliente.Text) - Convert.ToDecimal(txtPrePago.Text)).ToString("0.00");
+                            }                            
 
                             //limpa o campo referente ao valor do pagamento
                             txtPagPrePago.Text = "";
@@ -1387,6 +1389,9 @@ namespace Loja1._0
 
                         //cancela o cupom em aberto ou último emitido na ausência deste
                         BemaFI32.Bematech_FI_CancelaCupom();
+
+                        BemaFI32.Bematech_FI_AbreCupom("");
+                        BemaFI32.Bematech_FI_FechaComprovanteNaoFiscalVinculado();
 
                         //limpa o formulário, retorma a codição inicial
                         btnLimpar_Click(sender, e);
@@ -2035,7 +2040,7 @@ namespace Loja1._0
 
                 //altera a instancia de cliente atribuida, corrige a quantidade de créditos que este possuí e salva a alteração
                 clienteCreditos = Convert.ToDouble(valor);
-                cliente.creditos = cliente.creditos - Convert.ToDouble(valor);
+                cliente.creditos = cliente.creditos - clienteCreditos;
                 controle.SalvaAtualiza();
 
                 //novamente verifica se o pagamento corresponde ao total devido em caso positivo concluí a venda

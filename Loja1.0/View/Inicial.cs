@@ -18,7 +18,7 @@ namespace Loja1._0
             {
                 this.user = user;
                 InitializeComponent();
-                perfil = user.num_perfil;
+                perfil = Convert.ToInt32(user.id_Perfil);
                 if (perfil > 1)
                 {
                     btnUsuarios.Enabled = false;

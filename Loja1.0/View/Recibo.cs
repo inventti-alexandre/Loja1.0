@@ -12,9 +12,8 @@ namespace Loja1._0.View
     public partial class Recibo : Form
     {
         PrintDocument printDocument1 = new PrintDocument();
-        private Model.Clientes cliente = null;
+        public static Model.Clientes clienteRecibo = new Model.Clientes();
         Controle controle = new Controle();
-        public Gerenciamento gerencia = new Gerenciamento();
         public Model.Usuarios user = new Model.Usuarios();
         Bitmap memoryImage;
 
@@ -23,8 +22,7 @@ namespace Loja1._0.View
             try
             {
                 InitializeComponent();
-                gerencia = controle.PesquisaGerenciamento(1);
-                this.cliente = cliente;
+                clienteRecibo = cliente;
                 this.user = user;
                 preenchePedido(valor);
                 printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);                
@@ -43,17 +41,17 @@ namespace Loja1._0.View
                 txtDtLonga.Text = DateTime.Today.ToLongDateString() + " - " + DateTime.Now.ToLongTimeString();
 
                 txtUsuario.Text = user.nome;
-                txtNomeCliente.Text = cliente.nome;
-                txtContatoCliente.Text = cliente.contato;
-                txtTel1Cliente.Text = cliente.telefone;
-                txtTel2Cliente.Text = cliente.recado;
-                txtCelCliente.Text = cliente.celular;
-                txtEmailCliente.Text = cliente.email;
-                txtEndCliente.Text = cliente.endereço;
-                txtNumCliente.Text = cliente.numeral;
-                txtBairroCliente.Text = cliente.bairro;
-                txtCidadeCliente.Text = cliente.Cidades.cidade;
-                txtUfCliente.Text = cliente.Cidades.Estados.sigla;
+                txtNomeCliente.Text = clienteRecibo.nome;
+                txtContatoCliente.Text = clienteRecibo.contato;
+                txtTel1Cliente.Text = clienteRecibo.telefone;
+                txtTel2Cliente.Text = clienteRecibo.recado;
+                txtCelCliente.Text = clienteRecibo.celular;
+                txtEmailCliente.Text = clienteRecibo.email;
+                txtEndCliente.Text = clienteRecibo.endereço;
+                txtNumCliente.Text = clienteRecibo.numeral;
+                txtBairroCliente.Text = clienteRecibo.bairro;
+                txtCidadeCliente.Text = clienteRecibo.Cidades.cidade;
+                txtUfCliente.Text = clienteRecibo.Cidades.Estados.sigla;
 
                 preencheRecibo(valor);
             }

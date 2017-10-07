@@ -156,6 +156,7 @@ namespace Loja1._0
                 cmbUf.DataSource = listaEstado;
                 cmbUf.ValueMember = "id";
                 cmbUf.DisplayMember = "sigla";
+                cmbUf.SelectedText = "";
 
                 flagNovo = true;
 
@@ -405,9 +406,9 @@ namespace Loja1._0
             {
                 cmbCidade.Enabled = true;
                 listaCidade = controle.PesquisaCidadesPorEstado(cmbUf.SelectedIndex + 1);
-                cmbCidade.DataSource = listaCidade;
                 cmbCidade.DisplayMember = "cidade";
                 cmbCidade.ValueMember = "id";
+                cmbCidade.DataSource = listaCidade;
             }
             catch
             {

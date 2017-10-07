@@ -4,42 +4,46 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="10ca6ec2439e4f5b9c2bf0d5a31a721c" Name="Diagram1">
-        <EntityTypeShape EntityType="ServidorLojaModel.Cidades" Width="1.5" PointX="3" PointY="4.75" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Clientes" Width="1.5" PointX="5.25" PointY="5.875" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Compras" Width="1.5" PointX="7.5" PointY="2" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Contabilidade" Width="1.5" PointX="9.75" PointY="9.75" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Estados" Width="1.5" PointX="0.75" PointY="4.875" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Estoque" Width="1.5" PointX="7.5" PointY="11.125" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Fechamento" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Fornecedores" Width="1.5" PointX="5.25" PointY="1.5" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Gerenciamento" Width="1.5" PointX="11.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Movimentos" Width="1.5" PointX="5.25" PointY="19.875" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos" Width="1.5" PointX="7.5" PointY="19.25" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos_Vendas" Width="1.5" PointX="9.75" PointY="4" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Perfis" Width="1.5" PointX="3" PointY="16.125" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Produtos" Width="1.5" PointX="5.25" PointY="11" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Tipos_Movimentacao" Width="1.5" PointX="3" PointY="19.75" />
-        <EntityTypeShape EntityType="ServidorLojaModel.UnidMedidas" Width="1.5" PointX="3" PointY="11.625" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Usuarios" Width="1.5" PointX="5.25" PointY="15.75" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Vendas" Width="1.5" PointX="7.5" PointY="6.25" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Vendas_Produtos" Width="1.5" PointX="9.75" PointY="6.875" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Cidades__id_Esta__6AEFE058" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Clientes__id_Cid__793DFFAF" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Fornecedo__id_Ci__6ABAD62E" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__2057CCD0" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Compras__id_forn__00AA174D" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Compras__id_prod__019E3B86" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Estoque__id_prod__32767D0B" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Movimento__id_ti__7C1A6C5A" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Pagamento__id_mo__7EF6D905" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Pagamento__id_Pa__2334397B" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Pagamento__id_Ve__24285DB4" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Usuarios__num_pe__39237A9A" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Produtos__id_med__29E1370A" />
-        <AssociationConnector Association="ServidorLojaModel.id_produto" />
-        <AssociationConnector Association="ServidorLojaModel.id_usuario" />
-        <AssociationConnector Association="ServidorLojaModel.id_venda" />
+      <Diagram DiagramId="10ca6ec2439e4f5b9c2bf0d5a31a721c" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="ServidorLojaModel.Cidades" Width="1.5" PointX="2.875" PointY="9.5" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Clientes" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Compras" Width="1.5" PointX="7.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Contabilidade" Width="1.5" PointX="14.125" PointY="7.125" />
+        <EntityTypeShape EntityType="ServidorLojaModel.CtrlPonto" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Estados" Width="1.5" PointX="0.5" PointY="9.5" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Estoque" Width="1.5" PointX="12" PointY="7.25" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Fechamento" Width="1.5" PointX="11.875" PointY="4.125" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Fornecedores" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Gerenciamento" Width="1.5" PointX="14.125" PointY="0.5" />
+        <EntityTypeShape EntityType="ServidorLojaModel.LogPonto" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Movimentos" Width="1.5" PointX="9.75" PointY="1.375" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos" Width="1.5" PointX="9.75" PointY="4.625" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos_Vendas" Width="1.5" PointX="7.625" PointY="4.625" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Produtos" Width="1.5" PointX="9.875" PointY="8.375" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Tipos_Movimentacao" Width="1.5" PointX="11.875" PointY="0.625" />
+        <EntityTypeShape EntityType="ServidorLojaModel.UnidMedidas" Width="1.5" PointX="12" PointY="10.125" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Vendas" Width="1.5" PointX="5.375" PointY="4.625" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Vendas_Produtos" Width="1.5" PointX="7.75" PointY="7" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Cidade_Estado" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Cliente_Cidade" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Fornecedor_Cidade" />
+        <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__3EFC4F81" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Compra_Fornecedor" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Compra_Produto" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Log_Ponto" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Estoque_Produto" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Movimento_Tipo" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Pagamento_Movimento" />
+        <AssociationConnector Association="ServidorLojaModel.FK_PagamentoVenda_Pagamento" />
+        <AssociationConnector Association="ServidorLojaModel.FK_PagamentoVenda_Venda" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Produto_Medida" />
+        <AssociationConnector Association="ServidorLojaModel.FK_VendaProduto_Produto" />
+        <AssociationConnector Association="ServidorLojaModel.FK_VendaProduto_Venda" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Perfis" Width="1.5" PointX="7.625" PointY="1.125" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Usuarios" Width="1.5" PointX="5.375" PointY="0.5" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Ponto_Usuario" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Usuario_Perfil" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Venda_Usuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

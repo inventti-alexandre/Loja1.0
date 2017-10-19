@@ -463,7 +463,7 @@ namespace Loja1._0.Model
 
         public int PesquisaMovimentoID(string desc, string tipo, string form)
         {
-            if (form != null)
+            if (form != null && !form.Equals(""))
             {
                 return (from movimento in dataEntity.Tipos_Movimentacao
                         where (movimento.descricao.Equals(desc)

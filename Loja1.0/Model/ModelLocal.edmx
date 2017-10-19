@@ -23,15 +23,14 @@
           <Property Name="rg" Type="varchar" MaxLength="50" />
           <Property Name="contato" Type="varchar" MaxLength="50" />
           <Property Name="email" Type="varchar" MaxLength="50" />
-          <Property Name="telefone" Type="varchar" MaxLength="20" />
-          <Property Name="celular" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="celular" Type="varchar" MaxLength="20" />
           <Property Name="operadora" Type="varchar" MaxLength="10" />
           <Property Name="recado" Type="varchar" MaxLength="20" />
-          <Property Name="endereço" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="numeral" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="endereço" Type="varchar" MaxLength="50" />
+          <Property Name="numeral" Type="varchar" MaxLength="10" />
           <Property Name="bairro" Type="varchar" MaxLength="50" />
           <Property Name="id_Cidade" Type="int" Nullable="false" />
-          <Property Name="pessoa_fisica" Type="int" />
           <Property Name="status" Type="int" Nullable="false" />
           <Property Name="creditos" Type="float" />
         </EntityType>
@@ -298,7 +297,7 @@
           <Property Name="id_produto" Type="int" />
           <Property Name="quantidade" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Vendas__id_Clien__1B7E091A">
+        <Association Name="FK__Vendas__id_Clien__4E5E8EA2">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -536,7 +535,7 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas_Produtos" EntityType="Self.Vendas_Produtos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Vendas__id_Clien__1B7E091A" Association="Self.FK__Vendas__id_Clien__1B7E091A">
+          <AssociationSet Name="FK__Vendas__id_Clien__4E5E8EA2" Association="Self.FK__Vendas__id_Clien__4E5E8EA2">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
@@ -615,7 +614,6 @@
       <Schema Namespace="ServidorLojaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DbEntitiesLocal" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cidades" EntityType="ServidorLojaModel.Cidades" />
-          <EntitySet Name="Clientes" EntityType="ServidorLojaModel.Clientes" />
           <EntitySet Name="Compras" EntityType="ServidorLojaModel.Compras" />
           <EntitySet Name="Contabilidade" EntityType="ServidorLojaModel.Contabilidade" />
           <EntitySet Name="CtrlPonto" EntityType="ServidorLojaModel.CtrlPonto" />
@@ -637,17 +635,9 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Cidades" EntitySet="Cidades" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cliente_Cidade" Association="ServidorLojaModel.FK_Cliente_Cidade">
-            <End Role="Cidades" EntitySet="Cidades" />
-            <End Role="Clientes" EntitySet="Clientes" />
-          </AssociationSet>
           <AssociationSet Name="FK_Fornecedor_Cidade" Association="ServidorLojaModel.FK_Fornecedor_Cidade">
             <End Role="Cidades" EntitySet="Cidades" />
             <End Role="Fornecedores" EntitySet="Fornecedores" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Vendas__id_Clien__3EFC4F81" Association="ServidorLojaModel.FK__Vendas__id_Clien__3EFC4F81">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
           <AssociationSet Name="FK_Compra_Fornecedor" Association="ServidorLojaModel.FK_Compra_Fornecedor">
             <End Role="Fornecedores" EntitySet="Fornecedores" />
@@ -707,6 +697,15 @@
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
+          <EntitySet Name="Clientes" EntityType="ServidorLojaModel.Clientes" />
+          <AssociationSet Name="FK_Cliente_Cidade" Association="ServidorLojaModel.FK_Cliente_Cidade">
+            <End Role="Cidades" EntitySet="Cidades" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vendas__id_Clien__4E5E8EA2" Association="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Vendas" EntitySet="Vendas" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Cidades">
           <Key>
@@ -716,32 +715,8 @@
           <Property Name="id_Estado" Type="Int32" Nullable="false" />
           <Property Name="cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Estados" Relationship="ServidorLojaModel.FK_Cidade_Estado" FromRole="Cidades" ToRole="Estados" />
-          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK_Cliente_Cidade" FromRole="Cidades" ToRole="Clientes" />
           <NavigationProperty Name="Fornecedores" Relationship="ServidorLojaModel.FK_Fornecedor_Cidade" FromRole="Cidades" ToRole="Fornecedores" />
-        </EntityType>
-        <EntityType Name="Clientes">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cpf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="rg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="contato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="celular" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="operadora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="recado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="endereço" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="numeral" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_Cidade" Type="Int32" Nullable="false" />
-          <Property Name="pessoa_fisica" Type="Int32" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <Property Name="creditos" Type="Double" />
-          <NavigationProperty Name="Cidades" Relationship="ServidorLojaModel.FK_Cliente_Cidade" FromRole="Clientes" ToRole="Cidades" />
-          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__3EFC4F81" FromRole="Clientes" ToRole="Vendas" />
+          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK_Cliente_Cidade" FromRole="Cidades" ToRole="Clientes" />
         </EntityType>
         <EntityType Name="Compras">
           <Key>
@@ -991,10 +966,10 @@
           <Property Name="id_Cliente" Type="Int32" />
           <Property Name="desconto" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="comissao" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__3EFC4F81" FromRole="Vendas" ToRole="Clientes" />
           <NavigationProperty Name="Pagamentos_Vendas" Relationship="ServidorLojaModel.FK_PagamentoVenda_Venda" FromRole="Vendas" ToRole="Pagamentos_Vendas" />
           <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.FK_VendaProduto_Venda" FromRole="Vendas" ToRole="Vendas_Produtos" />
           <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.FK_Venda_Usuario" FromRole="Vendas" ToRole="Usuarios" />
+          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" FromRole="Vendas" ToRole="Clientes" />
         </EntityType>
         <EntityType Name="Vendas_Produtos">
           <Key>
@@ -1020,18 +995,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cliente_Cidade">
-          <End Type="ServidorLojaModel.Cidades" Role="Cidades" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cidades">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Clientes">
-              <PropertyRef Name="id_Cidade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Fornecedor_Cidade">
           <End Type="ServidorLojaModel.Cidades" Role="Cidades" Multiplicity="1" />
           <End Type="ServidorLojaModel.Fornecedores" Role="Fornecedores" Multiplicity="*" />
@@ -1041,18 +1004,6 @@
             </Principal>
             <Dependent Role="Fornecedores">
               <PropertyRef Name="id_Cidade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Vendas__id_Clien__3EFC4F81">
-          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vendas">
-              <PropertyRef Name="id_Cliente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1253,6 +1204,53 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="operadora" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="recado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="endereço" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numeral" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Cidade" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="creditos" Type="Double" />
+          <NavigationProperty Name="Cidades" Relationship="ServidorLojaModel.FK_Cliente_Cidade" FromRole="Clientes" ToRole="Cidades" />
+          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" FromRole="Clientes" ToRole="Vendas" />
+        </EntityType>
+        <Association Name="FK_Cliente_Cidade">
+          <End Type="ServidorLojaModel.Cidades" Role="Cidades" Multiplicity="1" />
+          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="id_Cidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vendas__id_Clien__4E5E8EA2">
+          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vendas">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1264,29 +1262,6 @@
               <MappingFragment StoreEntitySet="Cidades">
                 <ScalarProperty Name="cidade" ColumnName="cidade" />
                 <ScalarProperty Name="id_Estado" ColumnName="id_Estado" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Clientes">
-              <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="creditos" ColumnName="creditos" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="pessoa_fisica" ColumnName="pessoa_fisica" />
-                <ScalarProperty Name="id_Cidade" ColumnName="id_Cidade" />
-                <ScalarProperty Name="bairro" ColumnName="bairro" />
-                <ScalarProperty Name="numeral" ColumnName="numeral" />
-                <ScalarProperty Name="endereço" ColumnName="endereço" />
-                <ScalarProperty Name="recado" ColumnName="recado" />
-                <ScalarProperty Name="operadora" ColumnName="operadora" />
-                <ScalarProperty Name="celular" ColumnName="celular" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="contato" ColumnName="contato" />
-                <ScalarProperty Name="rg" ColumnName="rg" />
-                <ScalarProperty Name="cpf" ColumnName="cpf" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1569,6 +1544,28 @@
                 <ScalarProperty Name="cpf" ColumnName="cpf" />
                 <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="ServidorLojaModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="creditos" ColumnName="creditos" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_Cidade" ColumnName="id_Cidade" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="numeral" ColumnName="numeral" />
+                <ScalarProperty Name="endereço" ColumnName="endereço" />
+                <ScalarProperty Name="recado" ColumnName="recado" />
+                <ScalarProperty Name="operadora" ColumnName="operadora" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contato" ColumnName="contato" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

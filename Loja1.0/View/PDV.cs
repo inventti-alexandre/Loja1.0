@@ -585,5 +585,12 @@ namespace Loja1._0
         {
             AcceptButton = btnAdicionar;
         }
+
+        private void btnConsulta_Click(object sender, EventArgs e)
+        {
+            DialogoConsulta consultaPreco = new DialogoConsulta(this);
+            consultaPreco.Show();
+            this.Hide();
+        }
     }
 }

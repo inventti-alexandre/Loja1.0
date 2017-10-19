@@ -311,6 +311,12 @@ namespace Loja1._0
                             dgvClientes.Enabled = true;
                             flagNovo = false;
 
+                            //Verifica o preenchimento do campo créditos
+                            if (txtCreditos.Text.Equals(""))
+                            {
+                                txtCreditos.Text = "0,00";
+                            }
+
                             //instancia e salva novo cliente
                             cliente = new Model.Clientes();
                             controle.SalvarCliente(cliente);
@@ -391,11 +397,17 @@ namespace Loja1._0
                             btnSalvar.Enabled = false;
                             dgvClientes.Enabled = true;
 
+                            //Verifica o preenchimento do campo créditos
+                            if (txtCreditos.Text.Equals(""))
+                            {
+                                txtCreditos.Text = "0,00";
+                            }
+
                             //altera dados de instancia pré-existente
                             cliente.cpf = txtCpf.Text;
                             cliente.nome = txtCliente.Text;
                             cliente.rg = txtRG.Text;
-                            cliente.status = 1;
+                            cliente.status = 1;                            
                             cliente.creditos = Convert.ToInt32(txtCreditos.Text);
                             cliente.contato = txtContato.Text;
                             cliente.email = txtEmail.Text;

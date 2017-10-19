@@ -5,22 +5,20 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using Loja1._0.Control;
-using Loja1._0.View;
-using Loja1._0;
 
-namespace Vidracaria
+namespace Loja1._0
 {
     public partial class ControleHoras : Form
     {
         Controle controle = new Controle();
-        private Loja1._0.Model.Usuarios user;
+        private Model.Usuarios user;
         public TimeSpan qntHoras;
         public static List<string> listaDiaSemana = new List<string>();
         public static int anoSelect;
         public static int diaCompensar;
-        public static Loja1._0.Model.Usuarios usuario;
+        public static Model.Usuarios usuario;
         public static List<int> diaFalta = new List<int>();
-        public static List<Loja1._0.Model.Usuarios> listaUser = new List<Loja1._0.Model.Usuarios>();
+        public static List<Model.Usuarios> listaUser = new List<Model.Usuarios>();
         public static List<CtrlPonto> listaPonto = new List<CtrlPonto>();
         public static CtrlPonto PontoDia = new CtrlPonto();
         public static List<string> listaData = new List<string>();
@@ -29,7 +27,7 @@ namespace Vidracaria
         public static TimeSpan horasExtras = TimeSpan.Parse("00:00");
         public static TimeSpan totalHoras = TimeSpan.Parse("00:00");
 
-        public ControleHoras(Loja1._0.Model.Usuarios user)
+        public ControleHoras(Model.Usuarios user)
         {
             this.user = user;
             InitializeComponent();
@@ -267,7 +265,7 @@ namespace Vidracaria
             Dispose();
         }
 
-        private void carregaUser(Loja1._0.Model.Usuarios usuario)
+        private void carregaUser(Model.Usuarios usuario)
         {
             try
             {
@@ -286,6 +284,7 @@ namespace Vidracaria
                     rdbFalta.Enabled = false;
                     rdbCompensacao.Enabled = false;
                     carregaComboBox(user);
+                    cmbPeriodo.Enabled = true;
                 }
             }
             catch
@@ -294,17 +293,16 @@ namespace Vidracaria
             }
         }
 
-        private void carregaComboBox(Loja1._0.Model.Usuarios user)
+        private void carregaComboBox(Model.Usuarios user)
         {
-            listaUser = new List<Loja1._0.Model.Usuarios>();
+            listaUser = new List<Model.Usuarios>();
             listaUser.Add(user);
-            preencheComboBox(listaUser);
-            cmbPeriodo.Enabled = true;
+            preencheComboBox(listaUser);            
         }
 
         private void carregaComboBox(int id_Perfil)
         {
-            listaUser = new List<Loja1._0.Model.Usuarios>();
+            listaUser = new List<Model.Usuarios>();
             listaUser.Add(null);
             listaUser = controle.PesquisaUserPerfilId(id_Perfil);
             preencheComboBox(listaUser);
@@ -312,13 +310,13 @@ namespace Vidracaria
 
         private void carregaComboBox()
         {
-            listaUser = new List<Loja1._0.Model.Usuarios>();
+            listaUser = new List<Model.Usuarios>();
             listaUser.Add(null);
             listaUser = controle.PesquisaGeralUser();
-            preencheComboBox(listaUser);
+            preencheComboBox(listaUser);            
         }
 
-        private void preencheComboBox(List<Loja1._0.Model.Usuarios> listaUser)
+        private void preencheComboBox(List<Model.Usuarios> listaUser)
         {
             cmbFuncionarios.DataSource = listaUser;
             cmbFuncionarios.ValueMember = "Nome";
@@ -347,13 +345,19 @@ namespace Vidracaria
 
         private void carregaPeriodo(DateTime? dt_Inclusao)
         {
-            TimeSpan aux = DateTime.Now - Convert.ToDateTime(dt_Inclusao);
-            int diferenca = Convert.ToInt32(aux.Days);
+            TimeSpan aux = (DateTime.Now - Convert.ToDateTime(dt_Inclusao));
+
+            int diferencaMes = Convert.ToInt32(Convert.ToInt32(aux.Days) / 30);            
+            diferencaMes++;
+
+            int diferencaAno = diferencaMes / 12;
+            diferencaAno++;
 
             int j = 0;
             listaData = new List<string>();
+            listaData.Add("");
 
-            for (int i = 0; i <= diferenca; i++)
+            for (int i = 0; i < diferencaMes; i++)
             {
                 listaData.Add(Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month.ToString() + "/" + Convert.ToDateTime(dt_Inclusao).AddYears(j).Year.ToString());
                 if ((Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month) % 12 == 0 && i > 0)
@@ -363,6 +367,21 @@ namespace Vidracaria
             }
             cmbPeriodo.DataSource = listaData;
             cmbPeriodo.ValueMember = "";
+
+            carregaComboAno(diferencaAno, dt_Inclusao);
+        }
+
+        private void carregaComboAno(int diferencaAno, DateTime? dt_Inclusao)
+        {
+            listaData = new List<string>();
+            listaData.Add("");
+
+            for (int i = 0; i < diferencaAno; i++)
+            {
+                listaData.Add(Convert.ToDateTime(dt_Inclusao).AddYears(i).Year.ToString());                
+            }
+            cmbAno.DataSource = listaData;
+            cmbAno.ValueMember = "";
         }
 
         private void btnExibir_Click(object sender, EventArgs e)
@@ -387,8 +406,10 @@ namespace Vidracaria
                     PanelTipo.Enabled = true;
                     btnIncluir.Enabled = true;
                 }
-
+                
                 carregaPontoPeriodo(cmbPeriodo.SelectedValue.ToString());
+
+                btnLimpar.Enabled = true;
             }
         }
 
@@ -433,7 +454,7 @@ namespace Vidracaria
         {
             btnIncluir.Enabled = false;
             cmbAno.SelectedItem = "";
-            cmbAno.DataSource = null;
+            //cmbAno.DataSource = null;
             cmbMes.SelectedItem = "";
             cmbMes.DataSource = null;
             cmbMes.Enabled = false;

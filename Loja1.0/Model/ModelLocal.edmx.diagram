@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="10ca6ec2439e4f5b9c2bf0d5a31a721c" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="ServidorLojaModel.Cidades" Width="1.5" PointX="2.875" PointY="9.5" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Clientes" Width="1.5" PointX="3" PointY="4.625" />
         <EntityTypeShape EntityType="ServidorLojaModel.Compras" Width="1.5" PointX="7.75" PointY="9.75" />
         <EntityTypeShape EntityType="ServidorLojaModel.Contabilidade" Width="1.5" PointX="14.125" PointY="7.125" />
         <EntityTypeShape EntityType="ServidorLojaModel.CtrlPonto" Width="1.5" PointX="3" PointY="0.875" />
@@ -25,9 +24,7 @@
         <EntityTypeShape EntityType="ServidorLojaModel.Vendas" Width="1.5" PointX="5.375" PointY="4.625" />
         <EntityTypeShape EntityType="ServidorLojaModel.Vendas_Produtos" Width="1.5" PointX="7.75" PointY="7" />
         <AssociationConnector Association="ServidorLojaModel.FK_Cidade_Estado" />
-        <AssociationConnector Association="ServidorLojaModel.FK_Cliente_Cidade" />
         <AssociationConnector Association="ServidorLojaModel.FK_Fornecedor_Cidade" />
-        <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__3EFC4F81" />
         <AssociationConnector Association="ServidorLojaModel.FK_Compra_Fornecedor" />
         <AssociationConnector Association="ServidorLojaModel.FK_Compra_Produto" />
         <AssociationConnector Association="ServidorLojaModel.FK_Log_Ponto" />
@@ -44,6 +41,9 @@
         <AssociationConnector Association="ServidorLojaModel.FK_Ponto_Usuario" />
         <AssociationConnector Association="ServidorLojaModel.FK_Usuario_Perfil" />
         <AssociationConnector Association="ServidorLojaModel.FK_Venda_Usuario" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Clientes" Width="1.5" PointX="3" PointY="4.625" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Cliente_Cidade" />
+        <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

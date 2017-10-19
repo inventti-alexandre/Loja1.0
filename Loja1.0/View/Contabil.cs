@@ -113,6 +113,8 @@ namespace Loja1._0
                     movimento.valor = Convert.ToDecimal(txtValor.Text);
                     movimento.id_tipo = controle.PesquisaCompletaIDTipoMov(cmbMovimento.Text, cmbOrigem.Text, cmbFormaPg.Text);
                     controle.SalvaAtualiza();
+                    btnLimpar_Click(sender, e);                    
+                    carregaMovimentos(DateTime.Today.AddYears(-5), DateTime.Today.AddYears(5));
                     pnlAtualizar.Enabled = true;
                 }
             }
@@ -153,6 +155,7 @@ namespace Loja1._0
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             limpaCombos();
+            zerarContabilidade();
             comboCarregado = false;
             carregaComboMovimento();
             pnlAtualizar.Enabled = true;

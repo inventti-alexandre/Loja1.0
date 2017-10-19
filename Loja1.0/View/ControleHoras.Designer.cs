@@ -1,4 +1,4 @@
-﻿namespace Vidracaria
+﻿namespace Loja1._0
 {
     partial class ControleHoras
     {
@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControleHoras));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlDetalhe = new System.Windows.Forms.GroupBox();
+            this.btnExibir = new System.Windows.Forms.Button();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtVlHora = new System.Windows.Forms.TextBox();
@@ -55,10 +59,10 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
-            this.btnExibir = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgvPonto = new System.Windows.Forms.DataGridView();
             this.PanelLançamento = new System.Windows.Forms.GroupBox();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnIncluir = new System.Windows.Forms.Button();
             this.PanelTipo = new System.Windows.Forms.Panel();
             this.rdbFalta = new System.Windows.Forms.RadioButton();
             this.rdbCompensacao = new System.Windows.Forms.RadioButton();
@@ -77,13 +81,12 @@
             this.cmbDia = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnIncluir = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
+            this.dgvPonto = new System.Windows.Forms.DataGridView();
             this.pnlDetalhe.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).BeginInit();
             this.PanelLançamento.SuspendLayout();
             this.PanelTipo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -160,6 +163,22 @@
             this.pnlDetalhe.TabIndex = 9;
             this.pnlDetalhe.TabStop = false;
             this.pnlDetalhe.Text = "Pesquisa Funcionário/Período";
+            // 
+            // btnExibir
+            // 
+            this.btnExibir.AutoEllipsis = true;
+            this.btnExibir.BackColor = System.Drawing.Color.White;
+            this.btnExibir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExibir.Enabled = false;
+            this.btnExibir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExibir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExibir.Location = new System.Drawing.Point(699, 23);
+            this.btnExibir.Name = "btnExibir";
+            this.btnExibir.Size = new System.Drawing.Size(87, 36);
+            this.btnExibir.TabIndex = 22;
+            this.btnExibir.Text = "Exibir";
+            this.btnExibir.UseVisualStyleBackColor = false;
+            this.btnExibir.Click += new System.EventHandler(this.btnExibir_Click);
             // 
             // txtTotal
             // 
@@ -305,6 +324,7 @@
             this.cmbPeriodo.Name = "cmbPeriodo";
             this.cmbPeriodo.Size = new System.Drawing.Size(113, 24);
             this.cmbPeriodo.TabIndex = 2;
+            this.cmbPeriodo.SelectedIndexChanged += new System.EventHandler(this.cmbPeriodo_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -322,6 +342,7 @@
             this.cmbFuncionarios.Name = "cmbFuncionarios";
             this.cmbFuncionarios.Size = new System.Drawing.Size(403, 24);
             this.cmbFuncionarios.TabIndex = 1;
+            this.cmbFuncionarios.SelectedIndexChanged += new System.EventHandler(this.cmbFuncionarios_SelectedIndexChanged);
             // 
             // lblUser
             // 
@@ -358,20 +379,6 @@
             this.pnlLogo.Size = new System.Drawing.Size(197, 97);
             this.pnlLogo.TabIndex = 1;
             // 
-            // btnExibir
-            // 
-            this.btnExibir.AutoEllipsis = true;
-            this.btnExibir.BackColor = System.Drawing.Color.White;
-            this.btnExibir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExibir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExibir.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnExibir.Location = new System.Drawing.Point(699, 23);
-            this.btnExibir.Name = "btnExibir";
-            this.btnExibir.Size = new System.Drawing.Size(87, 36);
-            this.btnExibir.TabIndex = 22;
-            this.btnExibir.Text = "Exibir";
-            this.btnExibir.UseVisualStyleBackColor = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvPonto);
@@ -383,30 +390,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Horários";
-            // 
-            // dgvPonto
-            // 
-            this.dgvPonto.AllowUserToAddRows = false;
-            this.dgvPonto.AllowUserToDeleteRows = false;
-            this.dgvPonto.AllowUserToResizeColumns = false;
-            this.dgvPonto.AllowUserToResizeRows = false;
-            this.dgvPonto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvPonto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvPonto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvPonto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dgvPonto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPonto.Location = new System.Drawing.Point(6, 19);
-            this.dgvPonto.MultiSelect = false;
-            this.dgvPonto.Name = "dgvPonto";
-            this.dgvPonto.ReadOnly = true;
-            this.dgvPonto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dgvPonto.RowHeadersVisible = false;
-            this.dgvPonto.RowHeadersWidth = 25;
-            this.dgvPonto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvPonto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPonto.ShowEditingIcon = false;
-            this.dgvPonto.Size = new System.Drawing.Size(557, 355);
-            this.dgvPonto.TabIndex = 46;
             // 
             // PanelLançamento
             // 
@@ -432,6 +415,38 @@
             this.PanelLançamento.TabIndex = 47;
             this.PanelLançamento.TabStop = false;
             this.PanelLançamento.Text = "Limpar";
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.AutoEllipsis = true;
+            this.btnLimpar.BackColor = System.Drawing.Color.White;
+            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpar.Enabled = false;
+            this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnLimpar.Location = new System.Drawing.Point(115, 251);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(87, 36);
+            this.btnLimpar.TabIndex = 62;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnIncluir
+            // 
+            this.btnIncluir.AutoEllipsis = true;
+            this.btnIncluir.BackColor = System.Drawing.Color.White;
+            this.btnIncluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIncluir.Enabled = false;
+            this.btnIncluir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncluir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnIncluir.Location = new System.Drawing.Point(15, 251);
+            this.btnIncluir.Name = "btnIncluir";
+            this.btnIncluir.Size = new System.Drawing.Size(87, 36);
+            this.btnIncluir.TabIndex = 61;
+            this.btnIncluir.Text = "Incluir";
+            this.btnIncluir.UseVisualStyleBackColor = false;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // PanelTipo
             // 
@@ -551,23 +566,11 @@
             // 
             this.cmbAno.Enabled = false;
             this.cmbAno.FormattingEnabled = true;
-            this.cmbAno.Items.AddRange(new object[] {
-            "",
-            "2017",
-            "2018",
-            "2019",
-            "2020",
-            "2021",
-            "2022",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027"});
             this.cmbAno.Location = new System.Drawing.Point(91, 16);
             this.cmbAno.Name = "cmbAno";
             this.cmbAno.Size = new System.Drawing.Size(87, 24);
             this.cmbAno.TabIndex = 4;
+            this.cmbAno.SelectedIndexChanged += new System.EventHandler(this.cmbAno_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -600,6 +603,7 @@
             this.cmbMes.Name = "cmbMes";
             this.cmbMes.Size = new System.Drawing.Size(87, 24);
             this.cmbMes.TabIndex = 5;
+            this.cmbMes.SelectedIndexChanged += new System.EventHandler(this.cmbMes_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -636,33 +640,48 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Mês/Ano : ";
             // 
-            // btnIncluir
+            // dgvPonto
             // 
-            this.btnIncluir.AutoEllipsis = true;
-            this.btnIncluir.BackColor = System.Drawing.Color.White;
-            this.btnIncluir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnIncluir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIncluir.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnIncluir.Location = new System.Drawing.Point(15, 251);
-            this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(87, 36);
-            this.btnIncluir.TabIndex = 61;
-            this.btnIncluir.Text = "Incluir";
-            this.btnIncluir.UseVisualStyleBackColor = false;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.AutoEllipsis = true;
-            this.btnLimpar.BackColor = System.Drawing.Color.White;
-            this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnLimpar.Location = new System.Drawing.Point(115, 251);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(87, 36);
-            this.btnLimpar.TabIndex = 62;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = false;
+            this.dgvPonto.AllowUserToAddRows = false;
+            this.dgvPonto.AllowUserToDeleteRows = false;
+            this.dgvPonto.AllowUserToResizeColumns = false;
+            this.dgvPonto.AllowUserToResizeRows = false;
+            this.dgvPonto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvPonto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPonto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPonto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPonto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPonto.GridColor = System.Drawing.Color.Khaki;
+            this.dgvPonto.Location = new System.Drawing.Point(6, 16);
+            this.dgvPonto.MultiSelect = false;
+            this.dgvPonto.Name = "dgvPonto";
+            this.dgvPonto.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPonto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvPonto.RowHeadersVisible = false;
+            this.dgvPonto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPonto.Size = new System.Drawing.Size(557, 358);
+            this.dgvPonto.TabIndex = 1;
             // 
             // ControleHoras
             // 
@@ -689,11 +708,11 @@
             this.pnlDetalhe.ResumeLayout(false);
             this.pnlDetalhe.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).EndInit();
             this.PanelLançamento.ResumeLayout(false);
             this.PanelLançamento.PerformLayout();
             this.PanelTipo.ResumeLayout(false);
             this.PanelTipo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,7 +748,6 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Button btnExibir;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvPonto;
         private System.Windows.Forms.GroupBox PanelLançamento;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnIncluir;
@@ -751,6 +769,7 @@
         private System.Windows.Forms.ComboBox cmbDia;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvPonto;
     }
 }
 

@@ -14,7 +14,7 @@ namespace Loja1._0.View
         PrintDocument printDocument1 = new PrintDocument();
         public static Model.Clientes clienteRecibo = new Model.Clientes();
         Controle controle = new Controle();
-        public Model.Usuarios user = new Model.Usuarios();
+        public static Model.Usuarios usuario = new Model.Usuarios();
         Bitmap memoryImage;
 
         public Recibo(Model.Clientes cliente, Model.Usuarios user, decimal valor)
@@ -23,7 +23,7 @@ namespace Loja1._0.View
             {
                 InitializeComponent();
                 clienteRecibo = cliente;
-                this.user = user;
+                usuario = user;
                 preenchePedido(valor);
                 printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);                
             }
@@ -40,7 +40,7 @@ namespace Loja1._0.View
                 txtDtPedido.Text = DateTime.Today.ToShortDateString();
                 txtDtLonga.Text = DateTime.Today.ToLongDateString() + " - " + DateTime.Now.ToLongTimeString();
 
-                txtUsuario.Text = user.nome;
+                txtUsuario.Text = usuario.nome;
                 txtNomeCliente.Text = clienteRecibo.nome;
                 txtContatoCliente.Text = clienteRecibo.contato;
                 txtTel1Cliente.Text = clienteRecibo.telefone;

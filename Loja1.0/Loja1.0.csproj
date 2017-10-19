@@ -209,6 +209,12 @@
     <Compile Include="View\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\DialogoConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogoConsulta.Designer.cs">
+      <DependentUpon>DialogoConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\DialogoAberturaDia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogoConsulta.resx">
+      <DependentUpon>DialogoConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DialogoAberturaDia.resx">
       <DependentUpon>DialogoAberturaDia.cs</DependentUpon>

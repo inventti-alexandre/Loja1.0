@@ -26,7 +26,6 @@ namespace Loja1._0.Model
         }
     
         public virtual DbSet<Cidades> Cidades { get; set; }
-        public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Compras> Compras { get; set; }
         public virtual DbSet<Contabilidade> Contabilidade { get; set; }
         public virtual DbSet<CtrlPonto> CtrlPonto { get; set; }
@@ -46,5 +45,6 @@ namespace Loja1._0.Model
         public virtual DbSet<Vendas_Produtos> Vendas_Produtos { get; set; }
         public virtual DbSet<Perfis> Perfis { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Clientes> Clientes { get; set; }
     }
 }

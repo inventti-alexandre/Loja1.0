@@ -1,5 +1,4 @@
 ﻿using Loja1._0.Control;
-using Loja1._0.View;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -18,6 +17,7 @@ namespace Loja1._0
             {
                 this.user = user;
                 InitializeComponent();
+
                 perfil = Convert.ToInt32(user.id_Perfil);
                 if (perfil > 1)
                 {
@@ -181,7 +181,9 @@ namespace Loja1._0
 
         private void btnPonto_Click(object sender, EventArgs e)
         {
-
+            ControleHoras form = new ControleHoras(user);
+            form.Show();
+            this.Hide();
         }
     }
 }

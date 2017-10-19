@@ -199,6 +199,10 @@ namespace Loja1._0
             {
                 if (validaCampos())
                 {
+                    if (txtSalario.Text.Equals(""))
+                    {
+                        txtSalario.Text = "0,00";
+                    }
                     usuario.login = txtLogin.Text.ToUpper().Trim();
                     usuario.registro = txtRegistro.Text.ToUpper().Trim();
                     usuario.rg = txtRg.Text.ToUpper().Trim();
@@ -264,6 +268,7 @@ namespace Loja1._0
             txtRg.Enabled = false;
             txtSalario.Enabled = false;
             txtLogin.Text = "";
+            txtBancoHoras.Text = "";
             txtRegistro.Text = "";
             txtNome.Text = "";
             txtCpf.Text = "";

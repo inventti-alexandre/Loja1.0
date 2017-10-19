@@ -85,6 +85,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.txtCliente = new System.Windows.Forms.Label();
+            this.btnConsulta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -115,11 +116,11 @@
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblNome.Location = new System.Drawing.Point(489, 4);
+            this.lblNome.Location = new System.Drawing.Point(551, 4);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(223, 33);
+            this.lblNome.Size = new System.Drawing.Size(75, 33);
             this.lblNome.TabIndex = 3;
-            this.lblNome.Text = "Ponto de Venda";
+            this.lblNome.Text = "PDV";
             // 
             // label3
             // 
@@ -850,6 +851,22 @@
             this.txtCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.txtCliente.Visible = false;
             // 
+            // btnConsulta
+            // 
+            this.btnConsulta.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnConsulta.BackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConsulta.BackgroundImage")));
+            this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnConsulta.Location = new System.Drawing.Point(694, 3);
+            this.btnConsulta.Margin = new System.Windows.Forms.Padding(0);
+            this.btnConsulta.Name = "btnConsulta";
+            this.btnConsulta.Size = new System.Drawing.Size(34, 34);
+            this.btnConsulta.TabIndex = 80;
+            this.btnConsulta.UseVisualStyleBackColor = false;
+            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
+            // 
             // PDV
             // 
             this.AcceptButton = this.btnAdicionar;
@@ -858,6 +875,7 @@
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnConsulta);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.pnlAdquirido);
             this.Controls.Add(this.panel2);
@@ -968,6 +986,7 @@
         private System.Windows.Forms.TextBox txtLocalNum;
         private System.Windows.Forms.Label lblLocalNum;
         private System.Windows.Forms.Label txtCliente;
+        private System.Windows.Forms.Button btnConsulta;
     }
 }
 

@@ -2548,5 +2548,12 @@ namespace Loja1._0
             }
             return false;
         }
+
+        private void btnConsulta_Click(object sender, EventArgs e)
+        {
+            DialogoConsulta consultaPreco = new DialogoConsulta(this);
+            consultaPreco.Show();
+            this.Hide();
+        }
     }
 }

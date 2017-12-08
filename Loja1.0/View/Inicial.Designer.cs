@@ -205,6 +205,7 @@
             this.btnEntregas.AutoEllipsis = true;
             this.btnEntregas.BackColor = System.Drawing.Color.White;
             this.btnEntregas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntregas.Enabled = false;
             this.btnEntregas.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEntregas.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEntregas.Location = new System.Drawing.Point(502, 166);

@@ -27,6 +27,9 @@ namespace Loja1._0
         public static TimeSpan horasExtras = TimeSpan.Parse("00:00");
         public static TimeSpan totalHoras = TimeSpan.Parse("00:00");
 
+        public TimeSpan limiteBancoDia = TimeSpan.Parse("02:00");
+        public TimeSpan limiteJornadaDia = TimeSpan.Parse("10:00:00");
+
         public ControleHoras(Model.Usuarios user)
         {
             this.user = user;
@@ -49,7 +52,6 @@ namespace Loja1._0
 
                 usuario = controle.PesquisaUserNome(cmbFuncionarios.SelectedValue.ToString());
                 listaPonto = controle.PesquisaPonto(usuario.id, data[0], data[1]);
-
 
                 DataTable dtPeriodo = new DataTable();
                 dtPeriodo.Columns.Add("Dia", typeof(string));
@@ -128,9 +130,9 @@ namespace Loja1._0
 
                         if (TimeSpan.Parse(horaDia) - TimeSpan.Parse("08:00") > TimeSpan.Parse("00:00"))
                         {
-                            if (TimeSpan.Parse(horaExtra) > TimeSpan.Parse("02:00"))
+                            if (TimeSpan.Parse(horaExtra) > limiteBancoDia)
                             {
-                                hrExtra = (TimeSpan.Parse(horaExtra) - TimeSpan.Parse("02:00")).ToString();
+                                hrExtra = (TimeSpan.Parse(horaExtra) - limiteBancoDia).ToString();
                             }
                         }
                     }
@@ -395,7 +397,7 @@ namespace Loja1._0
                 txtSalario.Text = usuario.salario.ToString();
                 txtVlDia.Text = (Convert.ToDecimal(txtSalario.Text) / diasMes).ToString();
                 txtVlHora.Text = (Convert.ToDecimal(txtVlDia.Text) / 8).ToString();
-                txtVlHorasExtras.Text = (Convert.ToDecimal(txtVlHora.Text) + ((Convert.ToDecimal(txtVlHora.Text)) * 0.20M)).ToString("0.00");
+                txtVlHorasExtras.Text = (Convert.ToDecimal(txtVlHora.Text) + ((Convert.ToDecimal(txtVlHora.Text)) * 0.50M)).ToString("0.00");
 
                 if (user.id_Perfil < 3)
                 {
@@ -766,14 +768,21 @@ namespace Loja1._0
                         if (ponto.Entrada != TimeSpan.Parse("00:00") && ponto.Saida_Almoco == TimeSpan.Parse("00:00") && ponto.Retorno_Almoco == TimeSpan.Parse("00:00")
                             || ponto.Entrada != TimeSpan.Parse("00:00") && ponto.Saida_Almoco != TimeSpan.Parse("00:00") && ponto.Retorno_Almoco != TimeSpan.Parse("00:00"))
                         {
-                            ponto.Saida = DateTime.Now.TimeOfDay;
-                            alteracao = "Saída : " + ponto.Saida.ToString();
-                            controlaBancoHoras(ponto);
+                            if ((ponto.Saida - ponto.Entrada > limiteJornadaDia && ponto.Saida_Almoco == TimeSpan.Parse("00:00")) || ((ponto.Saida_Almoco - ponto.Entrada) + (ponto.Saida - ponto.Retorno_Almoco) > limiteJornadaDia && ponto.Saida_Almoco != TimeSpan.Parse("00:00")))
+                            {
+                                MessageBox.Show("A tentativa de bater ponto excede o limite máximo diário, comunique a direção e solicite a correção", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                ponto.Saida = DateTime.Now.TimeOfDay;
+                                alteracao = "Saída : " + ponto.Saida.ToString();
+                                controlaBancoHoras(ponto);
 
-                            controle.SalvaAtualiza();
+                                controle.SalvaAtualiza();
 
-                            btnLimpar_Click(sender, e);
-                            btnExibir_Click(sender, e);
+                                btnLimpar_Click(sender, e);
+                                btnExibir_Click(sender, e);
+                            }
                         }
                         else
                         {
@@ -841,9 +850,9 @@ namespace Loja1._0
 
                 if (TimeSpan.Parse(horaDia) - TimeSpan.Parse("08:00") > TimeSpan.Parse("00:00"))
                 {
-                    if (TimeSpan.Parse(horaExtra) > TimeSpan.Parse("02:00"))
+                    if (TimeSpan.Parse(horaExtra) > limiteBancoDia)
                     {
-                        usuario.bancoHoras = usuario.bancoHoras + TimeSpan.Parse("02:00").TotalHours;
+                        usuario.bancoHoras = usuario.bancoHoras + limiteBancoDia.TotalHours;
                         controle.SalvaAtualiza();
                     }
                     else

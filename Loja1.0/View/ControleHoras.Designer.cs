@@ -60,6 +60,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvPonto = new System.Windows.Forms.DataGridView();
             this.PanelLançamento = new System.Windows.Forms.GroupBox();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
@@ -81,12 +82,11 @@
             this.cmbDia = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dgvPonto = new System.Windows.Forms.DataGridView();
             this.pnlDetalhe.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).BeginInit();
             this.PanelLançamento.SuspendLayout();
             this.PanelTipo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitulo
@@ -391,6 +391,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Horários";
             // 
+            // dgvPonto
+            // 
+            this.dgvPonto.AllowUserToAddRows = false;
+            this.dgvPonto.AllowUserToDeleteRows = false;
+            this.dgvPonto.AllowUserToResizeColumns = false;
+            this.dgvPonto.AllowUserToResizeRows = false;
+            this.dgvPonto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvPonto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPonto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPonto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPonto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPonto.GridColor = System.Drawing.Color.Khaki;
+            this.dgvPonto.Location = new System.Drawing.Point(6, 16);
+            this.dgvPonto.MultiSelect = false;
+            this.dgvPonto.Name = "dgvPonto";
+            this.dgvPonto.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Khaki;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPonto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvPonto.RowHeadersVisible = false;
+            this.dgvPonto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPonto.Size = new System.Drawing.Size(557, 358);
+            this.dgvPonto.TabIndex = 1;
+            // 
             // PanelLançamento
             // 
             this.PanelLançamento.BackColor = System.Drawing.Color.Khaki;
@@ -458,9 +501,9 @@
             this.PanelTipo.Controls.Add(this.rdbEntrada);
             this.PanelTipo.Controls.Add(this.label8);
             this.PanelTipo.Enabled = false;
-            this.PanelTipo.Location = new System.Drawing.Point(8, 143);
+            this.PanelTipo.Location = new System.Drawing.Point(4, 143);
             this.PanelTipo.Name = "PanelTipo";
-            this.PanelTipo.Size = new System.Drawing.Size(201, 102);
+            this.PanelTipo.Size = new System.Drawing.Size(209, 102);
             this.PanelTipo.TabIndex = 46;
             // 
             // rdbFalta
@@ -640,49 +683,6 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Mês/Ano : ";
             // 
-            // dgvPonto
-            // 
-            this.dgvPonto.AllowUserToAddRows = false;
-            this.dgvPonto.AllowUserToDeleteRows = false;
-            this.dgvPonto.AllowUserToResizeColumns = false;
-            this.dgvPonto.AllowUserToResizeRows = false;
-            this.dgvPonto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvPonto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPonto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvPonto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPonto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPonto.GridColor = System.Drawing.Color.Khaki;
-            this.dgvPonto.Location = new System.Drawing.Point(6, 16);
-            this.dgvPonto.MultiSelect = false;
-            this.dgvPonto.Name = "dgvPonto";
-            this.dgvPonto.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Khaki;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPonto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvPonto.RowHeadersVisible = false;
-            this.dgvPonto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPonto.Size = new System.Drawing.Size(557, 358);
-            this.dgvPonto.TabIndex = 1;
-            // 
             // ControleHoras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -708,11 +708,11 @@
             this.pnlDetalhe.ResumeLayout(false);
             this.pnlDetalhe.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).EndInit();
             this.PanelLançamento.ResumeLayout(false);
             this.PanelLançamento.PerformLayout();
             this.PanelTipo.ResumeLayout(false);
             this.PanelTipo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPonto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

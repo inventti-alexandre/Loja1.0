@@ -18,11 +18,21 @@ namespace Loja1._0.View
         private Model.Produtos produto = new Model.Produtos();
         private Compras compra = new Compras();
         static PDV pdvOculto;
+        static Caixa caixaOculto;
+        bool consultaCaixa;
 
         public DialogoConsulta(PDV pdv)
         {
             InitializeComponent();
             pdvOculto = pdv;
+            consultaCaixa = false;
+        }
+
+        public DialogoConsulta(Caixa caixa)
+        {
+            InitializeComponent();
+            caixaOculto = caixa;
+            consultaCaixa = true;
         }
 
         private void btnConsulta_Click(object sender, EventArgs e)
@@ -62,7 +72,15 @@ namespace Loja1._0.View
 
         private void btnVolta_Click(object sender, EventArgs e)
         {
-            pdvOculto.Show();
+            if (consultaCaixa)
+            {
+                caixaOculto.Show();
+            }
+            else
+            {
+                pdvOculto.Show();
+            }
+
             this.Dispose();
         }
     }

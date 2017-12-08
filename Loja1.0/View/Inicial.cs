@@ -21,8 +21,7 @@ namespace Loja1._0
                 perfil = Convert.ToInt32(user.id_Perfil);
                 if (perfil > 1)
                 {
-                    btnUsuarios.Enabled = false;
-                    btnPonto.Enabled = false;
+                    btnUsuarios.Enabled = false;                    
                     btnRelatorios.Enabled = false;
 
                     if (perfil > 2)

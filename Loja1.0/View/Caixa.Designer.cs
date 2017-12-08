@@ -147,6 +147,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnCancelaAberto = new System.Windows.Forms.Button();
+            this.btnConsulta = new System.Windows.Forms.Button();
             this.pnlPedidos.SuspendLayout();
             this.pnlPagamento.SuspendLayout();
             this.pnlCheque.SuspendLayout();
@@ -1647,6 +1648,22 @@
             this.btnCancelaAberto.UseVisualStyleBackColor = false;
             this.btnCancelaAberto.Click += new System.EventHandler(this.btnCancelaAberto_Click);
             // 
+            // btnConsulta
+            // 
+            this.btnConsulta.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.btnConsulta.BackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConsulta.BackgroundImage")));
+            this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnConsulta.Location = new System.Drawing.Point(692, 3);
+            this.btnConsulta.Margin = new System.Windows.Forms.Padding(0);
+            this.btnConsulta.Name = "btnConsulta";
+            this.btnConsulta.Size = new System.Drawing.Size(34, 34);
+            this.btnConsulta.TabIndex = 81;
+            this.btnConsulta.UseVisualStyleBackColor = false;
+            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
+            // 
             // Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1654,6 +1671,7 @@
             this.BackColor = System.Drawing.Color.Khaki;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnConsulta);
             this.Controls.Add(this.btnCancelaAberto);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlDesconto);
@@ -1829,6 +1847,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCancelaAberto;
+        private System.Windows.Forms.Button btnConsulta;
     }
 }
 

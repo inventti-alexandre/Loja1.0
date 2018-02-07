@@ -161,7 +161,7 @@ namespace Loja1._0
             pnlAtualizar.Enabled = true;
         }
 
-        private void carregaMovimentos(DateTime inicio, DateTime fim)
+        public void carregaMovimentos(DateTime inicio, DateTime fim)
         {
             try
             {                

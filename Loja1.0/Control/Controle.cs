@@ -131,7 +131,7 @@ namespace Loja1._0.Control
         public List<Estados> PesquisaGeralEstados()
         {
             return dbRepository.PesquisaEstados();
-        }
+        }        
 
         #endregion
 
@@ -409,6 +409,16 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaVendas();
         }
 
+        public int QuantidadeVendasDia(DateTime today)
+        {
+            return dbRepository.PesquisaVendasDia(today);
+        }
+
+        public double? ValorTotalVendasDia(DateTime today)
+        {
+            return dbRepository.PesquisaValorVendasDia(today);
+        }
+
         #endregion
 
         #region Controle do BD de Movimentos
@@ -455,6 +465,11 @@ namespace Loja1._0.Control
             int idPagamento = id;
 
             return dbRepository.PesquisaMovimentosReferentePagamento(idPagamento);
+        }
+
+        public decimal PesquisaMovDiaTipo(DateTime today, int mov)
+        {
+            return dbRepository.PesquisaMovimentoByDiaTipo(today, mov);
         }
 
         #endregion

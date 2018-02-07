@@ -4,6 +4,7 @@ using Loja1._0.Model;
 using FiscalPrinterBematech;
 using Loja1._0.View;
 using Loja1._0.Control;
+using System.Collections.Generic;
 
 namespace Loja1._0
 {
@@ -83,6 +84,43 @@ namespace Loja1._0
 
         private void btnFechamento_Click(object sender, EventArgs e)
         {
+            int numVendas = 0;
+            decimal valorVendas = 0.00M;
+            decimal lucroVendas = 0.00M;
+            decimal dinheiroVendas = 0.00M;
+            decimal tefVistaVendas = 0.00M;
+            decimal prePagoVendas = 0.00M;
+            decimal tefPrazoVendas = 0.00M;
+            string movimentoDia = "";
+
+            Contabil contabil = new Contabil(user);
+            contabil.carregaMovimentos(DateTime.Today, DateTime.Today);
+            Contabilidade contabilidade = controle.PesquisaContabilidadeById(1);
+
+            List<Movimentos> listaMovimentosDia = new List<Movimentos>();
+            listaMovimentosDia = controle.PesquisaMovPeriodo(DateTime.Today, DateTime.Today);
+
+            numVendas = controle.QuantidadeVendasDia(DateTime.Today);
+            valorVendas = Convert.ToDecimal(controle.ValorTotalVendasDia(DateTime.Today));            
+            lucroVendas = Convert.ToDecimal(contabilidade.lucro);
+            dinheiroVendas = controle.PesquisaMovDiaTipo(DateTime.Today, 19);
+            tefVistaVendas = controle.PesquisaMovDiaTipo(DateTime.Today, 33);
+            prePagoVendas = controle.PesquisaMovDiaTipo(DateTime.Today, 30);
+            tefPrazoVendas = controle.PesquisaMovDiaTipo(DateTime.Today, 18) + controle.PesquisaMovDiaTipo(DateTime.Today, 4);
+
+            movimentoDia =  "<br /><br />&nbsp Número de vendas realizadas: " + numVendas +
+                            "<br />&nbsp Valor total das vendas: R$" + valorVendas +
+                            "<br />&nbsp Lucro total: R$" + lucroVendas +
+                            "<br />" +
+                            "<br />&nbsp Descriminação do total de vendas: " +
+                            "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total à em dinheiro: R$" + dinheiroVendas +
+                            "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total à vista(tef): R$" + tefVistaVendas +
+                            "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total pré-pago: R$" + prePagoVendas +
+                            "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total prazo(tef): R$" + tefPrazoVendas;
+
+            Email email = new Email();
+            email.EnviaEmailMovimento(movimentoDia);
+
             BemaFI32.Bematech_FI_FechamentoDoDia();
         }
 

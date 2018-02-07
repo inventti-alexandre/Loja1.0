@@ -42,5 +42,44 @@ namespace Loja1._0.Control
 
             }
         }
+        public void EnviaEmailMovimento(string movimento)
+        {
+            //cria mensagem
+            var mail = new MailMessage();
+            var mailRodrigo = new MailMessage();
+
+            //define os endereços email 1 
+            mail.From = new MailAddress("bernardelli007@hotmail.com");
+            mail.To.Add("bernardelli007@hotmail.com");
+
+            //define os endereços email 2 
+            mailRodrigo.From = new MailAddress("bernardelli007@hotmail.com");
+            mailRodrigo.To.Add("assuncao001@yahoo.com.br");
+
+            //define o conteúdo de ambas msgs
+            mail.Subject = "Loja Alemão da Construção";
+            mail.IsBodyHtml = true;
+            mail.Body = "Bom dia,\n\n Na data de " + DateTime.Today.Day + "/" + DateTime.Today.Month + "/" + DateTime.Today.Year + " houveram as seguintes movimentações:" + movimento;
+            mailRodrigo.Subject = mail.Subject;
+            mailRodrigo.IsBodyHtml = mail.IsBodyHtml;
+            mailRodrigo.Body = mail.Body;
+
+            //envia a mensagem
+            SmtpClient client = new SmtpClient("smtp.live.com", 587);
+            client.UseDefaultCredentials = false;
+            NetworkCredential cred = new NetworkCredential("bernardelli007@hotmail.com", "Eueumesmo1");
+            client.Credentials = cred;
+            client.EnableSsl = true;
+
+            try
+            {
+                client.Send(mail);
+                client.Send(mailRodrigo);               
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

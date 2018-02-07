@@ -22,9 +22,9 @@ namespace Loja1._0.Model
     
         public int id { get; set; }
         public string desc { get; set; }
-        public Nullable<decimal> valor { get; set; }
-        public Nullable<System.DateTime> data { get; set; }
-        public Nullable<int> id_tipo { get; set; }
+        public decimal valor { get; set; }
+        public System.DateTime data { get; set; }
+        public int id_tipo { get; set; }
     
         public virtual Tipos_Movimentacao Tipos_Movimentacao { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

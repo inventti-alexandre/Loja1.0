@@ -10,8 +10,15 @@ namespace Loja1._0.Model
     class Repository : DbContext
     {
         #region Repositório de itens de uso Genérico
-        DbEntitiesLocal dataEntity = new DbEntitiesLocal();
         
+        //Alternar entre BD Produção e BD Teste Local
+
+        //Debug com BD Local
+        DbEntitiesLocal dataEntity = new DbEntitiesLocal();
+
+        //Produção com BD no server
+        //DbEntities dataEntity = new DbEntities();
+
         public void SalvaAlteracao()
         {
             dataEntity.SaveChanges();
@@ -190,6 +197,7 @@ namespace Loja1._0.Model
         #endregion
 
         #region Repositório do BD de Contabilidade
+
         public void SalvarNovaContabilidade(Contabilidade contabilidade)
         {
             dataEntity.Contabilidade.Add(contabilidade);
@@ -369,7 +377,7 @@ namespace Loja1._0.Model
         public void SalvarNovoGerenciamento(Gerenciamento gerencia)
         {
             dataEntity.Gerenciamento.Add(gerencia);
-        }                                  
+        }
 
         public Gerenciamento PesquisaGerenciamento(int pesquisa)
         {
@@ -438,6 +446,27 @@ namespace Loja1._0.Model
                     select movimento).ToList();
         }
 
+        public decimal PesquisaMovimentoByDiaTipo(DateTime data, int mov)
+        {
+            List<Movimentos> listMov = new List<Movimentos>();
+
+            listMov = (from movimento in dataEntity.Movimentos
+                       where movimento.data.Year.Equals(data.Year)
+                       && movimento.data.Month.Equals(data.Month)
+                       && movimento.data.Day.Equals(data.Day)
+                       && movimento.id_tipo == mov
+                       select movimento).ToList();
+
+            decimal valorMov = 0.00M;
+
+            foreach(Movimentos value in listMov)
+            {
+                valorMov = valorMov + value.valor;
+            }
+
+            return valorMov;
+        }
+
         public Compras PesquisaCompraByIdProduto(int idProduto)
         {
             return (from compra in dataEntity.Compras
@@ -480,10 +509,28 @@ namespace Loja1._0.Model
             }
 
         }
-        
+
         #endregion
 
         #region Repositório do BD de Vendas
+
+        public double? PesquisaValorVendasDia(DateTime today)
+        {
+            return (from venda in dataEntity.Vendas
+                    where (venda.data_Venda.Year.Equals(today.Year))
+                    && (venda.data_Venda.Month.Equals(today.Month))
+                    && (venda.data_Venda.Day.Equals(today.Day))
+                    select venda.valor_Venda).Sum();
+        }
+
+        public int PesquisaVendasDia(DateTime today)
+        {
+            return (from venda in dataEntity.Vendas
+                    where (venda.data_Venda.Year.Equals(today.Year))
+                    && (venda.data_Venda.Month.Equals(today.Month))
+                    && (venda.data_Venda.Day.Equals(today.Day))
+                    select venda).Count();
+        }
 
         public List<Vendas> PesquisaVendas()
         {

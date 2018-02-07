@@ -15,7 +15,6 @@
         <EntityTypeShape EntityType="ServidorLojaModel.Fornecedores" Width="1.5" PointX="5.25" PointY="9.125" />
         <EntityTypeShape EntityType="ServidorLojaModel.Gerenciamento" Width="1.5" PointX="14.125" PointY="0.5" />
         <EntityTypeShape EntityType="ServidorLojaModel.LogPonto" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Movimentos" Width="1.5" PointX="9.75" PointY="1.375" />
         <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos" Width="1.5" PointX="9.75" PointY="4.625" />
         <EntityTypeShape EntityType="ServidorLojaModel.Pagamentos_Vendas" Width="1.5" PointX="7.625" PointY="4.625" />
         <EntityTypeShape EntityType="ServidorLojaModel.Produtos" Width="1.5" PointX="9.875" PointY="8.375" />
@@ -29,8 +28,6 @@
         <AssociationConnector Association="ServidorLojaModel.FK_Compra_Produto" />
         <AssociationConnector Association="ServidorLojaModel.FK_Log_Ponto" />
         <AssociationConnector Association="ServidorLojaModel.FK_Estoque_Produto" />
-        <AssociationConnector Association="ServidorLojaModel.FK_Movimento_Tipo" />
-        <AssociationConnector Association="ServidorLojaModel.FK_Pagamento_Movimento" />
         <AssociationConnector Association="ServidorLojaModel.FK_PagamentoVenda_Pagamento" />
         <AssociationConnector Association="ServidorLojaModel.FK_PagamentoVenda_Venda" />
         <AssociationConnector Association="ServidorLojaModel.FK_Produto_Medida" />
@@ -44,6 +41,9 @@
         <EntityTypeShape EntityType="ServidorLojaModel.Clientes" Width="1.5" PointX="3" PointY="4.625" />
         <AssociationConnector Association="ServidorLojaModel.FK_Cliente_Cidade" />
         <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Movimentos" Width="1.5" PointX="9.75" PointY="1" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Movimento_Tipo" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Pagamento_Movimento" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

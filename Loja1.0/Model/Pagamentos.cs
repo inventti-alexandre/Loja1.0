@@ -33,8 +33,8 @@ namespace Loja1._0.Model
         public Nullable<int> id_movimento { get; set; }
         public int status { get; set; }
     
-        public virtual Movimentos Movimentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pagamentos_Vendas> Pagamentos_Vendas { get; set; }
+        public virtual Movimentos Movimentos { get; set; }
     }
 }

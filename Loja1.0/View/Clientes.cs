@@ -353,14 +353,15 @@ namespace Loja1._0
                             controle.SalvaAtualiza();
 
                             //verifica se há a inserção de créditos no cadastramento
-                            if (Convert.ToDouble(txtCreditos.Text) > 0)
+                            if (Convert.ToDouble(txtCreditos.Text) > credito)
                             {
                                 //instancia e salva o movimento de inserção de créditos
                                 Movimentos movimento = new Movimentos();
                                 controle.SalvarMovimento(movimento);
                                 movimento.data = DateTime.Now;
                                 movimento.desc = "Adição de crédito (" + txtCliente.Text.ToUpper().Trim() + ")";
-                                movimento.valor = Convert.ToDecimal(txtCreditos.Text);
+                                movimento.valor = Convert.ToDecimal(txtCreditos.Text) - Convert.ToDecimal(credito);                                
+                                
                                 if (rdbDinheiro.Checked)
                                 {
                                     movimento.id_tipo = 29;

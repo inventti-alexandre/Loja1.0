@@ -1072,15 +1072,21 @@ namespace Loja1._0
                             btnPagamento.Enabled = true;
                         }
 
-                        //verifica se o valor registrado como paramento excede o valor dos créditos do cliente
+                        /*/verifica se o valor registrado como paramento excede o valor dos créditos do cliente
                         else if (Convert.ToDecimal(txtPagPrePago.Text) > Convert.ToDecimal(txtCreditosCliente.Text))
                         {
                             MessageBox.Show("O valor do pagamento não deve exceder o valor dos créditos que o cliente possuí", "Ação Inválida");
-                        }
+                        }/*/
 
                         //caso todos os critérios para pagamentos válidos estejam corretos
                         else
                         {
+                            //verifica se o valor registrado como paramento excede o valor dos créditos do cliente
+                            if (Convert.ToDecimal(txtPagPrePago.Text) > Convert.ToDecimal(txtCreditosCliente.Text))
+                            {
+                                MessageBox.Show("O valor do pagamento excede o valor dos créditos que o cliente possuí, a venda será realizada para pagamento posterior.", "Ação Inválida");
+                            }
+
                             //altera a visibilidade de controles do form
                             btnDesconto.Enabled = false;
                             pnlDesconto.Enabled = false;
@@ -1746,7 +1752,7 @@ namespace Loja1._0
                     movimentoImposto.data = DateTime.Today;
                     movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                     movimentoImposto.id_tipo = 11;
-                    movimentoImposto.valor = pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCheque.SelectedItem);
+                    movimentoImposto.valor = Convert.ToDecimal(pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCheque.SelectedItem));
                     controle.SalvaAtualiza();
 
                     //salva o movimento referente a saída de mercadoria do estoque
@@ -1906,7 +1912,7 @@ namespace Loja1._0
                     movimentoImposto.data = DateTime.Today;
                     movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                     movimentoImposto.id_tipo = 11;
-                    movimentoImposto.valor = pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCredito.SelectedItem);
+                    movimentoImposto.valor = Convert.ToDecimal(pagamento.valorTotal * 0.1039M / Convert.ToInt32(cmbNumParcCredito.SelectedItem));
                     controle.SalvaAtualiza();
 
                     //instancia e salva o movimento referente a saída de mercadoria do estoque
@@ -2009,7 +2015,7 @@ namespace Loja1._0
                 movimentoImposto.data = DateTime.Today;
                 movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                 movimentoImposto.id_tipo = 11;
-                movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
+                movimentoImposto.valor = Convert.ToDecimal(pagamento.valorTotal * 0.1039M);
                 controle.SalvaAtualiza();
 
                 //instancia e salva o movimento de saída das mercadorias do estoque
@@ -2125,7 +2131,7 @@ namespace Loja1._0
                 movimentoImposto.data = DateTime.Today;
                 movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                 movimentoImposto.id_tipo = 11;
-                movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
+                movimentoImposto.valor = Convert.ToDecimal(pagamento.valorTotal * 0.1039M);
                 controle.SalvaAtualiza();
 
                 //instancia e salva o movimento de saída das mercadorias do estoque
@@ -2234,7 +2240,7 @@ namespace Loja1._0
                 movimentoImposto.data = DateTime.Today;
                 movimentoImposto.desc = "Trib Pag:" + pagamento.id;
                 movimentoImposto.id_tipo = 11;
-                movimentoImposto.valor = pagamento.valorTotal * 0.1039M;
+                movimentoImposto.valor = Convert.ToDecimal(pagamento.valorTotal * 0.1039M);
                 controle.SalvaAtualiza();
 
                 //instancia e salva o movimento referente a saída de mercadoria

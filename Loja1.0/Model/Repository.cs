@@ -146,6 +146,13 @@ namespace Loja1._0.Model
                     select produto).ToList();
         }
 
+        public List<Vendas> PesquisaVendasByDate(DateTime today)
+        {
+            return (from vendas in dataEntity.Vendas
+                    where (vendas.data_Venda.Equals(today))
+                    select vendas).ToList();
+        }
+
         public Produtos PesquisaProdutoByNome(string pesquisa)
         {
             return (from produtos in dataEntity.Produtos

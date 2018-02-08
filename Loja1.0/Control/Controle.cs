@@ -177,6 +177,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaCidadeByName(pesquisa);
         }
 
+        public List<Vendas> PesquisaVendasDia(DateTime today)
+        {
+            return dbRepository.PesquisaVendasByDate(today);
+        }
+
         public List<Cidades> PesquisaCidadesPorEstado(int idEstado)
         {
             int pesquisa = idEstado;

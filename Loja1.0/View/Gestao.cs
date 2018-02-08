@@ -92,13 +92,17 @@ namespace Loja1._0
             decimal prePagoVendas = 0.00M;
             decimal tefPrazoVendas = 0.00M;
             string movimentoDia = "";
+            string relaçãoProdutos = "";
+            List<Vendas> vendasDia = new List<Vendas>();
+            List<string> produtosVendidos = new List<string>();
 
             Contabil contabil = new Contabil(user);
             contabil.carregaMovimentos(DateTime.Today, DateTime.Today);
             Contabilidade contabilidade = controle.PesquisaContabilidadeById(1);
 
-            List<Movimentos> listaMovimentosDia = new List<Movimentos>();
+            /*List<Movimentos> listaMovimentosDia = new List<Movimentos>();
             listaMovimentosDia = controle.PesquisaMovPeriodo(DateTime.Today, DateTime.Today);
+            */
 
             numVendas = controle.QuantidadeVendasDia(DateTime.Today);
             valorVendas = Convert.ToDecimal(controle.ValorTotalVendasDia(DateTime.Today));            
@@ -108,7 +112,27 @@ namespace Loja1._0
             prePagoVendas = controle.PesquisaMovDiaTipo(DateTime.Today, 30);
             tefPrazoVendas = controle.PesquisaMovDiaTipo(DateTime.Today, 18) + controle.PesquisaMovDiaTipo(DateTime.Today, 4);
 
-            movimentoDia =  "<br /><br />&nbsp Número de vendas realizadas: " + numVendas +
+            vendasDia = controle.PesquisaVendasDia(DateTime.Today);
+            foreach(Vendas value in vendasDia)
+            {
+                List<Vendas_Produtos> produtosVenda = new List<Vendas_Produtos>();
+                produtosVenda = controle.PesquisaProdutosVenda(value.id);
+
+                foreach(Vendas_Produtos result in produtosVenda)
+                {
+                    Model.Produtos produtoVendido = new Model.Produtos();
+                    produtoVendido = controle.PesquisaProdutoId(Convert.ToInt32(result.id_produto));
+
+                    produtosVendidos.Add("<br />&nbsp Venda Nº" + result.id_venda + "; produto: " + produtoVendido.desc_produto + "; quantidade: " + result.quantidade);
+                }
+            }
+
+            foreach (string value in produtosVendidos)
+            {
+                relaçãoProdutos = relaçãoProdutos + value; 
+            }
+
+            movimentoDia = "<br /><br />&nbsp Número de vendas realizadas: " + numVendas +
                             "<br />&nbsp Valor total das vendas: R$" + valorVendas +
                             "<br />&nbsp Lucro total: R$" + lucroVendas +
                             "<br />" +
@@ -116,7 +140,12 @@ namespace Loja1._0
                             "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total à em dinheiro: R$" + dinheiroVendas +
                             "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total à vista(tef): R$" + tefVistaVendas +
                             "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total pré-pago: R$" + prePagoVendas +
-                            "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total prazo(tef): R$" + tefPrazoVendas;
+                            "<br />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Valor total prazo(tef): R$" + tefPrazoVendas +
+                            "<br />" +
+                            "<br />Relação de Produtos vendidos:" +
+                            "<br />" + relaçãoProdutos;
+
+
 
             Email email = new Email();
             email.EnviaEmailMovimento(movimentoDia);

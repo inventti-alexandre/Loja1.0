@@ -297,7 +297,7 @@
           <Property Name="id_produto" Type="int" />
           <Property Name="quantidade" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Vendas__id_Clien__3F466844">
+        <Association Name="FK__Vendas__id_Clien__1C9228E4">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -535,7 +535,7 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas_Produtos" EntityType="Self.Vendas_Produtos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Vendas__id_Clien__3F466844" Association="Self.FK__Vendas__id_Clien__3F466844">
+          <AssociationSet Name="FK__Vendas__id_Clien__1C9228E4" Association="Self.FK__Vendas__id_Clien__1C9228E4">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>

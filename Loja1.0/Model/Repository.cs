@@ -490,7 +490,12 @@ namespace Loja1._0.Model
                     && compra.id_produto == id
                     orderby compra.dt_compra ascending
                     select compra).First();
-        }        
+        }
+
+        internal void ExcluirCtrlPonto(CtrlPonto ponto)
+        {
+            dataEntity.CtrlPonto.Remove(ponto);
+        }
 
         public void RemoveProdVenda(Vendas_Produtos prodVend)
         {

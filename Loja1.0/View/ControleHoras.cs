@@ -35,6 +35,7 @@ namespace Loja1._0
             this.user = user;
             InitializeComponent();
             carregaUser(user);
+            btnExcluir.Enabled = false;
         }
 
         private void carregaPontoPeriodo(string periodo)
@@ -192,19 +193,19 @@ namespace Loja1._0
                     diaUtil.Add(value.Dt_Ponto.Day);
                 }
 
-                txtHorasExtras.Text = horasExtras.TotalHours.ToString();
-                txtTotalHoras.Text = totalHoras.TotalHours.ToString();
+                txtHorasExtras.Text = horasExtras.TotalHours.ToString("00");
+                txtTotalHoras.Text = totalHoras.TotalHours.ToString("00");
                 txtTotal.Text = Convert.ToDecimal((Convert.ToDouble(txtVlHora.Text) / 60) * ((totalHoras.TotalMinutes - compensacao.TotalMinutes) - (Convert.ToDouble(txtBancoHoras.Text) * 60 + (horasExtras).TotalMinutes)) + (Convert.ToDouble(txtVlHorasExtras.Text) / 60) * horasExtras.TotalMinutes).ToString("0.00");
 
                 int diasPorSemana = 6;
 
                 if (diaFalta.Count() == 0 && !txtTotal.Text.Equals("") && diaUtil.Count >= diasPorSemana)
                 {
-                    txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + diaUtil.Count / diasPorSemana * Convert.ToDecimal(txtVlDia.Text)).ToString();
+                    txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + diaUtil.Count / diasPorSemana * Convert.ToDecimal(txtVlDia.Text)).ToString("0.00");
                 }
                 else if (diaFalta.Count() == 1 && diaUtil.Count >= diasPorSemana && !txtTotal.Text.Equals(""))
                 {
-                    txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + (diaUtil.Count / diasPorSemana - 1) * Convert.ToDecimal(txtVlDia.Text)).ToString();
+                    txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + (diaUtil.Count / diasPorSemana - 1) * Convert.ToDecimal(txtVlDia.Text)).ToString("0.00");
                 }
                 else if (diaFalta.Count() > 1 && diaUtil.Count >= (diasPorSemana * 2) && !txtTotal.Text.Equals(""))
                 {
@@ -228,12 +229,12 @@ namespace Loja1._0
                                         || listaDiaSemana[j].Equals("Saturday") && listaDiaSemana[j + 1].Equals("Wednesday")
                                         || listaDiaSemana[j].Equals("Saturday") && listaDiaSemana[j + 1].Equals("Thursday"))
                                     {
-                                        txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + (diaUtil.Count / diasPorSemana - 1) * Convert.ToDecimal(txtVlDia.Text)).ToString();
+                                        txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + (diaUtil.Count / diasPorSemana - 1) * Convert.ToDecimal(txtVlDia.Text)).ToString("0.00");
                                     }
                                 }
                                 else
                                 {
-                                    txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + (diaUtil.Count / diasPorSemana - 1) * Convert.ToDecimal(txtVlDia.Text)).ToString();
+                                    txtTotal.Text = (Convert.ToDecimal(txtTotal.Text) + (diaUtil.Count / diasPorSemana - 1) * Convert.ToDecimal(txtVlDia.Text)).ToString("0.00");
                                 }
                                 j++;
                             }
@@ -273,13 +274,17 @@ namespace Loja1._0
             {
                 if (usuario.id_Perfil == 1)
                 {
+                    btnExcluir.Visible = true;
                     carregaComboBox();
                     cmbFuncionarios.SelectedValue = "";
+
                 }
                 else if (usuario.id_Perfil == 2)
                 {
+                    btnExcluir.Visible = true;
                     carregaComboBox(2);
                     cmbFuncionarios.SelectedValue = "";
+
                 }
                 else if (usuario.id_Perfil >= 3)
                 {
@@ -299,7 +304,7 @@ namespace Loja1._0
         {
             listaUser = new List<Model.Usuarios>();
             listaUser.Add(user);
-            preencheComboBox(listaUser);            
+            preencheComboBox(listaUser);
         }
 
         private void carregaComboBox(int id_Perfil)
@@ -315,7 +320,7 @@ namespace Loja1._0
             listaUser = new List<Model.Usuarios>();
             listaUser.Add(null);
             listaUser = controle.PesquisaGeralUser();
-            preencheComboBox(listaUser);            
+            preencheComboBox(listaUser);
         }
 
         private void preencheComboBox(List<Model.Usuarios> listaUser)
@@ -328,10 +333,11 @@ namespace Loja1._0
         {
             if (user.id_Perfil >= 3)
             {
+                btnLimpar_Click(sender, e);
                 usuario = user;
                 cmbPeriodo.Enabled = true;
                 carregaPeriodo(user.dt_Inclusao);
-                btnLimpar_Click(sender, e);
+
             }
             else
             {
@@ -349,7 +355,7 @@ namespace Loja1._0
         {
             TimeSpan aux = (DateTime.Now - Convert.ToDateTime(dt_Inclusao));
 
-            int diferencaMes = Convert.ToInt32(Convert.ToInt32(aux.Days) / 30);            
+            int diferencaMes = Convert.ToInt32(Convert.ToInt32(aux.Days) / 30);
             diferencaMes++;
 
             int diferencaAno = diferencaMes / 12;
@@ -359,7 +365,7 @@ namespace Loja1._0
             listaData = new List<string>();
             listaData.Add("");
 
-            for (int i = 0; i < diferencaMes; i++)
+            for (int i = 0; i <= diferencaMes; i++)
             {
                 listaData.Add(Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month.ToString() + "/" + Convert.ToDateTime(dt_Inclusao).AddYears(j).Year.ToString());
                 if ((Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month) % 12 == 0 && i > 0)
@@ -380,7 +386,7 @@ namespace Loja1._0
 
             for (int i = 0; i < diferencaAno; i++)
             {
-                listaData.Add(Convert.ToDateTime(dt_Inclusao).AddYears(i).Year.ToString());                
+                listaData.Add(Convert.ToDateTime(dt_Inclusao).AddYears(i).Year.ToString());
             }
             cmbAno.DataSource = listaData;
             cmbAno.ValueMember = "";
@@ -395,20 +401,21 @@ namespace Loja1._0
                 int diasMes = Convert.ToInt32(DateTime.DaysInMonth(Convert.ToInt32(data[1]), Convert.ToInt32(data[0])));
 
                 txtSalario.Text = usuario.salario.ToString();
-                txtVlDia.Text = (Convert.ToDecimal(txtSalario.Text) / diasMes).ToString();
-                txtVlHora.Text = (Convert.ToDecimal(txtVlDia.Text) / 8).ToString();
+                txtVlDia.Text = (Convert.ToDecimal(txtSalario.Text) / diasMes).ToString("0.00");
+                txtVlHora.Text = (Convert.ToDecimal(txtVlDia.Text) / 8).ToString("0.00");
                 txtVlHorasExtras.Text = (Convert.ToDecimal(txtVlHora.Text) + ((Convert.ToDecimal(txtVlHora.Text)) * 0.50M)).ToString("0.00");
 
                 if (user.id_Perfil < 3)
                 {
                     cmbAno.Enabled = true;
+                    btnExcluir.Enabled = true;
                 }
                 else
                 {
                     PanelTipo.Enabled = true;
-                    btnIncluir.Enabled = true;
+                    btnIncluir.Enabled = true;                    
                 }
-                
+
                 carregaPontoPeriodo(cmbPeriodo.SelectedValue.ToString());
 
                 btnLimpar.Enabled = true;
@@ -448,7 +455,7 @@ namespace Loja1._0
                 cmbDia.Enabled = true;
                 txtHora.Enabled = true;
                 btnIncluir.Enabled = true;
-                carregaDiasMes(cmbMes.SelectedIndex, cmbAno.SelectedItem.ToString());
+                carregaDiasMes(cmbMes.SelectedIndex, cmbAno.SelectedValue.ToString());
             }
         }
 
@@ -456,7 +463,6 @@ namespace Loja1._0
         {
             btnIncluir.Enabled = false;
             cmbAno.SelectedItem = "";
-            //cmbAno.DataSource = null;
             cmbMes.SelectedItem = "";
             cmbMes.DataSource = null;
             cmbMes.Enabled = false;
@@ -481,129 +487,39 @@ namespace Loja1._0
                 {
                     CtrlPonto ponto = new CtrlPonto();
 
-
-                    if (controle.PesquisaPontoDia(usuario.id, cmbMes.SelectedIndex.ToString(), cmbAno.SelectedItem.ToString(), cmbDia.SelectedItem.ToString()) == null)
+                    if (txtHora.Text.Equals(""))
                     {
-                        controle.SalvaPonto(ponto);
-                        ponto.Dt_Ponto = dataPonto;
-                        ponto.Id_User = usuario.id;
-                        ponto.Entrada = TimeSpan.Parse("00:00");
-                        ponto.Saida_Almoco = TimeSpan.Parse("00:00");
-                        ponto.Retorno_Almoco = TimeSpan.Parse("00:00");
-                        ponto.Saida = TimeSpan.Parse("00:00");
-                        ponto.Compensacao = TimeSpan.Parse("00:00");
+                        MessageBox.Show("Formato de horas incorreto, favor utilizar \"HH:MM\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                     else
                     {
-                        ponto = controle.PesquisaPontoDia(usuario.id, cmbMes.SelectedIndex.ToString(), cmbAno.SelectedItem.ToString(), cmbDia.SelectedItem.ToString());
-                        proibido = true;
-                    }
-
-                    if (rdbEntrada.Checked)
-                    {
-                        TimeSpan result = new TimeSpan();
-                        if (TimeSpan.TryParse(txtHora.Text, out result))
+                        if (controle.PesquisaPontoDia(usuario.id, cmbMes.SelectedIndex.ToString(), cmbAno.SelectedItem.ToString(), cmbDia.SelectedItem.ToString()) == null)
                         {
-                            ponto.Falta = false;
-                            ponto.Entrada = TimeSpan.Parse(txtHora.Text);
-                            alteracao = "Entrada : " + ponto.Entrada.ToString();
-                            controlaBancoHoras(ponto);
-
-                            controle.SalvaAtualiza();
-
-                            GerarLog(ponto, alteracao);
-
-                            btnLimpar_Click(sender, e);
-                            btnExibir_Click(sender, e);
+                            controle.SalvaPonto(ponto);
+                            ponto.Dt_Ponto = dataPonto;
+                            ponto.Id_User = usuario.id;
+                            ponto.Entrada = TimeSpan.Parse("00:00");
+                            ponto.Saida_Almoco = TimeSpan.Parse("00:00");
+                            ponto.Retorno_Almoco = TimeSpan.Parse("00:00");
+                            ponto.Saida = TimeSpan.Parse("00:00");
+                            ponto.Compensacao = TimeSpan.Parse("00:00");
                         }
                         else
                         {
-                            MessageBox.Show("Formato de horas incorreto, favor utilizar \"HH:MM\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ponto = controle.PesquisaPontoDia(usuario.id, cmbMes.SelectedIndex.ToString(), cmbAno.SelectedItem.ToString(), cmbDia.SelectedItem.ToString());
+                            proibido = true;
                         }
-                    }
-                    else if (rdbAlmoco.Checked)
-                    {
-                        TimeSpan result = new TimeSpan();
-                        if (TimeSpan.TryParse(txtHora.Text, out result))
+
+                        if (rdbEntrada.Checked)
                         {
-                            ponto.Falta = false;
-                            ponto.Saida_Almoco = TimeSpan.Parse(txtHora.Text);
-                            alteracao = "Saída Alm. : " + ponto.Saida_Almoco.ToString();
-                            controlaBancoHoras(ponto);
-
-                            controle.SalvaAtualiza();
-
-                            GerarLog(ponto, alteracao);
-
-                            btnLimpar_Click(sender, e);
-                            btnExibir_Click(sender, e);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Formato de horas incorreto, favor utilizar \"HH:MM\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else if (rdbRetorno.Checked)
-                    {
-                        TimeSpan result = new TimeSpan();
-                        if (TimeSpan.TryParse(txtHora.Text, out result))
-                        {
-                            ponto.Falta = false;
-                            ponto.Retorno_Almoco = TimeSpan.Parse(txtHora.Text);
-                            alteracao = "Retorno Alm. : " + ponto.Retorno_Almoco.ToString();
-                            controlaBancoHoras(ponto);
-
-                            controle.SalvaAtualiza();
-
-                            GerarLog(ponto, alteracao);
-
-                            btnLimpar_Click(sender, e);
-                            btnExibir_Click(sender, e);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Formato de horas incorreto, favor utilizar \"HH:MM\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else if (rdbSaida.Checked)
-                    {
-                        TimeSpan result = new TimeSpan();
-                        if (TimeSpan.TryParse(txtHora.Text, out result))
-                        {
-                            ponto.Falta = false;
-                            ponto.Saida = TimeSpan.Parse(txtHora.Text);
-                            alteracao = "Saída : " + ponto.Saida.ToString();
-                            controlaBancoHoras(ponto);
-
-                            controle.SalvaAtualiza();
-
-                            GerarLog(ponto, alteracao);
-
-                            btnLimpar_Click(sender, e);
-                            btnExibir_Click(sender, e);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Formato de horas incorreto, favor utilizar \"HH:MM\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-
-                    else if (rdbCompensacao.Checked && !proibido)
-                    {
-                        TimeSpan result = new TimeSpan();
-                        if (TimeSpan.TryParse(txtHora.Text, out result))
-                        {
-                            if (TimeSpan.Parse(txtHora.Text).TotalHours <= Convert.ToDouble(txtBancoHoras.Text))
+                            TimeSpan result = new TimeSpan();
+                            if (TimeSpan.TryParse(txtHora.Text, out result))
                             {
-                                ponto.Compensacao = ponto.Compensacao + TimeSpan.Parse(txtHora.Text);
-                                ponto.Observacao = "Falta Compensada";
-                                alteracao = ponto.Observacao;
-
-                                controle.SalvaAtualiza();
-
-                                corrigeBancoHoras(TimeSpan.Parse(txtHora.Text));
-
-                                CompensaDia(TimeSpan.Parse(txtHora.Text));
+                                ponto.Falta = false;
+                                ponto.Entrada = TimeSpan.Parse(txtHora.Text);
+                                alteracao = "Entrada : " + ponto.Entrada.ToString();
+                                controlaBancoHoras(ponto);
 
                                 controle.SalvaAtualiza();
 
@@ -612,38 +528,119 @@ namespace Loja1._0
                                 btnLimpar_Click(sender, e);
                                 btnExibir_Click(sender, e);
                             }
-                            else
+                        }
+                        else if (rdbAlmoco.Checked)
+                        {
+                            TimeSpan result = new TimeSpan();
+                            if (TimeSpan.TryParse(txtHora.Text, out result))
                             {
-                                MessageBox.Show("As horas a serem compensadas não podem exceder a quantidade do banco de horas", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                ponto.Falta = false;
+                                ponto.Saida_Almoco = TimeSpan.Parse(txtHora.Text);
+                                alteracao = "Saída Alm. : " + ponto.Saida_Almoco.ToString();
+                                controlaBancoHoras(ponto);
+
+                                controle.SalvaAtualiza();
+
+                                GerarLog(ponto, alteracao);
+
+                                btnLimpar_Click(sender, e);
+                                btnExibir_Click(sender, e);
                             }
                         }
-                        else
+                        else if (rdbRetorno.Checked)
                         {
-                            MessageBox.Show("É necessário o preenchimento correto da quantidade de horas a serem compensadas,  favor utilizar \"HH:MM\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            TimeSpan result = new TimeSpan();
+                            if (TimeSpan.TryParse(txtHora.Text, out result))
+                            {
+                                ponto.Falta = false;
+                                ponto.Retorno_Almoco = TimeSpan.Parse(txtHora.Text);
+                                alteracao = "Retorno Alm. : " + ponto.Retorno_Almoco.ToString();
+                                controlaBancoHoras(ponto);
+
+                                controle.SalvaAtualiza();
+
+                                GerarLog(ponto, alteracao);
+
+                                btnLimpar_Click(sender, e);
+                                btnExibir_Click(sender, e);
+                            }
+                        }
+                        else if (rdbSaida.Checked)
+                        {
+                            TimeSpan result = new TimeSpan();
+                            if (TimeSpan.TryParse(txtHora.Text, out result))
+                            {
+                                ponto.Falta = false;
+                                ponto.Saida = TimeSpan.Parse(txtHora.Text);
+                                alteracao = "Saída : " + ponto.Saida.ToString();
+                                controlaBancoHoras(ponto);
+
+                                controle.SalvaAtualiza();
+
+                                GerarLog(ponto, alteracao);
+
+                                btnLimpar_Click(sender, e);
+                                btnExibir_Click(sender, e);
+                            }
+                        }
+
+                        else if (rdbCompensacao.Checked && !proibido)
+                        {
+                            TimeSpan result = new TimeSpan();
+                            if (TimeSpan.TryParse(txtHora.Text, out result))
+                            {
+                                if (TimeSpan.Parse(txtHora.Text).TotalHours <= Convert.ToDouble(txtBancoHoras.Text))
+                                {
+                                    ponto.Compensacao = ponto.Compensacao + TimeSpan.Parse(txtHora.Text);
+                                    ponto.Observacao = "Falta Compensada";
+                                    alteracao = ponto.Observacao;
+
+                                    controle.SalvaAtualiza();
+
+                                    corrigeBancoHoras(TimeSpan.Parse(txtHora.Text));
+
+                                    CompensaDia(TimeSpan.Parse(txtHora.Text));
+
+                                    controle.SalvaAtualiza();
+
+                                    GerarLog(ponto, alteracao);
+
+                                    btnLimpar_Click(sender, e);
+                                    btnExibir_Click(sender, e);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("As horas a serem compensadas não podem exceder a quantidade do banco de horas", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("É necessário o preenchimento correto da quantidade de horas a serem compensadas,  favor utilizar \"HH:MM\"", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
+                        else if (rdbFalta.Checked && !proibido)
+                        {
+                            if (ponto.Falta == false)
+                            {
+                                ponto.Falta = true;
+                                alteracao = "Falta";
+                                ponto.Observacao = alteracao;
+
+                                controle.SalvaAtualiza();
+
+                                GerarLog(ponto, alteracao);
+
+                                btnLimpar_Click(sender, e);
+                                btnExibir_Click(sender, e);
+                            }
+                        }
+                        else if (proibido)
+                        {
+                            MessageBox.Show("Não é possível lançar falta/compensação em datas com lançamento anterior", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
-                    else if (rdbFalta.Checked && !proibido)
-                    {
-                        if (ponto.Falta == false)
-                        {
-                            ponto.Falta = true;
-                            alteracao = "Falta";
-                            ponto.Observacao = alteracao;
-
-                            controle.SalvaAtualiza();
-
-                            GerarLog(ponto, alteracao);
-
-                            btnLimpar_Click(sender, e);
-                            btnExibir_Click(sender, e);
-                        }
-                    }
-                    else if (proibido)
-                    {
-                        MessageBox.Show("Não é possível lançar falta/compensação em datas com lançamento anterior", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
                 }
                 else
                 {
@@ -799,13 +796,23 @@ namespace Loja1._0
 
         private void GerarLog(CtrlPonto ponto, string alteracao)
         {
+            string data = "";
+            if (cmbDia.SelectedValue.ToString().Equals(""))
+            {
+                data = DateTime.Today.ToShortDateString();
+            }
+            else
+            {
+                data = cmbDia.SelectedValue.ToString() + "/" + cmbMes.SelectedIndex.ToString() + "/" + cmbAno.SelectedValue.ToString();
+            }
+
             LogPonto log = new LogPonto();
             controle.salvarLog(log);
 
             log.id_Ponto = ponto.Id;
             log.id_User = usuario.id;
             log.dt_Alteracao = DateTime.Now;
-            log.valor = alteracao;
+            log.valor = alteracao + ", Dt: " + data;
 
             controle.SalvaAtualiza();
         }
@@ -900,5 +907,118 @@ namespace Loja1._0
                 return false;
             }
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {            
+            if (cmbDia.SelectedValue.Equals(""))
+            {
+                MessageBox.Show("Favor preencher os campos data completamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                string dia = cmbDia.SelectedValue.ToString();
+                string mes = cmbMes.SelectedIndex.ToString();
+                string ano = cmbAno.SelectedValue.ToString();
+                int user_id = 0;
+
+                user_id = controle.PesquisaUserNome(cmbFuncionarios.SelectedValue.ToString()).id;
+
+                CtrlPonto pontoEscolhido = new CtrlPonto();
+                pontoEscolhido = controle.PesquisaPontoDia(user_id, mes, ano, dia);
+
+                TimeSpan bancoHr = TimeSpan.Parse("00:00");
+                string tempo = "";
+
+                if(pontoEscolhido.Entrada < pontoEscolhido.Saida_Almoco)
+                {
+                    tempo = (pontoEscolhido.Saida_Almoco - pontoEscolhido.Entrada ).ToString();
+                    bancoHr = bancoHr + TimeSpan.Parse(tempo);
+
+                    if(pontoEscolhido.Saida_Almoco < pontoEscolhido.Saida && pontoEscolhido.Saida_Almoco < pontoEscolhido.Retorno_Almoco)
+                    {
+                        tempo = (pontoEscolhido.Retorno_Almoco - pontoEscolhido.Saida).ToString();
+                        bancoHr = bancoHr + TimeSpan.Parse(tempo);
+                    }
+                }
+                else
+                {
+                    if (pontoEscolhido.Entrada < pontoEscolhido.Saida)
+                    {
+                        tempo = (pontoEscolhido.Saida - pontoEscolhido.Entrada).ToString();
+                        bancoHr = bancoHr + TimeSpan.Parse(tempo);
+                    }
+                }
+
+                if (bancoHr > TimeSpan.Parse("8:00"))
+                {
+                    bancoHr = bancoHr - TimeSpan.Parse("8:00");
+                    if(bancoHr > TimeSpan.Parse("2:00"))
+                    {
+                        bancoHr = TimeSpan.Parse("2:00");
+                    }
+                }
+                else
+                {
+                    bancoHr = TimeSpan.Parse("00:00");
+                }
+
+                usuario.bancoHoras = usuario.bancoHoras - Convert.ToInt32(bancoHr.TotalHours.ToString());
+                controle.SalvaAtualiza();
+
+                controle.ExcluirCtrlPonto(pontoEscolhido);
+                controle.SalvaAtualiza();
+
+                LogPonto logPonto = new LogPonto();
+                controle.salvarLog(logPonto);
+                logPonto.dt_Alteracao = DateTime.Now;
+                logPonto.id_Ponto = pontoEscolhido.Id;
+                logPonto.id_User = user.id;
+                logPonto.valor = "Excl: DT-" + pontoEscolhido.Dt_Ponto.ToShortDateString() + ",FUNC-" + cmbFuncionarios.SelectedValue.ToString();
+                controle.SalvaAtualiza();
+            }
+            btnLimpar_Click(sender, e);
+            carregaPontoPeriodo(cmbPeriodo.SelectedValue.ToString());
+        }
+
+        private void dgvPonto_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            selecionaLinha();
+        }
+
+        private void selecionaLinha()
+        {
+            try
+            {
+                int user_id = controle.PesquisaUserNome(cmbFuncionarios.SelectedValue.ToString()).id;
+                string[] periodo;
+                char delimiter = '/';
+                periodo = cmbPeriodo.SelectedValue.ToString().Split(delimiter);
+
+                CtrlPonto ponto = new CtrlPonto();
+                ponto = controle.PesquisaPontoDia(user_id, periodo[0], periodo[1], dgvPonto.SelectedCells[0].Value.ToString());
+
+                if (ponto != null)
+                {
+                    cmbDia.Enabled = true;
+                    cmbMes.Enabled = true;
+                    cmbAno.Enabled = true;
+
+                    cmbDia.ResetText();
+                    cmbMes.ResetText();
+                    cmbAno.ResetText();
+
+                    cmbAno.SelectedItem = ponto.Dt_Ponto.Year.ToString();                    
+                    cmbMes.SelectedIndex = ponto.Dt_Ponto.Month;
+                    cmbDia.SelectedIndex = ponto.Dt_Ponto.Day - 1;
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+       
     }
 }

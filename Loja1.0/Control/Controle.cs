@@ -604,5 +604,10 @@ namespace Loja1._0.Control
 
             return dbRepository.PesquisaPontoPeriodo(idUser, month, year);
         }
+
+        internal void ExcluirCtrlPonto(CtrlPonto ponto)
+        {
+            dbRepository.ExcluirCtrlPonto(ponto);
+        }
     }
 }

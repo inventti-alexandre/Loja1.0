@@ -14,12 +14,6 @@ namespace Loja1._0.Model
     
     public partial class CtrlPonto
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CtrlPonto()
-        {
-            this.LogPonto = new HashSet<LogPonto>();
-        }
-    
         public int Id { get; set; }
         public int Id_User { get; set; }
         public System.DateTime Dt_Ponto { get; set; }
@@ -31,8 +25,6 @@ namespace Loja1._0.Model
         public Nullable<System.TimeSpan> Compensacao { get; set; }
         public string Observacao { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LogPonto> LogPonto { get; set; }
         public virtual Usuarios Usuarios { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace Loja1._0.Model
         public string registro { get; set; }
         public string senha { get; set; }
         public Nullable<int> id_Perfil { get; set; }
-        public double bancoHoras { get; set; }
+        public System.TimeSpan bancoHoras { get; set; }
         public Nullable<decimal> salario { get; set; }
         public int status { get; set; }
         public Nullable<System.DateTime> dt_Inclusao { get; set; }

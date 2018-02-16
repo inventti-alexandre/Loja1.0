@@ -165,11 +165,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(150, 332);
+            this.label6.Location = new System.Drawing.Point(155, 332);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(474, 24);
+            this.label6.Size = new System.Drawing.Size(281, 24);
             this.label6.TabIndex = 177;
-            this.label6.Text = "nesta mesma loja, limitados ao referido valor, sem mais.";
+            this.label6.Text = "mesma rede de lojas, sem mais.";
             // 
             // label5
             // 
@@ -177,10 +177,10 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(161, 308);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(744, 24);
+            this.label5.Size = new System.Drawing.Size(761, 24);
             this.label5.TabIndex = 176;
-            this.label5.Text = "Devendo este utilizar o valor como pagamento antecipado para a aquisição de produ" +
-    "tos";
+            this.label5.Text = "Estando ciente que devera este utilizar o referido valor para a aquisição de prod" +
+    "utos nesta";
             // 
             // label2
             // 

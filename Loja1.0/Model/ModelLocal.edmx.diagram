@@ -32,10 +32,6 @@
         <AssociationConnector Association="ServidorLojaModel.FK_VendaProduto_Produto" />
         <AssociationConnector Association="ServidorLojaModel.FK_VendaProduto_Venda" />
         <EntityTypeShape EntityType="ServidorLojaModel.Perfis" Width="1.5" PointX="7.625" PointY="1.125" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Usuarios" Width="1.5" PointX="5.375" PointY="0.5" />
-        <AssociationConnector Association="ServidorLojaModel.FK_Ponto_Usuario" />
-        <AssociationConnector Association="ServidorLojaModel.FK_Usuario_Perfil" />
-        <AssociationConnector Association="ServidorLojaModel.FK_Venda_Usuario" />
         <EntityTypeShape EntityType="ServidorLojaModel.Clientes" Width="1.5" PointX="3" PointY="4.625" />
         <AssociationConnector Association="ServidorLojaModel.FK_Cliente_Cidade" />
         <AssociationConnector Association="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" />
@@ -43,6 +39,10 @@
         <AssociationConnector Association="ServidorLojaModel.FK_Movimento_Tipo" />
         <AssociationConnector Association="ServidorLojaModel.FK_Pagamento_Movimento" />
         <EntityTypeShape EntityType="ServidorLojaModel.LogPonto" Width="1.5" PointX="0.5" PointY="1.5" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Usuarios" Width="1.5" PointX="5.375" PointY="0.5" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Ponto_Usuario" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Usuario_Perfil" />
+        <AssociationConnector Association="ServidorLojaModel.FK_Venda_Usuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -114,11 +114,11 @@
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblNome.Location = new System.Drawing.Point(524, 4);
+            this.lblNome.Location = new System.Drawing.Point(518, 4);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(197, 33);
+            this.lblNome.Size = new System.Drawing.Size(211, 33);
             this.lblNome.TabIndex = 3;
-            this.lblNome.Text = "Folha de Pag.";
+            this.lblNome.Text = "Controle Ponto";
             // 
             // label3
             // 

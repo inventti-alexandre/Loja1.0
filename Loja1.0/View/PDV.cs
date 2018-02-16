@@ -36,7 +36,7 @@ namespace Loja1._0
                 this.user = user;
                 gerencia = controle.PesquisaGerenciamento(1);
                 InitializeComponent();
-                lblUser.Text = user.nome;
+                lblUser.Text = user.login;
             }
             catch
             {
@@ -448,7 +448,7 @@ namespace Loja1._0
                     }
                     else
                     {
-                        lblCliente.Text = "Resultado : ";
+                        //lblCliente.Text = "Resultado : ";
                         txtBuscaCliente.Visible = false;
                         btnPesquisaCliente.Visible = false;
                         cmbCliente.Visible = true;

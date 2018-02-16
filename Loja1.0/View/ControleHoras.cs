@@ -45,6 +45,7 @@ namespace Loja1._0
                 txtBancoHoras.Text = "0:00";
                 horasExtras = TimeSpan.Parse("0:00");
                 totalHoras = TimeSpan.Parse("0:00");
+                TimeSpan bancoHrMes = TimeSpan.Parse("0:00");
 
                 List<int> diaUtil = new List<int>();
 
@@ -67,7 +68,7 @@ namespace Loja1._0
                 dtPeriodo.Columns.Add("Observação", typeof(string));
 
                 txtTotal.Text = "0,00";
-                txtBancoHoras.Text = "0,00";
+                txtBancoHoras.Text = "0:00";
 
                 foreach (CtrlPonto value in listaPonto)
                 {
@@ -134,6 +135,11 @@ namespace Loja1._0
                             if (TimeSpan.Parse(horaExtra) > limiteBancoDia)
                             {
                                 hrExtra = (TimeSpan.Parse(horaExtra) - limiteBancoDia).ToString();
+                                bancoHrMes = bancoHrMes + limiteBancoDia;
+                            }
+                            else
+                            {
+                                bancoHrMes = bancoHrMes + TimeSpan.Parse(horaExtra);
                             }
                         }
                     }
@@ -183,9 +189,7 @@ namespace Loja1._0
                         }
                     }
 
-                    dtPeriodo.Rows.Add(value.Dt_Ponto.Day.ToString(), value.Dt_Ponto.Month.ToString(), diaSemana, entrada, almoco, retorno, saida, horaDia, horaExtra, value.Observacao);
-
-                    txtBancoHoras.Text = usuario.bancoHoras.ToString();
+                    dtPeriodo.Rows.Add(value.Dt_Ponto.Day.ToString(), value.Dt_Ponto.Month.ToString(), diaSemana, entrada, almoco, retorno, saida, horaDia, horaExtra, value.Observacao);                    
 
                     horasExtras = horasExtras + TimeSpan.Parse(hrExtra);
                     totalHoras = totalHoras + TimeSpan.Parse(horaDia);
@@ -193,9 +197,11 @@ namespace Loja1._0
                     diaUtil.Add(value.Dt_Ponto.Day);
                 }
 
-                txtHorasExtras.Text = horasExtras.TotalHours.ToString("00");
-                txtTotalHoras.Text = totalHoras.TotalHours.ToString("00");
-                txtTotal.Text = Convert.ToDecimal((Convert.ToDouble(txtVlHora.Text) / 60) * ((totalHoras.TotalMinutes - compensacao.TotalMinutes) - (Convert.ToDouble(txtBancoHoras.Text) * 60 + (horasExtras).TotalMinutes)) + (Convert.ToDouble(txtVlHorasExtras.Text) / 60) * horasExtras.TotalMinutes).ToString("0.00");
+                txtBancoHoras.Text = usuario.bancoHoras.ToString();
+
+                txtHorasExtras.Text = horasExtras.ToString();
+                txtTotalHoras.Text = totalHoras.ToString();                
+                txtTotal.Text = ((Convert.ToDouble((totalHoras.TotalHours) - (horasExtras + bancoHrMes).TotalHours)) * Convert.ToDouble(txtVlHora.Text) + (Convert.ToDouble(txtVlHorasExtras.Text) * Convert.ToDouble(horasExtras.TotalHours))).ToString("0.00");
 
                 int diasPorSemana = 6;
 
@@ -253,7 +259,7 @@ namespace Loja1._0
                 dgvPonto.Columns[6].Width = 100;
                 dgvPonto.Columns[7].Width = 100;
                 dgvPonto.Columns[8].Width = 100;
-                dgvPonto.Columns[9].Width = 900;
+                dgvPonto.Columns[9].Width = 900;                        
             }
             catch
             {
@@ -367,10 +373,13 @@ namespace Loja1._0
 
             for (int i = 0; i <= diferencaMes; i++)
             {
-                listaData.Add(Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month.ToString() + "/" + Convert.ToDateTime(dt_Inclusao).AddYears(j).Year.ToString());
-                if ((Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month) % 12 == 0 && i > 0)
-                {
-                    j++;
+                if (Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month <= DateTime.Today.Month || Convert.ToDateTime(dt_Inclusao).AddYears(j).Year < DateTime.Today.Year)
+                {               
+                    listaData.Add(Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month.ToString() + "/" + Convert.ToDateTime(dt_Inclusao).AddYears(j).Year.ToString());
+                    if ((Convert.ToDateTime(dt_Inclusao).AddMonths(i).Month) % 12 == 0 && i > 0)
+                    {
+                        j++;
+                    }
                 }
             }
             cmbPeriodo.DataSource = listaData;
@@ -394,7 +403,7 @@ namespace Loja1._0
 
         private void btnExibir_Click(object sender, EventArgs e)
         {
-            if (!cmbPeriodo.SelectedValue.ToString().Equals(null))
+            if (!cmbPeriodo.SelectedItem.Equals(""))
             {
                 string[] data = new string[2];
                 data = cmbPeriodo.SelectedValue.ToString().Split('/');
@@ -407,8 +416,7 @@ namespace Loja1._0
 
                 if (user.id_Perfil < 3)
                 {
-                    cmbAno.Enabled = true;
-                    btnExcluir.Enabled = true;
+                    cmbAno.Enabled = true;                    
                 }
                 else
                 {
@@ -455,6 +463,7 @@ namespace Loja1._0
                 cmbDia.Enabled = true;
                 txtHora.Enabled = true;
                 btnIncluir.Enabled = true;
+                btnExcluir.Enabled = true;
                 carregaDiasMes(cmbMes.SelectedIndex, cmbAno.SelectedValue.ToString());
             }
         }
@@ -462,6 +471,7 @@ namespace Loja1._0
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             btnIncluir.Enabled = false;
+            btnExcluir.Enabled = false;
             cmbAno.SelectedItem = "";
             cmbMes.SelectedItem = "";
             cmbMes.DataSource = null;
@@ -589,7 +599,7 @@ namespace Loja1._0
                             TimeSpan result = new TimeSpan();
                             if (TimeSpan.TryParse(txtHora.Text, out result))
                             {
-                                if (TimeSpan.Parse(txtHora.Text).TotalHours <= Convert.ToDouble(txtBancoHoras.Text))
+                                if (TimeSpan.Parse(txtHora.Text) <= TimeSpan.Parse(txtBancoHoras.Text))
                                 {
                                     ponto.Compensacao = ponto.Compensacao + TimeSpan.Parse(txtHora.Text);
                                     ponto.Observacao = "Falta Compensada";
@@ -826,7 +836,7 @@ namespace Loja1._0
 
             if (bancoHrs <= TimeSpan.Parse(usuario.bancoHoras.ToString()))
             {
-                usuario.bancoHoras = usuario.bancoHoras - bancoHrs.TotalHours;
+                usuario.bancoHoras = usuario.bancoHoras - bancoHrs;
                 bancoHrs = TimeSpan.Parse("0:00");
                 controle.SalvaAtualiza();
             }
@@ -859,12 +869,12 @@ namespace Loja1._0
                 {
                     if (TimeSpan.Parse(horaExtra) > limiteBancoDia)
                     {
-                        usuario.bancoHoras = usuario.bancoHoras + limiteBancoDia.TotalHours;
+                        usuario.bancoHoras = usuario.bancoHoras + limiteBancoDia;
                         controle.SalvaAtualiza();
                     }
                     else
                     {
-                        usuario.bancoHoras = usuario.bancoHoras + TimeSpan.Parse(horaExtra).TotalHours;
+                        usuario.bancoHoras = usuario.bancoHoras + TimeSpan.Parse(horaExtra);
                         controle.SalvaAtualiza();
                     }
                 }
@@ -909,8 +919,8 @@ namespace Loja1._0
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
-        {            
-            if (cmbDia.SelectedValue.Equals(""))
+        {
+            if (cmbDia.SelectedItem.Equals(""))
             {
                 MessageBox.Show("Favor preencher os campos data completamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -930,52 +940,56 @@ namespace Loja1._0
                 TimeSpan bancoHr = TimeSpan.Parse("00:00");
                 string tempo = "";
 
-                if(pontoEscolhido.Entrada < pontoEscolhido.Saida_Almoco)
+                if (pontoEscolhido != null)
                 {
-                    tempo = (pontoEscolhido.Saida_Almoco - pontoEscolhido.Entrada ).ToString();
-                    bancoHr = bancoHr + TimeSpan.Parse(tempo);
 
-                    if(pontoEscolhido.Saida_Almoco < pontoEscolhido.Saida && pontoEscolhido.Saida_Almoco < pontoEscolhido.Retorno_Almoco)
+                    if (pontoEscolhido.Entrada < pontoEscolhido.Saida_Almoco)
                     {
-                        tempo = (pontoEscolhido.Retorno_Almoco - pontoEscolhido.Saida).ToString();
+                        tempo = (pontoEscolhido.Saida_Almoco - pontoEscolhido.Entrada).ToString();
                         bancoHr = bancoHr + TimeSpan.Parse(tempo);
+
+                        if (pontoEscolhido.Saida_Almoco < pontoEscolhido.Saida && pontoEscolhido.Saida_Almoco < pontoEscolhido.Retorno_Almoco)
+                        {
+                            tempo = (pontoEscolhido.Retorno_Almoco - pontoEscolhido.Saida).ToString();
+                            bancoHr = bancoHr + TimeSpan.Parse(tempo);
+                        }
                     }
-                }
-                else
-                {
-                    if (pontoEscolhido.Entrada < pontoEscolhido.Saida)
+                    else
                     {
-                        tempo = (pontoEscolhido.Saida - pontoEscolhido.Entrada).ToString();
-                        bancoHr = bancoHr + TimeSpan.Parse(tempo);
+                        if (pontoEscolhido.Entrada < pontoEscolhido.Saida)
+                        {
+                            tempo = (pontoEscolhido.Saida - pontoEscolhido.Entrada).ToString();
+                            bancoHr = bancoHr + TimeSpan.Parse(tempo);
+                        }
                     }
-                }
 
-                if (bancoHr > TimeSpan.Parse("8:00"))
-                {
-                    bancoHr = bancoHr - TimeSpan.Parse("8:00");
-                    if(bancoHr > TimeSpan.Parse("2:00"))
+                    if (bancoHr > TimeSpan.Parse("8:00:00"))
                     {
-                        bancoHr = TimeSpan.Parse("2:00");
+                        bancoHr = bancoHr - TimeSpan.Parse("8:00:00");
+                        if (bancoHr > TimeSpan.Parse("2:00:00"))
+                        {
+                            bancoHr = TimeSpan.Parse("2:00:00");
+                        }
                     }
+                    else
+                    {
+                        bancoHr = TimeSpan.Parse("00:00:00");
+                    }
+
+                    usuario.bancoHoras = usuario.bancoHoras - bancoHr;
+                    controle.SalvaAtualiza();
+
+                    controle.ExcluirCtrlPonto(pontoEscolhido);
+                    controle.SalvaAtualiza();
+
+                    LogPonto logPonto = new LogPonto();
+                    controle.salvarLog(logPonto);
+                    logPonto.dt_Alteracao = DateTime.Now;
+                    logPonto.id_Ponto = pontoEscolhido.Id;
+                    logPonto.id_User = user.id;
+                    logPonto.valor = "Excl: DT-" + pontoEscolhido.Dt_Ponto.ToShortDateString() + ",FUNC-" + cmbFuncionarios.SelectedValue.ToString();
+                    controle.SalvaAtualiza();
                 }
-                else
-                {
-                    bancoHr = TimeSpan.Parse("00:00");
-                }
-
-                usuario.bancoHoras = usuario.bancoHoras - Convert.ToInt32(bancoHr.TotalHours.ToString());
-                controle.SalvaAtualiza();
-
-                controle.ExcluirCtrlPonto(pontoEscolhido);
-                controle.SalvaAtualiza();
-
-                LogPonto logPonto = new LogPonto();
-                controle.salvarLog(logPonto);
-                logPonto.dt_Alteracao = DateTime.Now;
-                logPonto.id_Ponto = pontoEscolhido.Id;
-                logPonto.id_User = user.id;
-                logPonto.valor = "Excl: DT-" + pontoEscolhido.Dt_Ponto.ToShortDateString() + ",FUNC-" + cmbFuncionarios.SelectedValue.ToString();
-                controle.SalvaAtualiza();
             }
             btnLimpar_Click(sender, e);
             carregaPontoPeriodo(cmbPeriodo.SelectedValue.ToString());

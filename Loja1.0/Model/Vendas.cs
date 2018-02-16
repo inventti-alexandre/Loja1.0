@@ -36,7 +36,7 @@ namespace Loja1._0.Model
         public virtual ICollection<Pagamentos_Vendas> Pagamentos_Vendas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendas_Produtos> Vendas_Produtos { get; set; }
-        public virtual Usuarios Usuarios { get; set; }
         public virtual Clientes Clientes { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
     }
 }

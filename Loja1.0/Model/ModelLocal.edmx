@@ -267,7 +267,7 @@
           <Property Name="registro" Type="varchar" MaxLength="10" />
           <Property Name="senha" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="id_Perfil" Type="int" />
-          <Property Name="bancoHoras" Type="float" Nullable="false" />
+          <Property Name="bancoHoras" Type="time" Precision="7" Nullable="false" />
           <Property Name="salario" Type="decimal" Precision="10" Scale="2" />
           <Property Name="status" Type="int" Nullable="false" />
           <Property Name="dt_Inclusao" Type="datetime" />
@@ -297,7 +297,7 @@
           <Property Name="id_produto" Type="int" />
           <Property Name="quantidade" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Vendas__id_Clien__1C9228E4">
+        <Association Name="FK__Vendas__id_Clien__65370702">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -378,18 +378,6 @@
             </Principal>
             <Dependent Role="Fornecedores">
               <PropertyRef Name="id_Cidade" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Log_Ponto">
-          <End Role="CtrlPonto" Type="Self.CtrlPonto" Multiplicity="1" />
-          <End Role="LogPonto" Type="Self.LogPonto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CtrlPonto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LogPonto">
-              <PropertyRef Name="id_Ponto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -535,7 +523,7 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas_Produtos" EntityType="Self.Vendas_Produtos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Vendas__id_Clien__1C9228E4" Association="Self.FK__Vendas__id_Clien__1C9228E4">
+          <AssociationSet Name="FK__Vendas__id_Clien__65370702" Association="Self.FK__Vendas__id_Clien__65370702">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
@@ -562,10 +550,6 @@
           <AssociationSet Name="FK_Fornecedor_Cidade" Association="Self.FK_Fornecedor_Cidade">
             <End Role="Cidades" EntitySet="Cidades" />
             <End Role="Fornecedores" EntitySet="Fornecedores" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Log_Ponto" Association="Self.FK_Log_Ponto">
-            <End Role="CtrlPonto" EntitySet="CtrlPonto" />
-            <End Role="LogPonto" EntitySet="LogPonto" />
           </AssociationSet>
           <AssociationSet Name="FK_Movimento_Tipo" Association="Self.FK_Movimento_Tipo">
             <End Role="Tipos_Movimentacao" EntitySet="Tipos_Movimentacao" />
@@ -622,7 +606,6 @@
           <EntitySet Name="Fechamento" EntityType="ServidorLojaModel.Fechamento" />
           <EntitySet Name="Fornecedores" EntityType="ServidorLojaModel.Fornecedores" />
           <EntitySet Name="Gerenciamento" EntityType="ServidorLojaModel.Gerenciamento" />
-          <EntitySet Name="LogPonto" EntityType="ServidorLojaModel.LogPonto" />
           <EntitySet Name="Pagamentos" EntityType="ServidorLojaModel.Pagamentos" />
           <EntitySet Name="Pagamentos_Vendas" EntityType="ServidorLojaModel.Pagamentos_Vendas" />
           <EntitySet Name="Produtos" EntityType="ServidorLojaModel.Produtos" />
@@ -645,10 +628,6 @@
           <AssociationSet Name="FK_Compra_Produto" Association="ServidorLojaModel.FK_Compra_Produto">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Compras" EntitySet="Compras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Log_Ponto" Association="ServidorLojaModel.FK_Log_Ponto">
-            <End Role="CtrlPonto" EntitySet="CtrlPonto" />
-            <End Role="LogPonto" EntitySet="LogPonto" />
           </AssociationSet>
           <AssociationSet Name="FK_Estoque_Produto" Association="ServidorLojaModel.FK_Estoque_Produto">
             <End Role="Produtos" EntitySet="Produtos" />
@@ -675,19 +654,6 @@
             <End Role="Vendas_Produtos" EntitySet="Vendas_Produtos" />
           </AssociationSet>
           <EntitySet Name="Perfis" EntityType="ServidorLojaModel.Perfis" />
-          <EntitySet Name="Usuarios" EntityType="ServidorLojaModel.Usuarios" />
-          <AssociationSet Name="FK_Ponto_Usuario" Association="ServidorLojaModel.FK_Ponto_Usuario">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="CtrlPonto" EntitySet="CtrlPonto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Perfil" Association="ServidorLojaModel.FK_Usuario_Perfil">
-            <End Role="Perfis" EntitySet="Perfis" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Venda_Usuario" Association="ServidorLojaModel.FK_Venda_Usuario">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Vendas" EntitySet="Vendas" />
-          </AssociationSet>
           <EntitySet Name="Clientes" EntityType="ServidorLojaModel.Clientes" />
           <AssociationSet Name="FK_Cliente_Cidade" Association="ServidorLojaModel.FK_Cliente_Cidade">
             <End Role="Cidades" EntitySet="Cidades" />
@@ -705,6 +671,20 @@
           <AssociationSet Name="FK_Pagamento_Movimento" Association="ServidorLojaModel.FK_Pagamento_Movimento">
             <End Role="Movimentos" EntitySet="Movimentos" />
             <End Role="Pagamentos" EntitySet="Pagamentos" />
+          </AssociationSet>
+          <EntitySet Name="LogPonto" EntityType="ServidorLojaModel.LogPonto" />
+          <EntitySet Name="Usuarios" EntityType="ServidorLojaModel.Usuarios" />
+          <AssociationSet Name="FK_Ponto_Usuario" Association="ServidorLojaModel.FK_Ponto_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="CtrlPonto" EntitySet="CtrlPonto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Perfil" Association="ServidorLojaModel.FK_Usuario_Perfil">
+            <End Role="Perfis" EntitySet="Perfis" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_Usuario" Association="ServidorLojaModel.FK_Venda_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Cidades">
@@ -774,7 +754,6 @@
           <Property Name="Falta" Type="Boolean" Nullable="false" />
           <Property Name="Compensacao" Type="Time" Precision="7" />
           <Property Name="Observacao" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LogPonto" Relationship="ServidorLojaModel.FK_Log_Ponto" FromRole="CtrlPonto" ToRole="LogPonto" />
           <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.FK_Ponto_Usuario" FromRole="CtrlPonto" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Estados">
@@ -864,17 +843,6 @@
           <Property Name="jurosCheque12x" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
           <Property Name="lucroMinimo" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
         </EntityType>
-        <EntityType Name="LogPonto">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_Ponto" Type="Int32" Nullable="false" />
-          <Property Name="valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="id_User" Type="Int32" Nullable="false" />
-          <Property Name="dt_Alteracao" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="CtrlPonto" Relationship="ServidorLojaModel.FK_Log_Ponto" FromRole="LogPonto" ToRole="CtrlPonto" />
-        </EntityType>
         <EntityType Name="Pagamentos">
           <Key>
             <PropertyRef Name="id" />
@@ -956,8 +924,8 @@
           <Property Name="comissao" Type="Decimal" Precision="10" Scale="2" />
           <NavigationProperty Name="Pagamentos_Vendas" Relationship="ServidorLojaModel.FK_PagamentoVenda_Venda" FromRole="Vendas" ToRole="Pagamentos_Vendas" />
           <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.FK_VendaProduto_Venda" FromRole="Vendas" ToRole="Vendas_Produtos" />
-          <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.FK_Venda_Usuario" FromRole="Vendas" ToRole="Usuarios" />
           <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" FromRole="Vendas" ToRole="Clientes" />
+          <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.FK_Venda_Usuario" FromRole="Vendas" ToRole="Usuarios" />
         </EntityType>
         <EntityType Name="Vendas_Produtos">
           <Key>
@@ -1016,18 +984,6 @@
             </Principal>
             <Dependent Role="Compras">
               <PropertyRef Name="id_produto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Log_Ponto">
-          <End Type="ServidorLojaModel.CtrlPonto" Role="CtrlPonto" Multiplicity="1" />
-          <End Type="ServidorLojaModel.LogPonto" Role="LogPonto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CtrlPonto">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="LogPonto">
-              <PropertyRef Name="id_Ponto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1112,62 +1068,6 @@
           <Property Name="numero" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.FK_Usuario_Perfil" FromRole="Perfis" ToRole="Usuarios" />
         </EntityType>
-        <EntityType Name="Usuarios">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="registro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="senha" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="id_Perfil" Type="Int32" />
-          <Property Name="bancoHoras" Type="Double" Nullable="false" />
-          <Property Name="salario" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <Property Name="dt_Inclusao" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CtrlPonto" Relationship="ServidorLojaModel.FK_Ponto_Usuario" FromRole="Usuarios" ToRole="CtrlPonto" />
-          <NavigationProperty Name="Perfis" Relationship="ServidorLojaModel.FK_Usuario_Perfil" FromRole="Usuarios" ToRole="Perfis" />
-          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK_Venda_Usuario" FromRole="Usuarios" ToRole="Vendas" />
-        </EntityType>
-        <Association Name="FK_Ponto_Usuario">
-          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="ServidorLojaModel.CtrlPonto" Role="CtrlPonto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CtrlPonto">
-              <PropertyRef Name="Id_User" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario_Perfil">
-          <End Type="ServidorLojaModel.Perfis" Role="Perfis" Multiplicity="0..1" />
-          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Perfis">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Usuarios">
-              <PropertyRef Name="id_Perfil" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Venda_Usuario">
-          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
-          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vendas">
-              <PropertyRef Name="id_Usuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="id" />
@@ -1248,6 +1148,72 @@
             </Principal>
             <Dependent Role="Pagamentos">
               <PropertyRef Name="id_movimento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogPonto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Ponto" Type="Int32" Nullable="false" />
+          <Property Name="valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_User" Type="Int32" Nullable="false" />
+          <Property Name="dt_Alteracao" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="rg" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="registro" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="senha" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="id_Perfil" Type="Int32" />
+          <Property Name="bancoHoras" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="salario" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="dt_Inclusao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CtrlPonto" Relationship="ServidorLojaModel.FK_Ponto_Usuario" FromRole="Usuarios" ToRole="CtrlPonto" />
+          <NavigationProperty Name="Perfis" Relationship="ServidorLojaModel.FK_Usuario_Perfil" FromRole="Usuarios" ToRole="Perfis" />
+          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK_Venda_Usuario" FromRole="Usuarios" ToRole="Vendas" />
+        </EntityType>
+        <Association Name="FK_Ponto_Usuario">
+          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="ServidorLojaModel.CtrlPonto" Role="CtrlPonto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CtrlPonto">
+              <PropertyRef Name="Id_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Perfil">
+          <End Type="ServidorLojaModel.Perfis" Role="Perfis" Multiplicity="0..1" />
+          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfis">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="id_Perfil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Venda_Usuario">
+          <End Type="ServidorLojaModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vendas">
+              <PropertyRef Name="id_Usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1412,17 +1378,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LogPonto">
-            <EntityTypeMapping TypeName="ServidorLojaModel.LogPonto">
-              <MappingFragment StoreEntitySet="LogPonto">
-                <ScalarProperty Name="dt_Alteracao" ColumnName="dt_Alteracao" />
-                <ScalarProperty Name="id_User" ColumnName="id_User" />
-                <ScalarProperty Name="valor" ColumnName="valor" />
-                <ScalarProperty Name="id_Ponto" ColumnName="id_Ponto" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Pagamentos">
             <EntityTypeMapping TypeName="ServidorLojaModel.Pagamentos">
               <MappingFragment StoreEntitySet="Pagamentos">
@@ -1519,24 +1474,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="ServidorLojaModel.Usuarios">
-              <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="dt_Inclusao" ColumnName="dt_Inclusao" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="salario" ColumnName="salario" />
-                <ScalarProperty Name="bancoHoras" ColumnName="bancoHoras" />
-                <ScalarProperty Name="id_Perfil" ColumnName="id_Perfil" />
-                <ScalarProperty Name="senha" ColumnName="senha" />
-                <ScalarProperty Name="registro" ColumnName="registro" />
-                <ScalarProperty Name="rg" ColumnName="rg" />
-                <ScalarProperty Name="cpf" ColumnName="cpf" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="ServidorLojaModel.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
@@ -1566,6 +1503,35 @@
                 <ScalarProperty Name="data" ColumnName="data" />
                 <ScalarProperty Name="valor" ColumnName="valor" />
                 <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogPonto">
+            <EntityTypeMapping TypeName="ServidorLojaModel.LogPonto">
+              <MappingFragment StoreEntitySet="LogPonto">
+                <ScalarProperty Name="dt_Alteracao" ColumnName="dt_Alteracao" />
+                <ScalarProperty Name="id_User" ColumnName="id_User" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="id_Ponto" ColumnName="id_Ponto" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="ServidorLojaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="dt_Inclusao" ColumnName="dt_Inclusao" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="salario" ColumnName="salario" />
+                <ScalarProperty Name="bancoHoras" ColumnName="bancoHoras" />
+                <ScalarProperty Name="id_Perfil" ColumnName="id_Perfil" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="registro" ColumnName="registro" />
+                <ScalarProperty Name="rg" ColumnName="rg" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

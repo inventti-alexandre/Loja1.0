@@ -11,15 +11,16 @@ using Loja1._0.Model;
 
 namespace Loja1._0
 {
-    public partial class VendaData : Form
+    public partial class VendaProduto : Form
     {
         private Model.Usuarios user;
 
-        public VendaData(Model.Usuarios user)
+        public VendaProduto(Model.Usuarios user)
         {
             this.user = user;
             InitializeComponent();
         }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {

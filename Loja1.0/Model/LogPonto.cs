@@ -19,7 +19,5 @@ namespace Loja1._0.Model
         public string valor { get; set; }
         public int id_User { get; set; }
         public System.DateTime dt_Alteracao { get; set; }
-    
-        public virtual CtrlPonto CtrlPonto { get; set; }
     }
 }

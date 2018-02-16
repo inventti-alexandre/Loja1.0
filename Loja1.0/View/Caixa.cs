@@ -63,7 +63,7 @@ namespace Loja1._0
             InitializeComponent();
 
             //configuração visual do form
-            lblUser.Text = user.nome;
+            lblUser.Text = user.login;
             txtPedidoNum1.Focus();
             AcceptButton = btnAdicionar1;
             txtRecebido.Text = "0.00";
@@ -150,24 +150,30 @@ namespace Loja1._0
                      * e ainda da condição de preenchimento do radio button referente a nota paulista */
                     if (venda.Clientes != null && cliente.cpf != null && rdbNPsim.Checked)
                     {
+                        //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF com cnpj ou cpf do cliente
                         BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
+                        
                         //chamada da função para adição de venda a lista de vendas
                         adicionaPrimeiro();
                     }
 
                     else if (rdbNPsim.Checked && validaCpf.validaTipoCpfCnpj(txtCpf.Text))
                     {
+                        //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF com cnpj ou cpf do cliente
                         BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
+                        
                         //chamada da função para adição de venda a lista de vendas
                         adicionaPrimeiro();
                     }
 
                     else if (confirmaAssociacao(sender, e))
                     {
+                        //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF sem associação a cliente
                         BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(""));
+
                         adicionaPrimeiro();
                     }
                 }
@@ -895,6 +901,7 @@ namespace Loja1._0
 
                             Compras compra = controle.PesquisaCompraAnterior(produto.id);
 
+                            //função de impressão de Cupom Fiscal
                             //adiciona o produto ao cupom como item vendido                        
                             BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, compra.preco_venda.ToString(), "%", "0"));
 
@@ -1393,11 +1400,12 @@ namespace Loja1._0
                         controle.SalvaAtualiza();
                         MessageBox.Show("Exclusão do pagamento realizada com sucesso", "Ação Bem Sucedida");
 
+                        //função de impressão de Cupom Fiscal
                         //cancela o cupom em aberto ou último emitido na ausência deste
                         BemaFI32.Bematech_FI_CancelaCupom();
 
                         BemaFI32.Bematech_FI_AbreCupom("");
-                        BemaFI32.Bematech_FI_FechaComprovanteNaoFiscalVinculado();
+                        BemaFI32.Bematech_FI_FechaComprovanteNaoFiscalVinculado();                        
 
                         //limpa o formulário, retorma a codição inicial
                         btnLimpar_Click(sender, e);
@@ -2349,6 +2357,7 @@ namespace Loja1._0
                     ValorAcrescimoDesconto = (valorAcres - valorDesc).ToString("0.00");
                 }
 
+                //função de impressão de Cupom Fiscal
                 //Abre o cupom fiscal e imprime o total mais valor acrescido/desconto
                 //ABERTURA DO FECHAMENTO
                 //Bematech_FI_IniciaFechamentoCupom(string AcrescimoDesconto, string TipoAcrescimoDesconto, string ValorAcrescimoDesconto);
@@ -2356,7 +2365,6 @@ namespace Loja1._0
 
                 //imprime cada valor e sua respectiva forma de pagamento
                 //PAGAMENTOS
-                //Bematech_FI_EfetuaFormaPagamento(string FormaPagamento, string ValorFormaPagamento);
                 if (Convert.ToDecimal(PagDinheiro.valorPagamento) > 0)
                 {
                     BemaFI32.Bematech_FI_EfetuaFormaPagamento("Dinheiro", PagDinheiro.valorPagamento);
@@ -2539,7 +2547,9 @@ namespace Loja1._0
             DialogResult = MessageBox.Show("Você tem certeza que deseja cancelar o cupom em aberto e limpar o formulário ?", "Ação Necessária", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (DialogResult.Equals(DialogResult.Yes))
             {
+                //função de impressão de Cupom Fiscal
                 BemaFI32.Bematech_FI_CancelaCupom();
+
                 MessageBox.Show("Cupom Fiscal cancelado com sucesso", "Ação Bem Sucedida");
                 btnLimpar_Click(sender, e);
             }

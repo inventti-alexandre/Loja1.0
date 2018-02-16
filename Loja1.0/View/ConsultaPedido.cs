@@ -35,7 +35,7 @@ namespace Loja1._0
                 gerencia = controle.PesquisaGerenciamento(1);
                 InitializeComponent();
                 AcceptButton = btnPesquisar;
-                lblUser.Text = user.nome;
+                lblUser.Text = user.login;
             }
             catch
             {

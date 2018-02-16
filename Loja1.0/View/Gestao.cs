@@ -145,8 +145,6 @@ namespace Loja1._0
                             "<br />Relação de Produtos vendidos:" +
                             "<br />" + relaçãoProdutos;
 
-
-
             Email email = new Email();
             email.EnviaEmailMovimento(movimentoDia);
 

@@ -62,6 +62,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvPonto = new System.Windows.Forms.DataGridView();
             this.PanelLançamento = new System.Windows.Forms.GroupBox();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnIncluir = new System.Windows.Forms.Button();
             this.PanelTipo = new System.Windows.Forms.Panel();
@@ -113,11 +114,11 @@
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblNome.Location = new System.Drawing.Point(524, 4);
+            this.lblNome.Location = new System.Drawing.Point(518, 4);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(197, 33);
+            this.lblNome.Size = new System.Drawing.Size(211, 33);
             this.lblNome.TabIndex = 3;
-            this.lblNome.Text = "Folha de Pag.";
+            this.lblNome.Text = "Controle Ponto";
             // 
             // label3
             // 
@@ -374,9 +375,9 @@
             this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogo.Location = new System.Drawing.Point(590, 498);
+            this.pnlLogo.Location = new System.Drawing.Point(601, 514);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(197, 97);
+            this.pnlLogo.Size = new System.Drawing.Size(170, 78);
             this.pnlLogo.TabIndex = 1;
             // 
             // groupBox1
@@ -433,10 +434,12 @@
             this.dgvPonto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPonto.Size = new System.Drawing.Size(557, 358);
             this.dgvPonto.TabIndex = 1;
+            this.dgvPonto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonto_CellClick);
             // 
             // PanelLançamento
             // 
             this.PanelLançamento.BackColor = System.Drawing.Color.Khaki;
+            this.PanelLançamento.Controls.Add(this.btnExcluir);
             this.PanelLançamento.Controls.Add(this.btnLimpar);
             this.PanelLançamento.Controls.Add(this.btnIncluir);
             this.PanelLançamento.Controls.Add(this.PanelTipo);
@@ -454,10 +457,27 @@
             this.PanelLançamento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.PanelLançamento.Location = new System.Drawing.Point(580, 199);
             this.PanelLançamento.Name = "PanelLançamento";
-            this.PanelLançamento.Size = new System.Drawing.Size(217, 294);
+            this.PanelLançamento.Size = new System.Drawing.Size(217, 309);
             this.PanelLançamento.TabIndex = 47;
             this.PanelLançamento.TabStop = false;
             this.PanelLançamento.Text = "Limpar";
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.AutoEllipsis = true;
+            this.btnExcluir.BackColor = System.Drawing.Color.White;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.Enabled = false;
+            this.btnExcluir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExcluir.Location = new System.Drawing.Point(64, 280);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(87, 23);
+            this.btnExcluir.TabIndex = 63;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Visible = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnLimpar
             // 
@@ -469,7 +489,7 @@
             this.btnLimpar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnLimpar.Location = new System.Drawing.Point(115, 251);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(87, 36);
+            this.btnLimpar.Size = new System.Drawing.Size(87, 23);
             this.btnLimpar.TabIndex = 62;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
@@ -485,7 +505,7 @@
             this.btnIncluir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnIncluir.Location = new System.Drawing.Point(15, 251);
             this.btnIncluir.Name = "btnIncluir";
-            this.btnIncluir.Size = new System.Drawing.Size(87, 36);
+            this.btnIncluir.Size = new System.Drawing.Size(87, 23);
             this.btnIncluir.TabIndex = 61;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = false;
@@ -770,6 +790,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvPonto;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }
 

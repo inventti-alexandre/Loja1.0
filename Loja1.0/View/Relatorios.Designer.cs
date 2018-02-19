@@ -33,14 +33,14 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnReserva1 = new System.Windows.Forms.Button();
+            this.btnProdQuant = new System.Windows.Forms.Button();
             this.btnPagReceb = new System.Windows.Forms.Button();
             this.btnVendaUser = new System.Windows.Forms.Button();
             this.btnVendaProd = new System.Windows.Forms.Button();
-            this.btnReserva2 = new System.Windows.Forms.Button();
+            this.btnPedidosAbertosData = new System.Windows.Forms.Button();
             this.btnVendaPag = new System.Windows.Forms.Button();
             this.btnPagPendente = new System.Windows.Forms.Button();
-            this.btnPagEfetuado = new System.Windows.Forms.Button();
+            this.btnSaidaPagamentos = new System.Windows.Forms.Button();
             this.btnFornecedores = new System.Windows.Forms.Button();
             this.btnMovimentoData = new System.Windows.Forms.Button();
             this.btnCompraData = new System.Windows.Forms.Button();
@@ -96,14 +96,14 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btnReserva1);
+            this.panel1.Controls.Add(this.btnProdQuant);
             this.panel1.Controls.Add(this.btnPagReceb);
             this.panel1.Controls.Add(this.btnVendaUser);
             this.panel1.Controls.Add(this.btnVendaProd);
-            this.panel1.Controls.Add(this.btnReserva2);
+            this.panel1.Controls.Add(this.btnPedidosAbertosData);
             this.panel1.Controls.Add(this.btnVendaPag);
             this.panel1.Controls.Add(this.btnPagPendente);
-            this.panel1.Controls.Add(this.btnPagEfetuado);
+            this.panel1.Controls.Add(this.btnSaidaPagamentos);
             this.panel1.Controls.Add(this.btnFornecedores);
             this.panel1.Controls.Add(this.btnMovimentoData);
             this.panel1.Controls.Add(this.btnCompraData);
@@ -113,20 +113,20 @@
             this.panel1.Size = new System.Drawing.Size(670, 239);
             this.panel1.TabIndex = 8;
             // 
-            // btnReserva1
+            // btnProdQuant
             // 
-            this.btnReserva1.AutoEllipsis = true;
-            this.btnReserva1.BackColor = System.Drawing.Color.White;
-            this.btnReserva1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReserva1.Enabled = false;
-            this.btnReserva1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReserva1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnReserva1.Location = new System.Drawing.Point(341, 166);
-            this.btnReserva1.Name = "btnReserva1";
-            this.btnReserva1.Size = new System.Drawing.Size(145, 45);
-            this.btnReserva1.TabIndex = 10;
-            this.btnReserva1.Text = "RESERVA";
-            this.btnReserva1.UseVisualStyleBackColor = false;
+            this.btnProdQuant.AutoEllipsis = true;
+            this.btnProdQuant.BackColor = System.Drawing.Color.White;
+            this.btnProdQuant.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProdQuant.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProdQuant.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnProdQuant.Location = new System.Drawing.Point(18, 97);
+            this.btnProdQuant.Name = "btnProdQuant";
+            this.btnProdQuant.Size = new System.Drawing.Size(145, 45);
+            this.btnProdQuant.TabIndex = 10;
+            this.btnProdQuant.Text = "Produtos quantidade";
+            this.btnProdQuant.UseVisualStyleBackColor = false;
+            this.btnProdQuant.Click += new System.EventHandler(this.btnProdQuant_Click);
             // 
             // btnPagReceb
             // 
@@ -135,11 +135,11 @@
             this.btnPagReceb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagReceb.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPagReceb.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPagReceb.Location = new System.Drawing.Point(18, 97);
+            this.btnPagReceb.Location = new System.Drawing.Point(341, 97);
             this.btnPagReceb.Name = "btnPagReceb";
             this.btnPagReceb.Size = new System.Drawing.Size(145, 45);
             this.btnPagReceb.TabIndex = 4;
-            this.btnPagReceb.Text = "Pagamentos recebidos";
+            this.btnPagReceb.Text = "Recebimentos por período";
             this.btnPagReceb.UseVisualStyleBackColor = false;
             this.btnPagReceb.Click += new System.EventHandler(this.btnPagReceb_Click);
             // 
@@ -150,7 +150,7 @@
             this.btnVendaUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVendaUser.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVendaUser.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnVendaUser.Location = new System.Drawing.Point(502, 97);
+            this.btnVendaUser.Location = new System.Drawing.Point(341, 166);
             this.btnVendaUser.Name = "btnVendaUser";
             this.btnVendaUser.Size = new System.Drawing.Size(145, 45);
             this.btnVendaUser.TabIndex = 7;
@@ -163,7 +163,6 @@
             this.btnVendaProd.AutoEllipsis = true;
             this.btnVendaProd.BackColor = System.Drawing.Color.White;
             this.btnVendaProd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVendaProd.Enabled = false;
             this.btnVendaProd.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVendaProd.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnVendaProd.Location = new System.Drawing.Point(18, 166);
@@ -174,20 +173,22 @@
             this.btnVendaProd.UseVisualStyleBackColor = false;
             this.btnVendaProd.Click += new System.EventHandler(this.btnVendaProd_Click);
             // 
-            // btnReserva2
+            // btnPedidosAbertosData
             // 
-            this.btnReserva2.AutoEllipsis = true;
-            this.btnReserva2.BackColor = System.Drawing.Color.White;
-            this.btnReserva2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReserva2.Enabled = false;
-            this.btnReserva2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReserva2.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnReserva2.Location = new System.Drawing.Point(502, 166);
-            this.btnReserva2.Name = "btnReserva2";
-            this.btnReserva2.Size = new System.Drawing.Size(145, 45);
-            this.btnReserva2.TabIndex = 11;
-            this.btnReserva2.Text = "RESERVA";
-            this.btnReserva2.UseVisualStyleBackColor = false;
+            this.btnPedidosAbertosData.AutoEllipsis = true;
+            this.btnPedidosAbertosData.BackColor = System.Drawing.Color.White;
+            this.btnPedidosAbertosData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPedidosAbertosData.Enabled = false;
+            this.btnPedidosAbertosData.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPedidosAbertosData.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPedidosAbertosData.Location = new System.Drawing.Point(492, 166);
+            this.btnPedidosAbertosData.Name = "btnPedidosAbertosData";
+            this.btnPedidosAbertosData.Size = new System.Drawing.Size(145, 45);
+            this.btnPedidosAbertosData.TabIndex = 11;
+            this.btnPedidosAbertosData.Text = "Pedidos abertos por período";
+            this.btnPedidosAbertosData.UseVisualStyleBackColor = false;
+            this.btnPedidosAbertosData.Visible = false;
+            this.btnPedidosAbertosData.Click += new System.EventHandler(this.btnPedidosAbertosData_Click);
             // 
             // btnVendaPag
             // 
@@ -219,20 +220,20 @@
             this.btnPagPendente.UseVisualStyleBackColor = false;
             this.btnPagPendente.Click += new System.EventHandler(this.btnPagPendente_Click);
             // 
-            // btnPagEfetuado
+            // btnSaidaPagamentos
             // 
-            this.btnPagEfetuado.AutoEllipsis = true;
-            this.btnPagEfetuado.BackColor = System.Drawing.Color.White;
-            this.btnPagEfetuado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPagEfetuado.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagEfetuado.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPagEfetuado.Location = new System.Drawing.Point(341, 97);
-            this.btnPagEfetuado.Name = "btnPagEfetuado";
-            this.btnPagEfetuado.Size = new System.Drawing.Size(145, 45);
-            this.btnPagEfetuado.TabIndex = 6;
-            this.btnPagEfetuado.Text = "Pagamentos efetuados";
-            this.btnPagEfetuado.UseVisualStyleBackColor = false;
-            this.btnPagEfetuado.Click += new System.EventHandler(this.btnPagEfetuado_Click);
+            this.btnSaidaPagamentos.AutoEllipsis = true;
+            this.btnSaidaPagamentos.BackColor = System.Drawing.Color.White;
+            this.btnSaidaPagamentos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaidaPagamentos.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaidaPagamentos.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSaidaPagamentos.Location = new System.Drawing.Point(502, 97);
+            this.btnSaidaPagamentos.Name = "btnSaidaPagamentos";
+            this.btnSaidaPagamentos.Size = new System.Drawing.Size(145, 45);
+            this.btnSaidaPagamentos.TabIndex = 6;
+            this.btnSaidaPagamentos.Text = "Saídas de capital por período";
+            this.btnSaidaPagamentos.UseVisualStyleBackColor = false;
+            this.btnSaidaPagamentos.Click += new System.EventHandler(this.btnSaidaPagamentos_Click);
             // 
             // btnFornecedores
             // 
@@ -354,14 +355,14 @@
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnReserva1;
+        private System.Windows.Forms.Button btnProdQuant;
         private System.Windows.Forms.Button btnPagReceb;
         private System.Windows.Forms.Button btnVendaUser;
         private System.Windows.Forms.Button btnVendaProd;
-        private System.Windows.Forms.Button btnReserva2;
+        private System.Windows.Forms.Button btnPedidosAbertosData;
         private System.Windows.Forms.Button btnVendaPag;
         private System.Windows.Forms.Button btnPagPendente;
-        private System.Windows.Forms.Button btnPagEfetuado;
+        private System.Windows.Forms.Button btnSaidaPagamentos;
         private System.Windows.Forms.Button btnFornecedores;
         private System.Windows.Forms.Button btnMovimentoData;
         private System.Windows.Forms.Button btnCompraData;

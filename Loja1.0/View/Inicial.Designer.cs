@@ -189,7 +189,6 @@
             this.btnFolhaPg.AutoEllipsis = true;
             this.btnFolhaPg.BackColor = System.Drawing.Color.White;
             this.btnFolhaPg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFolhaPg.Enabled = false;
             this.btnFolhaPg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFolhaPg.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnFolhaPg.Location = new System.Drawing.Point(18, 166);

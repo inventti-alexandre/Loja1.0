@@ -1,6 +1,6 @@
 ﻿namespace Loja1._0
 {
-    partial class PagamentosRecebidos
+    partial class PedidosAbertos
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagamentosRecebidos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PedidosAbertos));
             this.txtDataFim = new System.Windows.Forms.TextBox();
             this.lblDataFinal = new System.Windows.Forms.Label();
             this.txtDataInicio = new System.Windows.Forms.TextBox();
@@ -116,11 +116,11 @@
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblNome.Location = new System.Drawing.Point(490, 7);
+            this.lblNome.Location = new System.Drawing.Point(530, 7);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(265, 27);
+            this.lblNome.Size = new System.Drawing.Size(194, 27);
             this.lblNome.TabIndex = 27;
-            this.lblNome.Text = "Recebimentos por período";
+            this.lblNome.Text = "Pedidos em aberto";
             // 
             // btnExit
             // 
@@ -170,7 +170,7 @@
             this.btnImprime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImprime.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprime.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprime.Location = new System.Drawing.Point(553, 54);
+            this.btnImprime.Location = new System.Drawing.Point(549, 54);
             this.btnImprime.Name = "btnImprime";
             this.btnImprime.Size = new System.Drawing.Size(91, 45);
             this.btnImprime.TabIndex = 35;
@@ -184,14 +184,14 @@
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPesquisar.Location = new System.Drawing.Point(456, 54);
+            this.btnPesquisar.Location = new System.Drawing.Point(452, 54);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(91, 45);
             this.btnPesquisar.TabIndex = 34;
             this.btnPesquisar.Text = "Buscar";
             this.btnPesquisar.UseVisualStyleBackColor = false;
             // 
-            // PagamentosRecebidos
+            // PedidosAbertos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -213,7 +213,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "PagamentosRecebidos";
+            this.Name = "PedidosAbertos";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Alemão da Construção 1.0";

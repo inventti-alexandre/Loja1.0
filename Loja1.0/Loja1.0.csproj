@@ -233,12 +233,6 @@
     <Compile Include="View\ControleHoras.Designer.cs">
       <DependentUpon>ControleHoras.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Ponto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Ponto.Designer.cs">
-      <DependentUpon>Ponto.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Entrega.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -323,11 +317,23 @@
     <Compile Include="View\Relatórios\PagamentosPendentes.Designer.cs">
       <DependentUpon>PagamentosPendentes.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Relatórios\PagamentosEfetuados.cs">
+    <Compile Include="View\Relatórios\PagamentosSaida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Relatórios\PagamentosEfetuados.Designer.cs">
-      <DependentUpon>PagamentosEfetuados.cs</DependentUpon>
+    <Compile Include="View\Relatórios\PagamentosSaida.Designer.cs">
+      <DependentUpon>PagamentosSaida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Relatórios\ProdutoQuantidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Relatórios\ProdutoQuantidade.Designer.cs">
+      <DependentUpon>ProdutoQuantidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Relatórios\PedidosAbertos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Relatórios\PedidosAbertos.Designer.cs">
+      <DependentUpon>PedidosAbertos.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Relatórios\VendaUser.cs">
       <SubType>Form</SubType>
@@ -341,11 +347,11 @@
     <Compile Include="View\Relatórios\VendaProduto.Designer.cs">
       <DependentUpon>VendaProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Relatórios\VendaPagamento .cs">
+    <Compile Include="View\Relatórios\VendaPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Relatórios\VendaPagamento .Designer.cs">
-      <DependentUpon>VendaPagamento .cs</DependentUpon>
+    <Compile Include="View\Relatórios\VendaPagamento.Designer.cs">
+      <DependentUpon>VendaPagamento.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Relatórios\VendaData.cs">
       <SubType>Form</SubType>
@@ -421,9 +427,6 @@
     <EmbeddedResource Include="View\ControleHoras.resx">
       <DependentUpon>ControleHoras.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Ponto.resx">
-      <DependentUpon>Ponto.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Entrega.resx">
       <DependentUpon>Entrega.cs</DependentUpon>
     </EmbeddedResource>
@@ -466,8 +469,14 @@
     <EmbeddedResource Include="View\Relatórios\PagamentosPendentes.resx">
       <DependentUpon>PagamentosPendentes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Relatórios\PagamentosEfetuados.resx">
-      <DependentUpon>PagamentosEfetuados.cs</DependentUpon>
+    <EmbeddedResource Include="View\Relatórios\PagamentosSaida.resx">
+      <DependentUpon>PagamentosSaida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Relatórios\ProdutoQuantidade.resx">
+      <DependentUpon>ProdutoQuantidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Relatórios\PedidosAbertos.resx">
+      <DependentUpon>PedidosAbertos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Relatórios\VendaUser.resx">
       <DependentUpon>VendaUser.cs</DependentUpon>
@@ -475,8 +484,8 @@
     <EmbeddedResource Include="View\Relatórios\VendaProduto.resx">
       <DependentUpon>VendaProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Relatórios\VendaPagamento .resx">
-      <DependentUpon>VendaPagamento .cs</DependentUpon>
+    <EmbeddedResource Include="View\Relatórios\VendaPagamento.resx">
+      <DependentUpon>VendaPagamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Relatórios\VendaData.resx">
       <DependentUpon>VendaData.cs</DependentUpon>

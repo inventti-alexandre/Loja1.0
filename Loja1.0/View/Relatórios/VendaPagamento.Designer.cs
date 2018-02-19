@@ -1,6 +1,6 @@
 ﻿namespace Loja1._0
 {
-    partial class PagamentosRecebidos
+    partial class VendaPagamento
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagamentosRecebidos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendaPagamento));
             this.txtDataFim = new System.Windows.Forms.TextBox();
             this.lblDataFinal = new System.Windows.Forms.Label();
             this.txtDataInicio = new System.Windows.Forms.TextBox();
@@ -39,6 +39,11 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.btnImprime = new System.Windows.Forms.Button();
             this.btnPesquisar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRelatorio)).BeginInit();
@@ -46,7 +51,7 @@
             // 
             // txtDataFim
             // 
-            this.txtDataFim.Location = new System.Drawing.Point(294, 65);
+            this.txtDataFim.Location = new System.Drawing.Point(294, 55);
             this.txtDataFim.Name = "txtDataFim";
             this.txtDataFim.Size = new System.Drawing.Size(137, 20);
             this.txtDataFim.TabIndex = 33;
@@ -59,7 +64,7 @@
             this.lblDataFinal.BackColor = System.Drawing.Color.Transparent;
             this.lblDataFinal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblDataFinal.Location = new System.Drawing.Point(244, 66);
+            this.lblDataFinal.Location = new System.Drawing.Point(244, 56);
             this.lblDataFinal.Name = "lblDataFinal";
             this.lblDataFinal.Size = new System.Drawing.Size(44, 19);
             this.lblDataFinal.TabIndex = 32;
@@ -67,7 +72,7 @@
             // 
             // txtDataInicio
             // 
-            this.txtDataInicio.Location = new System.Drawing.Point(101, 65);
+            this.txtDataInicio.Location = new System.Drawing.Point(101, 55);
             this.txtDataInicio.Name = "txtDataInicio";
             this.txtDataInicio.Size = new System.Drawing.Size(137, 20);
             this.txtDataInicio.TabIndex = 31;
@@ -80,7 +85,7 @@
             this.lblData.BackColor = System.Drawing.Color.Transparent;
             this.lblData.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblData.Location = new System.Drawing.Point(18, 66);
+            this.lblData.Location = new System.Drawing.Point(18, 56);
             this.lblData.Name = "lblData";
             this.lblData.Size = new System.Drawing.Size(77, 19);
             this.lblData.TabIndex = 30;
@@ -116,11 +121,11 @@
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblNome.Location = new System.Drawing.Point(490, 7);
+            this.lblNome.Location = new System.Drawing.Point(496, 7);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(265, 27);
+            this.lblNome.Size = new System.Drawing.Size(255, 27);
             this.lblNome.TabIndex = 27;
-            this.lblNome.Text = "Recebimentos por período";
+            this.lblNome.Text = "Vendas por meio de pag.";
             // 
             // btnExit
             // 
@@ -143,7 +148,7 @@
             this.pnlLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLogo.BackgroundImage")));
             this.pnlLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogo.Location = new System.Drawing.Point(663, 41);
+            this.pnlLogo.Location = new System.Drawing.Point(662, 41);
             this.pnlLogo.Name = "pnlLogo";
             this.pnlLogo.Size = new System.Drawing.Size(136, 70);
             this.pnlLogo.TabIndex = 25;
@@ -163,6 +168,66 @@
             this.lblTitulo.TabIndex = 24;
             this.lblTitulo.Text = "Sistema Alemão da Construção 1.0";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.radioButton1.Location = new System.Drawing.Point(22, 84);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(64, 17);
+            this.radioButton1.TabIndex = 35;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Dinheiro";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.radioButton2.Location = new System.Drawing.Point(113, 84);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(56, 17);
+            this.radioButton2.TabIndex = 36;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Débito";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.radioButton3.Location = new System.Drawing.Point(204, 84);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(68, 17);
+            this.radioButton3.TabIndex = 37;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Pré-pago";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.radioButton4.Location = new System.Drawing.Point(295, 84);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(58, 17);
+            this.radioButton4.TabIndex = 38;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Crédito";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.radioButton5.Location = new System.Drawing.Point(383, 84);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(62, 17);
+            this.radioButton5.TabIndex = 39;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Cheque";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
             // btnImprime
             // 
             this.btnImprime.AutoEllipsis = true;
@@ -170,10 +235,10 @@
             this.btnImprime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImprime.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprime.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprime.Location = new System.Drawing.Point(553, 54);
+            this.btnImprime.Location = new System.Drawing.Point(552, 55);
             this.btnImprime.Name = "btnImprime";
             this.btnImprime.Size = new System.Drawing.Size(91, 45);
-            this.btnImprime.TabIndex = 35;
+            this.btnImprime.TabIndex = 41;
             this.btnImprime.Text = "Imprimir";
             this.btnImprime.UseVisualStyleBackColor = false;
             // 
@@ -184,14 +249,14 @@
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPesquisar.Location = new System.Drawing.Point(456, 54);
+            this.btnPesquisar.Location = new System.Drawing.Point(455, 55);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(91, 45);
-            this.btnPesquisar.TabIndex = 34;
+            this.btnPesquisar.TabIndex = 40;
             this.btnPesquisar.Text = "Buscar";
             this.btnPesquisar.UseVisualStyleBackColor = false;
             // 
-            // PagamentosRecebidos
+            // VendaPagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -200,6 +265,11 @@
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.btnImprime);
             this.Controls.Add(this.btnPesquisar);
+            this.Controls.Add(this.radioButton5);
+            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtDataFim);
             this.Controls.Add(this.lblDataFinal);
             this.Controls.Add(this.txtDataInicio);
@@ -213,7 +283,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "PagamentosRecebidos";
+            this.Name = "VendaPagamento";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema Alemão da Construção 1.0";
@@ -234,6 +304,11 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel pnlLogo;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Button btnImprime;
         private System.Windows.Forms.Button btnPesquisar;
     }

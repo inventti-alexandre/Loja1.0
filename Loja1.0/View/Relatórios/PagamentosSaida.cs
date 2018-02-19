@@ -11,11 +11,11 @@ using Loja1._0.Model;
 
 namespace Loja1._0
 {
-    public partial class PagamentosEfetuados : Form
+    public partial class PagamentosSaida : Form
     {
         private Model.Usuarios user;
 
-        public PagamentosEfetuados(Model.Usuarios user)
+        public PagamentosSaida(Model.Usuarios user)
         {
             this.user = user;
             InitializeComponent();

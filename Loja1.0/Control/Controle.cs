@@ -524,6 +524,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaPagamentosTotais();
         }
 
+        internal List<Vendas> pesquisaVendasPeriodo(DateTime inicio, DateTime final)
+        {
+            return dbRepository.PesquisaVendasByDate(inicio, final);
+        }
+
         public void RemovePagamento(Pagamentos pag)
         {
             dbRepository.ExcluirPagamento(pag);

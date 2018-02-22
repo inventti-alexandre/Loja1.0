@@ -425,6 +425,14 @@ namespace Loja1._0.Model
                     select movimento).ToList();
         }
 
+        internal List<Vendas> PesquisaVendasByDate(DateTime inicio, DateTime final)
+        {
+            return (from vendas in dataEntity.Vendas
+                    where vendas.data_Venda >= inicio
+                    && vendas.data_Venda <= final
+                    select vendas).ToList();
+        }
+
         public Movimentos PesquisaMovimentoByID(int id)
         {
             return (from movimento in dataEntity.Movimentos

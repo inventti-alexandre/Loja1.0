@@ -408,16 +408,15 @@ namespace Loja1._0
                     if (Convert.ToDecimal(txtPreco.Text) < (Convert.ToDecimal(txtCusto.Text) + (Convert.ToDecimal(txtCusto.Text) * (gerencia.lucroMinimo / 100))))
                     {
                         MessageBox.Show("O campo \"Preco\" está com uma taxa de lucro inferior ao determinado pela Administração.");
-                    }
-
-                    movimento = new Movimentos();
-                    controle.SalvarMovimento(movimento);
+                    }                    
 
                     dgvProdutos.Enabled = true;
 
                     //se flag novo = true, novo elemento
                     if (flagNovo)
                     {
+                        movimento = new Movimentos();
+                        controle.SalvarMovimento(movimento);
                         movimento.data = DateTime.Today;
                         movimento.desc = "Aquisição de Estoque";
                         movimento.id_tipo = 12;
@@ -470,6 +469,8 @@ namespace Loja1._0
                     {
                         if (qntTemp < Convert.ToInt32(txtQntAtual.Text))
                         {
+                            movimento = new Movimentos();
+                            controle.SalvarMovimento(movimento);
                             movimento.data = DateTime.Today;
                             movimento.desc = "Aquisição de Estoque";
                             movimento.id_tipo = 12;
@@ -493,6 +494,7 @@ namespace Loja1._0
                         produto.id_medida = controle.PesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
                         produto.imagem = bytes;
                         produto.status = 1;
+                        
                         controle.SalvaAtualiza();
 
                         if (qntTemp < Convert.ToInt32(txtQntAtual.Text))
@@ -595,7 +597,7 @@ namespace Loja1._0
                     txtLocalSigla.Text = produto.Estoque.letra_local.ToString();
                     txtLocalRef.Text = produto.Estoque.ref_local.ToString();
                     cmbFornecedor.SelectedValue = controle.PesquisaFornecedorById(compra.id_fornecedor).nome;
-                    cmbUnidade.SelectedValue = controle.PesquisaMedidaById(produto.id_medida).medida;
+                    cmbUnidade.SelectedValue = controle.PesquisaMedidaById(Convert.ToInt32(produto.id_medida)).medida;
                     if (produto.imagem == null)
                     {
                         pnlImagem.BackgroundImage = branco;

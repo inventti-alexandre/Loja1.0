@@ -36,7 +36,6 @@ namespace Loja1._0.Model
         public virtual DbSet<Gerenciamento> Gerenciamento { get; set; }
         public virtual DbSet<Pagamentos> Pagamentos { get; set; }
         public virtual DbSet<Pagamentos_Vendas> Pagamentos_Vendas { get; set; }
-        public virtual DbSet<Produtos> Produtos { get; set; }
         public virtual DbSet<Tipos_Movimentacao> Tipos_Movimentacao { get; set; }
         public virtual DbSet<UnidMedidas> UnidMedidas { get; set; }
         public virtual DbSet<Vendas> Vendas { get; set; }
@@ -46,5 +45,6 @@ namespace Loja1._0.Model
         public virtual DbSet<Movimentos> Movimentos { get; set; }
         public virtual DbSet<LogPonto> LogPonto { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Produtos> Produtos { get; set; }
     }
 }

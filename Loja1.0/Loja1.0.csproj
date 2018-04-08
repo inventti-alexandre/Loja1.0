@@ -87,37 +87,37 @@
     </Compile>
     <Compile Include="Control\Valida.cs" />
     <Compile Include="Model\Cidades.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Clientes.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Compras.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Contabilidade.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CtrlPonto.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estados.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estoque.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fechamento.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fornecedores.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Gerenciamento.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LogPonto.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -134,51 +134,51 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\ModelLocal.Context.cs">
+    <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelLocal.Context.tt</DependentUpon>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ModelLocal.cs">
+    <Compile Include="Model\Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ModelLocal.Designer.cs">
+    <Compile Include="Model\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelLocal.edmx</DependentUpon>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Movimentos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos_Vendas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Perfis.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Produtos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Repository.cs" />
     <Compile Include="Model\Tipos_Movimentacao.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UnidMedidas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuarios.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas_Produtos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -523,12 +523,12 @@
     <None Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="Model\ModelLocal.edmx">
+    <EntityDeploy Include="Model\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelLocal.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\ModelLocal.edmx.diagram">
-      <DependentUpon>ModelLocal.edmx</DependentUpon>
+    <None Include="Model\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Produtos.prod.datasource" />
@@ -561,6 +561,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Model\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <None Include="Image\Branco.jpg" />
     <None Include="Image\Engrenagem.png" />
     <Content Include="Image\exit.png" />
@@ -583,16 +593,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\ModelLocal.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelLocal.edmx</DependentUpon>
-      <LastGenOutput>ModelLocal.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\ModelLocal.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelLocal.edmx</DependentUpon>
-      <LastGenOutput>ModelLocal.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup />

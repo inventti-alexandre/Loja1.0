@@ -10,11 +10,11 @@ namespace Loja1._0.Model
     class Repository : DbContext
     {
         #region Repositório de itens de uso Genérico
-        
+
         //Alternar entre BD Produção e BD Teste Local
 
         //Debug com BD Local
-        DbEntitiesLocal dataEntity = new DbEntitiesLocal();
+        DbLocalEntities dataEntity = new DbLocalEntities();
 
         //Produção com BD no server
         //DbEntities dataEntity = new DbEntities();
@@ -423,6 +423,14 @@ namespace Loja1._0.Model
             return (from movimento in dataEntity.Movimentos
                     orderby movimento.id_tipo
                     select movimento).ToList();
+        }
+
+        internal List<Vendas> PesquisaVendasByDate(DateTime inicio, DateTime final)
+        {
+            return (from vendas in dataEntity.Vendas
+                    where vendas.data_Venda >= inicio
+                    && vendas.data_Venda <= final
+                    select vendas).ToList();
         }
 
         public Movimentos PesquisaMovimentoByID(int id)

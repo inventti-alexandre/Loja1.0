@@ -12,15 +12,17 @@ namespace Loja1._0.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Vendas_Produtos
+    public partial class Estoque
     {
         public int id { get; set; }
-        public Nullable<int> id_venda { get; set; }
-        public Nullable<int> num_item { get; set; }
-        public Nullable<int> id_produto { get; set; }
-        public int quantidade { get; set; }
+        public int id_produto { get; set; }
+        public int qnt_atual { get; set; }
+        public int qnt_minima { get; set; }
+        public Nullable<int> qnt_maxima { get; set; }
+        public Nullable<int> num_local { get; set; }
+        public string letra_local { get; set; }
+        public string ref_local { get; set; }
     
-        public virtual Vendas Vendas { get; set; }
         public virtual Produtos Produtos { get; set; }
     }
 }

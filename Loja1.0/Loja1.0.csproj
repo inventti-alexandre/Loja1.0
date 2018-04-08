@@ -86,6 +86,39 @@
       <DependentUpon>PrintablePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\Valida.cs" />
+    <Compile Include="Model\Cidades.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Clientes.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Compras.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contabilidade.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CtrlPonto.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Estados.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Estoque.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fechamento.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Fornecedores.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Gerenciamento.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LogPonto.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,7 +134,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\ModelLocal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLocal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelLocal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelLocal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Movimentos.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Pagamentos.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Pagamentos_Vendas.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Perfis.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Produtos.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Repository.cs" />
+    <Compile Include="Model\Tipos_Movimentacao.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UnidMedidas.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Usuarios.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vendas.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vendas_Produtos.cs">
+      <DependentUpon>ModelLocal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -445,6 +523,13 @@
     <None Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Model\ModelLocal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelLocal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ModelLocal.edmx.diagram">
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Produtos.prod.datasource" />
     <None Include="Properties\Settings.settings">
@@ -458,7 +543,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -498,6 +585,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ModelLocal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+      <LastGenOutput>ModelLocal.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ModelLocal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLocal.edmx</DependentUpon>
+      <LastGenOutput>ModelLocal.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup />

@@ -12,15 +12,12 @@ namespace Loja1._0.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Vendas_Produtos
+    public partial class LogPonto
     {
         public int id { get; set; }
-        public Nullable<int> id_venda { get; set; }
-        public Nullable<int> num_item { get; set; }
-        public Nullable<int> id_produto { get; set; }
-        public int quantidade { get; set; }
-    
-        public virtual Vendas Vendas { get; set; }
-        public virtual Produtos Produtos { get; set; }
+        public int id_Ponto { get; set; }
+        public string valor { get; set; }
+        public int id_User { get; set; }
+        public System.DateTime dt_Alteracao { get; set; }
     }
 }

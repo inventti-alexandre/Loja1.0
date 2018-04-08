@@ -10,11 +10,11 @@ namespace Loja1._0.Model
     class Repository : DbContext
     {
         #region Repositório de itens de uso Genérico
-
+        
         //Alternar entre BD Produção e BD Teste Local
 
         //Debug com BD Local
-        DbLocalEntities dataEntity = new DbLocalEntities();
+        DbEntitiesLocal dataEntity = new DbEntitiesLocal();
 
         //Produção com BD no server
         //DbEntities dataEntity = new DbEntities();

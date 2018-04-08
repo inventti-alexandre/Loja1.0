@@ -12,15 +12,19 @@ namespace Loja1._0.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Vendas_Produtos
+    public partial class Perfis
     {
-        public int id { get; set; }
-        public Nullable<int> id_venda { get; set; }
-        public Nullable<int> num_item { get; set; }
-        public Nullable<int> id_produto { get; set; }
-        public int quantidade { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Perfis()
+        {
+            this.Usuarios = new HashSet<Usuarios>();
+        }
     
-        public virtual Vendas Vendas { get; set; }
-        public virtual Produtos Produtos { get; set; }
+        public int id { get; set; }
+        public string desc { get; set; }
+        public int numero { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

@@ -56,6 +56,11 @@ namespace Loja1._0
         public static bool pedidosInclusos = false;        
         public static int ent = 0;
 
+        //Variaveis SAT
+        string chaveAcesso, numeroCupom, NumeroSAT, message, code, errorMessage, errorCode;
+        public string cnpj = "";
+        public string assinaturaSoftHouse = "";
+
         //inicilização do form com parametro do usuário vindo de Inicial   
         public Caixa(Model.Usuarios user)
         {
@@ -153,7 +158,12 @@ namespace Loja1._0
                         //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF com cnpj ou cpf do cliente
                         BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
-                        
+                        //informação da software house, especificação SAT
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_DadosSoftwareHouseSAT(cnpj, assinaturaSoftHouse));
+                        //informações e retorno SAT
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_UltimasInformacoesSAT(ref chaveAcesso, ref numeroCupom, ref NumeroSAT));
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_RetornaMensagemSeFazSAT(ref message, ref code, ref errorMessage, ref errorCode));
+
                         //chamada da função para adição de venda a lista de vendas
                         adicionaPrimeiro();
                     }
@@ -902,8 +912,10 @@ namespace Loja1._0
                             Compras compra = controle.PesquisaCompraAnterior(produto.id);
 
                             //função de impressão de Cupom Fiscal
-                            //adiciona o produto ao cupom como item vendido                        
+                            /*/adiciona o produto ao cupom como item vendido                        
                             BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, compra.preco_venda.ToString(), "%", "0"));
+                            //adiciona o produto ao cupom fiscal no item SAT*/ 
+                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItemCompletoSAT(produto.cod_produto, produto.cod_produto, produto.desc_produto, "Tipo FF", produto.UnidMedidas.medida, TipoQuantidade.Inteira.ToString(), "0", result.quantidade.ToString(), "2", compra.preco_venda.ToString(), "%", "0", "0", "A", produto.ncm, "5102", "", "040", "0", "102","07", "07"));
 
                             //altera a quantidade deste no estoque e salva a alteração
                             produto.Estoque.qnt_atual = produto.Estoque.qnt_atual - result.quantidade;

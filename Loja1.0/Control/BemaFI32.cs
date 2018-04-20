@@ -1618,11 +1618,23 @@ namespace FiscalPrinterBematech
         /// <param name="iTipoCorte">variável INTEIRA para definir o tipo de corte do papel. Onde: 0: para corte parcial ou; 1: para corte total.</param>
         /// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
         [DllImport("BemaFi32.dll")]public static extern int Bematech_FI_AcionaGuilhotinaMFD(int iTipoCorte);
-		#endregion
-		
-		
-		// Fim da Declaração ///////////////////////////////////////////////////////////
-		#endregion	
+        #endregion
 
-	}
+        #region Funções SAT
+
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_VendeItemCompletoSAT(string Codigo, string EAN13, string Descricao, /*string IndiceDepartamento,*/ string Aliquota, string UnidadeMedida, string TipoQuantidade, string CasasDecimaisQtde, string Quantidade, string CasasDecimaisValor, string ValorUnitario, string TipoDesconto, string ValorAcrescimo, string ValorDesconto, string ArredondaTrunca, string NCM, string CFOP, string InformacaoAdicional, string CST_ICMS, string OrigemProduto, /*string ItemListaServico, string CodigoISS, string NaturezaOperacaoISS, string IndicadorIncentivoFiscal, string CodigoIBGE,*/ string CSOSN, /*string ValorBaseCalculoSimples, string ValorICMSRetidoSimples, string ModalidadeBaseCalculo, string PercentualReducaoBase, string ModalidadeBC, string PercentualMargemICMS, string PercentualBCICMS, string ValorReducaoBCICMS, string ValorAliquotaICMS, string ValorICMS, string ValorICMSDesonerado, string MotivoDesoneracaoICMS, string AliquotaCalculoCredito, string ValorCreditoICMS, string Reservado01, string Reservado02, string Reservado03, string Reservado04, string Reservado05, string Reservado06, string Reservado07, string Reservado08, string Reservado09, string Reservado10, string Reservado11, string Reservado12, string Reservado13, string Reservado14, string Reservado15, string Reservado16, string Reservado17, string Reservado18, string Reservado19, string Reservado20, string Reservado21, string Reservado22, string Reservado23*/ string CSTPIS, string CSTCOFINS );
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_DadosSoftwareHouseSAT(string cnpj, string assinaturaAplicativoComercial);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_UltimasInformacoesSAT([MarshalAs(UnmanagedType.VBByRefStr)] ref string chaveAcesso, ref string numeroCupom, ref string NumeroSAT);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_RetornaMensagemSeFazSAT([MarshalAs(UnmanagedType.VBByRefStr)] ref string message, ref string code, ref string errorMessage, ref string errorCode);
+        
+        #endregion
+
+        // Fim da Declaração ///////////////////////////////////////////////////////////
+        #endregion
+
+    }
 }

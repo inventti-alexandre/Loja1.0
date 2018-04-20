@@ -42,7 +42,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(147, 14);
             this.label3.TabIndex = 7;
-            this.label3.Text = "© 2017 Guilherme Bernardelli";
+            this.label3.Text = "© 2017 Prezia Software House";
             this.label3.UseWaitCursor = true;
             // 
             // Abertura

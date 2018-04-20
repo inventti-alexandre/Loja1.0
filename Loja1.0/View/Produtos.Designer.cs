@@ -69,6 +69,8 @@
             this.lblMensagem = new System.Windows.Forms.Label();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.txtNcm = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,7 +126,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(147, 14);
             this.label3.TabIndex = 6;
-            this.label3.Text = "© 2017 Guilherme Bernardelli";
+            this.label3.Text = "© 2017 Prezia Software House";
             // 
             // pnlImagem
             // 
@@ -299,7 +301,7 @@
             "METRO"});
             this.cmbFornecedor.Location = new System.Drawing.Point(338, 151);
             this.cmbFornecedor.Name = "cmbFornecedor";
-            this.cmbFornecedor.Size = new System.Drawing.Size(440, 21);
+            this.cmbFornecedor.Size = new System.Drawing.Size(256, 21);
             this.cmbFornecedor.TabIndex = 7;
             // 
             // lblFornecedor
@@ -323,7 +325,7 @@
             this.txtQntAtual.MaxLength = 6;
             this.txtQntAtual.Name = "txtQntAtual";
             this.txtQntAtual.Size = new System.Drawing.Size(92, 20);
-            this.txtQntAtual.TabIndex = 8;
+            this.txtQntAtual.TabIndex = 9;
             // 
             // lblQntAtual
             // 
@@ -345,7 +347,7 @@
             this.txtQntMinima.MaxLength = 6;
             this.txtQntMinima.Name = "txtQntMinima";
             this.txtQntMinima.Size = new System.Drawing.Size(92, 20);
-            this.txtQntMinima.TabIndex = 9;
+            this.txtQntMinima.TabIndex = 10;
             // 
             // lblQntMinima
             // 
@@ -367,7 +369,7 @@
             this.txtQntMaxima.MaxLength = 6;
             this.txtQntMaxima.Name = "txtQntMaxima";
             this.txtQntMaxima.Size = new System.Drawing.Size(92, 20);
-            this.txtQntMaxima.TabIndex = 10;
+            this.txtQntMaxima.TabIndex = 11;
             // 
             // lblQntMaxima
             // 
@@ -389,7 +391,7 @@
             this.txtLocalRef.MaxLength = 50;
             this.txtLocalRef.Name = "txtLocalRef";
             this.txtLocalRef.Size = new System.Drawing.Size(243, 20);
-            this.txtLocalRef.TabIndex = 13;
+            this.txtLocalRef.TabIndex = 14;
             // 
             // lblLocalRef
             // 
@@ -423,7 +425,7 @@
             this.txtLocalNum.MaxLength = 2;
             this.txtLocalNum.Name = "txtLocalNum";
             this.txtLocalNum.Size = new System.Drawing.Size(42, 20);
-            this.txtLocalNum.TabIndex = 11;
+            this.txtLocalNum.TabIndex = 12;
             // 
             // lblLocalNum
             // 
@@ -445,7 +447,7 @@
             this.txtLocalSigla.MaxLength = 2;
             this.txtLocalSigla.Name = "txtLocalSigla";
             this.txtLocalSigla.Size = new System.Drawing.Size(42, 20);
-            this.txtLocalSigla.TabIndex = 12;
+            this.txtLocalSigla.TabIndex = 13;
             // 
             // btnLimpar
             // 
@@ -594,6 +596,28 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Sistema Alemão da Construção 1.0";
             // 
+            // txtNcm
+            // 
+            this.txtNcm.Enabled = false;
+            this.txtNcm.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtNcm.Location = new System.Drawing.Point(651, 151);
+            this.txtNcm.MaxLength = 10;
+            this.txtNcm.Name = "txtNcm";
+            this.txtNcm.Size = new System.Drawing.Size(127, 20);
+            this.txtNcm.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Location = new System.Drawing.Point(600, 152);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 16);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "NCM :";
+            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -602,6 +626,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.txtNcm);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.lblMensagem);
             this.Controls.Add(this.btnSalvar);
@@ -699,6 +725,8 @@
         private System.Windows.Forms.Label lblMensagem;
         private System.Windows.Forms.DataGridView dgvProdutos;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.TextBox txtNcm;
+        private System.Windows.Forms.Label label1;
     }
 }
 

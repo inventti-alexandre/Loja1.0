@@ -38,7 +38,7 @@
         <AssociationConnector Association="ServidorLojaModel.FK_Ponto_Usuario" />
         <AssociationConnector Association="ServidorLojaModel.FK_Usuario_Perfil" />
         <AssociationConnector Association="ServidorLojaModel.FK_Venda_Usuario" />
-        <EntityTypeShape EntityType="ServidorLojaModel.Produtos" Width="1.5" PointX="9.875" PointY="8.25" />
+        <EntityTypeShape EntityType="ServidorLojaModel.Produtos" Width="1.5" PointX="9.75" PointY="8.625" />
         <AssociationConnector Association="ServidorLojaModel.FK_Compra_Produto" />
         <AssociationConnector Association="ServidorLojaModel.FK_Estoque_Produto" />
         <AssociationConnector Association="ServidorLojaModel.FK_Produto_Medida" />

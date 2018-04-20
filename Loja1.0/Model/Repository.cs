@@ -720,6 +720,8 @@ namespace Loja1._0.Model
         }
         #endregion
 
+        #region Repositório do BD CtrlPonto
+
         public List<CtrlPonto> PesquisaPontoPeriodo(int idUser, int month, int year)
         {
             return (from ponto in dataEntity.CtrlPonto
@@ -749,7 +751,9 @@ namespace Loja1._0.Model
         public void SalvarNovoLog(LogPonto log)
         {
             dataEntity.LogPonto.Add(log);
-        }        
+        }
+
+        #endregion
 
         //SCRIPT FECHAMENTO
         #region Repositório do BD Pedidos

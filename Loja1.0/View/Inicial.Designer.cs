@@ -117,7 +117,7 @@
             this.lblCopy.Name = "lblCopy";
             this.lblCopy.Size = new System.Drawing.Size(147, 14);
             this.lblCopy.TabIndex = 6;
-            this.lblCopy.Text = "© 2017 Guilherme Bernardelli";
+            this.lblCopy.Text = "© 2017 Prezia Software House";
             // 
             // panel1
             // 

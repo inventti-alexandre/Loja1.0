@@ -230,6 +230,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ncm" Type="varchar" MaxLength="5" />
           <Property Name="cod_produto" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="desc_produto" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="id_medida" Type="int" Nullable="false" />
@@ -297,7 +298,7 @@
           <Property Name="id_produto" Type="int" />
           <Property Name="quantidade" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Vendas__id_Clien__3552E9B6">
+        <Association Name="FK__Vendas__id_Clien__3D5E1FD2">
           <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -523,7 +524,7 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas_Produtos" EntityType="Self.Vendas_Produtos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Vendas__id_Clien__3552E9B6" Association="Self.FK__Vendas__id_Clien__3552E9B6">
+          <AssociationSet Name="FK__Vendas__id_Clien__3D5E1FD2" Association="Self.FK__Vendas__id_Clien__3D5E1FD2">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
@@ -1159,6 +1160,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ncm" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="cod_produto" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
           <Property Name="desc_produto" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="id_medida" Type="Int32" Nullable="false" />
@@ -1532,6 +1534,7 @@
                 <ScalarProperty Name="id_medida" ColumnName="id_medida" />
                 <ScalarProperty Name="desc_produto" ColumnName="desc_produto" />
                 <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
+                <ScalarProperty Name="ncm" ColumnName="ncm" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

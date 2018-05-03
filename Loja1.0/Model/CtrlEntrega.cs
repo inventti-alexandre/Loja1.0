@@ -15,22 +15,24 @@ namespace Loja1._0.Model
 using System;
     using System.Collections.Generic;
     
-public partial class Vendas_Produtos
+public partial class CtrlEntrega
 {
 
     public int id { get; set; }
 
-    public Nullable<int> id_venda { get; set; }
+    public int id_Venda { get; set; }
 
-    public Nullable<int> num_item { get; set; }
+    public Nullable<int> id_Cliente { get; set; }
 
-    public Nullable<int> id_produto { get; set; }
+    public System.DateTime DataVenda { get; set; }
 
-    public int quantidade { get; set; }
+    public string EndEntrega { get; set; }
 
-    public Nullable<int> entregar { get; set; }
+    public int id_Produto { get; set; }
 
 
+
+    public virtual Clientes Clientes { get; set; }
 
     public virtual Vendas Vendas { get; set; }
 

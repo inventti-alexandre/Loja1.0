@@ -71,12 +71,27 @@ namespace Loja1._0.Model
                     select usuarios).ToList();
         }
 
+        public List<Compras> PesquisaComprasByDate(DateTime inicio, DateTime fim)
+        {
+            return (from compras in dataEntity.Compras
+                    where (compras.dt_compra >= inicio
+                    && compras.dt_compra <= fim)
+                    select compras).ToList();
+        }
+
         public List<Usuarios> PesquisaUsersIdPerfil(int idMinus)
         {
             return (from usuarios in dataEntity.Usuarios
                     where usuarios.id_Perfil >= idMinus
                     && usuarios.status == 1
                     select usuarios).ToList();
+        }
+
+        internal List<CtrlEntrega> PesquisaEntregaByIdVenda(int id)
+        {
+            return (from entrega in dataEntity.CtrlEntrega
+                    where entrega.id_Venda == id
+                    select entrega).ToList();
         }
 
         public int ContaUserValidos()
@@ -268,6 +283,11 @@ namespace Loja1._0.Model
             return (from cidade in dataEntity.Cidades
                     where cidade.id == pesquisa
                     select cidade).SingleOrDefault();
+        }
+
+        internal void SalvarNovaEntrega(CtrlEntrega entrega)
+        {
+            dataEntity.CtrlEntrega.Add(entrega); 
         }
 
         public void SalvarNovaCidade(Cidades cidade)

@@ -26,6 +26,8 @@ public partial class Vendas
 
         this.Vendas_Produtos = new HashSet<Vendas_Produtos>();
 
+        this.CtrlEntrega = new HashSet<CtrlEntrega>();
+
     }
 
 
@@ -62,6 +64,10 @@ public partial class Vendas
     public virtual Clientes Clientes { get; set; }
 
     public virtual Usuarios Usuarios { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<CtrlEntrega> CtrlEntrega { get; set; }
 
 }
 

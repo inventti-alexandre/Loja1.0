@@ -766,7 +766,7 @@
             this.btnImprimir.BackColor = System.Drawing.Color.Gainsboro;
             this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImprimir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnImprimir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnImprimir.Location = new System.Drawing.Point(523, 661);
             this.btnImprimir.Name = "btnImprimir";

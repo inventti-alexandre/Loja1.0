@@ -74,6 +74,17 @@
           <Property Name="lucro" Type="decimal" Precision="9" Scale="2" />
           <Property Name="pro_labore" Type="decimal" Precision="9" Scale="2" />
         </EntityType>
+        <EntityType Name="CtrlEntrega">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Venda" Type="int" Nullable="false" />
+          <Property Name="id_Cliente" Type="int" />
+          <Property Name="id_Produto" Type="int" Nullable="false" />
+          <Property Name="DataVenda" Type="datetime" Nullable="false" />
+          <Property Name="EndEntrega" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="CtrlPonto">
           <Key>
             <PropertyRef Name="Id" />
@@ -297,19 +308,8 @@
           <Property Name="num_item" Type="int" />
           <Property Name="id_produto" Type="int" />
           <Property Name="quantidade" Type="int" Nullable="false" />
+          <Property Name="entregar" Type="int" />
         </EntityType>
-        <Association Name="FK__Vendas__id_Clien__3D5E1FD2">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
-          <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Vendas">
-              <PropertyRef Name="id_Cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Cidade_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
           <End Role="Cidades" Type="Self.Cidades" Multiplicity="*" />
@@ -355,6 +355,42 @@
             </Principal>
             <Dependent Role="Compras">
               <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrega_Cliente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="CtrlEntrega" Type="Self.CtrlEntrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CtrlEntrega">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrega_Produto">
+          <End Role="Produtos" Type="Self.Produtos" Multiplicity="1" />
+          <End Role="CtrlEntrega" Type="Self.CtrlEntrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CtrlEntrega">
+              <PropertyRef Name="id_Produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrega_Venda">
+          <End Role="Vendas" Type="Self.Vendas" Multiplicity="1" />
+          <End Role="CtrlEntrega" Type="Self.CtrlEntrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CtrlEntrega">
+              <PropertyRef Name="id_Venda" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -466,6 +502,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Venda_CLIente">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Vendas">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Venda_Usuario">
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
           <End Role="Vendas" Type="Self.Vendas" Multiplicity="*" />
@@ -507,6 +555,7 @@
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Compras" EntityType="Self.Compras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contabilidade" EntityType="Self.Contabilidade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CtrlEntrega" EntityType="Self.CtrlEntrega" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CtrlPonto" EntityType="Self.CtrlPonto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Estoque" EntityType="Self.Estoque" Schema="dbo" store:Type="Tables" />
@@ -524,10 +573,6 @@
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas" EntityType="Self.Vendas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendas_Produtos" EntityType="Self.Vendas_Produtos" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Vendas__id_Clien__3D5E1FD2" Association="Self.FK__Vendas__id_Clien__3D5E1FD2">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Vendas" EntitySet="Vendas" />
-          </AssociationSet>
           <AssociationSet Name="FK_Cidade_Estado" Association="Self.FK_Cidade_Estado">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Cidades" EntitySet="Cidades" />
@@ -543,6 +588,18 @@
           <AssociationSet Name="FK_Compra_Produto" Association="Self.FK_Compra_Produto">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrega_Cliente" Association="Self.FK_Entrega_Cliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="CtrlEntrega" EntitySet="CtrlEntrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrega_Produto" Association="Self.FK_Entrega_Produto">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="CtrlEntrega" EntitySet="CtrlEntrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrega_Venda" Association="Self.FK_Entrega_Venda">
+            <End Role="Vendas" EntitySet="Vendas" />
+            <End Role="CtrlEntrega" EntitySet="CtrlEntrega" />
           </AssociationSet>
           <AssociationSet Name="FK_Estoque_Produto" Association="Self.FK_Estoque_Produto">
             <End Role="Produtos" EntitySet="Produtos" />
@@ -579,6 +636,10 @@
           <AssociationSet Name="FK_Usuario_Perfil" Association="Self.FK_Usuario_Perfil">
             <End Role="Perfis" EntitySet="Perfis" />
             <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Venda_CLIente" Association="Self.FK_Venda_CLIente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Vendas" EntitySet="Vendas" />
           </AssociationSet>
           <AssociationSet Name="FK_Venda_Usuario" Association="Self.FK_Venda_Usuario">
             <End Role="Usuarios" EntitySet="Usuarios" />
@@ -686,6 +747,19 @@
           <AssociationSet Name="FK_VendaProduto_Produto" Association="ServidorLojaModel.FK_VendaProduto_Produto">
             <End Role="Produtos" EntitySet="Produtos" />
             <End Role="Vendas_Produtos" EntitySet="Vendas_Produtos" />
+          </AssociationSet>
+          <EntitySet Name="CtrlEntrega" EntityType="ServidorLojaModel.CtrlEntrega" />
+          <AssociationSet Name="FK_Entrega_Cliente" Association="ServidorLojaModel.FK_Entrega_Cliente">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="CtrlEntrega" EntitySet="CtrlEntrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrega_Venda" Association="ServidorLojaModel.FK_Entrega_Venda">
+            <End Role="Vendas" EntitySet="Vendas" />
+            <End Role="CtrlEntrega" EntitySet="CtrlEntrega" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Entrega_Produto" Association="ServidorLojaModel.FK_Entrega_Produto">
+            <End Role="Produtos" EntitySet="Produtos" />
+            <End Role="CtrlEntrega" EntitySet="CtrlEntrega" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Cidades">
@@ -912,6 +986,7 @@
           <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.FK_VendaProduto_Venda" FromRole="Vendas" ToRole="Vendas_Produtos" />
           <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" FromRole="Vendas" ToRole="Clientes" />
           <NavigationProperty Name="Usuarios" Relationship="ServidorLojaModel.FK_Venda_Usuario" FromRole="Vendas" ToRole="Usuarios" />
+          <NavigationProperty Name="CtrlEntrega" Relationship="ServidorLojaModel.FK_Entrega_Venda" FromRole="Vendas" ToRole="CtrlEntrega" />
         </EntityType>
         <EntityType Name="Vendas_Produtos">
           <Key>
@@ -924,6 +999,7 @@
           <Property Name="quantidade" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK_VendaProduto_Venda" FromRole="Vendas_Produtos" ToRole="Vendas" />
           <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK_VendaProduto_Produto" FromRole="Vendas_Produtos" ToRole="Produtos" />
+          <Property Name="entregar" Type="Int32" />
         </EntityType>
         <Association Name="FK_Cidade_Estado">
           <End Type="ServidorLojaModel.Estados" Role="Estados" Multiplicity="1" />
@@ -1028,6 +1104,7 @@
           <Property Name="creditos" Type="Double" />
           <NavigationProperty Name="Cidades" Relationship="ServidorLojaModel.FK_Cliente_Cidade" FromRole="Clientes" ToRole="Cidades" />
           <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK__Vendas__id_Clien__4E5E8EA2" FromRole="Clientes" ToRole="Vendas" />
+          <NavigationProperty Name="CtrlEntrega" Relationship="ServidorLojaModel.FK_Entrega_Cliente" FromRole="Clientes" ToRole="CtrlEntrega" />
         </EntityType>
         <Association Name="FK_Cliente_Cidade">
           <End Type="ServidorLojaModel.Cidades" Role="Cidades" Multiplicity="1" />
@@ -1170,6 +1247,7 @@
           <NavigationProperty Name="Estoque" Relationship="ServidorLojaModel.FK_Estoque_Produto" FromRole="Produtos" ToRole="Estoque" />
           <NavigationProperty Name="UnidMedidas" Relationship="ServidorLojaModel.FK_Produto_Medida" FromRole="Produtos" ToRole="UnidMedidas" />
           <NavigationProperty Name="Vendas_Produtos" Relationship="ServidorLojaModel.FK_VendaProduto_Produto" FromRole="Produtos" ToRole="Vendas_Produtos" />
+          <NavigationProperty Name="CtrlEntrega" Relationship="ServidorLojaModel.FK_Entrega_Produto" FromRole="Produtos" ToRole="CtrlEntrega" />
         </EntityType>
         <Association Name="FK_Compra_Produto">
           <End Type="ServidorLojaModel.Produtos" Role="Produtos" Multiplicity="1" />
@@ -1216,6 +1294,56 @@
             </Principal>
             <Dependent Role="Vendas_Produtos">
               <PropertyRef Name="id_produto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CtrlEntrega">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Venda" Type="Int32" Nullable="false" />
+          <Property Name="id_Cliente" Type="Int32" />
+          <Property Name="DataVenda" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndEntrega" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clientes" Relationship="ServidorLojaModel.FK_Entrega_Cliente" FromRole="CtrlEntrega" ToRole="Clientes" />
+          <NavigationProperty Name="Vendas" Relationship="ServidorLojaModel.FK_Entrega_Venda" FromRole="CtrlEntrega" ToRole="Vendas" />
+          <Property Name="id_Produto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK_Entrega_Produto" FromRole="CtrlEntrega" ToRole="Produtos" />
+        </EntityType>
+        <Association Name="FK_Entrega_Cliente">
+          <End Type="ServidorLojaModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="ServidorLojaModel.CtrlEntrega" Role="CtrlEntrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CtrlEntrega">
+              <PropertyRef Name="id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrega_Venda">
+          <End Type="ServidorLojaModel.Vendas" Role="Vendas" Multiplicity="1" />
+          <End Type="ServidorLojaModel.CtrlEntrega" Role="CtrlEntrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CtrlEntrega">
+              <PropertyRef Name="id_Venda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Entrega_Produto">
+          <End Type="ServidorLojaModel.Produtos" Role="Produtos" Multiplicity="1" />
+          <End Type="ServidorLojaModel.CtrlEntrega" Role="CtrlEntrega" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produtos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CtrlEntrega">
+              <PropertyRef Name="id_Produto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1447,6 +1575,7 @@
           <EntitySetMapping Name="Vendas_Produtos">
             <EntityTypeMapping TypeName="ServidorLojaModel.Vendas_Produtos">
               <MappingFragment StoreEntitySet="Vendas_Produtos">
+                <ScalarProperty Name="entregar" ColumnName="entregar" />
                 <ScalarProperty Name="quantidade" ColumnName="quantidade" />
                 <ScalarProperty Name="id_produto" ColumnName="id_produto" />
                 <ScalarProperty Name="num_item" ColumnName="num_item" />
@@ -1535,6 +1664,18 @@
                 <ScalarProperty Name="desc_produto" ColumnName="desc_produto" />
                 <ScalarProperty Name="cod_produto" ColumnName="cod_produto" />
                 <ScalarProperty Name="ncm" ColumnName="ncm" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CtrlEntrega">
+            <EntityTypeMapping TypeName="ServidorLojaModel.CtrlEntrega">
+              <MappingFragment StoreEntitySet="CtrlEntrega">
+                <ScalarProperty Name="id_Produto" ColumnName="id_Produto" />
+                <ScalarProperty Name="EndEntrega" ColumnName="EndEntrega" />
+                <ScalarProperty Name="DataVenda" ColumnName="DataVenda" />
+                <ScalarProperty Name="id_Cliente" ColumnName="id_Cliente" />
+                <ScalarProperty Name="id_Venda" ColumnName="id_Venda" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

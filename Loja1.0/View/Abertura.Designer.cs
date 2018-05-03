@@ -37,10 +37,10 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Navy;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label3.Location = new System.Drawing.Point(441, 377);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 14);
+            this.label3.Size = new System.Drawing.Size(158, 14);
             this.label3.TabIndex = 7;
             this.label3.Text = "© 2017 Prezia Software House";
             this.label3.UseWaitCursor = true;
@@ -57,7 +57,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.label3);
             this.DoubleBuffered = true;
-            this.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

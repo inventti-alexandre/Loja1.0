@@ -54,7 +54,7 @@
             this.btnPesquisar.BackColor = System.Drawing.Color.White;
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPesquisar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnPesquisar.Location = new System.Drawing.Point(484, 49);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(85, 45);
@@ -76,10 +76,10 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label3.Location = new System.Drawing.Point(1, 582);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 16);
+            this.label3.Size = new System.Drawing.Size(200, 16);
             this.label3.TabIndex = 28;
             this.label3.Text = "© 2017 Prezia Software House";
             // 
@@ -91,7 +91,7 @@
             this.lblNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblNome.Location = new System.Drawing.Point(519, 7);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(202, 27);
@@ -103,7 +103,9 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(765, 3);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
@@ -132,7 +134,7 @@
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblTitulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblTitulo.Location = new System.Drawing.Point(6, 4);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(473, 33);
@@ -143,7 +145,7 @@
             // 
             this.txtCliente.AutoSize = true;
             this.txtCliente.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtCliente.Location = new System.Drawing.Point(85, 54);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(62, 16);
@@ -157,7 +159,9 @@
             this.btnPesquisaCliente.BackColor = System.Drawing.Color.Transparent;
             this.btnPesquisaCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisaCliente.BackgroundImage")));
             this.btnPesquisaCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisaCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnPesquisaCliente.Location = new System.Drawing.Point(453, 49);
             this.btnPesquisaCliente.Margin = new System.Windows.Forms.Padding(0);
@@ -173,6 +177,7 @@
             this.btnOkCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnOkCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOkCliente.FlatAppearance.BorderSize = 0;
+            this.btnOkCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOkCliente.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOkCliente.ForeColor = System.Drawing.Color.Lime;
             this.btnOkCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -192,6 +197,7 @@
             this.btnCancelCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelCliente.FlatAppearance.BorderSize = 0;
+            this.btnCancelCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelCliente.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelCliente.ForeColor = System.Drawing.Color.Red;
             this.btnCancelCliente.Location = new System.Drawing.Point(453, 49);
@@ -215,7 +221,7 @@
             // txtBuscaCliente
             // 
             this.txtBuscaCliente.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscaCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtBuscaCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtBuscaCliente.Location = new System.Drawing.Point(85, 50);
             this.txtBuscaCliente.MaxLength = 30;
             this.txtBuscaCliente.Name = "txtBuscaCliente";
@@ -226,7 +232,7 @@
             // 
             this.lblCliente.AutoSize = true;
             this.lblCliente.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblCliente.Location = new System.Drawing.Point(8, 53);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(74, 16);
@@ -240,7 +246,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.button1.Location = new System.Drawing.Point(572, 49);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 45);
@@ -254,7 +260,7 @@
             this.btnImprime.BackColor = System.Drawing.Color.White;
             this.btnImprime.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImprime.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprime.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnImprime.Location = new System.Drawing.Point(355, 553);
             this.btnImprime.Name = "btnImprime";
             this.btnImprime.Size = new System.Drawing.Size(91, 45);
@@ -272,9 +278,7 @@
             this.Controls.Add(this.btnImprime);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCliente);
-            this.Controls.Add(this.btnPesquisaCliente);
             this.Controls.Add(this.btnOkCliente);
-            this.Controls.Add(this.btnCancelCliente);
             this.Controls.Add(this.cmbCliente);
             this.Controls.Add(this.txtBuscaCliente);
             this.Controls.Add(this.lblCliente);
@@ -285,6 +289,8 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.btnPesquisaCliente);
+            this.Controls.Add(this.btnCancelCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

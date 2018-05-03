@@ -89,7 +89,7 @@
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblTitulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblTitulo.Location = new System.Drawing.Point(5, 4);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(473, 33);
@@ -104,7 +104,7 @@
             this.lblNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblNome.Location = new System.Drawing.Point(508, 4);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(230, 33);
@@ -116,10 +116,10 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label3.Location = new System.Drawing.Point(0, 582);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 16);
+            this.label3.Size = new System.Drawing.Size(200, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "© 2017 Prezia Software House";
             // 
@@ -138,9 +138,9 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvPedido.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPedido.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -151,15 +151,15 @@
             this.dgvPedido.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.dgvPedido.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPedido.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgvPedido.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPedido.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.dgvPedido.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.dgvPedido.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvPedido.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HotTrack;
+            this.dgvPedido.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.dgvPedido.RowTemplate.ReadOnly = true;
             this.dgvPedido.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -179,7 +179,7 @@
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Enabled = false;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnCancelar.Location = new System.Drawing.Point(682, 330);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(114, 46);
@@ -195,7 +195,7 @@
             this.btnDescontar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDescontar.Enabled = false;
             this.btnDescontar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDescontar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDescontar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnDescontar.Location = new System.Drawing.Point(682, 263);
             this.btnDescontar.Name = "btnDescontar";
             this.btnDescontar.Size = new System.Drawing.Size(114, 46);
@@ -211,7 +211,7 @@
             this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImprimir.Enabled = false;
             this.btnImprimir.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnImprimir.Location = new System.Drawing.Point(682, 400);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(114, 46);
@@ -224,7 +224,7 @@
             // 
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblCodigo.Location = new System.Drawing.Point(164, 535);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(123, 16);
@@ -235,7 +235,7 @@
             // txtCodigo
             // 
             this.txtCodigo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtCodigo.Location = new System.Drawing.Point(293, 532);
             this.txtCodigo.MaxLength = 6;
             this.txtCodigo.Name = "txtCodigo";
@@ -246,7 +246,7 @@
             // 
             this.lblOperador.AutoSize = true;
             this.lblOperador.Font = new System.Drawing.Font("Arial", 12F);
-            this.lblOperador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblOperador.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblOperador.Location = new System.Drawing.Point(499, 54);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(87, 18);
@@ -257,7 +257,7 @@
             // 
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblUser.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblUser.Location = new System.Drawing.Point(585, 54);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(138, 19);
@@ -267,11 +267,11 @@
             // lblCliente
             // 
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblCliente.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblCliente.Location = new System.Drawing.Point(2, 55);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(70, 16);
+            this.lblCliente.Size = new System.Drawing.Size(64, 16);
             this.lblCliente.TabIndex = 64;
             this.lblCliente.Text = "Cliente : ";
             this.lblCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -280,7 +280,7 @@
             // 
             this.lblRelacao.AutoSize = true;
             this.lblRelacao.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelacao.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblRelacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblRelacao.Location = new System.Drawing.Point(2, 244);
             this.lblRelacao.Name = "lblRelacao";
             this.lblRelacao.Size = new System.Drawing.Size(212, 16);
@@ -292,7 +292,7 @@
             // 
             this.lblSub.AutoSize = true;
             this.lblSub.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSub.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblSub.Location = new System.Drawing.Point(5, 4);
             this.lblSub.Name = "lblSub";
             this.lblSub.Size = new System.Drawing.Size(84, 16);
@@ -304,7 +304,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblTotal.Location = new System.Drawing.Point(3, 4);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(103, 16);
@@ -316,7 +316,7 @@
             // 
             this.txtSub.AutoSize = true;
             this.txtSub.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSub.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtSub.Location = new System.Drawing.Point(3, 20);
             this.txtSub.Name = "txtSub";
             this.txtSub.Size = new System.Drawing.Size(58, 32);
@@ -328,7 +328,7 @@
             // 
             this.txtTotal.AutoSize = true;
             this.txtTotal.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtTotal.Location = new System.Drawing.Point(3, 20);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(58, 32);
@@ -390,7 +390,7 @@
             this.pnlAdquirido.Controls.Add(this.lblProduto);
             this.pnlAdquirido.Controls.Add(this.pnlImagem);
             this.pnlAdquirido.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlAdquirido.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlAdquirido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pnlAdquirido.Location = new System.Drawing.Point(5, 94);
             this.pnlAdquirido.Name = "pnlAdquirido";
             this.pnlAdquirido.Size = new System.Drawing.Size(620, 147);
@@ -403,7 +403,7 @@
             this.txtLocalSigla.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtLocalSigla.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtLocalSigla.Enabled = false;
-            this.txtLocalSigla.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtLocalSigla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtLocalSigla.Location = new System.Drawing.Point(300, 110);
             this.txtLocalSigla.Name = "txtLocalSigla";
             this.txtLocalSigla.ReadOnly = true;
@@ -415,7 +415,7 @@
             this.txtLocalRef.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtLocalRef.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtLocalRef.Enabled = false;
-            this.txtLocalRef.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtLocalRef.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtLocalRef.Location = new System.Drawing.Point(384, 110);
             this.txtLocalRef.Name = "txtLocalRef";
             this.txtLocalRef.ReadOnly = true;
@@ -427,7 +427,7 @@
             this.lblLocalRef.AutoSize = true;
             this.lblLocalRef.BackColor = System.Drawing.Color.Transparent;
             this.lblLocalRef.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocalRef.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblLocalRef.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblLocalRef.Location = new System.Drawing.Point(349, 113);
             this.lblLocalRef.Name = "lblLocalRef";
             this.lblLocalRef.Size = new System.Drawing.Size(33, 16);
@@ -439,7 +439,7 @@
             this.lblLocalSigla.AutoSize = true;
             this.lblLocalSigla.BackColor = System.Drawing.Color.Transparent;
             this.lblLocalSigla.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocalSigla.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblLocalSigla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblLocalSigla.Location = new System.Drawing.Point(257, 112);
             this.lblLocalSigla.Name = "lblLocalSigla";
             this.lblLocalSigla.Size = new System.Drawing.Size(41, 16);
@@ -451,7 +451,7 @@
             this.txtLocalNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtLocalNum.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtLocalNum.Enabled = false;
-            this.txtLocalNum.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtLocalNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtLocalNum.Location = new System.Drawing.Point(208, 110);
             this.txtLocalNum.Name = "txtLocalNum";
             this.txtLocalNum.ReadOnly = true;
@@ -463,7 +463,7 @@
             this.lblLocalNum.AutoSize = true;
             this.lblLocalNum.BackColor = System.Drawing.Color.Transparent;
             this.lblLocalNum.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLocalNum.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblLocalNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblLocalNum.Location = new System.Drawing.Point(129, 113);
             this.lblLocalNum.Name = "lblLocalNum";
             this.lblLocalNum.Size = new System.Drawing.Size(73, 16);
@@ -475,7 +475,7 @@
             this.txtFornecedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtFornecedor.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtFornecedor.Enabled = false;
-            this.txtFornecedor.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtFornecedor.Location = new System.Drawing.Point(219, 81);
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.ReadOnly = true;
@@ -487,7 +487,7 @@
             this.lblFornecedor.AutoSize = true;
             this.lblFornecedor.BackColor = System.Drawing.Color.Transparent;
             this.lblFornecedor.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFornecedor.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblFornecedor.Location = new System.Drawing.Point(129, 84);
             this.lblFornecedor.Name = "lblFornecedor";
             this.lblFornecedor.Size = new System.Drawing.Size(89, 16);
@@ -500,7 +500,7 @@
             this.txtPreco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtPreco.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtPreco.Enabled = false;
-            this.txtPreco.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtPreco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtPreco.Location = new System.Drawing.Point(506, 81);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.ReadOnly = true;
@@ -512,7 +512,7 @@
             this.lblPreco.AutoSize = true;
             this.lblPreco.BackColor = System.Drawing.Color.Transparent;
             this.lblPreco.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPreco.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblPreco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblPreco.Location = new System.Drawing.Point(447, 84);
             this.lblPreco.Name = "lblPreco";
             this.lblPreco.Size = new System.Drawing.Size(53, 16);
@@ -524,7 +524,7 @@
             this.txtUnidade.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtUnidade.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtUnidade.Enabled = false;
-            this.txtUnidade.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtUnidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtUnidade.Location = new System.Drawing.Point(512, 51);
             this.txtUnidade.Name = "txtUnidade";
             this.txtUnidade.ReadOnly = true;
@@ -536,7 +536,7 @@
             this.lblUnidade.AutoSize = true;
             this.lblUnidade.BackColor = System.Drawing.Color.Transparent;
             this.lblUnidade.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnidade.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblUnidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblUnidade.Location = new System.Drawing.Point(437, 54);
             this.lblUnidade.Name = "lblUnidade";
             this.lblUnidade.Size = new System.Drawing.Size(69, 16);
@@ -548,7 +548,7 @@
             this.txtCodAdquirido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCodAdquirido.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtCodAdquirido.Enabled = false;
-            this.txtCodAdquirido.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtCodAdquirido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtCodAdquirido.Location = new System.Drawing.Point(196, 51);
             this.txtCodAdquirido.Name = "txtCodAdquirido";
             this.txtCodAdquirido.ReadOnly = true;
@@ -560,7 +560,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label1.Location = new System.Drawing.Point(129, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 16);
@@ -572,7 +572,7 @@
             this.txtDescricao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtDescricao.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtDescricao.Enabled = false;
-            this.txtDescricao.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtDescricao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtDescricao.Location = new System.Drawing.Point(215, 22);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.ReadOnly = true;
@@ -584,7 +584,7 @@
             this.lblProduto.AutoSize = true;
             this.lblProduto.BackColor = System.Drawing.Color.Transparent;
             this.lblProduto.Font = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduto.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblProduto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblProduto.Location = new System.Drawing.Point(131, 25);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(78, 16);
@@ -596,7 +596,9 @@
             this.btnPesquisar.BackColor = System.Drawing.Color.Transparent;
             this.btnPesquisar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.BackgroundImage")));
             this.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisar.FlatAppearance.BorderSize = 0;
+            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisar.Location = new System.Drawing.Point(462, 531);
             this.btnPesquisar.Margin = new System.Windows.Forms.Padding(0);
             this.btnPesquisar.Name = "btnPesquisar";
@@ -611,8 +613,10 @@
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(764, 3);
@@ -638,7 +642,7 @@
             // 
             this.txtCliente.AutoSize = true;
             this.txtCliente.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtCliente.Location = new System.Drawing.Point(78, 55);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(102, 16);
@@ -666,7 +670,7 @@
             // 
             this.txtPedido.AutoSize = true;
             this.txtPedido.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPedido.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.txtPedido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtPedido.Location = new System.Drawing.Point(428, 55);
             this.txtPedido.Name = "txtPedido";
             this.txtPedido.Size = new System.Drawing.Size(56, 16);
@@ -677,11 +681,11 @@
             // lblPedido
             // 
             this.lblPedido.AutoSize = true;
-            this.lblPedido.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPedido.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblPedido.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPedido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblPedido.Location = new System.Drawing.Point(352, 55);
             this.lblPedido.Name = "lblPedido";
-            this.lblPedido.Size = new System.Drawing.Size(69, 16);
+            this.lblPedido.Size = new System.Drawing.Size(64, 16);
             this.lblPedido.TabIndex = 81;
             this.lblPedido.Text = "Pedido : ";
             this.lblPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

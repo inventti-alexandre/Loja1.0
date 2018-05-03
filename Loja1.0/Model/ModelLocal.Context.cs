@@ -74,6 +74,8 @@ public partial class DbEntitiesLocal : DbContext
 
     public virtual DbSet<Produtos> Produtos { get; set; }
 
+    public virtual DbSet<CtrlEntrega> CtrlEntrega { get; set; }
+
 }
 
 }

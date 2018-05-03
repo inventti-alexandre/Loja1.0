@@ -75,6 +75,14 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaUsersIdPerfil(idMinus);
         }
 
+        public List<Compras> PesquisaComprasPeriodo(DateTime dataInicio, DateTime dataFim)
+        {
+            DateTime inicio = dataInicio;
+            DateTime fim = dataFim;
+
+            return dbRepository.PesquisaComprasByDate(inicio, fim);
+        }
+
         #endregion
 
         #region Controle do BD Produtos
@@ -91,6 +99,13 @@ namespace Loja1._0.Control
             string codigo = cod;
 
             return dbRepository.PesquisaProdutoByCodigo(codigo);
+        }
+
+        internal List<CtrlEntrega> PesquisaEntregaIdVenda(int id)
+        {
+            int Id = id;
+
+            return dbRepository.PesquisaEntregaByIdVenda(Id);
         }
 
         public void SalvarProduto(Model.Produtos produto)
@@ -340,6 +355,11 @@ namespace Loja1._0.Control
             string busca = pesquisa;
 
             return dbRepository.PesquisaFornecedoresByNomeCnpj(busca);
+        }
+
+        internal void SalvaEntrega(CtrlEntrega entrega)
+        {
+            dbRepository.SalvarNovaEntrega(entrega);
         }
 
         public Model.Fornecedores PesquisaFornecedorById(int Id)

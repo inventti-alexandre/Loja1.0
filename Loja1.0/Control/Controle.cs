@@ -101,6 +101,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaProdutoByCodigo(codigo);
         }
 
+        internal List<Pagamentos> PesquisaPagamentoRecebidoPeriodo(DateTime dataInicio, DateTime dataFim)
+        {
+            return dbRepository.PesquisaPagamentosPeriodo(dataInicio, dataFim);
+        }
+
         internal List<CtrlEntrega> PesquisaEntregaIdVenda(int id)
         {
             int Id = id;

@@ -85,6 +85,7 @@
     <Compile Include="Control\PrintablePanel.Designer.cs">
       <DependentUpon>PrintablePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\printDGV.cs" />
     <Compile Include="Control\Valida.cs" />
     <Compile Include="Model\Cidades.cs">
       <DependentUpon>ModelLocal.tt</DependentUpon>
@@ -302,12 +303,6 @@
     <Compile Include="View\Relatórios\MovimentoData.Designer.cs">
       <DependentUpon>MovimentoData.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Relatórios\CompraDataImpresso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Relatórios\CompraDataImpresso.Designer.cs">
-      <DependentUpon>CompraDataImpresso.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Relatórios\ProdutosFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -468,9 +463,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Relatórios\MovimentoData.resx">
       <DependentUpon>MovimentoData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Relatórios\CompraDataImpresso.resx">
-      <DependentUpon>CompraDataImpresso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Relatórios\ProdutosFornecedor.resx">
       <DependentUpon>ProdutosFornecedor.cs</DependentUpon>

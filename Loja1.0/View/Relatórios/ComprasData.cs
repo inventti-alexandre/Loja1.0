@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Loja1._0.Control;
 using Loja1._0.Model;
-using Loja1._0.View.Relatórios;
 
 namespace Loja1._0
 {
@@ -20,6 +19,7 @@ namespace Loja1._0
         public static DateTime dataInicio, dataFim;
         public static DataTable dtCompra = new DataTable();
         public static List<Compras> listaCompras = new List<Compras>();
+        printDGV impresso = new printDGV();
 
         Email email = new Email();
         public string erro;
@@ -80,17 +80,25 @@ namespace Loja1._0
         {
             btnPesquisar_Click(sender, e);
 
+            impresso = new printDGV();
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Compras por Periodo");
+
+            //preencheDataGrindView(listaCompras);
+
             AcceptButton = btnPesquisar;
             btnPesquisar.Enabled = true;
             btnImprime.Enabled = false;
             txtDataInicio.Enabled = true;
             txtDataFim.Enabled = true;
-            txtDataInicio.Text = "";
-            txtDataFim.Text = "";
+            //txtDataInicio.Text = "";
+            //txtDataFim.Text = "";
 
+            
+            /*
             CompraDataImpresso impresso = new CompraDataImpresso(listaCompras);
             impresso.Show();
-        }
+            */    
+    }
 
         private void preencheDataGrindView(List<Compras> listaCompras)
         {
@@ -117,18 +125,18 @@ namespace Loja1._0
 
                 dgvRelatorio.DataSource = dtCompra;
 
-                dgvRelatorio.Columns[0].Width = 70;
-                dgvRelatorio.Columns[1].Width = 500;
-                dgvRelatorio.Columns[2].Width = 200;
-                dgvRelatorio.Columns[3].Width = 55;
-                dgvRelatorio.Columns[4].Width = 70;
-                dgvRelatorio.Columns[5].Width = 70;
-                dgvRelatorio.Columns[6].Width = 70;
-                dgvRelatorio.Columns[7].Width = 55;
-                dgvRelatorio.Columns[8].Width = 55;
-                dgvRelatorio.Columns[9].Width = 50;
-                dgvRelatorio.Columns[10].Width = 50;
-                dgvRelatorio.Columns[11].Width = 200;
+                dgvRelatorio.Columns[0].Width = 120;
+                dgvRelatorio.Columns[1].Width = 250;
+                dgvRelatorio.Columns[2].Width = 150;
+                dgvRelatorio.Columns[3].Width = 110;
+                dgvRelatorio.Columns[4].Width = 150;
+                dgvRelatorio.Columns[5].Width = 150;
+                dgvRelatorio.Columns[6].Width = 150;
+                dgvRelatorio.Columns[7].Width = 65;
+                dgvRelatorio.Columns[8].Width = 65;
+                dgvRelatorio.Columns[9].Width = 60;
+                dgvRelatorio.Columns[10].Width = 60;
+                dgvRelatorio.Columns[11].Width = 250;
             }
             catch
             {

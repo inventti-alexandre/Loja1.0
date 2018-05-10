@@ -4,8 +4,8 @@ using System.Windows.Forms;
 using Loja1._0.Model;
 using Loja1._0.Control;
 using Bematech.Fiscal.ECF;
-using FiscalPrinterBematech;
 using Loja1._0.View;
+using FiscalPrinterBematech;
 
 namespace Loja1._0
 {
@@ -57,7 +57,13 @@ namespace Loja1._0
         public static int ent = 0;
 
         //Variaveis SAT
-        string chaveAcesso, numeroCupom, NumeroSAT, message, code, errorMessage, errorCode;
+        string chaveAcesso = "";
+        string numeroCupom = "";
+        string NumeroSAT = "";
+        string message = "";
+        string code = "";
+        string errorMessage = "";
+        string errorCode = "";
         public string cnpj = "";
         public string assinaturaSoftHouse = "";
 
@@ -68,7 +74,7 @@ namespace Loja1._0
             InitializeComponent();
 
             //configuração visual do form
-            lblUser.Text = user.login;
+            lblUser.Text = user.nome;
             txtPedidoNum1.Focus();
             AcceptButton = btnAdicionar1;
             txtRecebido.Text = "0.00";
@@ -156,14 +162,11 @@ namespace Loja1._0
                     if (venda.Clientes != null && cliente.cpf != null && rdbNPsim.Checked)
                     {
                         //função de impressão de Cupom Fiscal
+                        
                         //realiza a abertura do cupom na ECF com cnpj ou cpf do cliente
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
-                        //informação da software house, especificação SAT
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_DadosSoftwareHouseSAT(cnpj, assinaturaSoftHouse));
-                        //informações e retorno SAT
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_UltimasInformacoesSAT(ref chaveAcesso, ref numeroCupom, ref NumeroSAT));
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_RetornaMensagemSeFazSAT(ref message, ref code, ref errorMessage, ref errorCode));
-
+                        //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD(txtCpf.Text, "", ""));
+                        
                         //chamada da função para adição de venda a lista de vendas
                         adicionaPrimeiro();
                     }
@@ -172,8 +175,9 @@ namespace Loja1._0
                     {
                         //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF com cnpj ou cpf do cliente
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
-                        
+                        //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD("", "", ""));
+
                         //chamada da função para adição de venda a lista de vendas
                         adicionaPrimeiro();
                     }
@@ -182,7 +186,8 @@ namespace Loja1._0
                     {
                         //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF sem associação a cliente
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(""));
+                        //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(""));
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD("", "", ""));
 
                         adicionaPrimeiro();
                     }
@@ -893,7 +898,7 @@ namespace Loja1._0
                 //atribui o valor do desconto préviamente cadastrado nas vendas ao traking desconto caso este não tenha sofrido alteração
                 if (trkDesconto.Value == 0)
                 {
-                    trkDesconto.Value = Convert.ToInt32(valorDesc / (valorTotal / 100)); ;
+                    trkDesconto.Value = Convert.ToInt32(valorDesc / (valorTotal / 100));
                 }
 
                 //verifica se a variável booleana que identifica se já houve alteração devida aos pedidos inclusos no pagamento ainda possuí o valor falso atribuido
@@ -911,11 +916,13 @@ namespace Loja1._0
 
                             Compras compra = controle.PesquisaCompraAnterior(produto.id);
 
-                            //função de impressão de Cupom Fiscal
-                            /*/adiciona o produto ao cupom como item vendido                        
-                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, compra.preco_venda.ToString(), "%", "0"));
-                            //adiciona o produto ao cupom fiscal no item SAT*/ 
-                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItemCompletoSAT(produto.cod_produto, produto.cod_produto, produto.desc_produto, "Tipo FF", produto.UnidMedidas.medida, TipoQuantidade.Inteira.ToString(), "0", result.quantidade.ToString(), "2", compra.preco_venda.ToString(), "%", "0", "0", "A", produto.ncm, "5102", "", "040", "0", "102","07", "07"));
+                            /*/função de impressão de Cupom Fiscal                                                                                                                                                                                                                                                              
+                            
+                            //adiciona o produto ao cupom fiscal no item ECF   */
+                            //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, compra.preco_venda.ToString(), "%", "0"));
+
+                            //adiciona o produto ao cupom fiscal no item SAT*/
+                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItemCompleto(produto.id.ToString(), produto.cod_produto.ToString(), produto.desc_produto                , "00", "F1", produto.UnidMedidas.abrev, "I", "3", result.quantidade.ToString(), "2", compra.preco_venda.ToString(), "%", "0,00", "0,00", "A", produto.ncm.ToString(), "5102", "INFORMAÇÔES", "40", "0", "1234", "", "", "", "", "102", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "", "04", "", "", "", "", "", "04", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
 
                             //altera a quantidade deste no estoque e salva a alteração
                             produto.Estoque.qnt_atual = produto.Estoque.qnt_atual - result.quantidade;
@@ -1416,7 +1423,8 @@ namespace Loja1._0
                         //cancela o cupom em aberto ou último emitido na ausência deste
                         BemaFI32.Bematech_FI_CancelaCupom();
 
-                        BemaFI32.Bematech_FI_AbreCupom("");
+                        //BemaFI32.Bematech_FI_AbreCupom("");
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD("", "", ""));
                         BemaFI32.Bematech_FI_FechaComprovanteNaoFiscalVinculado();                        
 
                         //limpa o formulário, retorma a codição inicial
@@ -2215,7 +2223,7 @@ namespace Loja1._0
                 PagDinheiro.formaPagamento = "Dinheiro";
                 PagDinheiro.acrescimo = valorAcres.ToString("0.00");
                 PagDinheiro.desconto = "0.00";
-                PagDinheiro.valorPagamento = valor.ToString("0.00");
+                PagDinheiro.valorPagamento = valor.ToString("0.00");                
 
                 //instancia o movimento
                 Movimentos movimento = new Movimentos();
@@ -2233,7 +2241,7 @@ namespace Loja1._0
                 pagamento.valorParcela = valor;
                 pagamento.numChequePrimeiro = "";
                 pagamento.numChequeUltimo = "";
-                
+
                 //caso o pagamento seja superior ou equivalente ao total devido
                 if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valor)
                 {
@@ -2398,6 +2406,14 @@ namespace Loja1._0
                     BemaFI32.Bematech_FI_EfetuaFormaPagamento("Cheque", PagCheque.valorPagamento);
                 }
 
+                ///*
+                //informação da software house, especificação SAT
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_DadosSoftwareHouseSAT(cnpj, assinaturaSoftHouse));
+                //informações e retorno SAT
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_UltimasInformacoesSAT(ref chaveAcesso, ref numeroCupom, ref NumeroSAT));
+                BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_RetornaMensagemSeFazSAT(ref message, ref code, ref errorMessage, ref errorCode));
+                //*/
+
                 //encerra o cupom fiscal com mensagem personalizada, inserindo valor aproximado de tributação
                 //CONCLUI O FECHAMENTO
                 if (AcrescimoDesconto.Equals("D"))
@@ -2408,6 +2424,7 @@ namespace Loja1._0
                 {
                     BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
                 }
+                
             }
             catch
             {
@@ -2421,6 +2438,7 @@ namespace Loja1._0
         //função de limpeza do formulário, reestabelecendo as condições iniciais 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
+
             //reinicializa as variaveis
             listaVendas = new List<Vendas>();
             listaNumPedidos = new List<int>();
@@ -2450,23 +2468,23 @@ namespace Loja1._0
             pnlPedidos.Enabled = true;
             btnPagamento.Enabled = false;
             btnDesconto.Enabled = false;
-            btnLimpar.Enabled = false;
-            btnCancelaAberto.Enabled = false;
+            btnLimpar.Enabled = true;
+            btnCancelaAberto.Enabled = true;
+            btnCancelar.Enabled = true;
             txtPedidoNum1.Text = "";
             pnlCheque.Enabled = false;
             pnlCredito.Enabled = false;
             pnlDebito.Enabled = false;
             pnlDinheiro.Enabled = false;
             pnlPrePag.Enabled = false;
-            txtPedidoNum1.Enabled = true;
-            btnAdicionar1.Enabled = true;
-            AcceptButton = btnAdicionar1;
+            txtPedidoNum1.Enabled = true;            
 
             //zera o valor referente aos descontos
             trkDesconto.Minimum = 0;
             trkDesconto.Value = 0;
 
             //altera as visibilidades do panel de pedidos
+            AcceptButton = btnAdicionar1;
             txtPedidoNum1.Text = "";
             txtPedidoNum1.Enabled = true;
             btnAdicionar1.Enabled = true;
@@ -2529,7 +2547,7 @@ namespace Loja1._0
             txtTotal.Text = "R$";
             AcrescimoDesconto = "";
             ValorAcrescimoDesconto = "";
-                       
+
         }
 
         //função responsável por confirmar a associação de cliente ou cpf/cnpj ao cupom fiscal

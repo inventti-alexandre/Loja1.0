@@ -266,6 +266,7 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="medida" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="abrev" Type="varchar" MaxLength="3" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -967,6 +968,7 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="medida" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Produtos" Relationship="ServidorLojaModel.FK_Produto_Medida" FromRole="UnidMedidas" ToRole="Produtos" />
+          <Property Name="abrev" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Vendas">
           <Key>
@@ -1551,6 +1553,7 @@
           <EntitySetMapping Name="UnidMedidas">
             <EntityTypeMapping TypeName="ServidorLojaModel.UnidMedidas">
               <MappingFragment StoreEntitySet="UnidMedidas">
+                <ScalarProperty Name="abrev" ColumnName="abrev" />
                 <ScalarProperty Name="medida" ColumnName="medida" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

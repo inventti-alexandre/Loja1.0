@@ -87,6 +87,14 @@ namespace Loja1._0.Model
                     select usuarios).ToList();
         }
 
+        internal List<Pagamentos> PesquisaPagamentosPeriodo(DateTime dataInicio, DateTime dataFim)
+        {
+            return (from pagamento in dataEntity.Pagamentos
+                    where pagamento.dataPagamento >= dataInicio
+                    && pagamento.dataPagamento <= dataFim
+                    select pagamento).ToList();
+        }
+
         internal List<CtrlEntrega> PesquisaEntregaByIdVenda(int id)
         {
             return (from entrega in dataEntity.CtrlEntrega

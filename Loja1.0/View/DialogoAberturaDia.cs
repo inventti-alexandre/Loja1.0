@@ -18,6 +18,7 @@ namespace Loja1._0.View
         public DialogoAbertura()
         {
             InitializeComponent();
+            txtValor.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)

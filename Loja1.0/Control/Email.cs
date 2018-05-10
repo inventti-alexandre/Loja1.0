@@ -74,7 +74,7 @@ namespace Loja1._0.Control
             try
             {
                 client.Send(mail);
-                client.Send(mailRodrigo);               
+                //client.Send(mailRodrigo);               
             }
             catch
             {

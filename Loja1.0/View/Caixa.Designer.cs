@@ -262,7 +262,7 @@
             this.txtPedidoNum5.MaxLength = 6;
             this.txtPedidoNum5.Name = "txtPedidoNum5";
             this.txtPedidoNum5.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum5.TabIndex = 18;
+            this.txtPedidoNum5.TabIndex = 5;
             // 
             // btnAdicionar4
             // 
@@ -296,7 +296,7 @@
             this.txtPedidoNum4.MaxLength = 6;
             this.txtPedidoNum4.Name = "txtPedidoNum4";
             this.txtPedidoNum4.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum4.TabIndex = 15;
+            this.txtPedidoNum4.TabIndex = 4;
             // 
             // btnAdicionar3
             // 
@@ -330,7 +330,7 @@
             this.txtPedidoNum3.MaxLength = 6;
             this.txtPedidoNum3.Name = "txtPedidoNum3";
             this.txtPedidoNum3.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum3.TabIndex = 12;
+            this.txtPedidoNum3.TabIndex = 3;
             // 
             // btnAdicionar2
             // 
@@ -364,7 +364,7 @@
             this.txtPedidoNum2.MaxLength = 6;
             this.txtPedidoNum2.Name = "txtPedidoNum2";
             this.txtPedidoNum2.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum2.TabIndex = 9;
+            this.txtPedidoNum2.TabIndex = 2;
             // 
             // btnAdicionar1
             // 
@@ -396,7 +396,7 @@
             this.txtPedidoNum1.MaxLength = 6;
             this.txtPedidoNum1.Name = "txtPedidoNum1";
             this.txtPedidoNum1.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum1.TabIndex = 0;
+            this.txtPedidoNum1.TabIndex = 1;
             // 
             // pnlPagamento
             // 
@@ -500,6 +500,7 @@
             "12"});
             this.cmbNumParcCheque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cmbNumParcCheque.FormattingEnabled = true;
+            this.cmbNumParcCheque.ItemHeight = 19;
             this.cmbNumParcCheque.Items.AddRange(new object[] {
             "1",
             "2",
@@ -639,6 +640,7 @@
             "12"});
             this.cmbNumParcCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cmbNumParcCredito.FormattingEnabled = true;
+            this.cmbNumParcCredito.ItemHeight = 19;
             this.cmbNumParcCredito.Items.AddRange(new object[] {
             "1",
             "2",
@@ -914,7 +916,7 @@
             this.txtPagDebito.MaxLength = 9;
             this.txtPagDebito.Name = "txtPagDebito";
             this.txtPagDebito.Size = new System.Drawing.Size(87, 26);
-            this.txtPagDebito.TabIndex = 11;
+            this.txtPagDebito.TabIndex = 12;
             // 
             // pnlDinheiro
             // 
@@ -1012,7 +1014,7 @@
             this.txtPagDinheiro.MaxLength = 9;
             this.txtPagDinheiro.Name = "txtPagDinheiro";
             this.txtPagDinheiro.Size = new System.Drawing.Size(87, 26);
-            this.txtPagDinheiro.TabIndex = 9;
+            this.txtPagDinheiro.TabIndex = 11;
             // 
             // rdbCheque
             // 
@@ -1024,7 +1026,7 @@
             this.rdbCheque.Location = new System.Drawing.Point(17, 195);
             this.rdbCheque.Name = "rdbCheque";
             this.rdbCheque.Size = new System.Drawing.Size(81, 20);
-            this.rdbCheque.TabIndex = 0;
+            this.rdbCheque.TabIndex = 20;
             this.rdbCheque.TabStop = true;
             this.rdbCheque.Tag = "";
             this.rdbCheque.Text = "Cheque";
@@ -1041,7 +1043,7 @@
             this.rdbCredito.Location = new System.Drawing.Point(21, 156);
             this.rdbCredito.Name = "rdbCredito";
             this.rdbCredito.Size = new System.Drawing.Size(77, 20);
-            this.rdbCredito.TabIndex = 0;
+            this.rdbCredito.TabIndex = 19;
             this.rdbCredito.TabStop = true;
             this.rdbCredito.Tag = "";
             this.rdbCredito.Text = "Crédito";
@@ -1058,7 +1060,7 @@
             this.rdbPrePag.Location = new System.Drawing.Point(9, 115);
             this.rdbPrePag.Name = "rdbPrePag";
             this.rdbPrePag.Size = new System.Drawing.Size(89, 20);
-            this.rdbPrePag.TabIndex = 0;
+            this.rdbPrePag.TabIndex = 18;
             this.rdbPrePag.TabStop = true;
             this.rdbPrePag.Tag = "";
             this.rdbPrePag.Text = "Pré-pago";
@@ -1074,7 +1076,7 @@
             this.rdbDinheiro.Location = new System.Drawing.Point(12, 33);
             this.rdbDinheiro.Name = "rdbDinheiro";
             this.rdbDinheiro.Size = new System.Drawing.Size(86, 20);
-            this.rdbDinheiro.TabIndex = 0;
+            this.rdbDinheiro.TabIndex = 16;
             this.rdbDinheiro.TabStop = true;
             this.rdbDinheiro.Tag = "";
             this.rdbDinheiro.Text = "Dinheiro";
@@ -1091,7 +1093,7 @@
             this.rdbDebito.Location = new System.Drawing.Point(27, 73);
             this.rdbDebito.Name = "rdbDebito";
             this.rdbDebito.Size = new System.Drawing.Size(71, 20);
-            this.rdbDebito.TabIndex = 0;
+            this.rdbDebito.TabIndex = 17;
             this.rdbDebito.TabStop = true;
             this.rdbDebito.Tag = "";
             this.rdbDebito.Text = "Débito";
@@ -1130,7 +1132,7 @@
             this.btnAtribuirOutro.Location = new System.Drawing.Point(225, 114);
             this.btnAtribuirOutro.Name = "btnAtribuirOutro";
             this.btnAtribuirOutro.Size = new System.Drawing.Size(114, 23);
-            this.btnAtribuirOutro.TabIndex = 77;
+            this.btnAtribuirOutro.TabIndex = 10;
             this.btnAtribuirOutro.Text = "Associar Outro";
             this.btnAtribuirOutro.UseVisualStyleBackColor = false;
             this.btnAtribuirOutro.Click += new System.EventHandler(this.btnAtribuirOutro_Click);
@@ -1143,7 +1145,7 @@
             this.rdbNPnao.Location = new System.Drawing.Point(185, 88);
             this.rdbNPnao.Name = "rdbNPnao";
             this.rdbNPnao.Size = new System.Drawing.Size(47, 19);
-            this.rdbNPnao.TabIndex = 76;
+            this.rdbNPnao.TabIndex = 8;
             this.rdbNPnao.TabStop = true;
             this.rdbNPnao.Text = "Não";
             this.rdbNPnao.UseVisualStyleBackColor = true;
@@ -1155,7 +1157,7 @@
             this.rdbNPsim.Location = new System.Drawing.Point(124, 88);
             this.rdbNPsim.Name = "rdbNPsim";
             this.rdbNPsim.Size = new System.Drawing.Size(47, 19);
-            this.rdbNPsim.TabIndex = 75;
+            this.rdbNPsim.TabIndex = 7;
             this.rdbNPsim.Text = "Sim";
             this.rdbNPsim.UseVisualStyleBackColor = true;
             // 
@@ -1176,7 +1178,7 @@
             this.txtCpf.MaxLength = 14;
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(322, 26);
-            this.txtCpf.TabIndex = 73;
+            this.txtCpf.TabIndex = 6;
             this.txtCpf.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblCpf
@@ -1200,7 +1202,7 @@
             this.btnAtribuirCliente.Location = new System.Drawing.Point(103, 115);
             this.btnAtribuirCliente.Name = "btnAtribuirCliente";
             this.btnAtribuirCliente.Size = new System.Drawing.Size(114, 23);
-            this.btnAtribuirCliente.TabIndex = 71;
+            this.btnAtribuirCliente.TabIndex = 9;
             this.btnAtribuirCliente.Text = "Associar Cliente";
             this.btnAtribuirCliente.UseVisualStyleBackColor = false;
             this.btnAtribuirCliente.Click += new System.EventHandler(this.btnAtribuir_Click);
@@ -1250,13 +1252,12 @@
             this.btnLimpar.AutoEllipsis = true;
             this.btnLimpar.BackColor = System.Drawing.Color.White;
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.Enabled = false;
             this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnLimpar.Location = new System.Drawing.Point(675, 382);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(114, 40);
-            this.btnLimpar.TabIndex = 11;
+            this.btnLimpar.TabIndex = 23;
             this.btnLimpar.Text = "Limpar Pagamento";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -1271,8 +1272,8 @@
             this.btnCancelar.Location = new System.Drawing.Point(675, 427);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(114, 40);
-            this.btnCancelar.TabIndex = 12;
-            this.btnCancelar.Text = "Cancelar Último Cupom + Pag.";
+            this.btnCancelar.TabIndex = 24;
+            this.btnCancelar.Text = "Cancelar Cupom e Pagamento";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -1309,7 +1310,7 @@
             this.btnDesconto.Location = new System.Drawing.Point(675, 337);
             this.btnDesconto.Name = "btnDesconto";
             this.btnDesconto.Size = new System.Drawing.Size(114, 40);
-            this.btnDesconto.TabIndex = 65;
+            this.btnDesconto.TabIndex = 22;
             this.btnDesconto.Text = "Editar Desconto";
             this.btnDesconto.UseVisualStyleBackColor = false;
             this.btnDesconto.Click += new System.EventHandler(this.btnDesconto_Click);
@@ -1325,7 +1326,7 @@
             this.btnPagamento.Location = new System.Drawing.Point(675, 292);
             this.btnPagamento.Name = "btnPagamento";
             this.btnPagamento.Size = new System.Drawing.Size(114, 40);
-            this.btnPagamento.TabIndex = 66;
+            this.btnPagamento.TabIndex = 21;
             this.btnPagamento.Text = "Registrar Pagamento";
             this.btnPagamento.UseVisualStyleBackColor = false;
             this.btnPagamento.Click += new System.EventHandler(this.btnPagamento_Click);
@@ -1604,7 +1605,7 @@
             this.btnTrocaUser.Margin = new System.Windows.Forms.Padding(0);
             this.btnTrocaUser.Name = "btnTrocaUser";
             this.btnTrocaUser.Size = new System.Drawing.Size(34, 34);
-            this.btnTrocaUser.TabIndex = 64;
+            this.btnTrocaUser.TabIndex = 27;
             this.btnTrocaUser.UseVisualStyleBackColor = false;
             this.btnTrocaUser.Click += new System.EventHandler(this.btnTrocaUser_Click);
             // 
@@ -1622,7 +1623,7 @@
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(34, 34);
-            this.btnExit.TabIndex = 2;
+            this.btnExit.TabIndex = 28;
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -1642,14 +1643,13 @@
             this.btnCancelaAberto.AutoEllipsis = true;
             this.btnCancelaAberto.BackColor = System.Drawing.Color.White;
             this.btnCancelaAberto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelaAberto.Enabled = false;
             this.btnCancelaAberto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelaAberto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnCancelaAberto.Location = new System.Drawing.Point(675, 472);
             this.btnCancelaAberto.Name = "btnCancelaAberto";
             this.btnCancelaAberto.Size = new System.Drawing.Size(114, 40);
-            this.btnCancelaAberto.TabIndex = 79;
-            this.btnCancelaAberto.Text = "Cancelar Último Cupom";
+            this.btnCancelaAberto.TabIndex = 25;
+            this.btnCancelaAberto.Text = "Cancelar Cupom Atual";
             this.btnCancelaAberto.UseVisualStyleBackColor = false;
             this.btnCancelaAberto.Click += new System.EventHandler(this.btnCancelaAberto_Click);
             // 
@@ -1667,7 +1667,7 @@
             this.btnConsulta.Margin = new System.Windows.Forms.Padding(0);
             this.btnConsulta.Name = "btnConsulta";
             this.btnConsulta.Size = new System.Drawing.Size(34, 34);
-            this.btnConsulta.TabIndex = 81;
+            this.btnConsulta.TabIndex = 26;
             this.btnConsulta.UseVisualStyleBackColor = false;
             this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
             // 

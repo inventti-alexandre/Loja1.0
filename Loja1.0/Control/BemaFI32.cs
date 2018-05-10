@@ -274,8 +274,8 @@ namespace FiscalPrinterBematech
 		/// </summary>
 		/// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
 		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_ProgramaTruncamento();
-		#endregion
-		
+        #endregion
+        /*
 		#region Funções do Cupom Fiscal
 		/// <summary>
 		/// Abre o cupom fiscal na impressora.
@@ -395,13 +395,49 @@ namespace FiscalPrinterBematech
 		/// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
 		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_UsaUnidadeMedida(string UnidadeMedida);
 		#endregion
-				
-		#region Funções dos Relatórios Fiscais
-		/// <summary>
-		/// Emite a Leitura X na impressora.
-		/// </summary>
-		/// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
-		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_LeituraX();
+		*/
+        #region Funções do Cupom Fiscal
+
+      
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_AbreCupomMFD(string CGC_CPF, string nome, string endereco);
+        [DllImport("BemaFi32.dll")]
+        public static extern int Bematech_FI_VendeItem(string Codigo, string Descricao, string Aliquota, string TipoQuantidade, string Quantidade, int CasasDecimais, string ValorUnitario, string TipoDesconto, string Desconto);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_VendeItemCompleto(string Codigo, string EAN13, string Descricao, string IndiceDepartamento, string Aliquota, string UnidadeMedida, string TipoQuantidade, string CasasDecimaisQtde, string Quantidade, string CasasDecimaisValor, string ValorUnitario, string TipoDesconto, string ValorAcrescimo, string ValorDesconto, string ArredondaTrunca, string NCM, string CFOP, string InformacaoAdicional, string CST_ICMS, string OrigemProduto, string ItemListaServico, string CodigoISS, string NaturezaOperacaoISS, string IndicadorIncentivoFiscal, string CodigoIBGE, string CSOSN, string ValorBaseCalculoSimples, string ValorICMSRetidoSimples, string ModalidadeBaseCalculo, string PercentualReducaoBase, string ModalidadeBC, string PercentualMargemICMS, string PercentualBCICMS, string ValorReducaoBCICMS, string ValorAliquotaICMS, string ValorICMS, string ValorICMSDesonerado, string MotivoDesoneracaoICMS, string AliquotaCalculoCredito, string ValorCreditoICMS, string Reservado01, string Reservado02, string Reservado03, string Reservado04, string Reservado05, string Reservado06, string Reservado07, string Reservado08, string Reservado09, string Reservado10, string Reservado11, string Reservado12, string Reservado13, string Reservado14, string Reservado15, string Reservado16, string Reservado17, string Reservado18, string Reservado19, string Reservado20, string Reservado21, string Reservado22, string Reservado23);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_IniciaFechamentoCupom(string AcrescimoDesconto, string TipoAcrescimoDesconto, string ValorAcrescimoDesconto);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_AcrescimoDescontoItemCV0909(string Item, string AcrescimoDesconto, string TipoAcrescimoDesconto, string ValorAcrescimoDesconto);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_EfetuaFormaPagamento(string valor, string forma);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_TerminaFechamentoCupom(string menssagem);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_NumeroCupom([MarshalAs(UnmanagedType.VBByRefStr)] ref string NumeroCupom);
+        [DllImport("BemaFi32.dll")]
+        public static extern int Bematech_FI_RetornoImpressoraMFD(ref int ACK, ref int ST1, ref int ST2, ref int ST3);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_LeituraX();
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_ReducaoZ(string Data, string Hora);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_CancelaCupom();
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_DadosSoftwareHouseSAT(string cnpj, string assinaturaAplicativoComercial);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_UltimasInformacoesSAT([MarshalAs(UnmanagedType.VBByRefStr)] ref string chaveAcesso, ref string numeroCupom, ref string NumeroSAT);
+        [DllImport("BemaFI32.dll")]
+        public static extern int Bematech_FI_RetornaMensagemSeFazSAT([MarshalAs(UnmanagedType.VBByRefStr)] ref string message, ref string code, ref string errorMessage, ref string errorCode);
+
+        #endregion
+
+        #region Funções dos Relatórios Fiscais
+        /// <summary>
+        /// Emite a Leitura X na impressora.
+        /// </summary>
+        /// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
+        //[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_LeituraX();
 		/// <summary>
 		/// Recebe os dados da Leitura X pela serial e grava em arquivo texto.
 		/// </summary>
@@ -413,7 +449,7 @@ namespace FiscalPrinterBematech
 		/// <param name="Data">STRING com a Data atual da impressora no formato ddmmaa ou dd/mm/aa, dd/mm/aaaa ou dd/mm/aa.</param>
 		/// <param name="Hora">STRING com a Hora a ser alterada no formato hhmmss ou hh:mm:ss.</param>
 		/// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
-		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_ReducaoZ(string Data, string Hora);
+		//[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_ReducaoZ(string Data, string Hora);
 		/// <summary>
 		/// 
 		/// </summary>
@@ -610,7 +646,7 @@ namespace FiscalPrinterBematech
 		/// </summary>
 		/// <param name="NumeroCupom">Variável string com 6 posições para receber o número do último cupom.</param>
 		/// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
-		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_NumeroCupom([MarshalAs(UnmanagedType.VBByRefStr)] ref string NumeroCupom);
+		//[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_NumeroCupom([MarshalAs(UnmanagedType.VBByRefStr)] ref string NumeroCupom);
 		/// <summary>
 		/// Retorna o número de cupons cancelados.
 		/// </summary>
@@ -1161,7 +1197,7 @@ namespace FiscalPrinterBematech
 		/// <param name="Nome">STRING até 30 caracteres com o nome do cliente.</param>
 		/// <param name="Endereco">STRING até 80 caracteres com o endereço do cliente.</param>
 		/// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
-		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_AbreCupomMFD(string CGC, string Nome, string Endereco);
+		//[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_AbreCupomMFD(string CGC, string Nome, string Endereco);
 		/// <summary>
 		/// Abre o comprovante não fiscal não vinculado para que sejam lançados os recebimentos não fiscais.
 		/// </summary>
@@ -1503,7 +1539,7 @@ namespace FiscalPrinterBematech
 		/// <param name="ST2">Variável inteira para receber o terceiro bytes de status da impressora.</param>
 		/// <param name="ST3">Variável inteira para receber o quarto bytes de status da impressora.</param>
 		/// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
-		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_RetornoImpressoraMFD(ref int ACK, ref int ST1, ref int ST2, ref int ST3);
+		//[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_RetornoImpressoraMFD(ref int ACK, ref int ST1, ref int ST2, ref int ST3);
 		/// <summary>
 		/// Imprime a segunda via do comprovante não fiscal vinculado. Deve ser executada imediatamente após a emissão da primeira via.
 		/// </summary>
@@ -1618,19 +1654,6 @@ namespace FiscalPrinterBematech
         /// <param name="iTipoCorte">variável INTEIRA para definir o tipo de corte do papel. Onde: 0: para corte parcial ou; 1: para corte total.</param>
         /// <returns>INTEIRO - Indica se a função conseguiu enviar o comando para impressora.</returns>
         [DllImport("BemaFi32.dll")]public static extern int Bematech_FI_AcionaGuilhotinaMFD(int iTipoCorte);
-        #endregion
-
-        #region Funções SAT
-
-        [DllImport("BemaFI32.dll")]
-        public static extern int Bematech_FI_VendeItemCompletoSAT(string Codigo, string EAN13, string Descricao, /*string IndiceDepartamento,*/ string Aliquota, string UnidadeMedida, string TipoQuantidade, string CasasDecimaisQtde, string Quantidade, string CasasDecimaisValor, string ValorUnitario, string TipoDesconto, string ValorAcrescimo, string ValorDesconto, string ArredondaTrunca, string NCM, string CFOP, string InformacaoAdicional, string CST_ICMS, string OrigemProduto, /*string ItemListaServico, string CodigoISS, string NaturezaOperacaoISS, string IndicadorIncentivoFiscal, string CodigoIBGE,*/ string CSOSN, /*string ValorBaseCalculoSimples, string ValorICMSRetidoSimples, string ModalidadeBaseCalculo, string PercentualReducaoBase, string ModalidadeBC, string PercentualMargemICMS, string PercentualBCICMS, string ValorReducaoBCICMS, string ValorAliquotaICMS, string ValorICMS, string ValorICMSDesonerado, string MotivoDesoneracaoICMS, string AliquotaCalculoCredito, string ValorCreditoICMS, string Reservado01, string Reservado02, string Reservado03, string Reservado04, string Reservado05, string Reservado06, string Reservado07, string Reservado08, string Reservado09, string Reservado10, string Reservado11, string Reservado12, string Reservado13, string Reservado14, string Reservado15, string Reservado16, string Reservado17, string Reservado18, string Reservado19, string Reservado20, string Reservado21, string Reservado22, string Reservado23*/ string CSTPIS, string CSTCOFINS );
-        [DllImport("BemaFI32.dll")]
-        public static extern int Bematech_FI_DadosSoftwareHouseSAT(string cnpj, string assinaturaAplicativoComercial);
-        [DllImport("BemaFI32.dll")]
-        public static extern int Bematech_FI_UltimasInformacoesSAT([MarshalAs(UnmanagedType.VBByRefStr)] ref string chaveAcesso, ref string numeroCupom, ref string NumeroSAT);
-        [DllImport("BemaFI32.dll")]
-        public static extern int Bematech_FI_RetornaMensagemSeFazSAT([MarshalAs(UnmanagedType.VBByRefStr)] ref string message, ref string code, ref string errorMessage, ref string errorCode);
-        
         #endregion
 
         // Fim da Declaração ///////////////////////////////////////////////////////////

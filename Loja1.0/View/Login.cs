@@ -23,7 +23,7 @@ namespace Loja1._0
                     exec++;
                     var t = Task.Run(async delegate
                     {
-                        await Task.Delay(4000);
+                        await Task.Delay(3000);
                         InitializeComponent();
                     });
                     t.Wait();

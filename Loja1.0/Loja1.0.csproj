@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -45,6 +45,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Loja1._0.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bematech, Version=1.5.0.0, Culture=neutral, PublicKeyToken=922112168328d899" />
@@ -327,11 +333,11 @@
     <Compile Include="View\Relatórios\PagamentosSaida.Designer.cs">
       <DependentUpon>PagamentosSaida.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Relatórios\ProdutoQuantidade.cs">
+    <Compile Include="View\Relatórios\ProdutoCompleta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Relatórios\ProdutoQuantidade.Designer.cs">
-      <DependentUpon>ProdutoQuantidade.cs</DependentUpon>
+    <Compile Include="View\Relatórios\ProdutoCompleta.Designer.cs">
+      <DependentUpon>ProdutoCompleta.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Relatórios\PedidosAbertos.cs">
       <SubType>Form</SubType>
@@ -476,8 +482,8 @@
     <EmbeddedResource Include="View\Relatórios\PagamentosSaida.resx">
       <DependentUpon>PagamentosSaida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Relatórios\ProdutoQuantidade.resx">
-      <DependentUpon>ProdutoQuantidade.cs</DependentUpon>
+    <EmbeddedResource Include="View\Relatórios\ProdutoCompleta.resx">
+      <DependentUpon>ProdutoCompleta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Relatórios\PedidosAbertos.resx">
       <DependentUpon>PedidosAbertos.cs</DependentUpon>
@@ -569,6 +575,7 @@
   <ItemGroup>
     <None Include="Image\Branco.jpg" />
     <None Include="Image\Engrenagem.png" />
+    <Content Include="Icon.ico" />
     <Content Include="Image\exit.png" />
     <Content Include="Image\Fundo.png" />
     <Content Include="Image\Icon.ico" />

@@ -710,6 +710,7 @@
             this.btnExit.Size = new System.Drawing.Size(34, 34);
             this.btnExit.TabIndex = 50;
             this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // ControleHoras
             // 

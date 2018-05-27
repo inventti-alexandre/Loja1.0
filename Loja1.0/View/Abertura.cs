@@ -15,11 +15,11 @@ namespace Loja1._0.View
     {
         public Abertura()
         {            
-            //Criação de task com apresentação por tempo determinado de 4 segundos, estilo splash screen
+            //Criação de task com apresentação por tempo determinado de 3 segundos, estilo splash screen
             var t = Task.Run(async delegate
             {
                 InitializeComponent();
-                await Task.Delay(4000);
+                await Task.Delay(3000);
                 this.Hide();
             });
         }

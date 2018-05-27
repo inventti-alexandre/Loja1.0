@@ -49,7 +49,7 @@ namespace Loja1._0
                             txtSenha.Text = "";
                             caixa.Show();
                             caixa.user = user;
-                            caixa.lblUser.Text = user.nome;
+                            caixa.lblUser.Text = user.login;
                         }
 
                         else

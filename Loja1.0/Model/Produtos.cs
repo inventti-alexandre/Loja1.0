@@ -24,9 +24,9 @@ public partial class Produtos
 
         this.Compras = new HashSet<Compras>();
 
-        this.Vendas_Produtos = new HashSet<Vendas_Produtos>();
-
         this.CtrlEntrega = new HashSet<CtrlEntrega>();
+
+        this.Vendas_Produtos = new HashSet<Vendas_Produtos>();
 
     }
 
@@ -51,6 +51,10 @@ public partial class Produtos
 
     public virtual ICollection<Compras> Compras { get; set; }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<CtrlEntrega> CtrlEntrega { get; set; }
+
     public virtual Estoque Estoque { get; set; }
 
     public virtual UnidMedidas UnidMedidas { get; set; }
@@ -58,10 +62,6 @@ public partial class Produtos
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Vendas_Produtos> Vendas_Produtos { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<CtrlEntrega> CtrlEntrega { get; set; }
 
 }
 

@@ -24,11 +24,11 @@ public partial class CtrlEntrega
 
     public Nullable<int> id_Cliente { get; set; }
 
+    public int id_Produto { get; set; }
+
     public System.DateTime DataVenda { get; set; }
 
     public string EndEntrega { get; set; }
-
-    public int id_Produto { get; set; }
 
 
 

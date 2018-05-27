@@ -22,9 +22,9 @@ public partial class Clientes
     public Clientes()
     {
 
-        this.Vendas = new HashSet<Vendas>();
-
         this.CtrlEntrega = new HashSet<CtrlEntrega>();
+
+        this.Vendas = new HashSet<Vendas>();
 
     }
 
@@ -67,11 +67,11 @@ public partial class Clientes
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Vendas> Vendas { get; set; }
+    public virtual ICollection<CtrlEntrega> CtrlEntrega { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<CtrlEntrega> CtrlEntrega { get; set; }
+    public virtual ICollection<Vendas> Vendas { get; set; }
 
 }
 

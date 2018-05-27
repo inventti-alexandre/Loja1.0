@@ -49,7 +49,7 @@ namespace Loja1._0
                             txtSenha.Text = "";
                             pdv.Show();
                             pdv.user = user;
-                            pdv.lblUser.Text = user.nome;
+                            pdv.lblUser.Text = user.login;
                         }
 
                         else

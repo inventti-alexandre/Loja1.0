@@ -58,6 +58,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaNomeUser(nomeCompleto);
         }
 
+        internal List<Fornecedores> PesquisaListaFornecedores(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Model.Usuarios> PesquisaGeralUser()
         {
             return dbRepository.PesquisaCompletaUsers();
@@ -106,6 +111,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaPagamentosPeriodo(dataInicio, dataFim);
         }
 
+        internal List<Movimentos> PesquisaMovSaidaPeriodo(DateTime dataInicio, DateTime dataFim)
+        {
+            return dbRepository.PesquisaSaidaPagamentosPeriodo(dataInicio, dataFim);
+        }
+
         internal List<CtrlEntrega> PesquisaEntregaIdVenda(int id)
         {
             int Id = id;
@@ -144,6 +154,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaProdutosValidoByName(pesquisa);
         }
 
+        internal List<Model.Produtos> PesquisaProdutosFornecedor(string fornecedorNome)
+        {
+            return dbRepository.PesquisaProdutosPorFornecedor(fornecedorNome);
+        }
+
         #endregion
 
         #region Controle do BD de Estados
@@ -170,6 +185,11 @@ namespace Loja1._0.Control
         public Model.Contabilidade PesquisaContabilidadeById(int v)
         {
             return dbRepository.PesquisaContabilidadeId(v);
+        }
+
+        internal Compras pesquisaProdutoCompra(int produtoid)
+        {
+            return dbRepository.PesquisaCompraAtualProduto(produtoid);
         }
 
         #endregion
@@ -534,9 +554,9 @@ namespace Loja1._0.Control
 
         #region Controle do BD de Pagamentos
 
-        public bool PesquisaPagamentoId(Pagamentos pagamento)
+        public Pagamentos PesquisaPagamentoId(int id)
         {
-            return dbRepository.PesquisaIdPagamento(pagamento);
+            return dbRepository.PesquisaIdPagamento(id);
         }
 
         public void SalvarPagamento(Pagamentos pagamento)

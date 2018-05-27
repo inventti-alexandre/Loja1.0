@@ -178,6 +178,7 @@
             this.btnImprime.TabIndex = 35;
             this.btnImprime.Text = "Imprimir";
             this.btnImprime.UseVisualStyleBackColor = false;
+            this.btnImprime.Click += new System.EventHandler(this.btnImprime_Click);
             // 
             // btnPesquisar
             // 
@@ -192,6 +193,7 @@
             this.btnPesquisar.TabIndex = 34;
             this.btnPesquisar.Text = "Buscar";
             this.btnPesquisar.UseVisualStyleBackColor = false;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // PedidosAbertos
             // 

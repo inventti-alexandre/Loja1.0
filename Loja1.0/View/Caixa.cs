@@ -17,10 +17,10 @@ namespace Loja1._0
         //declaração das variaveis locais referentes ao Control
         private Controle controle = new Controle();
         public Model.Usuarios user;        
-        static List<Vendas> listaVendas = new List<Vendas>();
+        //static List<Vendas> listaVendas = new List<Vendas>();
         static List<Vendas_Produtos> listaProdutosVenda = new List<Vendas_Produtos>();
         public Gerenciamento gerencia = new Gerenciamento();
-        static Vendas venda = new Vendas();
+        public static Vendas venda = new Vendas();
         static Model.Clientes cliente = new Model.Clientes();
         private Email email = new Email();
         public Valida validaCpf = new Valida();
@@ -52,7 +52,8 @@ namespace Loja1._0
         public static string AcrescimoDesconto = "";
         public static string ValorAcrescimoDesconto = "";        
         static double clienteCreditos = 0;
-        public static List<int> listaNumPedidos = new List<int>();
+        //public static List<int> listaNumPedidos = new List<int>();
+        public static List<int> listaIdPagamentos = new List<int>();
         public static bool pedidosInclusos = false;        
         public static int ent = 0;
 
@@ -74,7 +75,7 @@ namespace Loja1._0
             InitializeComponent();
 
             //configuração visual do form
-            lblUser.Text = user.nome;
+            lblUser.Text = user.login;
             txtPedidoNum1.Focus();
             AcceptButton = btnAdicionar1;
             txtRecebido.Text = "0.00";
@@ -116,10 +117,7 @@ namespace Loja1._0
         {
             //realiza a tentativa de todas as ações e funções abaixo, havendo qualquer erro sai para a função catch
             try
-            {
-                //atribui após pesquisa valor ao objeto venda do tipo dbo.Vendas
-                venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text));
-
+            {                
                 //verifica se houve o preenchimento do campo referente ao pedido número 1 e informa ao usuário caso este esteja em branco
                 if (txtPedidoNum1.Text.Equals(""))
                 {
@@ -142,6 +140,9 @@ namespace Loja1._0
                 //caso nenhum dos erros anteriore ocorra entra no trecho abaixo
                 else
                 {
+                    //atribui após pesquisa valor ao objeto venda do tipo dbo.Vendas
+                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum1.Text));
+
                     //efetua a verificação de cliente associado a venda e da ausência de cliente associado ao cupom fiscal
                     if (venda.Clientes != null && cliente.cpf == null)
                     {
@@ -164,7 +165,6 @@ namespace Loja1._0
                         //função de impressão de Cupom Fiscal
                         
                         //realiza a abertura do cupom na ECF com cnpj ou cpf do cliente
-                        //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
                         BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD(txtCpf.Text, "", ""));
                         
                         //chamada da função para adição de venda a lista de vendas
@@ -175,8 +175,7 @@ namespace Loja1._0
                     {
                         //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF com cnpj ou cpf do cliente
-                        //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(txtCpf.Text));
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD("", "", ""));
+                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD(txtCpf.Text, "", ""));
 
                         //chamada da função para adição de venda a lista de vendas
                         adicionaPrimeiro();
@@ -186,7 +185,6 @@ namespace Loja1._0
                     {
                         //função de impressão de Cupom Fiscal
                         //realiza a abertura do cupom na ECF sem associação a cliente
-                        //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupom(""));
                         BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD("", "", ""));
 
                         adicionaPrimeiro();
@@ -206,10 +204,11 @@ namespace Loja1._0
         private void adicionaPrimeiro()
         {
             //altera a visibilidade do painel de clientes 
-            pnlCliente.Enabled = false;            
+            pnlCliente.Enabled = false;
+            rdbDinheiro.Select();
 
             //adiciona a venda ao List<Vendas> listaVendas
-            listaVendas.Add(venda);
+            //*/listaVendas.Add(venda);
 
             //verifica se existe incidencia de desconto fornecido pelo PDV para esta venda
             if (venda.desconto != 0)
@@ -221,435 +220,15 @@ namespace Loja1._0
             btnDesconto.Enabled = true;
             btnLimpar.Enabled = true;
             pnlPagamento.Enabled = true;
-            btnAdicionar2.Enabled = true;
-            txtPedidoNum2.Enabled = true;
             btnAdicionar1.Enabled = false;
             txtPedidoNum1.Enabled = false;
 
             //realiza a chamada da função que altera os valores das variaveis e campos do form referentes a venda e seu valor
             acrescentaPedido();
 
-            //altera visibilidade de elementos do form
-            AcceptButton = btnAdicionar2;
-            txtPedidoNum2.Focus();
-
             //adiciona a lista de inteiros o numero do pedido registrado
-            listaNumPedidos.Add(Convert.ToInt32(txtPedidoNum1.Text));  
-        }
-
-        //função do botão "+" do segundo campo de numeros de pedidos
-        private void btnAdicionar2_Click(object sender, EventArgs e)
-        {
-            //realiza a tentativa de todas as ações e funções abaixo, havendo qualquer erro sai para a função catch
-            try
-            {
-                //verifica se houve o preenchimento do campo referente ao pedido número 2 e informa ao usuário caso este esteja em branco
-                if (txtPedidoNum2.Text.Equals(""))
-                {
-                    MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
-                }
-
-                //verifica se existe uma venda correspondente aos dados do preenchimento do campo número de pedido 2 e informa o erro ao usuário caso este ocorra
-                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum2.Text)) == null)
-                {
-                    MessageBox.Show("O número inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
-                }
-
-                //SCRIPT FECHAMENTO e pagamento
-                //validação da existencia de pagamento para o pedido inserido / ou se o mesmo recebeu o fechamento
-                else if (pedidoPago(txtPedidoNum2.Text) || vendaFechada(txtPedidoNum2.Text))
-                {
-                    MessageBox.Show("Já existe um pagamento associado ao pedido nº" + txtPedidoNum2.Text + ", por favor, verifique e tente novamente", "Ação Inválida");
-                }
-
-                //caso nenhum dos erros anteriore ocorra entra no trecho abaixo
-                else
-                {
-                    //atribui a variavel venda a respectiva venda
-                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum2.Text));
-                    
-                    //inicia a variavel local booleana existe com o valor falso
-                    bool existe = false;
-
-                    //verifica a existencia da venda inserida na atual lista de vendas, havendo altera o valor da variavel booleana
-                    foreach (Model.Vendas value in listaVendas)
-                    {
-                        if (venda.id == value.id)
-                        {
-                            existe = true;
-                        }
-                    }
-
-                    //caso após a verificação o valor da variavel permaneça como falsa
-                    if (!existe)
-                    {
-                        //verifica se a venda possuí desconto atribuido no PDV
-                        if (venda.desconto != 0)
-                        {
-                            //havendo descontro incrementa a variavel referente ao respectivo valor
-                            valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) * (Convert.ToDecimal(venda.desconto) / 100);
-                        }
-
-                        //adiciona a venda a lista de vendas
-                        listaVendas.Add(venda);
-
-                        //altera a visibilidade dos controles do form
-                        btnAdicionar3.Enabled = true;
-                        txtPedidoNum3.Enabled = true;
-                        btnAdicionar2.Enabled = false;
-                        txtPedidoNum2.Enabled = false;
-
-                        //efetua a verificação de cliente associado a venda e da ausência de cliente associado ao cupom fiscal                        
-                        if (venda.Clientes != null && cliente.cpf == null)
-                        {
-                            //realiza ajustes de visibilidade e preenchimento do form, panel cliente e atribui o cliente a entidade venda do BD
-                            btnAtribuirCliente.Enabled = false;
-                            cliente = venda.Clientes;
-                            txtCliente.Text = cliente.nome;
-                            txtCpf.Text = cliente.cpf;
-                            txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
-                            if (txtCreditosCliente.Text.Equals(""))
-                            {
-                                txtCreditosCliente.Text = "0.00";
-                            }
-                        }
-
-                        //realiza a chamada da função que altera os valores das variaveis e campos do form referentes a venda e seu valor
-                        acrescentaPedido();
-
-                        //altera visibilidade de elementos do form
-                        AcceptButton = btnAdicionar3;
-                        txtPedidoNum3.Focus();
-
-                        //adiciona a lista de inteiros o numero do pedido registrado
-                        listaNumPedidos.Add(Convert.ToInt32(txtPedidoNum2.Text));
-                    }
-
-                    //caso haja a tentativa de inserir pedido previamente inserido informa o erro ao usuário
-                    else
-                    {
-                        MessageBox.Show("O número inserido já havia sido inserido, por favor, verifique e tente novamente.", "Ação Inválida");
-                    }
-                }
-            }
-            catch
-            {
-                //Envio de email como parametro string do método da classe Email
-                erro = "Caixa.cs, linhas 225 a 315";
-                email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 225 a 315, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        //função do botão "+" do terceiro campo de numeros de pedidos
-        private void btnAdicionar3_Click(object sender, EventArgs e)
-        {
-            //realiza a tentativa de todas as ações e funções abaixo, havendo qualquer erro sai para a função catch
-            try
-            {
-                //verifica se houve o preenchimento do campo referente ao pedido número 3 e informa ao usuário caso este esteja em branco
-                if (txtPedidoNum3.Text.Equals(""))
-                {
-                    MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
-                }
-
-                //verifica se existe uma venda correspondente aos dados do preenchimento do campo número de pedido 3 e informa o erro ao usuário caso este ocorra
-                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum3.Text)) == null)
-                {
-                    MessageBox.Show("O inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
-                }
-
-                //SCRIPT FECHAMENTO e pagamento
-                //validação da existencia de pagamento para o pedido inserido / ou se o mesmo recebeu o fechamento
-                else if (pedidoPago(txtPedidoNum3.Text) || vendaFechada(txtPedidoNum3.Text))
-                {
-                    MessageBox.Show("Já existe um pagamento associado ao pedido nº" + txtPedidoNum3.Text + ", por favor, verifique e tente novamente", "Ação Inválida");
-                }
-
-                //caso nenhum dos erros anteriore ocorra entra no trecho abaixo
-                else
-                {
-                    //atribui a variavel venda a respectiva venda
-                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum3.Text));
-
-                    //inicia a variavel local booleana existe com o valor falso
-                    bool existe = false;
-
-                    //verifica a existencia da venda inserida na atual lista de vendas, havendo altera o valor da variavel booleana
-                    foreach (Model.Vendas value in listaVendas)
-                    {
-                        if (venda.id == value.id)
-                        {
-                            existe = true;
-                        }
-                    }
-
-                    //caso após a verificação o valor da variavel permaneça como falsa
-                    if (!existe)
-                    {
-                        //verifica se a venda possuí desconto atribuido no PDV
-                        if (venda.desconto != 0)
-                        {
-                            //havendo descontro incrementa a variavel referente ao respectivo valor
-                            valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) * (Convert.ToDecimal(venda.desconto) / 100);
-                        }
-                        
-                        //adiciona a venda a lista de vendas
-                        listaVendas.Add(venda);
-
-                        //realiza ajustes de visibilidade e preenchimento do form, panel cliente e atribui o cliente a entidade venda do BD
-                        btnAdicionar4.Enabled = true;
-                        txtPedidoNum4.Enabled = true;
-                        btnAdicionar3.Enabled = false;
-                        txtPedidoNum3.Enabled = false;
-
-                        //efetua a verificação de cliente associado a venda e da ausência de cliente associado ao cupom fiscal                        
-                        if (venda.Clientes != null && cliente.cpf == null)
-                        {
-                            //realiza ajustes de visibilidade e preenchimento do form, panel cliente e atribui o cliente a entidade venda do BD
-                            btnAtribuirCliente.Enabled = false;
-                            cliente = venda.Clientes;
-                            txtCliente.Text = cliente.nome;
-                            txtCpf.Text = cliente.cpf;
-                            txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
-                            if (txtCreditosCliente.Text.Equals(""))
-                            {
-                                txtCreditosCliente.Text = "0.00";
-                            }
-                        }
-                        
-                        //realiza a chamada da função que altera os valores das variaveis e campos do form referentes a venda e seu valor
-                        acrescentaPedido();
-
-                        //altera visibilidade de elementos do form
-                        AcceptButton = btnAdicionar4;
-                        txtPedidoNum4.Focus();
-
-                        //adiciona a lista de inteiros o numero do pedido registrado
-                        listaNumPedidos.Add(Convert.ToInt32(txtPedidoNum3.Text));
-                    }
-
-                    //caso haja a tentativa de inserir pedido previamente inserido informa o erro ao usuário
-                    else
-                    {                        
-                        MessageBox.Show("O número inserido já havia sido inserido, por favor, verifique e tente novamente.", "Ação Inválida");
-                    }
-                }
-            }
-            catch
-            {
-                //Envio de email como parametro string do método da classe Email
-                erro = "Caixa.cs, linhas 328 a 420";
-                email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 328 a 420, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        //função do botão "+" do quarto campo de numeros de pedidos
-        private void btnAdicionar4_Click(object sender, EventArgs e)
-        {
-            //realiza a tentativa de todas as ações e funções abaixo, havendo qualquer erro sai para a função catch
-            try
-            {
-                //verifica se houve o preenchimento do campo referente ao pedido número 4 e informa ao usuário caso este esteja em branco
-                if (txtPedidoNum4.Text.Equals(""))
-                {
-                    MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
-                }
-
-                //verifica se existe uma venda correspondente aos dados do preenchimento do campo número de pedido 4 e informa o erro ao usuário caso este ocorra
-                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum4.Text)) == null)
-                {
-                    MessageBox.Show("O inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
-                }
-
-                //SCRIPT FECHAMENTO e pagamento
-                //validação da existencia de pagamento para o pedido inserido / ou se o mesmo recebeu o fechamento
-                else if (pedidoPago(txtPedidoNum4.Text) || vendaFechada(txtPedidoNum4.Text))
-                {
-                    MessageBox.Show("Já existe um pagamento associado ao pedido nº" + txtPedidoNum4.Text + ", por favor, verifique e tente novamente", "Ação Inválida");
-                }
-
-                //caso nenhum dos erros anteriore ocorra entra no trecho abaixo
-                else
-                {
-                    //atribui a variavel venda a respectiva venda
-                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum4.Text));
-
-                    //inicia a variavel local booleana existe com o valor falso
-                    bool existe = false;
-
-                    //verifica a existencia da venda inserida na atual lista de vendas, havendo altera o valor da variavel booleana
-                    foreach (Model.Vendas value in listaVendas)
-                    {
-                        if (venda.id == value.id)
-                        {
-                            existe = true;
-                        }
-                    }
-
-                    //caso após a verificação o valor da variavel permaneça como falsa
-                    if (!existe)
-                    {
-                        //verifica se a venda possuí desconto atribuido no PDV
-                        if (venda.desconto != 0)
-                        {
-                            //havendo descontro incrementa a variavel referente ao respectivo valor
-                            valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) * (Convert.ToDecimal(venda.desconto) / 100);
-                        }
-
-                        //adiciona a venda a lista de vendas
-                        listaVendas.Add(venda);
-
-                        //realiza ajustes de visibilidade e preenchimento do form, panel cliente e atribui o cliente a entidade venda do BD
-                        btnAdicionar5.Enabled = true;
-                        txtPedidoNum5.Enabled = true;
-                        btnAdicionar4.Enabled = false;
-                        txtPedidoNum4.Enabled = false;
-
-                        //efetua a verificação de cliente associado a venda e da ausência de cliente associado ao cupom fiscal                        
-                        if (venda.Clientes != null && cliente.cpf == null)
-                        {
-                            //realiza ajustes de visibilidade e preenchimento do form, panel cliente e atribui o cliente a entidade venda do BD
-                            btnAtribuirCliente.Enabled = false;
-                            cliente = venda.Clientes;
-                            txtCliente.Text = cliente.nome;
-                            txtCpf.Text = cliente.cpf;
-                            txtCredito.Text = cliente.creditos.ToString();
-                            txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
-                            if (txtCreditosCliente.Text.Equals(""))
-                            {
-                                txtCreditosCliente.Text = "0.00";
-                            }
-                        }
-
-                        //realiza a chamada da função que altera os valores das variaveis e campos do form referentes a venda e seu valor
-                        acrescentaPedido();
-
-                        //altera visibilidade de elementos do form
-                        AcceptButton = btnAdicionar5;
-                        txtPedidoNum5.Focus();
-
-                        //adiciona a lista de inteiros o numero do pedido registrado
-                        listaNumPedidos.Add(Convert.ToInt32(txtPedidoNum4.Text));
-                    }
-
-                    //caso haja a tentativa de inserir pedido previamente inserido informa o erro ao usuário
-                    else
-                    {
-                        MessageBox.Show("O número inserido já havia sido inserido, por favor, verifique e tente novamente.", "Ação Inválida");
-                    }
-                }                            
-            }
-            catch
-            {
-                //Envio de email como parametro string do método da classe Email e informação ao usuário
-                erro = "Caixa.cs, linhas 433 a 523";
-                email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 433 a 523, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
-        }
-
-        //função do botão "+" do último campo de numeros de pedidos
-        private void btnAdicionar5_Click(object sender, EventArgs e)
-        {
-            //realiza a tentativa de todas as ações e funções abaixo, havendo qualquer erro sai para a função catch
-            try
-            {
-                //verifica se houve o preenchimento do campo referente ao pedido número 5 e informa ao usuário caso este esteja em branco
-                if (txtPedidoNum5.Text.Equals(""))
-                {
-                    MessageBox.Show("É necessário preencher o número do pedido a ser adicionado para faturamento", "Ação Inválida");
-                }
-
-                //verifica se existe uma venda correspondente aos dados do preenchimento do campo número de pedido 4 e informa o erro ao usuário caso este ocorra
-                else if (controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum5.Text)) == null)
-                {
-                    MessageBox.Show("O inserido não corresponde a nenhum pedido de compra, por favor, verifique e tente novamente.", "Ação Inválida");
-                }
-
-                //SCRIPT FECHAMENTO e pagamento
-                //validação da existencia de pagamento para o pedido inserido / ou se o mesmo recebeu o fechamento
-                else if (pedidoPago(txtPedidoNum5.Text) || vendaFechada(txtPedidoNum5.Text))
-                {
-                    MessageBox.Show("Já existe um pagamento associado ao pedido nº" + txtPedidoNum5.Text + ", por favor, verifique e tente novamente", "Ação Inválida");
-                }
-
-                //caso nenhum dos erros anteriore ocorra entra no trecho abaixo
-                else
-                {
-                    //atribui a variavel venda a respectiva venda
-                    venda = controle.PesquisaVendaID(Convert.ToInt32(txtPedidoNum5.Text));
-
-                    //inicia a variavel local booleana existe com o valor falso
-                    bool existe = false;
-
-                    //verifica a existencia da venda inserida na atual lista de vendas, havendo altera o valor da variavel booleana
-                    foreach (Model.Vendas value in listaVendas)
-                    {
-                        if (venda.id == value.id)
-                        {
-                            existe = true;
-                        }
-                    }
-
-                    //caso após a verificação o valor da variavel permaneça como falsa
-                    if (!existe)
-                    {
-                        //verifica se a venda possuí desconto atribuido no PDV
-                        if (venda.desconto != 0)
-                        {
-                            //verifica se a venda possuí desconto atribuido no PDV
-                            valorDesc = valorDesc + Convert.ToDecimal(venda.valor_Venda) * (Convert.ToDecimal(venda.desconto) / 100);
-                        }
-
-                        //adiciona a venda a lista de vendas
-                        listaVendas.Add(venda);
-
-                        //realiza ajustes de visibilidade e preenchimento do form, panel cliente e atribui o cliente a entidade venda do BD
-                        btnAdicionar5.Enabled = false;
-                        txtPedidoNum5.Enabled = false;
-
-                        //efetua a verificação de cliente associado a venda e da ausência de cliente associado ao cupom fiscal                        
-                        if (venda.Clientes != null && cliente.cpf == null)
-                        {
-                            //realiza ajustes de visibilidade e preenchimento do form, panel cliente e atribui o cliente a entidade venda do BD
-                            btnAtribuirCliente.Enabled = false;
-                            cliente = venda.Clientes;
-                            txtCliente.Text = cliente.nome;
-                            txtCpf.Text = cliente.cpf;
-                            txtCreditosCliente.Text = Convert.ToDecimal(cliente.creditos).ToString("0.00");
-                            if (txtCreditosCliente.Text.Equals(""))
-                            {
-                                txtCreditosCliente.Text = "0.00";
-                            }
-                        }
-
-                        //realiza a chamada da função que altera os valores das variaveis e campos do form referentes a venda e seu valor
-                        acrescentaPedido();
-
-                        //adiciona a lista de inteiros o numero do pedido registrado
-                        listaNumPedidos.Add(Convert.ToInt32(txtPedidoNum5.Text));
-
-                        //Informa ao usuário que o limite de vendas para um unico faturamento foi atingido
-                        MessageBox.Show("Pedido Adicionado com sucesso. Para a cobrança de mais de 5 pedidos é necessário realizar mais de um faturamento, conclua este faturamento e inicie um novo.", "Atenção");
-                    }
-
-                    //caso haja a tentativa de inserir pedido previamente inserido informa o erro ao usuário
-                    else
-                    {
-                        MessageBox.Show("O número inserido já havia sido inserido, por favor, verifique e tente novamente.", "Ação Inválida");
-                    }
-                }
-            }
-            catch
-            {
-                //Envio de email como parametro string do método da classe Email e informação ao usuário
-                erro = "Caixa.cs, linhas 538 a 625";
-                email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 538 a 625, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+            //listaNumPedidos.Add(Convert.ToInt32(txtPedidoNum1.Text));  
+        }        
 
         //SCRIPT FECHAMENTO
         private bool vendaFechada(string numPedido)
@@ -666,7 +245,7 @@ namespace Loja1._0
         private bool pedidoPago(string numPedido)
         {
             //verifica se existe um pagamento referente ao numero de pedido incluido, e havendo retorna false, sendo um novo pagamento devolve true
-            if (controle.PesquisaPagamentoIdVenda(numPedido))
+            if (controle.PesquisaPagamentoIdVenda(numPedido) != true)
             {
                 return true;
             }
@@ -693,26 +272,26 @@ namespace Loja1._0
                 custoAux = 0;
 
                 
-                foreach (Vendas value in listaVendas)
-                {
+                //*/foreach (Vendas value in listaVendas)
+                //{
                     //para cada venda da lista preenche os valores de referencia de cada um dos campos
-                    txtDinheiro.Text = (Convert.ToDecimal(txtDinheiro.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
+                    txtDinheiro.Text = (Convert.ToDecimal(txtDinheiro.Text) + Convert.ToDecimal(venda.valor_Venda)).ToString("0.00");
                     txtSaldoDinheiro.Text = txtDinheiro.Text;
-                    txtPrePago.Text = (Convert.ToDecimal(txtPrePago.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
+                    txtPrePago.Text = (Convert.ToDecimal(txtPrePago.Text) + Convert.ToDecimal(venda.valor_Venda)).ToString("0.00");
                     txtSaldoPrePago.Text = txtPrePago.Text;
-                    txtDebito.Text = (Convert.ToDecimal(txtDebito.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
+                    txtDebito.Text = (Convert.ToDecimal(txtDebito.Text) + Convert.ToDecimal(venda.valor_Venda)).ToString("0.00");
                     txtSaldoDebito.Text = txtDebito.Text;
-                    txtCredito.Text = (Convert.ToDecimal(txtCredito.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
+                    txtCredito.Text = (Convert.ToDecimal(txtCredito.Text) + Convert.ToDecimal(venda.valor_Venda)).ToString("0.00");
                     txtParcCred.Text = txtCredito.Text;
-                    txtCheque.Text = (Convert.ToDecimal(txtCheque.Text) + Convert.ToDecimal(value.valor_Venda) + (Convert.ToDecimal(value.valor_Venda) * (gerencia.jurosCheque1x / 100))).ToString("0.00");
+                    txtCheque.Text = (Convert.ToDecimal(txtCheque.Text) + Convert.ToDecimal(venda.valor_Venda) + (Convert.ToDecimal(venda.valor_Venda) * (gerencia.jurosCheque1x / 100))).ToString("0.00");
                     txtParcCheq.Text = txtCheque.Text;
 
                     //Com base nos valor da venda e com o acumulado preenche os campos de total
-                    txtValorVenda.Text = (Convert.ToDecimal(txtValorVenda.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
-                    txtValorTotal.Text = (Convert.ToDecimal(txtValorTotal.Text) + Convert.ToDecimal(value.valor_Venda)).ToString("0.00");
+                    txtValorVenda.Text = (Convert.ToDecimal(txtValorVenda.Text) + Convert.ToDecimal(venda.valor_Venda)).ToString("0.00");
+                    txtValorTotal.Text = (Convert.ToDecimal(txtValorTotal.Text) + Convert.ToDecimal(venda.valor_Venda)).ToString("0.00");
                     
                     //pesquisa a relação de produtos referentes a venda da lista
-                    listaProdutosVenda = controle.PesquisaProdutosVenda(value.id);
+                    listaProdutosVenda = controle.PesquisaProdutosVenda(venda.id);
 
                     foreach (Vendas_Produtos result in listaProdutosVenda)
                     {
@@ -728,7 +307,7 @@ namespace Loja1._0
                     txtTotal.Text = txtValorVenda.Text;
                     valorTotal = Convert.ToDecimal(txtTotal.Text);
 
-                }
+                //}
                 //incrementa os campos de texto de cada forma de pagamento
                 txtDinheiro.Text = (Convert.ToDecimal(txtDinheiro.Text) - valorDesc).ToString("0.00");
                 txtSaldoDinheiro.Text = txtDinheiro.Text;
@@ -782,6 +361,7 @@ namespace Loja1._0
                             venda.cpf = "";
                             venda.cnpj = txtCpf.Text;
                         }
+                        btnAdicionar1.PerformClick();
                         controle.SalvaAtualiza();
                     }
 
@@ -847,7 +427,9 @@ namespace Loja1._0
                             venda.cpf = "";
                             venda.cnpj = txtCpf.Text;
                         }
+                        
                         controle.SalvaAtualiza();
+                        btnAdicionar1.PerformClick();
                     }
                 }
 
@@ -906,29 +488,24 @@ namespace Loja1._0
                 {
                     //altera o valor desta variavel booleana indicando que os pedidos estão inclusos no cupom fiscal
                     pedidosInclusos = true;
-                    foreach (int value in listaNumPedidos)
-                    {
-                        foreach (Vendas_Produtos result in controle.PesquisaProdutosVenda(value))
+                    //*/foreach (int value in listaNumPedidos)
+                    //{
+                        foreach (Vendas_Produtos result in controle.PesquisaProdutosVenda(venda.id))
                         {
                             /* para cada produto em cada venda existente na lista de vendas referente a este cupom 
                              * pesquisa o produto pelo id*/
                             Model.Produtos produto = controle.PesquisaProdutoId(Convert.ToInt32(result.id_produto));
 
-                            Compras compra = controle.PesquisaCompraAnterior(produto.id);
-
-                            /*/função de impressão de Cupom Fiscal                                                                                                                                                                                                                                                              
-                            
-                            //adiciona o produto ao cupom fiscal no item ECF   */
-                            //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItem(produto.cod_produto, produto.desc_produto, gerencia.tributacao.ToString(), TipoQuantidade.Inteira.ToString(), result.quantidade.ToString(), 2, compra.preco_venda.ToString(), "%", "0"));
+                            Compras compra = controle.PesquisaCompraAnterior(produto.id);                                                                                                                                                                                                                                                  
 
                             //adiciona o produto ao cupom fiscal no item SAT*/
-                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItemCompleto(produto.id.ToString(), produto.cod_produto.ToString(), produto.desc_produto                , "00", "F1", produto.UnidMedidas.abrev, "I", "3", result.quantidade.ToString(), "2", compra.preco_venda.ToString(), "%", "0,00", "0,00", "A", produto.ncm.ToString(), "5102", "INFORMAÇÔES", "40", "0", "1234", "", "", "", "", "102", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "", "04", "", "", "", "", "", "04", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
+                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItemCompleto(produto.cod_produto.ToString(), produto.cod_produto.ToString(), produto.desc_produto                , "00", "F1", produto.UnidMedidas.abrev, "I", "3", result.quantidade.ToString(), "2", compra.preco_venda.ToString(), "%", "0,00", "0,00", "A", produto.ncm.ToString(), "5102", "INFORMAÇÔES", "40", "0", "1234", "", "", "", "", "102", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "", "04", "", "", "", "", "", "04", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
 
                             //altera a quantidade deste no estoque e salva a alteração
                             produto.Estoque.qnt_atual = produto.Estoque.qnt_atual - result.quantidade;
                             controle.SalvaAtualiza();
                         }
-                    }
+                    //}
                 }
             }
             catch
@@ -1265,11 +842,13 @@ namespace Loja1._0
         //ação do botão que habilita o painel desconto
         private void btnDesconto_Click(object sender, EventArgs e)
         {
+            
             //tenta habilitar o painel desconto e atribuir a variavel local desconto o valor definido
             try
             {
                 //altera a visibiidade do painel pedidos no form
                 pnlPedidos.Enabled = false;
+                pnlDesconto.Cursor = Cursors.Arrow;
 
                 //se o valor monetário do desconto for maior que 0
                 if (valorDesc > 0)
@@ -1423,9 +1002,8 @@ namespace Loja1._0
                         //cancela o cupom em aberto ou último emitido na ausência deste
                         BemaFI32.Bematech_FI_CancelaCupom();
 
-                        //BemaFI32.Bematech_FI_AbreCupom("");
-                        BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD("", "", ""));
-                        BemaFI32.Bematech_FI_FechaComprovanteNaoFiscalVinculado();                        
+                        //BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_AbreCupomMFD("", "", ""));
+                        //BemaFI32.Bematech_FI_FechaComprovanteNaoFiscalVinculado();                        
 
                         //limpa o formulário, retorma a codição inicial
                         btnLimpar_Click(sender, e);
@@ -1774,6 +1352,8 @@ namespace Loja1._0
 
                     controle.SalvaAtualiza();
 
+                    listaIdPagamentos.Add(pagamento.id);
+
                     //salva o movimento referente a tributação
                     Movimentos movimentoImposto = new Movimentos();
                     controle.SalvarMovimento(movimentoImposto);
@@ -1793,15 +1373,15 @@ namespace Loja1._0
                     controle.SalvaAtualiza();
 
                     //para cada venda do cupom fical instancia e salva uma associação com o pagamento
-                    foreach (Vendas value in listaVendas)
-                    {
+                    //*/foreach (Vendas value in listaVendas)
+                    //{
                         Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
                         controle.SalvaPagamentoPedido(pagamentoPedido);
-                        pagamentoPedido.id_Venda = value.id;
+                        pagamentoPedido.id_Venda = venda.id;
                         pagamentoPedido.id_Pagamento = pagamento.id;
 
                         controle.SalvaAtualiza();
-                    }
+                    //}
                 }
 
                 //informa ao usuário a conclusão bem sucedida
@@ -1934,6 +1514,8 @@ namespace Loja1._0
                     }
                     controle.SalvaAtualiza();
 
+                    listaIdPagamentos.Add(pagamento.id);
+
                     //instancia e salva o movimento referente ao imposto
                     Movimentos movimentoImposto = new Movimentos();
                     controle.SalvarMovimento(movimentoImposto);
@@ -1953,15 +1535,15 @@ namespace Loja1._0
                     controle.SalvaAtualiza();
 
                     //para cada venda do cupom fical instancia e salva uma associação com o pagamento
-                    foreach (Vendas value in listaVendas)
-                    {
+                    //*/foreach (Vendas value in listaVendas)
+                    //{
                         Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
                         controle.SalvaPagamentoPedido(pagamentoPedido);
-                        pagamentoPedido.id_Venda = value.id;
+                        pagamentoPedido.id_Venda = venda.id;
                         pagamentoPedido.id_Pagamento = pagamento.id;
 
                         controle.SalvaAtualiza();
-                    }
+                    //}
                 }
 
                 //informa ao usuário a conclusão bem sucedida
@@ -2035,6 +1617,8 @@ namespace Loja1._0
 
                 //salva as alterações
                 controle.SalvaAtualiza();
+
+                listaIdPagamentos.Add(pagamento.id);
                 pagamento.id_movimento = movimento.id;
 
                 //instancia e salva o movimento referente a tributação
@@ -2059,9 +1643,9 @@ namespace Loja1._0
                 PagPrePago.desconto = Convert.ToDecimal(PagPrePago.desconto) + Convert.ToDecimal((Convert.ToDecimal(txtTotal.Text) * trkDesconto.Value / 100) / (Convert.ToDecimal(txtValorTotal.Text) / valor)).ToString("0.00");
 
                 //para cada venda do cupom fical instancia e salva uma associação com o pagamento
-                foreach (Vendas value in listaVendas)
-                {
-                    venda = controle.PesquisaVendaID(value.id);
+                //*/foreach (Vendas value in listaVendas)
+                //{
+                    venda = controle.PesquisaVendaID(venda.id);
                     venda.desconto = trkDesconto.Value;                    
 
                     Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
@@ -2070,7 +1654,7 @@ namespace Loja1._0
                     pagamentoPedido.id_Pagamento = pagamento.id;
 
                     controle.SalvaAtualiza();
-                }
+                // }
 
                 //altera a instancia de cliente atribuida, corrige a quantidade de créditos que este possuí e salva a alteração
                 clienteCreditos = Convert.ToDouble(valor);
@@ -2151,6 +1735,8 @@ namespace Loja1._0
 
                 //salva as alterações
                 controle.SalvaAtualiza();
+
+                listaIdPagamentos.Add(pagamento.id);
                 pagamento.id_movimento = movimento.id;
 
                 //instancia e salva o movimento referente a tributação
@@ -2175,9 +1761,9 @@ namespace Loja1._0
                 PagDebito.desconto = Convert.ToDecimal(PagDebito.desconto) + Convert.ToDecimal((Convert.ToDecimal(txtTotal.Text) * trkDesconto.Value / 100 ) / (Convert.ToDecimal(txtValorTotal.Text) / valor)).ToString("0.00");
 
                 //para cada venda do cupom fical instancia e salva uma associação com o pagamento
-                foreach (Vendas value in listaVendas)
-                {
-                    venda = controle.PesquisaVendaID(value.id);
+                //*/foreach (Vendas value in listaVendas)
+                //{
+                    venda = controle.PesquisaVendaID(venda.id);
                     venda.desconto = trkDesconto.Value;                    
 
                     Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
@@ -2186,7 +1772,7 @@ namespace Loja1._0
                     pagamentoPedido.id_Pagamento = pagamento.id;
 
                     controle.SalvaAtualiza();
-                }
+                //}
 
                 //novamente verifica se o pagamento corresponde ao total devido em caso positivo concluí a venda
                 if (Convert.ToDecimal(txtSaldoDebito.Text) <= valor)
@@ -2259,7 +1845,10 @@ namespace Loja1._0
                     pagamento.numParcela = 0;
                     pagamento.qntParcelas = 0;
                 }
+              
                 controle.SalvaAtualiza();
+
+                listaIdPagamentos.Add(pagamento.id);
                 pagamento.id_movimento = movimento.id;
 
                 //instancia e salva o movimento referente a tributação
@@ -2284,9 +1873,9 @@ namespace Loja1._0
                 PagDinheiro.desconto = Convert.ToDecimal(PagDinheiro.desconto) + Convert.ToDecimal((Convert.ToDecimal(txtTotal.Text) * trkDesconto.Value / 100) / (Convert.ToDecimal(txtValorTotal.Text) / valor)).ToString("0.00");
 
                 //para cada venda do cupom fical instancia e salva uma associação com o pagamento
-                foreach (Vendas value in listaVendas)
-                {
-                    venda = controle.PesquisaVendaID(value.id);
+                //foreach (Vendas value in listaVendas)
+                //{
+                    venda = controle.PesquisaVendaID(venda.id);
                     venda.desconto = trkDesconto.Value;                    
 
                     Pagamentos_Vendas pagamentoPedido = new Pagamentos_Vendas();
@@ -2295,7 +1884,7 @@ namespace Loja1._0
                     pagamentoPedido.id_Pagamento = pagamento.id;
 
                     controle.SalvaAtualiza();
-                }
+                //}
 
                 //verifica se o valor pago corresponde ao valor devido, em caso positivo concluí a venda
                 if (Convert.ToDecimal(txtSaldoDinheiro.Text) <= valor)
@@ -2406,7 +1995,9 @@ namespace Loja1._0
                     BemaFI32.Bematech_FI_EfetuaFormaPagamento("Cheque", PagCheque.valorPagamento);
                 }
 
-                ///*
+
+                MessageBox.Show( "Implementação SAT pendente de teste, linha 2410 Caixa.cs", "Aviso");
+                /*
                 //informação da software house, especificação SAT
                 BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_DadosSoftwareHouseSAT(cnpj, assinaturaSoftHouse));
                 //informações e retorno SAT
@@ -2424,6 +2015,20 @@ namespace Loja1._0
                 {
                     BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
                 }
+
+                try
+                {
+                    foreach (int value in listaIdPagamentos)
+                    {
+                        controle.PesquisaPagamentoId(value).status = 1;
+                        controle.SalvaAtualiza();
+                    }
+                }
+                catch
+                {
+
+                }
+                btnLimpar.PerformClick();
                 
             }
             catch
@@ -2440,8 +2045,9 @@ namespace Loja1._0
         {
 
             //reinicializa as variaveis
-            listaVendas = new List<Vendas>();
-            listaNumPedidos = new List<int>();
+            //*/listaVendas = new List<Vendas>();
+            listaIdPagamentos = new List<int>();
+            //*/listaNumPedidos = new List<int>();
             listaProdutosVenda = new List<Vendas_Produtos>();
             venda = new Vendas();
             cliente = new Model.Clientes();
@@ -2464,6 +2070,7 @@ namespace Loja1._0
             vista = true;
 
             //altera as visibilidades do form
+            pnlDesconto.Cursor = Cursors.Hand;
             pedidosInclusos = false;
             pnlPedidos.Enabled = true;
             btnPagamento.Enabled = false;
@@ -2488,18 +2095,6 @@ namespace Loja1._0
             txtPedidoNum1.Text = "";
             txtPedidoNum1.Enabled = true;
             btnAdicionar1.Enabled = true;
-            txtPedidoNum2.Text = "";
-            txtPedidoNum2.Enabled = false;
-            btnAdicionar2.Enabled = false;
-            txtPedidoNum3.Text = "";
-            txtPedidoNum3.Enabled = false;
-            btnAdicionar3.Enabled = false;
-            txtPedidoNum4.Text = "";
-            txtPedidoNum4.Enabled = false;
-            btnAdicionar4.Enabled = false;
-            txtPedidoNum5.Text = "";
-            txtPedidoNum5.Enabled = false;
-            btnAdicionar5.Enabled = false;
 
             //altera os valores e visibilidades do panel clientes
             pnlCliente.Enabled = true;
@@ -2559,7 +2154,7 @@ namespace Loja1._0
                 if (!txtCpf.Text.Equals(""))
                 {
                     rdbNPsim.Checked = true;
-                    btnAdicionar1_Click(sender, e);
+                    btnAdicionar1.PerformClick();
                 }
                 return false;
             }
@@ -2601,5 +2196,6 @@ namespace Loja1._0
             consultaPreco.Show();
             this.Hide();
         }
+
     }
 }

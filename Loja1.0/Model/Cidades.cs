@@ -22,9 +22,9 @@ public partial class Cidades
     public Cidades()
     {
 
-        this.Fornecedores = new HashSet<Fornecedores>();
-
         this.Clientes = new HashSet<Clientes>();
+
+        this.Fornecedores = new HashSet<Fornecedores>();
 
     }
 
@@ -41,11 +41,11 @@ public partial class Cidades
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Fornecedores> Fornecedores { get; set; }
+    public virtual ICollection<Clientes> Clientes { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Clientes> Clientes { get; set; }
+    public virtual ICollection<Fornecedores> Fornecedores { get; set; }
 
 }
 

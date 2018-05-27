@@ -60,7 +60,6 @@ namespace Loja1._0
                 limpaForm();
 
                 listaFornecedores = controle.PesquisaFornecedores("");                
-
                 cmbFornecedor.DataSource = listaFornecedores;
                 cmbFornecedor.ValueMember = "nome";
 

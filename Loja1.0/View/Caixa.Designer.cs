@@ -33,18 +33,6 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlPedidos = new System.Windows.Forms.GroupBox();
-            this.btnAdicionar5 = new System.Windows.Forms.Button();
-            this.lblPedNum = new System.Windows.Forms.Label();
-            this.txtPedidoNum5 = new System.Windows.Forms.TextBox();
-            this.btnAdicionar4 = new System.Windows.Forms.Button();
-            this.lblPedNum4 = new System.Windows.Forms.Label();
-            this.txtPedidoNum4 = new System.Windows.Forms.TextBox();
-            this.btnAdicionar3 = new System.Windows.Forms.Button();
-            this.lblPedNum3 = new System.Windows.Forms.Label();
-            this.txtPedidoNum3 = new System.Windows.Forms.TextBox();
-            this.btnAdicionar2 = new System.Windows.Forms.Button();
-            this.lblPedNum2 = new System.Windows.Forms.Label();
-            this.txtPedidoNum2 = new System.Windows.Forms.TextBox();
             this.btnAdicionar1 = new System.Windows.Forms.Button();
             this.lblPedNum1 = new System.Windows.Forms.Label();
             this.txtPedidoNum1 = new System.Windows.Forms.TextBox();
@@ -206,18 +194,6 @@
             // 
             // pnlPedidos
             // 
-            this.pnlPedidos.Controls.Add(this.btnAdicionar5);
-            this.pnlPedidos.Controls.Add(this.lblPedNum);
-            this.pnlPedidos.Controls.Add(this.txtPedidoNum5);
-            this.pnlPedidos.Controls.Add(this.btnAdicionar4);
-            this.pnlPedidos.Controls.Add(this.lblPedNum4);
-            this.pnlPedidos.Controls.Add(this.txtPedidoNum4);
-            this.pnlPedidos.Controls.Add(this.btnAdicionar3);
-            this.pnlPedidos.Controls.Add(this.lblPedNum3);
-            this.pnlPedidos.Controls.Add(this.txtPedidoNum3);
-            this.pnlPedidos.Controls.Add(this.btnAdicionar2);
-            this.pnlPedidos.Controls.Add(this.lblPedNum2);
-            this.pnlPedidos.Controls.Add(this.txtPedidoNum2);
             this.pnlPedidos.Controls.Add(this.btnAdicionar1);
             this.pnlPedidos.Controls.Add(this.lblPedNum1);
             this.pnlPedidos.Controls.Add(this.txtPedidoNum1);
@@ -225,146 +201,10 @@
             this.pnlPedidos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pnlPedidos.Location = new System.Drawing.Point(5, 47);
             this.pnlPedidos.Name = "pnlPedidos";
-            this.pnlPedidos.Size = new System.Drawing.Size(344, 230);
+            this.pnlPedidos.Size = new System.Drawing.Size(344, 101);
             this.pnlPedidos.TabIndex = 7;
             this.pnlPedidos.TabStop = false;
-            this.pnlPedidos.Text = "Pedidos para Faturamento";
-            // 
-            // btnAdicionar5
-            // 
-            this.btnAdicionar5.AutoEllipsis = true;
-            this.btnAdicionar5.BackColor = System.Drawing.Color.White;
-            this.btnAdicionar5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar5.Enabled = false;
-            this.btnAdicionar5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAdicionar5.Location = new System.Drawing.Point(302, 186);
-            this.btnAdicionar5.Name = "btnAdicionar5";
-            this.btnAdicionar5.Size = new System.Drawing.Size(26, 26);
-            this.btnAdicionar5.TabIndex = 20;
-            this.btnAdicionar5.Text = "+";
-            this.btnAdicionar5.UseVisualStyleBackColor = false;
-            this.btnAdicionar5.Click += new System.EventHandler(this.btnAdicionar5_Click);
-            // 
-            // lblPedNum
-            // 
-            this.lblPedNum.AutoSize = true;
-            this.lblPedNum.Location = new System.Drawing.Point(16, 189);
-            this.lblPedNum.Name = "lblPedNum";
-            this.lblPedNum.Size = new System.Drawing.Size(27, 19);
-            this.lblPedNum.TabIndex = 19;
-            this.lblPedNum.Text = "Nº";
-            // 
-            // txtPedidoNum5
-            // 
-            this.txtPedidoNum5.Enabled = false;
-            this.txtPedidoNum5.Location = new System.Drawing.Point(49, 186);
-            this.txtPedidoNum5.MaxLength = 6;
-            this.txtPedidoNum5.Name = "txtPedidoNum5";
-            this.txtPedidoNum5.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum5.TabIndex = 5;
-            // 
-            // btnAdicionar4
-            // 
-            this.btnAdicionar4.AutoEllipsis = true;
-            this.btnAdicionar4.BackColor = System.Drawing.Color.White;
-            this.btnAdicionar4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar4.Enabled = false;
-            this.btnAdicionar4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAdicionar4.Location = new System.Drawing.Point(302, 144);
-            this.btnAdicionar4.Name = "btnAdicionar4";
-            this.btnAdicionar4.Size = new System.Drawing.Size(26, 26);
-            this.btnAdicionar4.TabIndex = 17;
-            this.btnAdicionar4.Text = "+";
-            this.btnAdicionar4.UseVisualStyleBackColor = false;
-            this.btnAdicionar4.Click += new System.EventHandler(this.btnAdicionar4_Click);
-            // 
-            // lblPedNum4
-            // 
-            this.lblPedNum4.AutoSize = true;
-            this.lblPedNum4.Location = new System.Drawing.Point(16, 147);
-            this.lblPedNum4.Name = "lblPedNum4";
-            this.lblPedNum4.Size = new System.Drawing.Size(27, 19);
-            this.lblPedNum4.TabIndex = 16;
-            this.lblPedNum4.Text = "Nº";
-            // 
-            // txtPedidoNum4
-            // 
-            this.txtPedidoNum4.Enabled = false;
-            this.txtPedidoNum4.Location = new System.Drawing.Point(49, 144);
-            this.txtPedidoNum4.MaxLength = 6;
-            this.txtPedidoNum4.Name = "txtPedidoNum4";
-            this.txtPedidoNum4.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum4.TabIndex = 4;
-            // 
-            // btnAdicionar3
-            // 
-            this.btnAdicionar3.AutoEllipsis = true;
-            this.btnAdicionar3.BackColor = System.Drawing.Color.White;
-            this.btnAdicionar3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar3.Enabled = false;
-            this.btnAdicionar3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAdicionar3.Location = new System.Drawing.Point(302, 104);
-            this.btnAdicionar3.Name = "btnAdicionar3";
-            this.btnAdicionar3.Size = new System.Drawing.Size(26, 26);
-            this.btnAdicionar3.TabIndex = 14;
-            this.btnAdicionar3.Text = "+";
-            this.btnAdicionar3.UseVisualStyleBackColor = false;
-            this.btnAdicionar3.Click += new System.EventHandler(this.btnAdicionar3_Click);
-            // 
-            // lblPedNum3
-            // 
-            this.lblPedNum3.AutoSize = true;
-            this.lblPedNum3.Location = new System.Drawing.Point(16, 107);
-            this.lblPedNum3.Name = "lblPedNum3";
-            this.lblPedNum3.Size = new System.Drawing.Size(27, 19);
-            this.lblPedNum3.TabIndex = 13;
-            this.lblPedNum3.Text = "Nº";
-            // 
-            // txtPedidoNum3
-            // 
-            this.txtPedidoNum3.Enabled = false;
-            this.txtPedidoNum3.Location = new System.Drawing.Point(49, 104);
-            this.txtPedidoNum3.MaxLength = 6;
-            this.txtPedidoNum3.Name = "txtPedidoNum3";
-            this.txtPedidoNum3.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum3.TabIndex = 3;
-            // 
-            // btnAdicionar2
-            // 
-            this.btnAdicionar2.AutoEllipsis = true;
-            this.btnAdicionar2.BackColor = System.Drawing.Color.White;
-            this.btnAdicionar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdicionar2.Enabled = false;
-            this.btnAdicionar2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAdicionar2.Location = new System.Drawing.Point(302, 64);
-            this.btnAdicionar2.Name = "btnAdicionar2";
-            this.btnAdicionar2.Size = new System.Drawing.Size(26, 26);
-            this.btnAdicionar2.TabIndex = 11;
-            this.btnAdicionar2.Text = "+";
-            this.btnAdicionar2.UseVisualStyleBackColor = false;
-            this.btnAdicionar2.Click += new System.EventHandler(this.btnAdicionar2_Click);
-            // 
-            // lblPedNum2
-            // 
-            this.lblPedNum2.AutoSize = true;
-            this.lblPedNum2.Location = new System.Drawing.Point(16, 67);
-            this.lblPedNum2.Name = "lblPedNum2";
-            this.lblPedNum2.Size = new System.Drawing.Size(27, 19);
-            this.lblPedNum2.TabIndex = 10;
-            this.lblPedNum2.Text = "Nº";
-            // 
-            // txtPedidoNum2
-            // 
-            this.txtPedidoNum2.Enabled = false;
-            this.txtPedidoNum2.Location = new System.Drawing.Point(49, 64);
-            this.txtPedidoNum2.MaxLength = 6;
-            this.txtPedidoNum2.Name = "txtPedidoNum2";
-            this.txtPedidoNum2.Size = new System.Drawing.Size(247, 26);
-            this.txtPedidoNum2.TabIndex = 2;
+            this.pnlPedidos.Text = "Pedido";
             // 
             // btnAdicionar1
             // 
@@ -373,18 +213,18 @@
             this.btnAdicionar1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdicionar1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAdicionar1.Location = new System.Drawing.Point(302, 25);
+            this.btnAdicionar1.Location = new System.Drawing.Point(143, 62);
             this.btnAdicionar1.Name = "btnAdicionar1";
-            this.btnAdicionar1.Size = new System.Drawing.Size(26, 26);
+            this.btnAdicionar1.Size = new System.Drawing.Size(60, 30);
             this.btnAdicionar1.TabIndex = 8;
-            this.btnAdicionar1.Text = "+";
+            this.btnAdicionar1.Text = "OK";
             this.btnAdicionar1.UseVisualStyleBackColor = false;
             this.btnAdicionar1.Click += new System.EventHandler(this.btnAdicionar1_Click);
             // 
             // lblPedNum1
             // 
             this.lblPedNum1.AutoSize = true;
-            this.lblPedNum1.Location = new System.Drawing.Point(16, 28);
+            this.lblPedNum1.Location = new System.Drawing.Point(25, 33);
             this.lblPedNum1.Name = "lblPedNum1";
             this.lblPedNum1.Size = new System.Drawing.Size(27, 19);
             this.lblPedNum1.TabIndex = 1;
@@ -392,7 +232,7 @@
             // 
             // txtPedidoNum1
             // 
-            this.txtPedidoNum1.Location = new System.Drawing.Point(49, 25);
+            this.txtPedidoNum1.Location = new System.Drawing.Point(58, 30);
             this.txtPedidoNum1.MaxLength = 6;
             this.txtPedidoNum1.Name = "txtPedidoNum1";
             this.txtPedidoNum1.Size = new System.Drawing.Size(247, 26);
@@ -413,9 +253,9 @@
             this.pnlPagamento.Enabled = false;
             this.pnlPagamento.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.pnlPagamento.Location = new System.Drawing.Point(5, 283);
+            this.pnlPagamento.Location = new System.Drawing.Point(5, 242);
             this.pnlPagamento.Name = "pnlPagamento";
-            this.pnlPagamento.Size = new System.Drawing.Size(661, 230);
+            this.pnlPagamento.Size = new System.Drawing.Size(661, 271);
             this.pnlPagamento.TabIndex = 8;
             this.pnlPagamento.TabStop = false;
             this.pnlPagamento.Text = "Forma de Pagamento";
@@ -434,7 +274,7 @@
             this.pnlCheque.Controls.Add(this.label16);
             this.pnlCheque.Controls.Add(this.txtCheque);
             this.pnlCheque.Enabled = false;
-            this.pnlCheque.Location = new System.Drawing.Point(105, 189);
+            this.pnlCheque.Location = new System.Drawing.Point(105, 217);
             this.pnlCheque.Name = "pnlCheque";
             this.pnlCheque.Size = new System.Drawing.Size(551, 35);
             this.pnlCheque.TabIndex = 4;
@@ -585,7 +425,7 @@
             this.pnlCredito.Controls.Add(this.label13);
             this.pnlCredito.Controls.Add(this.txtCredito);
             this.pnlCredito.Enabled = false;
-            this.pnlCredito.Location = new System.Drawing.Point(105, 148);
+            this.pnlCredito.Location = new System.Drawing.Point(105, 170);
             this.pnlCredito.Name = "pnlCredito";
             this.pnlCredito.Size = new System.Drawing.Size(550, 35);
             this.pnlCredito.TabIndex = 3;
@@ -734,7 +574,7 @@
             this.pnlPrePag.Controls.Add(this.txtPrePago);
             this.pnlPrePag.Controls.Add(this.txtPagPrePago);
             this.pnlPrePag.Enabled = false;
-            this.pnlPrePag.Location = new System.Drawing.Point(105, 107);
+            this.pnlPrePag.Location = new System.Drawing.Point(105, 123);
             this.pnlPrePag.Name = "pnlPrePag";
             this.pnlPrePag.Size = new System.Drawing.Size(550, 35);
             this.pnlPrePag.TabIndex = 2;
@@ -832,7 +672,7 @@
             this.pnlDebito.Controls.Add(this.label1);
             this.pnlDebito.Controls.Add(this.txtPagDebito);
             this.pnlDebito.Enabled = false;
-            this.pnlDebito.Location = new System.Drawing.Point(105, 65);
+            this.pnlDebito.Location = new System.Drawing.Point(105, 75);
             this.pnlDebito.Name = "pnlDebito";
             this.pnlDebito.Size = new System.Drawing.Size(550, 35);
             this.pnlDebito.TabIndex = 1;
@@ -930,7 +770,7 @@
             this.pnlDinheiro.Controls.Add(this.lblDinheiro);
             this.pnlDinheiro.Controls.Add(this.txtPagDinheiro);
             this.pnlDinheiro.Enabled = false;
-            this.pnlDinheiro.Location = new System.Drawing.Point(105, 25);
+            this.pnlDinheiro.Location = new System.Drawing.Point(105, 29);
             this.pnlDinheiro.Name = "pnlDinheiro";
             this.pnlDinheiro.Size = new System.Drawing.Size(550, 35);
             this.pnlDinheiro.TabIndex = 0;
@@ -1023,7 +863,7 @@
             this.rdbCheque.AutoSize = true;
             this.rdbCheque.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rdbCheque.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbCheque.Location = new System.Drawing.Point(17, 195);
+            this.rdbCheque.Location = new System.Drawing.Point(17, 223);
             this.rdbCheque.Name = "rdbCheque";
             this.rdbCheque.Size = new System.Drawing.Size(81, 20);
             this.rdbCheque.TabIndex = 20;
@@ -1040,7 +880,7 @@
             this.rdbCredito.AutoSize = true;
             this.rdbCredito.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rdbCredito.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbCredito.Location = new System.Drawing.Point(21, 156);
+            this.rdbCredito.Location = new System.Drawing.Point(21, 178);
             this.rdbCredito.Name = "rdbCredito";
             this.rdbCredito.Size = new System.Drawing.Size(77, 20);
             this.rdbCredito.TabIndex = 19;
@@ -1057,7 +897,7 @@
             this.rdbPrePag.AutoSize = true;
             this.rdbPrePag.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rdbPrePag.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbPrePag.Location = new System.Drawing.Point(9, 115);
+            this.rdbPrePag.Location = new System.Drawing.Point(9, 131);
             this.rdbPrePag.Name = "rdbPrePag";
             this.rdbPrePag.Size = new System.Drawing.Size(89, 20);
             this.rdbPrePag.TabIndex = 18;
@@ -1073,7 +913,7 @@
             this.rdbDinheiro.AutoSize = true;
             this.rdbDinheiro.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rdbDinheiro.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbDinheiro.Location = new System.Drawing.Point(12, 33);
+            this.rdbDinheiro.Location = new System.Drawing.Point(12, 37);
             this.rdbDinheiro.Name = "rdbDinheiro";
             this.rdbDinheiro.Size = new System.Drawing.Size(86, 20);
             this.rdbDinheiro.TabIndex = 16;
@@ -1090,7 +930,7 @@
             this.rdbDebito.AutoSize = true;
             this.rdbDebito.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.rdbDebito.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbDebito.Location = new System.Drawing.Point(27, 73);
+            this.rdbDebito.Location = new System.Drawing.Point(27, 83);
             this.rdbDebito.Name = "rdbDebito";
             this.rdbDebito.Size = new System.Drawing.Size(71, 20);
             this.rdbDebito.TabIndex = 17;
@@ -1117,7 +957,7 @@
             this.pnlCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pnlCliente.Location = new System.Drawing.Point(355, 47);
             this.pnlCliente.Name = "pnlCliente";
-            this.pnlCliente.Size = new System.Drawing.Size(438, 145);
+            this.pnlCliente.Size = new System.Drawing.Size(438, 192);
             this.pnlCliente.TabIndex = 9;
             this.pnlCliente.TabStop = false;
             this.pnlCliente.Text = "Dados do Cliente";
@@ -1129,9 +969,9 @@
             this.btnAtribuirOutro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAtribuirOutro.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtribuirOutro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAtribuirOutro.Location = new System.Drawing.Point(225, 114);
+            this.btnAtribuirOutro.Location = new System.Drawing.Point(221, 147);
             this.btnAtribuirOutro.Name = "btnAtribuirOutro";
-            this.btnAtribuirOutro.Size = new System.Drawing.Size(114, 23);
+            this.btnAtribuirOutro.Size = new System.Drawing.Size(114, 38);
             this.btnAtribuirOutro.TabIndex = 10;
             this.btnAtribuirOutro.Text = "Associar Outro";
             this.btnAtribuirOutro.UseVisualStyleBackColor = false;
@@ -1142,7 +982,7 @@
             this.rdbNPnao.AutoSize = true;
             this.rdbNPnao.Checked = true;
             this.rdbNPnao.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.rdbNPnao.Location = new System.Drawing.Point(185, 88);
+            this.rdbNPnao.Location = new System.Drawing.Point(185, 110);
             this.rdbNPnao.Name = "rdbNPnao";
             this.rdbNPnao.Size = new System.Drawing.Size(47, 19);
             this.rdbNPnao.TabIndex = 8;
@@ -1154,7 +994,7 @@
             // 
             this.rdbNPsim.AutoSize = true;
             this.rdbNPsim.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.rdbNPsim.Location = new System.Drawing.Point(124, 88);
+            this.rdbNPsim.Location = new System.Drawing.Point(124, 110);
             this.rdbNPsim.Name = "rdbNPsim";
             this.rdbNPsim.Size = new System.Drawing.Size(47, 19);
             this.rdbNPsim.TabIndex = 7;
@@ -1166,7 +1006,7 @@
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label33.Location = new System.Drawing.Point(15, 88);
+            this.label33.Location = new System.Drawing.Point(15, 110);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(107, 16);
             this.label33.TabIndex = 74;
@@ -1174,7 +1014,7 @@
             // 
             // txtCpf
             // 
-            this.txtCpf.Location = new System.Drawing.Point(110, 52);
+            this.txtCpf.Location = new System.Drawing.Point(110, 61);
             this.txtCpf.MaxLength = 14;
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(322, 26);
@@ -1186,7 +1026,7 @@
             this.lblCpf.AutoSize = true;
             this.lblCpf.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCpf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblCpf.Location = new System.Drawing.Point(15, 57);
+            this.lblCpf.Location = new System.Drawing.Point(15, 66);
             this.lblCpf.Name = "lblCpf";
             this.lblCpf.Size = new System.Drawing.Size(89, 16);
             this.lblCpf.TabIndex = 72;
@@ -1199,9 +1039,9 @@
             this.btnAtribuirCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAtribuirCliente.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtribuirCliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnAtribuirCliente.Location = new System.Drawing.Point(103, 115);
+            this.btnAtribuirCliente.Location = new System.Drawing.Point(99, 148);
             this.btnAtribuirCliente.Name = "btnAtribuirCliente";
-            this.btnAtribuirCliente.Size = new System.Drawing.Size(114, 23);
+            this.btnAtribuirCliente.Size = new System.Drawing.Size(114, 38);
             this.btnAtribuirCliente.TabIndex = 9;
             this.btnAtribuirCliente.Text = "Associar Cliente";
             this.btnAtribuirCliente.UseVisualStyleBackColor = false;
@@ -1220,7 +1060,7 @@
             // 
             this.txtCreditosCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txtCreditosCliente.Enabled = false;
-            this.txtCreditosCliente.Location = new System.Drawing.Point(352, 83);
+            this.txtCreditosCliente.Location = new System.Drawing.Point(352, 105);
             this.txtCreditosCliente.Name = "txtCreditosCliente";
             this.txtCreditosCliente.Size = new System.Drawing.Size(80, 26);
             this.txtCreditosCliente.TabIndex = 70;
@@ -1241,7 +1081,7 @@
             this.lblCreditos.AutoSize = true;
             this.lblCreditos.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreditos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblCreditos.Location = new System.Drawing.Point(271, 88);
+            this.lblCreditos.Location = new System.Drawing.Point(271, 110);
             this.lblCreditos.Name = "lblCreditos";
             this.lblCreditos.Size = new System.Drawing.Size(75, 16);
             this.lblCreditos.TabIndex = 69;
@@ -1254,9 +1094,9 @@
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimpar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnLimpar.Location = new System.Drawing.Point(675, 382);
+            this.btnLimpar.Location = new System.Drawing.Point(673, 360);
             this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(114, 40);
+            this.btnLimpar.Size = new System.Drawing.Size(114, 47);
             this.btnLimpar.TabIndex = 23;
             this.btnLimpar.Text = "Limpar Pagamento";
             this.btnLimpar.UseVisualStyleBackColor = false;
@@ -1269,9 +1109,9 @@
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnCancelar.Location = new System.Drawing.Point(675, 427);
+            this.btnCancelar.Location = new System.Drawing.Point(673, 413);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(114, 40);
+            this.btnCancelar.Size = new System.Drawing.Size(114, 47);
             this.btnCancelar.TabIndex = 24;
             this.btnCancelar.Text = "Cancelar Cupom e Pagamento";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -1307,9 +1147,9 @@
             this.btnDesconto.Enabled = false;
             this.btnDesconto.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnDesconto.Location = new System.Drawing.Point(675, 337);
+            this.btnDesconto.Location = new System.Drawing.Point(673, 307);
             this.btnDesconto.Name = "btnDesconto";
-            this.btnDesconto.Size = new System.Drawing.Size(114, 40);
+            this.btnDesconto.Size = new System.Drawing.Size(114, 47);
             this.btnDesconto.TabIndex = 22;
             this.btnDesconto.Text = "Editar Desconto";
             this.btnDesconto.UseVisualStyleBackColor = false;
@@ -1323,9 +1163,9 @@
             this.btnPagamento.Enabled = false;
             this.btnPagamento.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPagamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnPagamento.Location = new System.Drawing.Point(675, 292);
+            this.btnPagamento.Location = new System.Drawing.Point(674, 254);
             this.btnPagamento.Name = "btnPagamento";
-            this.btnPagamento.Size = new System.Drawing.Size(114, 40);
+            this.btnPagamento.Size = new System.Drawing.Size(114, 47);
             this.btnPagamento.TabIndex = 21;
             this.btnPagamento.Text = "Registrar Pagamento";
             this.btnPagamento.UseVisualStyleBackColor = false;
@@ -1349,11 +1189,12 @@
             this.pnlDesconto.Controls.Add(this.label34);
             this.pnlDesconto.Controls.Add(this.txtValorTotal);
             this.pnlDesconto.Controls.Add(this.trkDesconto);
+            this.pnlDesconto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlDesconto.Enabled = false;
             this.pnlDesconto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.pnlDesconto.Location = new System.Drawing.Point(355, 198);
+            this.pnlDesconto.Location = new System.Drawing.Point(5, 154);
             this.pnlDesconto.Name = "pnlDesconto";
-            this.pnlDesconto.Size = new System.Drawing.Size(438, 79);
+            this.pnlDesconto.Size = new System.Drawing.Size(344, 79);
             this.pnlDesconto.TabIndex = 67;
             // 
             // txtPercDesc
@@ -1417,17 +1258,17 @@
             this.label40.BackColor = System.Drawing.Color.Transparent;
             this.label40.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label40.Location = new System.Drawing.Point(253, 52);
+            this.label40.Location = new System.Drawing.Point(163, 52);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(74, 15);
+            this.label40.Size = new System.Drawing.Size(45, 15);
             this.label40.TabIndex = 44;
-            this.label40.Text = "Valor Final : ";
+            this.label40.Text = "Atual : ";
             // 
             // label41
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(333, 7);
+            this.label41.Location = new System.Drawing.Point(206, 7);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(22, 15);
             this.label41.TabIndex = 46;
@@ -1437,7 +1278,7 @@
             // 
             this.txtCustoTotal.AutoSize = true;
             this.txtCustoTotal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustoTotal.Location = new System.Drawing.Point(354, 7);
+            this.txtCustoTotal.Location = new System.Drawing.Point(227, 7);
             this.txtCustoTotal.Name = "txtCustoTotal";
             this.txtCustoTotal.Size = new System.Drawing.Size(31, 15);
             this.txtCustoTotal.TabIndex = 45;
@@ -1449,17 +1290,17 @@
             this.label37.BackColor = System.Drawing.Color.Transparent;
             this.label37.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label37.Location = new System.Drawing.Point(244, 29);
+            this.label37.Location = new System.Drawing.Point(156, 29);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(80, 15);
+            this.label37.Size = new System.Drawing.Size(48, 15);
             this.label37.TabIndex = 41;
-            this.label37.Text = "Valor Venda :";
+            this.label37.Text = "Venda :";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(333, 29);
+            this.label38.Location = new System.Drawing.Point(206, 29);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(22, 15);
             this.label38.TabIndex = 43;
@@ -1469,7 +1310,7 @@
             // 
             this.txtValorVenda.AutoSize = true;
             this.txtValorVenda.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorVenda.Location = new System.Drawing.Point(353, 29);
+            this.txtValorVenda.Location = new System.Drawing.Point(226, 29);
             this.txtValorVenda.Name = "txtValorVenda";
             this.txtValorVenda.Size = new System.Drawing.Size(31, 15);
             this.txtValorVenda.TabIndex = 42;
@@ -1481,17 +1322,17 @@
             this.label36.BackColor = System.Drawing.Color.Transparent;
             this.label36.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label36.Location = new System.Drawing.Point(248, 7);
+            this.label36.Location = new System.Drawing.Point(157, 7);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(79, 15);
+            this.label36.Size = new System.Drawing.Size(49, 15);
             this.label36.TabIndex = 39;
-            this.label36.Text = "Custo Total : ";
+            this.label36.Text = "Custo : ";
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(333, 52);
+            this.label34.Location = new System.Drawing.Point(206, 52);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(22, 15);
             this.label34.TabIndex = 40;
@@ -1501,7 +1342,7 @@
             // 
             this.txtValorTotal.AutoSize = true;
             this.txtValorTotal.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorTotal.Location = new System.Drawing.Point(353, 52);
+            this.txtValorTotal.Location = new System.Drawing.Point(226, 52);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(31, 15);
             this.txtValorTotal.TabIndex = 39;
@@ -1515,7 +1356,7 @@
             this.trkDesconto.Margin = new System.Windows.Forms.Padding(0);
             this.trkDesconto.Maximum = 30;
             this.trkDesconto.Name = "trkDesconto";
-            this.trkDesconto.Size = new System.Drawing.Size(171, 42);
+            this.trkDesconto.Size = new System.Drawing.Size(155, 42);
             this.trkDesconto.TabIndex = 1;
             this.trkDesconto.ValueChanged += new System.EventHandler(this.trkDesconto_ValueChanged);
             // 
@@ -1645,9 +1486,9 @@
             this.btnCancelaAberto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelaAberto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelaAberto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnCancelaAberto.Location = new System.Drawing.Point(675, 472);
+            this.btnCancelaAberto.Location = new System.Drawing.Point(674, 466);
             this.btnCancelaAberto.Name = "btnCancelaAberto";
-            this.btnCancelaAberto.Size = new System.Drawing.Size(114, 40);
+            this.btnCancelaAberto.Size = new System.Drawing.Size(114, 47);
             this.btnCancelaAberto.TabIndex = 25;
             this.btnCancelaAberto.Text = "Cancelar Cupom Atual";
             this.btnCancelaAberto.UseVisualStyleBackColor = false;
@@ -1744,18 +1585,6 @@
         private System.Windows.Forms.GroupBox pnlPedidos;
         private System.Windows.Forms.Label lblPedNum1;
         private System.Windows.Forms.TextBox txtPedidoNum1;
-        private System.Windows.Forms.Button btnAdicionar5;
-        private System.Windows.Forms.Label lblPedNum;
-        private System.Windows.Forms.TextBox txtPedidoNum5;
-        private System.Windows.Forms.Button btnAdicionar4;
-        private System.Windows.Forms.Label lblPedNum4;
-        private System.Windows.Forms.TextBox txtPedidoNum4;
-        private System.Windows.Forms.Button btnAdicionar3;
-        private System.Windows.Forms.Label lblPedNum3;
-        private System.Windows.Forms.TextBox txtPedidoNum3;
-        private System.Windows.Forms.Button btnAdicionar2;
-        private System.Windows.Forms.Label lblPedNum2;
-        private System.Windows.Forms.TextBox txtPedidoNum2;
         private System.Windows.Forms.Button btnAdicionar1;
         private System.Windows.Forms.GroupBox pnlPagamento;
         private System.Windows.Forms.Panel pnlCheque;

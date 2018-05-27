@@ -85,7 +85,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label3.Location = new System.Drawing.Point(0, 582);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 16);
@@ -124,7 +124,7 @@
             this.btnProdQuant.Name = "btnProdQuant";
             this.btnProdQuant.Size = new System.Drawing.Size(145, 45);
             this.btnProdQuant.TabIndex = 10;
-            this.btnProdQuant.Text = "Produtos quantidade";
+            this.btnProdQuant.Text = "Produtos no estoque";
             this.btnProdQuant.UseVisualStyleBackColor = false;
             this.btnProdQuant.Click += new System.EventHandler(this.btnProdQuant_Click);
             // 
@@ -178,16 +178,14 @@
             this.btnPedidosAbertosData.AutoEllipsis = true;
             this.btnPedidosAbertosData.BackColor = System.Drawing.Color.White;
             this.btnPedidosAbertosData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPedidosAbertosData.Enabled = false;
             this.btnPedidosAbertosData.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPedidosAbertosData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnPedidosAbertosData.Location = new System.Drawing.Point(492, 166);
+            this.btnPedidosAbertosData.Location = new System.Drawing.Point(502, 166);
             this.btnPedidosAbertosData.Name = "btnPedidosAbertosData";
             this.btnPedidosAbertosData.Size = new System.Drawing.Size(145, 45);
             this.btnPedidosAbertosData.TabIndex = 11;
             this.btnPedidosAbertosData.Text = "Pedidos abertos por período";
             this.btnPedidosAbertosData.UseVisualStyleBackColor = false;
-            this.btnPedidosAbertosData.Visible = false;
             this.btnPedidosAbertosData.Click += new System.EventHandler(this.btnPedidosAbertosData_Click);
             // 
             // btnVendaPag

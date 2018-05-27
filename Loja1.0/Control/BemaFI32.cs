@@ -396,9 +396,10 @@ namespace FiscalPrinterBematech
 		[DllImport("BemaFi32.dll")]public static extern int Bematech_FI_UsaUnidadeMedida(string UnidadeMedida);
 		#endregion
 		*/
-        #region Funções do Cupom Fiscal
+        #region Funções do Cupom Fiscal        
 
-      
+        [DllImport("BemaFi32.dll")]
+        public static extern int Bematech_FI_AbreCupom(string CGC_CPF);
         [DllImport("BemaFI32.dll")]
         public static extern int Bematech_FI_AbreCupomMFD(string CGC_CPF, string nome, string endereco);
         [DllImport("BemaFi32.dll")]

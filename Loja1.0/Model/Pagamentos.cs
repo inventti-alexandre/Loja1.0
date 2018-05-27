@@ -53,11 +53,11 @@ public partial class Pagamentos
 
 
 
+    public virtual Movimentos Movimentos { get; set; }
+
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Pagamentos_Vendas> Pagamentos_Vendas { get; set; }
-
-    public virtual Movimentos Movimentos { get; set; }
 
 }
 

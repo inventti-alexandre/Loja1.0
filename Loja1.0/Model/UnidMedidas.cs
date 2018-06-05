@@ -31,8 +31,6 @@ public partial class UnidMedidas
 
     public string medida { get; set; }
 
-    public string abrev { get; set; }
-
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

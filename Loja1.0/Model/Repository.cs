@@ -56,6 +56,28 @@ namespace Loja1._0.Model
                     select usuarios).ToList();
         }
 
+        internal List<Produtos> PesquisaVendasByProduto(string prod)
+        {
+            return (from produto in dataEntity.Produtos
+                    where produto.desc_produto.Contains(prod)
+                    orderby produto.desc_produto
+                    select produto).ToList();
+        }
+
+        internal List<Usuarios> PesquisaRelaçãoUsuarios(string nome)
+        {
+            return (from usuarios in dataEntity.Usuarios
+                    where (usuarios.nome.Contains(nome))
+                    select usuarios).ToList();
+        }
+
+        internal List<Fornecedores> PesquisaListaForn(string nome)
+        {
+            return (from forn in dataEntity.Fornecedores
+                    where (forn.nome.Contains(nome))
+                    select forn).ToList();
+        }
+
         public Usuarios PesquisaNomeUser(string nomeCompleto)
         {
             return (from usuarios in dataEntity.Usuarios
@@ -96,6 +118,16 @@ namespace Loja1._0.Model
                     select pagamento).ToList();
         }
 
+        internal List<Vendas_Produtos> PesquisaVendas_ProdutoByProduto(string produtoNome)
+        {
+            int idProduto = PesquisaProdutoByNome(produtoNome).id;
+
+            return (from venda in dataEntity.Vendas_Produtos
+                                   where venda.id_produto == idProduto
+                                   orderby venda.id_venda
+                                   select venda).ToList();
+        }
+
         internal List<Movimentos> PesquisaSaidaPagamentosPeriodo(DateTime dataInicio, DateTime dataFim)
         {
             return (from movimento in dataEntity.Movimentos
@@ -103,6 +135,14 @@ namespace Loja1._0.Model
                     && movimento.data <= dataFim
                     && (movimento.Tipos_Movimentacao.direcao.Equals("Saída"))
                     select movimento).ToList();
+        }
+
+        internal List<Vendas> PesquisaVendasByUser(string usuario)
+        {
+            return (from venda in dataEntity.Vendas
+                    where venda.Usuarios.nome.Contains(usuario)
+                    orderby venda.data_Venda
+                    select venda).ToList();
         }
 
         internal List<CtrlEntrega> PesquisaEntregaByIdVenda(int id)

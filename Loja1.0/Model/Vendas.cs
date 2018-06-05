@@ -22,8 +22,6 @@ public partial class Vendas
     public Vendas()
     {
 
-        this.CtrlEntrega = new HashSet<CtrlEntrega>();
-
         this.Pagamentos_Vendas = new HashSet<Pagamentos_Vendas>();
 
         this.Vendas_Produtos = new HashSet<Vendas_Produtos>();
@@ -54,10 +52,6 @@ public partial class Vendas
 
 
     public virtual Clientes Clientes { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<CtrlEntrega> CtrlEntrega { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

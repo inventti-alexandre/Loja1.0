@@ -22,7 +22,7 @@ public partial class Fornecedores
     public Fornecedores()
     {
 
-        this.Compras = new HashSet<Compras>();
+        this.Produtos = new HashSet<Produtos>();
 
     }
 
@@ -51,8 +51,6 @@ public partial class Fornecedores
 
     public string contato { get; set; }
 
-    public string email { get; set; }
-
     public int status { get; set; }
 
 
@@ -61,7 +59,7 @@ public partial class Fornecedores
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Compras> Compras { get; set; }
+    public virtual ICollection<Produtos> Produtos { get; set; }
 
 }
 

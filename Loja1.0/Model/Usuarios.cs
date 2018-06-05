@@ -22,8 +22,6 @@ public partial class Usuarios
     public Usuarios()
     {
 
-        this.CtrlPonto = new HashSet<CtrlPonto>();
-
         this.Vendas = new HashSet<Vendas>();
 
     }
@@ -31,33 +29,17 @@ public partial class Usuarios
 
     public int id { get; set; }
 
-    public string login { get; set; }
+    public Nullable<int> registro { get; set; }
 
     public string nome { get; set; }
 
-    public string cpf { get; set; }
-
-    public string rg { get; set; }
-
-    public string registro { get; set; }
-
     public string senha { get; set; }
 
-    public Nullable<int> id_Perfil { get; set; }
-
-    public System.TimeSpan bancoHoras { get; set; }
-
-    public Nullable<decimal> salario { get; set; }
+    public int num_perfil { get; set; }
 
     public int status { get; set; }
 
-    public Nullable<System.DateTime> dt_Inclusao { get; set; }
 
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<CtrlPonto> CtrlPonto { get; set; }
 
     public virtual Perfis Perfis { get; set; }
 

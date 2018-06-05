@@ -94,16 +94,16 @@
     <Compile Include="Control\printDGV.cs" />
     <Compile Include="Control\Valida.cs" />
     <Compile Include="Model\Cidades.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Clientes.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Compras.cs">
       <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Contabilidade.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CtrlEntrega.cs">
       <DependentUpon>ModelLocal.tt</DependentUpon>
@@ -112,19 +112,19 @@
       <DependentUpon>ModelLocal.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estados.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estoque.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fechamento.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fornecedores.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Gerenciamento.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LogPonto.cs">
       <DependentUpon>ModelLocal.tt</DependentUpon>
@@ -160,35 +160,35 @@
       <DependentUpon>ModelLocal.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Movimentos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos_Vendas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Perfis.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Produtos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Repository.cs" />
     <Compile Include="Model\Tipos_Movimentacao.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UnidMedidas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuarios.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas_Produtos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

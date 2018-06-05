@@ -58,9 +58,25 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaNomeUser(nomeCompleto);
         }
 
-        internal List<Fornecedores> PesquisaListaFornecedores(string v)
+        internal List<Model.Produtos> PesquisaVendasProduto(string produto)
         {
-            throw new NotImplementedException();
+            string prod = produto;
+
+            return dbRepository.PesquisaVendasByProduto(prod);
+        }
+
+        internal List<Model.Usuarios> PesquisaUserNomeRelação(string ParteNome)
+        {
+            string nome = ParteNome;
+
+            return dbRepository.PesquisaRelaçãoUsuarios(nome);
+        }
+
+        internal List<Model.Fornecedores> PesquisaListaFornecedores(string ParteNome)
+        {
+            string nome = ParteNome;
+
+            return dbRepository.PesquisaListaForn(nome);
         }
 
         public List<Model.Usuarios> PesquisaGeralUser()
@@ -123,9 +139,23 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaEntregaByIdVenda(Id);
         }
 
+        internal List<Vendas_Produtos> PesquisaVendasProdutoNome(string produto)
+        {
+            string produtoNome = produto;
+
+            return dbRepository.PesquisaVendas_ProdutoByProduto(produtoNome);
+        }
+
         public void SalvarProduto(Model.Produtos produto)
         {
             dbRepository.SalvarNovoProduto(produto);
+        }
+
+        internal List<Vendas> PesquisaVendasUser(string usuario)
+        {
+            string user = usuario;
+
+            return dbRepository.PesquisaVendasByUser(usuario);
         }
 
         public Model.Produtos PesquisaProdutoId(int id)

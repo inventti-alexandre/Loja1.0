@@ -31,11 +31,11 @@ public partial class Movimentos
 
     public string desc { get; set; }
 
-    public decimal valor { get; set; }
+    public Nullable<decimal> valor { get; set; }
 
-    public System.DateTime data { get; set; }
+    public Nullable<System.DateTime> data { get; set; }
 
-    public int id_tipo { get; set; }
+    public Nullable<int> id_tipo { get; set; }
 
 
 

@@ -34,9 +34,9 @@ public partial class CtrlEntrega
 
     public virtual Clientes Clientes { get; set; }
 
-    public virtual Vendas Vendas { get; set; }
-
     public virtual Produtos Produtos { get; set; }
+
+    public virtual Vendas Vendas { get; set; }
 
 }
 

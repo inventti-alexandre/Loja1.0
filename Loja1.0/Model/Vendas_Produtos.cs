@@ -28,6 +28,8 @@ public partial class Vendas_Produtos
 
     public int quantidade { get; set; }
 
+    public Nullable<int> entregar { get; set; }
+
 
 
     public virtual Produtos Produtos { get; set; }

@@ -22,6 +22,8 @@ public partial class Clientes
     public Clientes()
     {
 
+        this.CtrlEntrega = new HashSet<CtrlEntrega>();
+
         this.Vendas = new HashSet<Vendas>();
 
     }
@@ -55,8 +57,6 @@ public partial class Clientes
 
     public int id_Cidade { get; set; }
 
-    public Nullable<int> pessoa_fisica { get; set; }
-
     public int status { get; set; }
 
     public Nullable<double> creditos { get; set; }
@@ -64,6 +64,10 @@ public partial class Clientes
 
 
     public virtual Cidades Cidades { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<CtrlEntrega> CtrlEntrega { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

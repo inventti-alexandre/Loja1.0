@@ -100,16 +100,16 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Compras.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Contabilidade.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CtrlEntrega.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CtrlPonto.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estados.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -127,7 +127,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LogPonto.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>

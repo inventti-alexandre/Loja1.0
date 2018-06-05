@@ -36,7 +36,13 @@ public partial class DbEntities : DbContext
 
     public virtual DbSet<Clientes> Clientes { get; set; }
 
+    public virtual DbSet<Compras> Compras { get; set; }
+
     public virtual DbSet<Contabilidade> Contabilidade { get; set; }
+
+    public virtual DbSet<CtrlEntrega> CtrlEntrega { get; set; }
+
+    public virtual DbSet<CtrlPonto> CtrlPonto { get; set; }
 
     public virtual DbSet<Estados> Estados { get; set; }
 
@@ -47,6 +53,8 @@ public partial class DbEntities : DbContext
     public virtual DbSet<Fornecedores> Fornecedores { get; set; }
 
     public virtual DbSet<Gerenciamento> Gerenciamento { get; set; }
+
+    public virtual DbSet<LogPonto> LogPonto { get; set; }
 
     public virtual DbSet<Movimentos> Movimentos { get; set; }
 
@@ -64,9 +72,9 @@ public partial class DbEntities : DbContext
 
     public virtual DbSet<Usuarios> Usuarios { get; set; }
 
-    public virtual DbSet<Vendas_Produtos> Vendas_Produtos { get; set; }
-
     public virtual DbSet<Vendas> Vendas { get; set; }
+
+    public virtual DbSet<Vendas_Produtos> Vendas_Produtos { get; set; }
 
 }
 

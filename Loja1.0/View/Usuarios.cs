@@ -19,7 +19,7 @@ namespace Loja1._0
 
         public Usuarios(Model.Usuarios user)
         {
-            this.user = user;
+            usuario = user;
             InitializeComponent();
             carregaListaUsuarios();
         }
@@ -105,8 +105,8 @@ namespace Loja1._0
         }
 
         private void btnExit_Click(object sender, EventArgs e)
-        {
-            Inicial form = new Inicial(user);
+        {              
+            Inicial form = new Inicial(usuario);
             form.Show();
             Dispose();
         }
@@ -295,7 +295,6 @@ namespace Loja1._0
             rdbCaixa.Checked = false;
             rdbGerente.Checked = false;
             rdbOperador.Checked = false;
-            usuario = new Model.Usuarios();
             carregaListaUsuarios();
         }
 

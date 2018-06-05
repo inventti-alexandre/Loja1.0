@@ -213,7 +213,7 @@
             this.pnlPerfil.Location = new System.Drawing.Point(152, 255);
             this.pnlPerfil.Name = "pnlPerfil";
             this.pnlPerfil.Size = new System.Drawing.Size(505, 53);
-            this.pnlPerfil.TabIndex = 19;
+            this.pnlPerfil.TabIndex = 4;
             // 
             // rdbOperador
             // 

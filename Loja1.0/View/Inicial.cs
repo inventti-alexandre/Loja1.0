@@ -7,7 +7,7 @@ namespace Loja1._0
 {
     public partial class Inicial : Form
     {
-        private Model.Usuarios user;
+        private static Model.Usuarios usuario;
         Controle controle = new Controle();
         int perfil = 0;
 
@@ -18,13 +18,8 @@ namespace Loja1._0
         {
             try
             {
-                this.user = user;
-                InitializeComponent();
-
-                if(user.nome == null || user.nome.Equals(""))
-                {
-                    btnUsuarios.PerformClick();
-                }
+                usuario = user;
+                InitializeComponent();               
 
                 perfil = Convert.ToInt32(user.id_Perfil);
                 if (perfil > 1)
@@ -55,7 +50,10 @@ namespace Loja1._0
                 {
                     alertaFaltaEstoque();
                 }
+                
             }
+
+
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
@@ -75,7 +73,7 @@ namespace Loja1._0
 
         private void btnPdv_Click(object sender, EventArgs e)
         {
-            PDV form = new PDV(user);
+            PDV form = new PDV(usuario);
             form.Show();
             this.Hide();
             if (controle.PesquisaGerenciamento(1) == null)
@@ -88,14 +86,14 @@ namespace Loja1._0
 
         private void btnCaixa_Click(object sender, EventArgs e)
         {
-            Caixa form = new Caixa(user);
+            Caixa form = new Caixa(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnProdutos_Click(object sender, EventArgs e)
         {
-            Produtos form = new Produtos(user);
+            Produtos form = new Produtos(usuario);
             form.Show();
             this.Hide();
             if (Produtos.listaFornecedores.Count == 0)
@@ -108,49 +106,49 @@ namespace Loja1._0
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            Usuarios form = new Usuarios(user);
+            Usuarios form = new Usuarios(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            Clientes form = new Clientes(user);
+            Clientes form = new Clientes(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnFornecedores_Click(object sender, EventArgs e)
         {
-            Fornecedores form = new Fornecedores(user);
+            Fornecedores form = new Fornecedores(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnContabil_Click(object sender, EventArgs e)
         {
-            Contabil form = new Contabil(user);
+            Contabil form = new Contabil(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-            Relatorios form = new Relatorios(user);
+            Relatorios form = new Relatorios(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnFolhaPag_Click(object sender, EventArgs e)
         {
-            FolhaPg form = new FolhaPg(user);
+            FolhaPg form = new FolhaPg(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnConsultaPedidos_Click(object sender, EventArgs e)
         {
-            ConsultaPedido form = new ConsultaPedido(user);
+            ConsultaPedido form = new ConsultaPedido(usuario);
             form.Show();
             this.Hide();
         }
@@ -177,23 +175,34 @@ namespace Loja1._0
 
         private void btnEntregas_Click(object sender, EventArgs e)
         {
-            Entrega form = new Entrega(user);
+            Entrega form = new Entrega(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            Gestao form = new Gestao(user);
+            Gestao form = new Gestao(usuario);
             form.Show();
             this.Hide();
         }
 
         private void btnPonto_Click(object sender, EventArgs e)
         {
-            ControleHoras form = new ControleHoras(user);
+            ControleHoras form = new ControleHoras(usuario);
             form.Show();
             this.Hide();
+        }
+
+        private void Inicial_Load(object sender, EventArgs e)
+        {
+            if (usuario.nome == null || usuario.nome.Equals(""))
+            {
+                this.Hide();
+                Usuarios form = new Usuarios(usuario);
+                form.Show();
+                
+            }
         }
     }
 }

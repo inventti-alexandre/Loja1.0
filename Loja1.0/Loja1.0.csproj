@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -46,6 +46,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Loja1._0.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bematech, Version=1.5.0.0, Culture=neutral, PublicKeyToken=922112168328d899" />
     <Reference Include="Bematech.Fiscal, Version=1.5.0.0, Culture=neutral, PublicKeyToken=922112168328d899, processorArchitecture=MSIL">
@@ -53,10 +59,10 @@
       <HintPath>bin\Debug\Bematech.Fiscal.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -85,39 +91,43 @@
     <Compile Include="Control\PrintablePanel.Designer.cs">
       <DependentUpon>PrintablePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Control\printDGV.cs" />
     <Compile Include="Control\Valida.cs" />
     <Compile Include="Model\Cidades.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Clientes.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Compras.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Contabilidade.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CtrlEntrega.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CtrlPonto.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estados.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Estoque.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fechamento.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Fornecedores.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Gerenciamento.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LogPonto.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -150,35 +160,35 @@
       <DependentUpon>ModelLocal.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Movimentos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Pagamentos_Vendas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Perfis.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Produtos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Repository.cs" />
     <Compile Include="Model\Tipos_Movimentacao.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\UnidMedidas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuarios.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Vendas_Produtos.cs">
-      <DependentUpon>ModelLocal.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -323,11 +333,11 @@
     <Compile Include="View\Relatórios\PagamentosSaida.Designer.cs">
       <DependentUpon>PagamentosSaida.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Relatórios\ProdutoQuantidade.cs">
+    <Compile Include="View\Relatórios\ProdutoCompleta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Relatórios\ProdutoQuantidade.Designer.cs">
-      <DependentUpon>ProdutoQuantidade.cs</DependentUpon>
+    <Compile Include="View\Relatórios\ProdutoCompleta.Designer.cs">
+      <DependentUpon>ProdutoCompleta.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Relatórios\PedidosAbertos.cs">
       <SubType>Form</SubType>
@@ -472,8 +482,8 @@
     <EmbeddedResource Include="View\Relatórios\PagamentosSaida.resx">
       <DependentUpon>PagamentosSaida.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Relatórios\ProdutoQuantidade.resx">
-      <DependentUpon>ProdutoQuantidade.cs</DependentUpon>
+    <EmbeddedResource Include="View\Relatórios\ProdutoCompleta.resx">
+      <DependentUpon>ProdutoCompleta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Relatórios\PedidosAbertos.resx">
       <DependentUpon>PedidosAbertos.cs</DependentUpon>
@@ -565,6 +575,7 @@
   <ItemGroup>
     <None Include="Image\Branco.jpg" />
     <None Include="Image\Engrenagem.png" />
+    <Content Include="Icon.ico" />
     <Content Include="Image\exit.png" />
     <Content Include="Image\Fundo.png" />
     <Content Include="Image\Icon.ico" />
@@ -597,6 +608,8 @@
       <LastGenOutput>ModelLocal.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

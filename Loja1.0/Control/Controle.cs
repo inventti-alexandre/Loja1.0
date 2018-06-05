@@ -58,6 +58,27 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaNomeUser(nomeCompleto);
         }
 
+        internal List<Model.Produtos> PesquisaVendasProduto(string produto)
+        {
+            string prod = produto;
+
+            return dbRepository.PesquisaVendasByProduto(prod);
+        }
+
+        internal List<Model.Usuarios> PesquisaUserNomeRelação(string ParteNome)
+        {
+            string nome = ParteNome;
+
+            return dbRepository.PesquisaRelaçãoUsuarios(nome);
+        }
+
+        internal List<Model.Fornecedores> PesquisaListaFornecedores(string ParteNome)
+        {
+            string nome = ParteNome;
+
+            return dbRepository.PesquisaListaForn(nome);
+        }
+
         public List<Model.Usuarios> PesquisaGeralUser()
         {
             return dbRepository.PesquisaCompletaUsers();
@@ -73,6 +94,14 @@ namespace Loja1._0.Control
             int idMinus = id_Perfil;
 
             return dbRepository.PesquisaUsersIdPerfil(idMinus);
+        }
+
+        public List<Compras> PesquisaComprasPeriodo(DateTime dataInicio, DateTime dataFim)
+        {
+            DateTime inicio = dataInicio;
+            DateTime fim = dataFim;
+
+            return dbRepository.PesquisaComprasByDate(inicio, fim);
         }
 
         #endregion
@@ -93,9 +122,40 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaProdutoByCodigo(codigo);
         }
 
+        internal List<Pagamentos> PesquisaPagamentoRecebidoPeriodo(DateTime dataInicio, DateTime dataFim)
+        {
+            return dbRepository.PesquisaPagamentosPeriodo(dataInicio, dataFim);
+        }
+
+        internal List<Movimentos> PesquisaMovSaidaPeriodo(DateTime dataInicio, DateTime dataFim)
+        {
+            return dbRepository.PesquisaSaidaPagamentosPeriodo(dataInicio, dataFim);
+        }
+
+        internal List<CtrlEntrega> PesquisaEntregaIdVenda(int id)
+        {
+            int Id = id;
+
+            return dbRepository.PesquisaEntregaByIdVenda(Id);
+        }
+
+        internal List<Vendas_Produtos> PesquisaVendasProdutoNome(string produto)
+        {
+            string produtoNome = produto;
+
+            return dbRepository.PesquisaVendas_ProdutoByProduto(produtoNome);
+        }
+
         public void SalvarProduto(Model.Produtos produto)
         {
             dbRepository.SalvarNovoProduto(produto);
+        }
+
+        internal List<Vendas> PesquisaVendasUser(string usuario)
+        {
+            string user = usuario;
+
+            return dbRepository.PesquisaVendasByUser(usuario);
         }
 
         public Model.Produtos PesquisaProdutoId(int id)
@@ -124,6 +184,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaProdutosValidoByName(pesquisa);
         }
 
+        internal List<Model.Produtos> PesquisaProdutosFornecedor(string fornecedorNome)
+        {
+            return dbRepository.PesquisaProdutosPorFornecedor(fornecedorNome);
+        }
+
         #endregion
 
         #region Controle do BD de Estados
@@ -150,6 +215,11 @@ namespace Loja1._0.Control
         public Model.Contabilidade PesquisaContabilidadeById(int v)
         {
             return dbRepository.PesquisaContabilidadeId(v);
+        }
+
+        internal Compras pesquisaProdutoCompra(int produtoid)
+        {
+            return dbRepository.PesquisaCompraAtualProduto(produtoid);
         }
 
         #endregion
@@ -342,6 +412,11 @@ namespace Loja1._0.Control
             return dbRepository.PesquisaFornecedoresByNomeCnpj(busca);
         }
 
+        internal void SalvaEntrega(CtrlEntrega entrega)
+        {
+            dbRepository.SalvarNovaEntrega(entrega);
+        }
+
         public Model.Fornecedores PesquisaFornecedorById(int Id)
         {
             int valor = Id;
@@ -509,9 +584,9 @@ namespace Loja1._0.Control
 
         #region Controle do BD de Pagamentos
 
-        public bool PesquisaPagamentoId(Pagamentos pagamento)
+        public Pagamentos PesquisaPagamentoId(int id)
         {
-            return dbRepository.PesquisaIdPagamento(pagamento);
+            return dbRepository.PesquisaIdPagamento(id);
         }
 
         public void SalvarPagamento(Pagamentos pagamento)

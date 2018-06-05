@@ -26,6 +26,7 @@ namespace Loja1._0
         static decimal valorSub = 0;
         static bool desconto = false;
         bool repetido = false;
+
         Email email = new Email();
         public string erro;
 

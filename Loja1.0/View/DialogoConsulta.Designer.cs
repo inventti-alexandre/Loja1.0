@@ -51,9 +51,10 @@
             // 
             // btnConsulta
             // 
-            this.btnConsulta.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnConsulta.BackColor = System.Drawing.Color.White;
+            this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsulta.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnConsulta.Location = new System.Drawing.Point(107, 84);
             this.btnConsulta.Name = "btnConsulta";
             this.btnConsulta.Size = new System.Drawing.Size(116, 32);
@@ -84,10 +85,11 @@
             // 
             // btnVolta
             // 
-            this.btnVolta.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnVolta.BackColor = System.Drawing.Color.White;
+            this.btnVolta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVolta.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnVolta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVolta.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVolta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnVolta.Location = new System.Drawing.Point(229, 84);
             this.btnVolta.Name = "btnVolta";
             this.btnVolta.Size = new System.Drawing.Size(116, 32);
@@ -165,8 +167,8 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.btnConsulta);
             this.Controls.Add(this.txtCodigo);
-            this.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DialogoConsulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

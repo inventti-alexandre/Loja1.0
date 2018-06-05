@@ -115,7 +115,7 @@
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblTitulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblTitulo.Location = new System.Drawing.Point(5, 4);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(473, 33);
@@ -130,7 +130,7 @@
             this.lblNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblNome.Location = new System.Drawing.Point(491, 4);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(263, 33);
@@ -142,18 +142,19 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label3.Location = new System.Drawing.Point(0, 582);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 16);
+            this.label3.Size = new System.Drawing.Size(200, 16);
             this.label3.TabIndex = 6;
-            this.label3.Text = "© 2017 Guilherme Bernardelli";
+            this.label3.Text = "© 2017 Prezia Software House";
             // 
             // btnAliquota
             // 
             this.btnAliquota.BackColor = System.Drawing.Color.White;
+            this.btnAliquota.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAliquota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAliquota.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAliquota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnAliquota.Location = new System.Drawing.Point(289, 52);
             this.btnAliquota.Name = "btnAliquota";
             this.btnAliquota.Size = new System.Drawing.Size(152, 50);
@@ -165,8 +166,9 @@
             // btnAbertura
             // 
             this.btnAbertura.BackColor = System.Drawing.Color.White;
+            this.btnAbertura.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAbertura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbertura.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAbertura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnAbertura.Location = new System.Drawing.Point(447, 52);
             this.btnAbertura.Name = "btnAbertura";
             this.btnAbertura.Size = new System.Drawing.Size(152, 50);
@@ -180,7 +182,9 @@
             this.btnExit.BackColor = System.Drawing.Color.Khaki;
             this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExit.Location = new System.Drawing.Point(764, 3);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
@@ -204,8 +208,9 @@
             // btnFechamento
             // 
             this.btnFechamento.BackColor = System.Drawing.Color.White;
+            this.btnFechamento.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFechamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechamento.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFechamento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnFechamento.Location = new System.Drawing.Point(605, 52);
             this.btnFechamento.Name = "btnFechamento";
             this.btnFechamento.Size = new System.Drawing.Size(152, 50);
@@ -230,7 +235,7 @@
             this.pnlBasico.Controls.Add(this.txtLucroMin);
             this.pnlBasico.Enabled = false;
             this.pnlBasico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlBasico.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlBasico.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pnlBasico.Location = new System.Drawing.Point(8, 118);
             this.pnlBasico.Name = "pnlBasico";
             this.pnlBasico.Size = new System.Drawing.Size(255, 381);
@@ -366,7 +371,7 @@
             this.pnlCredito.Controls.Add(this.txtJurosCC2);
             this.pnlCredito.Enabled = false;
             this.pnlCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlCredito.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlCredito.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pnlCredito.Location = new System.Drawing.Point(273, 118);
             this.pnlCredito.Name = "pnlCredito";
             this.pnlCredito.Size = new System.Drawing.Size(255, 381);
@@ -611,7 +616,7 @@
             this.pnlCheque.Controls.Add(this.txtJurosCheque6);
             this.pnlCheque.Enabled = false;
             this.pnlCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlCheque.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.pnlCheque.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.pnlCheque.Location = new System.Drawing.Point(538, 118);
             this.pnlCheque.Name = "pnlCheque";
             this.pnlCheque.Size = new System.Drawing.Size(255, 381);
@@ -850,8 +855,9 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnCancelar.Location = new System.Drawing.Point(449, 504);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(152, 50);
@@ -863,9 +869,10 @@
             // btnSalvar
             // 
             this.btnSalvar.BackColor = System.Drawing.Color.White;
+            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalvar.Enabled = false;
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnSalvar.Location = new System.Drawing.Point(291, 504);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(152, 50);
@@ -877,8 +884,9 @@
             // btnAlterar
             // 
             this.btnAlterar.BackColor = System.Drawing.Color.White;
+            this.btnAlterar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAlterar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnAlterar.Location = new System.Drawing.Point(133, 504);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(152, 50);
@@ -894,7 +902,7 @@
             this.label31.AutoSize = true;
             this.label31.BackColor = System.Drawing.Color.Khaki;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label31.Location = new System.Drawing.Point(32, 60);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(251, 29);

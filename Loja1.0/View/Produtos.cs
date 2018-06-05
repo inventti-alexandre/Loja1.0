@@ -15,6 +15,7 @@ namespace Loja1._0
     {
         public struct prod
         {
+            public string ncm;
             public string desc;
             public string cod;
             public string custo;
@@ -25,6 +26,7 @@ namespace Loja1._0
             public string localSigla;
             public string localRef;
         };
+
         public static List<prod> listaProd = new List<prod>();
         Model.Usuarios user = new Model.Usuarios();
 
@@ -58,7 +60,6 @@ namespace Loja1._0
                 limpaForm();
 
                 listaFornecedores = controle.PesquisaFornecedores("");                
-
                 cmbFornecedor.DataSource = listaFornecedores;
                 cmbFornecedor.ValueMember = "nome";
 
@@ -186,8 +187,9 @@ namespace Loja1._0
         {
             qntTemp = 0;
             dgvProdutos.Enabled = true;
-            txtCodigo.Enabled = true;
+            txtCodigo.Enabled = true;            
             txtProduto.Enabled = true;
+            txtNcm.Enabled = false;
             txtCusto.Enabled = false;
             txtPreco.Enabled = false;
             txtIcms.Enabled = false;
@@ -207,6 +209,7 @@ namespace Loja1._0
             btnSalvar.Enabled = false;
             txtCodigo.Text = "";
             txtCusto.Text = "";
+            txtNcm.Text = "";
             txtProduto.Text = "";
             txtIcms.Text = "";
             txtPreco.Text = "";
@@ -292,6 +295,7 @@ namespace Loja1._0
             txtCodigo.Enabled = true;
             txtCusto.Enabled = true;
             txtProduto.Enabled = true;
+            txtNcm.Enabled = true;
             txtPreco.Enabled = true;
             txtIcms.Enabled = true;
             txtQntAtual.Enabled = true;
@@ -320,6 +324,7 @@ namespace Loja1._0
             txtCusto.Enabled = true;
             txtProduto.Enabled = true;
             txtCodigo.Enabled = true;
+            txtNcm.Enabled = true;
             txtPreco.Enabled = true;
             txtIcms.Enabled = true;
             txtQntMinima.Enabled = true;
@@ -430,6 +435,7 @@ namespace Loja1._0
                         controle.SalvarProduto(produto);
                         produto.cod_produto = txtCodigo.Text.Trim();
                         produto.desc_produto = txtProduto.Text.Trim().ToUpper();
+                        produto.ncm = txtNcm.Text.Trim().ToUpper();
                         produto.id_medida = controle.PesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
                         produto.imagem = bytes;
                         produto.status = 1;
@@ -490,6 +496,7 @@ namespace Loja1._0
                         produto = new Model.Produtos();
                         produto = controle.PesquisaProdutoId(id);
                         produto.cod_produto = txtCodigo.Text.Trim();
+                        produto.ncm = txtNcm.Text.Trim().ToUpper();
                         produto.desc_produto = txtProduto.Text.Trim().ToUpper();
                         produto.id_medida = controle.PesquisaMedidaByDesc(cmbUnidade.SelectedValue.ToString()).id;
                         produto.imagem = bytes;
@@ -588,6 +595,7 @@ namespace Loja1._0
                     txtCodigo.Text = produto.cod_produto;
                     txtCusto.Text = compra.preco_compra.ToString();
                     txtProduto.Text = produto.desc_produto;
+                    txtNcm.Text = produto.ncm;
                     txtIcms.Text = compra.icms_pago.ToString();
                     txtPreco.Text = compra.preco_venda.ToString();
                     txtQntMinima.Text = produto.Estoque.qnt_minima.ToString();

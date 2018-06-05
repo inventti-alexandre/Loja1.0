@@ -100,7 +100,7 @@ namespace Loja1._0
 
         private void btnProdQuant_Click(object sender, EventArgs e)
         {
-            ProdutoQuantidade form = new ProdutoQuantidade(user);
+            ProdutoCompleta form = new ProdutoCompleta(user);
             form.Show();
             this.Hide();
         }

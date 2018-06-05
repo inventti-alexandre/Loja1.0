@@ -15,18 +15,28 @@ namespace Loja1._0.Model
 using System;
     using System.Collections.Generic;
     
-public partial class LogPonto
+public partial class CtrlEntrega
 {
 
     public int id { get; set; }
 
-    public int id_Ponto { get; set; }
+    public int id_Venda { get; set; }
 
-    public string valor { get; set; }
+    public Nullable<int> id_Cliente { get; set; }
 
-    public int id_User { get; set; }
+    public int id_Produto { get; set; }
 
-    public System.DateTime dt_Alteracao { get; set; }
+    public System.DateTime DataVenda { get; set; }
+
+    public string EndEntrega { get; set; }
+
+
+
+    public virtual Clientes Clientes { get; set; }
+
+    public virtual Produtos Produtos { get; set; }
+
+    public virtual Vendas Vendas { get; set; }
 
 }
 

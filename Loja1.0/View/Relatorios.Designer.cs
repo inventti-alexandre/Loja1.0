@@ -58,7 +58,7 @@
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblTitulo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblTitulo.Location = new System.Drawing.Point(5, 4);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(473, 33);
@@ -73,7 +73,7 @@
             this.lblNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblNome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblNome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblNome.Location = new System.Drawing.Point(492, 4);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(261, 33);
@@ -85,12 +85,12 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.LightSlateGray;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label3.Location = new System.Drawing.Point(0, 582);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 16);
+            this.label3.Size = new System.Drawing.Size(200, 16);
             this.label3.TabIndex = 6;
-            this.label3.Text = "© 2017 Guilherme Bernardelli";
+            this.label3.Text = "© 2017 Prezia Software House";
             // 
             // panel1
             // 
@@ -119,12 +119,12 @@
             this.btnProdQuant.BackColor = System.Drawing.Color.White;
             this.btnProdQuant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProdQuant.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProdQuant.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnProdQuant.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnProdQuant.Location = new System.Drawing.Point(18, 97);
             this.btnProdQuant.Name = "btnProdQuant";
             this.btnProdQuant.Size = new System.Drawing.Size(145, 45);
             this.btnProdQuant.TabIndex = 10;
-            this.btnProdQuant.Text = "Produtos quantidade";
+            this.btnProdQuant.Text = "Produtos no estoque";
             this.btnProdQuant.UseVisualStyleBackColor = false;
             this.btnProdQuant.Click += new System.EventHandler(this.btnProdQuant_Click);
             // 
@@ -134,7 +134,7 @@
             this.btnPagReceb.BackColor = System.Drawing.Color.White;
             this.btnPagReceb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagReceb.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagReceb.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPagReceb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnPagReceb.Location = new System.Drawing.Point(341, 97);
             this.btnPagReceb.Name = "btnPagReceb";
             this.btnPagReceb.Size = new System.Drawing.Size(145, 45);
@@ -149,7 +149,7 @@
             this.btnVendaUser.BackColor = System.Drawing.Color.White;
             this.btnVendaUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVendaUser.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendaUser.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVendaUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnVendaUser.Location = new System.Drawing.Point(341, 166);
             this.btnVendaUser.Name = "btnVendaUser";
             this.btnVendaUser.Size = new System.Drawing.Size(145, 45);
@@ -164,7 +164,7 @@
             this.btnVendaProd.BackColor = System.Drawing.Color.White;
             this.btnVendaProd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVendaProd.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendaProd.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVendaProd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnVendaProd.Location = new System.Drawing.Point(18, 166);
             this.btnVendaProd.Name = "btnVendaProd";
             this.btnVendaProd.Size = new System.Drawing.Size(145, 45);
@@ -178,16 +178,14 @@
             this.btnPedidosAbertosData.AutoEllipsis = true;
             this.btnPedidosAbertosData.BackColor = System.Drawing.Color.White;
             this.btnPedidosAbertosData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPedidosAbertosData.Enabled = false;
             this.btnPedidosAbertosData.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedidosAbertosData.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPedidosAbertosData.Location = new System.Drawing.Point(492, 166);
+            this.btnPedidosAbertosData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnPedidosAbertosData.Location = new System.Drawing.Point(502, 166);
             this.btnPedidosAbertosData.Name = "btnPedidosAbertosData";
             this.btnPedidosAbertosData.Size = new System.Drawing.Size(145, 45);
             this.btnPedidosAbertosData.TabIndex = 11;
             this.btnPedidosAbertosData.Text = "Pedidos abertos por período";
             this.btnPedidosAbertosData.UseVisualStyleBackColor = false;
-            this.btnPedidosAbertosData.Visible = false;
             this.btnPedidosAbertosData.Click += new System.EventHandler(this.btnPedidosAbertosData_Click);
             // 
             // btnVendaPag
@@ -196,7 +194,7 @@
             this.btnVendaPag.BackColor = System.Drawing.Color.White;
             this.btnVendaPag.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVendaPag.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendaPag.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVendaPag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnVendaPag.Location = new System.Drawing.Point(180, 166);
             this.btnVendaPag.Name = "btnVendaPag";
             this.btnVendaPag.Size = new System.Drawing.Size(145, 45);
@@ -211,7 +209,7 @@
             this.btnPagPendente.BackColor = System.Drawing.Color.White;
             this.btnPagPendente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagPendente.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagPendente.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnPagPendente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnPagPendente.Location = new System.Drawing.Point(179, 97);
             this.btnPagPendente.Name = "btnPagPendente";
             this.btnPagPendente.Size = new System.Drawing.Size(145, 45);
@@ -226,7 +224,7 @@
             this.btnSaidaPagamentos.BackColor = System.Drawing.Color.White;
             this.btnSaidaPagamentos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaidaPagamentos.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaidaPagamentos.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSaidaPagamentos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnSaidaPagamentos.Location = new System.Drawing.Point(502, 97);
             this.btnSaidaPagamentos.Name = "btnSaidaPagamentos";
             this.btnSaidaPagamentos.Size = new System.Drawing.Size(145, 45);
@@ -241,7 +239,7 @@
             this.btnFornecedores.BackColor = System.Drawing.Color.White;
             this.btnFornecedores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFornecedores.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFornecedores.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFornecedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnFornecedores.Location = new System.Drawing.Point(502, 26);
             this.btnFornecedores.Name = "btnFornecedores";
             this.btnFornecedores.Size = new System.Drawing.Size(145, 45);
@@ -256,7 +254,7 @@
             this.btnMovimentoData.BackColor = System.Drawing.Color.White;
             this.btnMovimentoData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMovimentoData.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMovimentoData.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnMovimentoData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnMovimentoData.Location = new System.Drawing.Point(341, 26);
             this.btnMovimentoData.Name = "btnMovimentoData";
             this.btnMovimentoData.Size = new System.Drawing.Size(145, 45);
@@ -271,7 +269,7 @@
             this.btnCompraData.BackColor = System.Drawing.Color.White;
             this.btnCompraData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCompraData.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompraData.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCompraData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnCompraData.Location = new System.Drawing.Point(179, 26);
             this.btnCompraData.Name = "btnCompraData";
             this.btnCompraData.Size = new System.Drawing.Size(145, 45);
@@ -286,7 +284,7 @@
             this.btnVendaData.BackColor = System.Drawing.Color.White;
             this.btnVendaData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVendaData.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendaData.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVendaData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnVendaData.Location = new System.Drawing.Point(18, 26);
             this.btnVendaData.Name = "btnVendaData";
             this.btnVendaData.Size = new System.Drawing.Size(145, 45);
@@ -300,7 +298,9 @@
             this.btnExit.BackColor = System.Drawing.Color.Khaki;
             this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(764, 3);
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);

@@ -131,6 +131,7 @@
             this.btnImprime.TabIndex = 20;
             this.btnImprime.Text = "Imprimir";
             this.btnImprime.UseVisualStyleBackColor = false;
+            this.btnImprime.Click += new System.EventHandler(this.btnImprime_Click);
             // 
             // PagamentosPendentes
             // 

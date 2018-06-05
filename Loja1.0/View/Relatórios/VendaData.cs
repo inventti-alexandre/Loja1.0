@@ -76,7 +76,7 @@ namespace Loja1._0
             btnPesquisar_Click(sender, e);
 
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Movimentação Financeira por Periodo");
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Vendas no Período - " + dataInicio.ToShortDateString() + " até " + dataFim.ToShortDateString());
 
             AcceptButton = btnPesquisar;
             btnPesquisar.Enabled = true;
@@ -92,6 +92,7 @@ namespace Loja1._0
             {
                 DataTable dtVenda = new DataTable();
                 dtVenda.Columns.Add("Data Venda", typeof(string));
+                dtVenda.Columns.Add("Nº Pedido", typeof(string));
                 dtVenda.Columns.Add("Valor", typeof(string));
                 dtVenda.Columns.Add("Cliente", typeof(string));
                 dtVenda.Columns.Add("Usuário", typeof(string));
@@ -103,20 +104,26 @@ namespace Loja1._0
                     {
                         cliente = value.Clientes.nome;
                     }
-                    dtVenda.Rows.Add(value.data_Venda.ToShortDateString(), "R$" + value.valor_Venda.ToString(), cliente, value.Usuarios.nome.ToString());
+                    dtVenda.Rows.Add(value.data_Venda.ToShortDateString(),
+                        value.id_Cliente.ToString(),
+                        "R$" + value.valor_Venda.ToString(), 
+                        cliente,
+                        value.Usuarios.nome.ToString()
+                        );
                 }
 
                 dgvRelatorio.DataSource = dtVenda;
 
                 dgvRelatorio.Columns[0].Width = 120;
-                dgvRelatorio.Columns[1].Width = 150;
-                dgvRelatorio.Columns[2].Width = 350;
+                dgvRelatorio.Columns[1].Width = 120;
+                dgvRelatorio.Columns[2].Width = 150;
                 dgvRelatorio.Columns[3].Width = 350;
+                dgvRelatorio.Columns[4].Width = 350;
             }
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "VendaData.cs, em instrução \"btnPreencheDataGrindView\"";
+                erro = "VendaData.cs, em instrução \"preencheDataGrindView\"";
                 email.EnviaEmail(erro);
                 MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

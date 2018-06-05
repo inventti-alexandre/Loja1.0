@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 using Loja1._0.Control;
-using Loja1._0.Model;
 
 namespace Loja1._0
 {
@@ -15,6 +13,9 @@ namespace Loja1._0
         Controle controle = new Controle();
         Valida validacao = new Valida();
         public static List<Model.Usuarios> listaUser = new List<Model.Usuarios>();
+
+        Email email = new Email();
+        public string erro;
 
         public Usuarios(Model.Usuarios user)
         {
@@ -96,7 +97,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Usuarios.cs, na instrução \"carregaListaUsuarios\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em " + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -119,7 +123,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Usuarios.cs, na instrução \"dgvUsuarios_CellMouseClick\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em " + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -165,7 +172,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Usuarios.cs, na instrução \"carregaUser\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em " + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -189,7 +199,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, verifique os campos e tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Usuarios.cs, na instrução \"btnAlterar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em " + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -250,7 +263,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Usuarios.cs, na instrução \"btnSalvar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em " + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

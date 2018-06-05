@@ -23,6 +23,9 @@ namespace Loja1._0
         private static DataTable dtPatrLiq = new DataTable();      
         private static List<classMovimento> listaStruct = new List<classMovimento>();
 
+        Email email = new Email();
+        public string erro;
+
         public Contabil(Model.Usuarios user)
         {
             try
@@ -42,7 +45,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, no Contrutor da Classe";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -120,7 +126,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"btnIncluir_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -226,7 +235,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"carregaMovimentos\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -360,7 +372,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"instanciarDataTable\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -437,7 +452,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"atualizaAtvCirc\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -574,7 +592,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"atualizaAtvNCirc\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -699,7 +720,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"atualizaPassCirc\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -728,7 +752,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"atualizaPassNCirc\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         
@@ -775,7 +802,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"atualizaPatrLiq\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -802,7 +832,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Contabil.cs, na instrução \"btnAtualizar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -17,6 +17,9 @@ namespace Loja1._0.View
         public static Model.Usuarios usuario = new Model.Usuarios();
         Bitmap memoryImage;
 
+        Email email = new Email();
+        public string erro;
+
         public Recibo(Model.Clientes cliente, Model.Usuarios user, decimal valor)
         {
             try
@@ -29,7 +32,10 @@ namespace Loja1._0.View
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Recibo.cs, no construtor da classe";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -40,7 +46,7 @@ namespace Loja1._0.View
                 txtDtPedido.Text = DateTime.Today.ToShortDateString();
                 txtDtLonga.Text = DateTime.Today.ToLongDateString() + " - " + DateTime.Now.ToLongTimeString();
 
-                txtUsuario.Text = usuario.nome;
+                txtUsuario.Text = usuario.login;
                 txtNomeCliente.Text = clienteRecibo.nome;
                 txtContatoCliente.Text = clienteRecibo.contato;
                 txtTel1Cliente.Text = clienteRecibo.telefone;
@@ -57,7 +63,10 @@ namespace Loja1._0.View
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Recibo.cs, na instrução \"preenchePedido\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -69,7 +78,10 @@ namespace Loja1._0.View
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Recibo.cs, na instrução \"preencheRecibo\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -93,7 +105,10 @@ namespace Loja1._0.View
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Recibo.cs, na instrução \"CaptureScreen\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

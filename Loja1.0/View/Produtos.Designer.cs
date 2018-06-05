@@ -202,8 +202,10 @@
             // 
             // cmbUnidade
             // 
+            this.cmbUnidade.BackColor = System.Drawing.Color.White;
             this.cmbUnidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUnidade.Enabled = false;
+            this.cmbUnidade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbUnidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cmbUnidade.FormattingEnabled = true;
             this.cmbUnidade.Items.AddRange(new object[] {
@@ -213,6 +215,7 @@
             "LITRO",
             "METRO"});
             this.cmbUnidade.Location = new System.Drawing.Point(625, 81);
+            this.cmbUnidade.Margin = new System.Windows.Forms.Padding(0);
             this.cmbUnidade.Name = "cmbUnidade";
             this.cmbUnidade.Size = new System.Drawing.Size(155, 21);
             this.cmbUnidade.TabIndex = 3;
@@ -291,8 +294,10 @@
             "CAIXA",
             "LITRO",
             "METRO"});
+            this.cmbFornecedor.BackColor = System.Drawing.Color.White;
             this.cmbFornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFornecedor.Enabled = false;
+            this.cmbFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cmbFornecedor.FormattingEnabled = true;
             this.cmbFornecedor.Items.AddRange(new object[] {
@@ -302,6 +307,7 @@
             "LITRO",
             "METRO"});
             this.cmbFornecedor.Location = new System.Drawing.Point(338, 151);
+            this.cmbFornecedor.Margin = new System.Windows.Forms.Padding(0);
             this.cmbFornecedor.Name = "cmbFornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(256, 21);
             this.cmbFornecedor.TabIndex = 7;
@@ -461,7 +467,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(669, 480);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(114, 35);
-            this.btnLimpar.TabIndex = 14;
+            this.btnLimpar.TabIndex = 15;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);

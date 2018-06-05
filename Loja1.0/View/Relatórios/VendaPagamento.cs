@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Loja1._0.Control;
 using Loja1._0.Model;
@@ -20,6 +15,7 @@ namespace Loja1._0
         public static DataTable dtPagamentos = new DataTable();
         public static List<Pagamentos> listaPagamentos = new List<Pagamentos>();
         public static List<Pagamentos> listaSelecionada = new List<Pagamentos>();
+        static string tipoPagamento = "";
         printDGV impresso = new printDGV();
 
         Email email = new Email();
@@ -83,6 +79,7 @@ namespace Loja1._0
                         {
                             listaSelecionada.Add(value);
                         }
+                        tipoPagamento = value.formaPag;
                     }
 
                     else if (rdbDebito.Checked)
@@ -91,6 +88,7 @@ namespace Loja1._0
                         {
                             listaSelecionada.Add(value);
                         }
+                        tipoPagamento = value.formaPag;
                     }
 
                     else if (rdbPrePago.Checked)
@@ -99,6 +97,7 @@ namespace Loja1._0
                         {
                             listaSelecionada.Add(value);
                         }
+                        tipoPagamento = value.formaPag;
                     }
 
                     else if (rdbCredito.Checked)
@@ -107,6 +106,7 @@ namespace Loja1._0
                         {
                             listaSelecionada.Add(value);
                         }
+                        tipoPagamento = value.formaPag;
                     }
 
                     else if (rdbCheque.Checked)
@@ -115,6 +115,7 @@ namespace Loja1._0
                         {
                             listaSelecionada.Add(value);
                         }
+                        tipoPagamento = value.formaPag;
                     }
                 }
 
@@ -127,7 +128,7 @@ namespace Loja1._0
             btnPesquisar_Click(sender, e);
 
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Movimentação Financeira por Periodo");
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Vendas com " + tipoPagamento + " no Período - " + dataInicio.ToShortDateString() + " até " + dataFim.ToShortDateString());
 
             AcceptButton = btnPesquisar;
             btnPesquisar.Enabled = true;
@@ -152,7 +153,14 @@ namespace Loja1._0
 
                 foreach (Pagamentos value in listaPagamentos)
                 {
-                    dtPagamentos.Rows.Add(Convert.ToDateTime(value.dataPagamento).ToShortDateString(), controle.PesquisaPagVendaIdPagamento(value.id)[0].id_Venda.ToString(), "R$" + value.valorParcela.ToString(), "R$" + value.valorTotal.ToString(), value.tipoPag.ToString(), value.formaPag.ToString(), value.status.ToString());
+                    dtPagamentos.Rows.Add(Convert.ToDateTime(value.dataPagamento).ToShortDateString(), 
+                        controle.PesquisaPagVendaIdPagamento(value.id)[0].id_Venda.ToString(),
+                        "R$" + value.valorParcela.ToString(),
+                        "R$" + value.valorTotal.ToString(),
+                        value.tipoPag.ToString(), 
+                        value.formaPag.ToString(),
+                        value.status.ToString()
+                        );
                 }
 
                 dgvRelatorio.DataSource = dtPagamentos;
@@ -168,7 +176,7 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "VendaPagamento.cs, em instrução \"btnPreencheDataGrindView\"";
+                erro = "VendaPagamento.cs, em instrução \"preencheDataGrindView\"";
                 email.EnviaEmail(erro);
                 MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

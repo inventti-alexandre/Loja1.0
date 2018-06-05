@@ -87,10 +87,10 @@ namespace Loja1._0
             }
             catch
             {
-                //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
-                erro = "Caixa.cs, linhas 71 a 74";
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Caixa.cs, no construtor da classe";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro na consulta aos dados gerenciais, linhas 71 a 74, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -193,10 +193,10 @@ namespace Loja1._0
             }
             catch
             {
-                //Envio de email como parametro string do método da classe Email
-                erro = "Caixa.cs, linha 107 a 175";
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Caixa.cs, na instrução \"btnAdicionar1_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linha 107 a 175, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -320,9 +320,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 531 a 590";
+                erro = "Caixa.cs, na instrução \"acrescentaPedido\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 531 a 590, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -381,9 +381,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 735 a 780";
+                erro = "Caixa.cs, na instrução \"btnAtribuir_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 735 a 780, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -443,9 +443,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 794 a 840";
+                erro = "Caixa.cs, na instrução \"btnAtribuirOutro_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 794 a 840, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -499,7 +499,7 @@ namespace Loja1._0
                             Compras compra = controle.PesquisaCompraAnterior(produto.id);                                                                                                                                                                                                                                                  
 
                             //adiciona o produto ao cupom fiscal no item SAT*/
-                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItemCompleto(produto.cod_produto.ToString(), produto.cod_produto.ToString(), produto.desc_produto                , "00", "F1", produto.UnidMedidas.abrev, "I", "3", result.quantidade.ToString(), "2", compra.preco_venda.ToString(), "%", "0,00", "0,00", "A", produto.ncm.ToString(), "5102", "INFORMAÇÔES", "40", "0", "1234", "", "", "", "", "102", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "", "04", "", "", "", "", "", "04", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
+                            BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_VendeItemCompleto(produto.cod_produto.ToString(), produto.cod_produto.ToString(), produto.desc_produto                , "00", "R$", produto.UnidMedidas.abrev, "I", "3", result.quantidade.ToString(), "2", compra.preco_venda.ToString(), "%", "0,00", "0,00", "A", produto.ncm.ToString(), "5102", "INFORMAÇÔES", "40", "0", "1234", "", "", "", "", "102", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "", "04", "", "", "", "", "", "04", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
 
                             //altera a quantidade deste no estoque e salva a alteração
                             produto.Estoque.qnt_atual = produto.Estoque.qnt_atual - result.quantidade;
@@ -511,9 +511,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 867 a 904";
+                erro = "Caixa.cs, na instrução \"btnPagamento_Click\", instruções iniciais";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 794 a 840, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //tenta identificar e registrar a forma de pagamento empregada
@@ -795,9 +795,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 915 a 1159";
+                erro = "Caixa.cs, na instrução \"btnPagamento_Click\", identificação do pagamento e atualização da base";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 915 a 1159, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -833,9 +833,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1173 a 1197";
+                erro = "Caixa.cs, na instrução \"atualizaValores\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1173 a 1197, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -888,9 +888,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1211 a 1250";
+                erro = "Caixa.cs, na instrução \"btnDesconto_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1211 a 1250, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1017,9 +1017,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1264 a 1375";
+                erro = "Caixa.cs, na instrução \"btnCancelar_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1264 a 1375, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1167,9 +1167,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1473 a 1522";
+                erro = "Caixa.cs, na instrução \"cmbNumParcCredito_SelectedIndexChanged\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1473 a 1522, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1232,9 +1232,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1538 a 1589";
+                erro = "Caixa.cs, na instrução \"cmbNumParcCheque_SelectedIndexChanged\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1538 a 1589, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1271,18 +1271,7 @@ namespace Loja1._0
                 PagCheque.acrescimo = valorAcres.ToString("0.00");
                 PagCheque.desconto = "0.00";
                 PagCheque.valorPagamento = valor.ToString("0.00");
-            }
-            catch
-            {
-                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1604 a 1633";
-                email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1604 a 1633, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            //tenta instanciar e salvar os movimentos e pagamentos referentes 
-            try
-            {
+            
                 //laço de repetição para cada parcela
                 for (int i = 0; i < Convert.ToInt32(cmbNumParcCheque.SelectedItem); i++)
                 {
@@ -1397,9 +1386,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1642 a 1752";
+                erro = "Caixa.cs, na instrução \"salvaPagamentoCheque\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1642 a 1752, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1438,18 +1427,6 @@ namespace Loja1._0
                 PagCredito.desconto = "0.00";
                 PagCredito.valorPagamento = valor.ToString("0.00");
 
-            }
-            catch
-            {
-                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1766 a 1900";
-                email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1766 a 1900, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            //tenta instanciar e salvar os movimentos e pagamentos referentes
-            try
-            {
                 //laço de repetição para cada parcela
                 for (int i = 0; i < Convert.ToInt32(cmbNumParcCredito.SelectedItem); i++)
                 {
@@ -1559,9 +1536,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1766 a 1900";
+                erro = "Caixa.cs, na instrução \"salvaPagamentoCredito\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1766 a 1900, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1677,9 +1654,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 1927 a 2028";
+                erro = "Caixa.cs, na instrução \"salvaPagamentoPrePago\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 1927 a 2028, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1790,9 +1767,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 2042 a 2139";
+                erro = "Caixa.cs, na instrução \"salvaPagamentoDebito\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 2042 a 2139, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1902,9 +1879,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 2153 a 2248";
+                erro = "Caixa.cs, na instrução \"salvaPagamentoDinheiro\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 2153 a 2248, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -2004,16 +1981,15 @@ namespace Loja1._0
                 BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_UltimasInformacoesSAT(ref chaveAcesso, ref numeroCupom, ref NumeroSAT));
                 BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_RetornaMensagemSeFazSAT(ref message, ref code, ref errorMessage, ref errorCode));
                 //*/
-
                 //encerra o cupom fiscal com mensagem personalizada, inserindo valor aproximado de tributação
                 //CONCLUI O FECHAMENTO
                 if (AcrescimoDesconto.Equals("D"))
                 {
-                    BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal - Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal - Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
+                    BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal - Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal - Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.login));
                 }
                 else
                 {
-                    BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.nome));
+                    BemaFI32.Analisa_iRetorno(BemaFI32.Bematech_FI_TerminaFechamentoCupom("O Alemao da Construcao agradece sua preferencia\n\nTrib Aprox R$: " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0552M).ToString("0.00") + " Federal e " + ((valorTotal + Convert.ToDecimal(ValorAcrescimoDesconto)) * 0.0486M).ToString("0.00") + " Estadual\nFonte: SEBRAE\n\nAtendido por: " + user.login));
                 }
 
                 try
@@ -2034,9 +2010,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "Caixa.cs, linhas 2294 a 2355";
+                erro = "Caixa.cs, na instrução \"imprimeCupomFiscal\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Caixa.cs, linhas 2294 a 2355, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

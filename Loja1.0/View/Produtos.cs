@@ -49,6 +49,9 @@ namespace Loja1._0
         DataTable dtbProdutos;
         static Button selectProd = new Button();
 
+        Email email = new Email();
+        public string erro;
+
         public Produtos(Model.Usuarios user)
         {
             try
@@ -72,7 +75,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, no construtor da classe";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -109,12 +115,13 @@ namespace Loja1._0
                 foto.Save(ms, ImageFormat.Png);
                 bytes = ms.ToArray();
 
-                //byte[] para imagem
-                //foto = Image.FromStream(new MemoryStream(byteArray);
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, na instrução \"pnlImagem_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -162,7 +169,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, na instrução \"listaCompleta\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -179,7 +189,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, na instrução \"btnLimpar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -283,7 +296,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, na instrução \"btnPesquisar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -353,7 +369,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, na instrução \"btnExcluir_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -551,7 +570,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, na instrução \"btnSalvar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -618,7 +640,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Produtos.cs, na instrução \"selecionaLinha\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

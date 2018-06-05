@@ -41,10 +41,10 @@ namespace Loja1._0
             }
             catch
             {
-                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução de abertura";
+                //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
+                erro = "PDV.cs, no construtor da classe";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução de abertura, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -89,10 +89,10 @@ namespace Loja1._0
             }
             catch
             {
-                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"carregaLista\"";
+                //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
+                erro = "PDV.cs, na instrução \"carregaLista\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"carregaLista\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -150,9 +150,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"btnPesquisa_Click\"";
+                erro = "PDV.cs, na instrução \"btnPesquisa_Click\"";                
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnPesquisa_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -274,9 +274,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"btnAdicionar_CLick\"";
+                erro = "PDV.cs, na instrução \"btnAdicionar_CLick\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnAdicionar_CLick\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -307,9 +307,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"carregaAdquirido\"";
+                erro = "PDV.cs, na instrução \"carregaAdquirido\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"carregaAdquirido\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -361,9 +361,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"btnRemover_Click\"";
+                erro = "PDV.cs, na instrução \"btnRemover_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnRemover_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -462,9 +462,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"btnPesquisaCliente_Click\"";
+                erro = "PDV.cs, na instrução \"btnPesquisaCliente_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnPesquisaCliente_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnOkCliente_Click(object sender, EventArgs e)
@@ -485,9 +485,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"btnOkCliente_Click\"";
+                erro = "PDV.cs, na instrução \"btnOkCliente_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnOkCliente_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -558,9 +558,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PDV.cs, instrução \"btnImprimir_Click\"";
+                erro = "PDV.cs, na instrução \"btnImprimir_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em PDV.cs, instrução \"btnImprimir_Click\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

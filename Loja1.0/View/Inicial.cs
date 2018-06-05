@@ -11,12 +11,20 @@ namespace Loja1._0
         Controle controle = new Controle();
         int perfil = 0;
 
+        Email email = new Email();
+        public string erro;
+
         public Inicial(Model.Usuarios user)
         {
             try
             {
                 this.user = user;
                 InitializeComponent();
+
+                if(user.nome == null || user.nome.Equals(""))
+                {
+                    btnUsuarios.PerformClick();
+                }
 
                 perfil = Convert.ToInt32(user.id_Perfil);
                 if (perfil > 1)
@@ -50,7 +58,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Inicial.cs, no construtor da classe";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

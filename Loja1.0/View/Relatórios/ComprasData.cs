@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Loja1._0.Control;
 using Loja1._0.Model;
@@ -83,21 +78,11 @@ namespace Loja1._0
             impresso = new printDGV();
             impresso.Print_DataGridView(dgvRelatorio, "Relatório de Compras por Periodo");
 
-            //preencheDataGrindView(listaCompras);
-
             AcceptButton = btnPesquisar;
             btnPesquisar.Enabled = true;
             btnImprime.Enabled = false;
             txtDataInicio.Enabled = true;
-            txtDataFim.Enabled = true;
-            //txtDataInicio.Text = "";
-            //txtDataFim.Text = "";
-
-            
-            /*
-            CompraDataImpresso impresso = new CompraDataImpresso(listaCompras);
-            impresso.Show();
-            */    
+            txtDataFim.Enabled = true;  
     }
 
         private void preencheDataGrindView(List<Compras> listaCompras)
@@ -141,9 +126,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "CompraData.cs, instrução \"btnPreencheDataGrindView\"";
+                erro = "ComprasData.cs, na instrução \"preencheDataGrindView\"";                
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em CompraData.cs, instrução \"btnPreencheDataGrindView\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

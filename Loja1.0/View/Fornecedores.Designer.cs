@@ -118,7 +118,7 @@
             this.btnExit.Margin = new System.Windows.Forms.Padding(0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(34, 34);
-            this.btnExit.TabIndex = 2;
+            this.btnExit.TabIndex = 23;
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -181,11 +181,12 @@
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
-            this.txtEmail.Location = new System.Drawing.Point(153, 130);
+            this.txtEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.txtEmail.Location = new System.Drawing.Point(167, 130);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(615, 20);
-            this.txtEmail.TabIndex = 20;
+            this.txtEmail.Size = new System.Drawing.Size(601, 20);
+            this.txtEmail.TabIndex = 9;
             // 
             // labelEmail
             // 
@@ -194,9 +195,9 @@
             this.labelEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.labelEmail.Location = new System.Drawing.Point(12, 131);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(144, 16);
+            this.labelEmail.Size = new System.Drawing.Size(149, 16);
             this.labelEmail.TabIndex = 19;
-            this.labelEmail.Text = "Email Fornecedor : ";
+            this.labelEmail.Text = "*Email Fornecedor : ";
             // 
             // chkAtivo
             // 
@@ -210,18 +211,19 @@
             this.chkAtivo.Location = new System.Drawing.Point(646, 4);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Size = new System.Drawing.Size(122, 19);
-            this.chkAtivo.TabIndex = 18;
+            this.chkAtivo.TabIndex = 17;
             this.chkAtivo.Text = "Fornecedor Ativo";
             this.chkAtivo.UseVisualStyleBackColor = true;
             // 
             // txtBairro
             // 
             this.txtBairro.Enabled = false;
+            this.txtBairro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtBairro.Location = new System.Drawing.Point(583, 98);
             this.txtBairro.MaxLength = 30;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(185, 20);
-            this.txtBairro.TabIndex = 17;
+            this.txtBairro.TabIndex = 8;
             // 
             // lblBairro
             // 
@@ -237,11 +239,12 @@
             // txtNum
             // 
             this.txtNum.Enabled = false;
+            this.txtNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtNum.Location = new System.Drawing.Point(452, 98);
             this.txtNum.MaxLength = 6;
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(57, 20);
-            this.txtNum.TabIndex = 15;
+            this.txtNum.TabIndex = 7;
             // 
             // lblNum
             // 
@@ -257,11 +260,12 @@
             // txtEndereco
             // 
             this.txtEndereco.Enabled = false;
+            this.txtEndereco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtEndereco.Location = new System.Drawing.Point(68, 98);
             this.txtEndereco.MaxLength = 50;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(336, 20);
-            this.txtEndereco.TabIndex = 13;
+            this.txtEndereco.TabIndex = 6;
             // 
             // lblEndereco
             // 
@@ -307,7 +311,7 @@
             this.rdbClaro.Location = new System.Drawing.Point(692, 31);
             this.rdbClaro.Name = "rdbClaro";
             this.rdbClaro.Size = new System.Drawing.Size(55, 17);
-            this.rdbClaro.TabIndex = 14;
+            this.rdbClaro.TabIndex = 16;
             this.rdbClaro.TabStop = true;
             this.rdbClaro.Text = "Claro";
             this.rdbClaro.UseVisualStyleBackColor = false;
@@ -322,7 +326,7 @@
             this.rdbVivo.Location = new System.Drawing.Point(692, 11);
             this.rdbVivo.Name = "rdbVivo";
             this.rdbVivo.Size = new System.Drawing.Size(52, 17);
-            this.rdbVivo.TabIndex = 13;
+            this.rdbVivo.TabIndex = 14;
             this.rdbVivo.TabStop = true;
             this.rdbVivo.Text = "Vivo";
             this.rdbVivo.UseVisualStyleBackColor = false;
@@ -337,7 +341,7 @@
             this.rdbOi.Location = new System.Drawing.Point(644, 31);
             this.rdbOi.Name = "rdbOi";
             this.rdbOi.Size = new System.Drawing.Size(40, 17);
-            this.rdbOi.TabIndex = 12;
+            this.rdbOi.TabIndex = 15;
             this.rdbOi.TabStop = true;
             this.rdbOi.Text = "Oi";
             this.rdbOi.UseVisualStyleBackColor = false;
@@ -352,18 +356,19 @@
             this.rdbTim.Location = new System.Drawing.Point(644, 11);
             this.rdbTim.Name = "rdbTim";
             this.rdbTim.Size = new System.Drawing.Size(46, 17);
-            this.rdbTim.TabIndex = 11;
+            this.rdbTim.TabIndex = 13;
             this.rdbTim.TabStop = true;
             this.rdbTim.Text = "Tim";
             this.rdbTim.UseVisualStyleBackColor = false;
             // 
             // txtCelular
             // 
+            this.txtCelular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtCelular.Location = new System.Drawing.Point(483, 18);
             this.txtCelular.MaxLength = 20;
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(146, 20);
-            this.txtCelular.TabIndex = 10;
+            this.txtCelular.TabIndex = 12;
             // 
             // lblCelular
             // 
@@ -378,11 +383,12 @@
             // 
             // txtTel2
             // 
+            this.txtTel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtTel2.Location = new System.Drawing.Point(264, 18);
             this.txtTel2.MaxLength = 20;
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(146, 20);
-            this.txtTel2.TabIndex = 8;
+            this.txtTel2.TabIndex = 11;
             // 
             // lblTel2
             // 
@@ -397,11 +403,12 @@
             // 
             // txtTel1
             // 
+            this.txtTel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtTel1.Location = new System.Drawing.Point(60, 18);
             this.txtTel1.MaxLength = 20;
             this.txtTel1.Name = "txtTel1";
             this.txtTel1.Size = new System.Drawing.Size(146, 20);
-            this.txtTel1.TabIndex = 6;
+            this.txtTel1.TabIndex = 10;
             // 
             // lblTel1
             // 
@@ -417,11 +424,12 @@
             // cmbCidade
             // 
             this.cmbCidade.Enabled = false;
+            this.cmbCidade.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cmbCidade.FormattingEnabled = true;
             this.cmbCidade.Location = new System.Drawing.Point(529, 63);
             this.cmbCidade.Name = "cmbCidade";
             this.cmbCidade.Size = new System.Drawing.Size(239, 21);
-            this.cmbCidade.TabIndex = 10;
+            this.cmbCidade.TabIndex = 5;
             // 
             // lblCidade
             // 
@@ -437,11 +445,12 @@
             // cmbUf
             // 
             this.cmbUf.Enabled = false;
+            this.cmbUf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.cmbUf.FormattingEnabled = true;
             this.cmbUf.Location = new System.Drawing.Point(395, 64);
             this.cmbUf.Name = "cmbUf";
             this.cmbUf.Size = new System.Drawing.Size(55, 21);
-            this.cmbUf.TabIndex = 8;
+            this.cmbUf.TabIndex = 4;
             this.cmbUf.SelectedIndexChanged += new System.EventHandler(this.cmbUf_SelectedIndexChanged);
             // 
             // lblUf
@@ -457,11 +466,12 @@
             // 
             // txtCnpj
             // 
+            this.txtCnpj.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtCnpj.Location = new System.Drawing.Point(112, 64);
             this.txtCnpj.MaxLength = 14;
             this.txtCnpj.Name = "txtCnpj";
             this.txtCnpj.Size = new System.Drawing.Size(234, 20);
-            this.txtCnpj.TabIndex = 6;
+            this.txtCnpj.TabIndex = 3;
             // 
             // lblCnpj
             // 
@@ -477,11 +487,12 @@
             // txtContato
             // 
             this.txtContato.Enabled = false;
+            this.txtContato.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtContato.Location = new System.Drawing.Point(572, 29);
             this.txtContato.MaxLength = 30;
             this.txtContato.Name = "txtContato";
             this.txtContato.Size = new System.Drawing.Size(196, 20);
-            this.txtContato.TabIndex = 4;
+            this.txtContato.TabIndex = 2;
             // 
             // lblContato
             // 
@@ -496,11 +507,12 @@
             // 
             // txtFornecedor
             // 
+            this.txtFornecedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.txtFornecedor.Location = new System.Drawing.Point(75, 29);
             this.txtFornecedor.MaxLength = 30;
             this.txtFornecedor.Name = "txtFornecedor";
             this.txtFornecedor.Size = new System.Drawing.Size(409, 20);
-            this.txtFornecedor.TabIndex = 2;
+            this.txtFornecedor.TabIndex = 1;
             // 
             // lblFornecedor
             // 
@@ -535,7 +547,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(673, 431);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(114, 35);
-            this.btnSalvar.TabIndex = 25;
+            this.btnSalvar.TabIndex = 21;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -551,7 +563,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(674, 391);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(114, 35);
-            this.btnAlterar.TabIndex = 23;
+            this.btnAlterar.TabIndex = 20;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -566,7 +578,7 @@
             this.btnNovo.Location = new System.Drawing.Point(674, 351);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(114, 35);
-            this.btnNovo.TabIndex = 22;
+            this.btnNovo.TabIndex = 19;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = false;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
@@ -581,7 +593,7 @@
             this.btnPesquisa.Location = new System.Drawing.Point(674, 311);
             this.btnPesquisa.Name = "btnPesquisa";
             this.btnPesquisa.Size = new System.Drawing.Size(114, 35);
-            this.btnPesquisa.TabIndex = 21;
+            this.btnPesquisa.TabIndex = 18;
             this.btnPesquisa.Text = "Pesquisar";
             this.btnPesquisa.UseVisualStyleBackColor = false;
             this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
@@ -596,7 +608,7 @@
             this.btnLimpar.Location = new System.Drawing.Point(674, 471);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(114, 35);
-            this.btnLimpar.TabIndex = 20;
+            this.btnLimpar.TabIndex = 22;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -640,6 +652,7 @@
             // 
             // Fornecedores
             // 
+            this.AcceptButton = this.btnPesquisa;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;

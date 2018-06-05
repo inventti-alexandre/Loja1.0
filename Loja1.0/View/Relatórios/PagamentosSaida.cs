@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Loja1._0.Control;
 using Loja1._0.Model;
@@ -80,7 +75,7 @@ namespace Loja1._0
             btnPesquisar_Click(sender, e);
 
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Movimentação Financeira por Periodo");
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Pagamentos Efetuados");
 
             AcceptButton = btnPesquisar;
             btnPesquisar.Enabled = true;
@@ -103,7 +98,12 @@ namespace Loja1._0
 
                 foreach (Movimentos value in listaMovimentos)
                 {
-                    dtMovimento.Rows.Add(value.data.ToShortDateString(), value.desc, value.Tipos_Movimentacao.descricao, value.Tipos_Movimentacao.sub_tipo, "R$" + value.valor.ToString());
+                    dtMovimento.Rows.Add(value.data.ToShortDateString(), 
+                        value.desc, 
+                        value.Tipos_Movimentacao.descricao, 
+                        value.Tipos_Movimentacao.sub_tipo,
+                        "R$" + value.valor.ToString()
+                        );
                 }
 
                 dgvRelatorio.DataSource = dtMovimento;
@@ -117,7 +117,7 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PagamentoSaida.cs, em instrução \"btnPreencheDataGrindView\"";
+                erro = "PagamentoSaida.cs, em instrução \"preencheDataGrindView\"";
                 email.EnviaEmail(erro);
                 MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

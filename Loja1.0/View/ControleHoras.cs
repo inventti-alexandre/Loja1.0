@@ -30,6 +30,9 @@ namespace Loja1._0
         public TimeSpan limiteBancoDia = TimeSpan.Parse("02:00");
         public TimeSpan limiteJornadaDia = TimeSpan.Parse("10:00:00");
 
+        Email email = new Email();
+        public string erro;
+
         public ControleHoras(Model.Usuarios user)
         {
             this.user = user;
@@ -263,7 +266,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "ControleHoras.cs, na instrução \"carregaPontoPeriodo\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1030,7 +1036,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "ControleHoras.cs, na instrução \"selecionaLinha\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
        

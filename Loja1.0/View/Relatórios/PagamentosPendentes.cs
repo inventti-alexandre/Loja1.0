@@ -47,7 +47,7 @@ namespace Loja1._0
         private void btnImprime_Click(object sender, EventArgs e)
         {
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Pagamentos Pendentes");
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Recebimentos Pendentes");
         }
 
         private void preencheDataGrindView(List<Pagamentos> listaPagamentos)
@@ -87,9 +87,9 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PagamentosPendentes.cs, instrução \"preencheDataGrindView\"";
+                erro = "PagamentosPendentes.cs, instrução \"preencheDataGrindView\"";                
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em CompraData.cs, instrução \"btnPreencheDataGrindView\", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

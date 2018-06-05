@@ -116,9 +116,6 @@ namespace Loja1._0
                 dtVendas.Columns.Add("Cliente", typeof(string));
                 dtVendas.Columns.Add("Usuário", typeof(string));
                 dtVendas.Columns.Add("Entrega", typeof(string));
-                dtVendas.Columns.Add("Local Nº", typeof(string));
-                dtVendas.Columns.Add("Local Sigla", typeof(string));
-                dtVendas.Columns.Add("Local Referência", typeof(string));
 
                 foreach (Vendas_Produtos value in listaVendas)
                 {
@@ -164,7 +161,7 @@ namespace Loja1._0
         private void btnImprime_Click(object sender, EventArgs e)
         {
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Produtos - " + cmbProduto.SelectedValue.ToString());
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Vendas do Produto " + cmbProduto.SelectedValue.ToString());
             btnLimpar.PerformClick();
         }
     }

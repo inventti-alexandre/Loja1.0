@@ -40,7 +40,7 @@ namespace Loja1._0
 
                 if (txtBuscaUser.Text.ToUpper().Trim().Equals(""))
                 {
-                    MessageBox.Show("Para pesquisa de usuário insira parte do nome, ou cpf/cnpj completo", "Ação Inválida");
+                    MessageBox.Show("Para pesquisa de usuário insira parte do nome do usuário", "Ação Inválida");
                 }
 
                 else
@@ -121,9 +121,6 @@ namespace Loja1._0
 
                 foreach (Vendas value in listaVendas)
                 {
-                    //Compras compra = new Compras();
-                    //compra = controle.pesquisaProdutoCompra(value.id);
-
                     dtVendas.Rows.Add(value.data_Venda.ToShortDateString(),
                         value.Clientes.nome,
                         "R$" + value.valor_Venda.ToString(),
@@ -166,7 +163,7 @@ namespace Loja1._0
         private void btnImprime_Click(object sender, EventArgs e)
         {
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Vendas do User " + cmbUser.SelectedValue.ToString());
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Vendas do Usuário " + cmbUser.SelectedValue.ToString());
             btnLimpar.PerformClick();
         }
     }

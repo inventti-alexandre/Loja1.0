@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Loja1._0.Control;
 using Loja1._0.Model;
@@ -91,7 +86,7 @@ namespace Loja1._0
             btnPesquisar_Click(sender, e);
 
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Movimentação Financeira por Periodo");
+            impresso.Print_DataGridView(dgvRelatorio, "Relatório de Pedidos em Aberto");
 
             AcceptButton = btnPesquisar;
             btnPesquisar.Enabled = true;
@@ -115,7 +110,13 @@ namespace Loja1._0
 
                 foreach (Vendas value in listaPedidos)
                 {
-                    dtPedidos.Rows.Add(value.data_Venda.ToShortDateString(), value.id.ToString(), value.Clientes.nome, value.icms.ToString() + " %", value.desconto.ToString() + " %", "R$ " + value.valor_Venda.ToString());
+                    dtPedidos.Rows.Add(value.data_Venda.ToShortDateString(), 
+                        value.id.ToString(),
+                        value.Clientes.nome, 
+                        value.icms.ToString() + " %",
+                        value.desconto.ToString() + " %", 
+                        "R$ " + value.valor_Venda.ToString()
+                        );
                 }
 
                 dgvRelatorio.DataSource = dtPedidos;
@@ -130,7 +131,7 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "PedidoAberto.cs, em instrução \"btnPreencheDataGrindView\"";
+                erro = "PedidoAberto.cs, em instrução \"preencheDataGrindView\"";
                 email.EnviaEmail(erro);
                 MessageBox.Show("Erro não identificado em" + erro  +", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

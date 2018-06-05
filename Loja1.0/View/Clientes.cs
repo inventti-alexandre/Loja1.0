@@ -46,9 +46,9 @@ namespace Loja1._0
             catch
             {
                 //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
-                erro = "Clientes.cs, linhas 32 a 42";
+                erro = "Clientes.cs, no construtor da classe";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Clientes.cs, linhas 32 a 42, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -91,9 +91,9 @@ namespace Loja1._0
             catch
             {
                 //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
-                erro = "Clientes.cs, linhas 57 a 87";
+                erro = "Clientes.cs, na instrução \"preencheRelação\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Clientes.cs, linhas 57 a 87, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -195,9 +195,9 @@ namespace Loja1._0
             catch
             {
                 //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
-                erro = "Clientes.cs, linhas 111 a 192";
+                erro = "Clientes.cs, na instrução \"btnPesquisa_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Clientes.cs, linhas 111 a 192, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -247,9 +247,9 @@ namespace Loja1._0
             catch
             {
                 //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
-                erro = "Clientes.cs, linhas 206 a 242";
+                erro = "Clientes.cs, na instrução \"btnNovo_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Clientes.cs, linhas 206 a 242, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -487,9 +487,9 @@ namespace Loja1._0
             catch
             {
                 //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
-                erro = "Clientes.cs, linhas 287 a 462";
+                erro = "Clientes.cs, na instrução \"btnSalvar_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Clientes.cs, linhas 287 a 462, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -529,9 +529,9 @@ namespace Loja1._0
             catch
             {
                 //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
-                erro = "Clientes.cs, linhas 489 a 503";
+                erro = "Clientes.cs, na instrução \"btnLimpar_Click\"";
                 email.EnviaEmail(erro);
-                MessageBox.Show("Erro não identificado em Clientes.cs, linhas 489 a 503, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -592,7 +592,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //caso não seja possível a pesquisa atribui a localização a string erro, envia email ao desenvolvedor e exibe mensagem ao usuário
+                erro = "Clientes.cs, na instrução \"cmbUf_SelectedIndexChanged\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -650,7 +653,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Clientes.cs, instrução \"preencheDados\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -665,7 +671,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Clientes.cs, instrução \"dgvClientes_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -679,7 +688,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Clientes.cs, instrução \"btnExcluir_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

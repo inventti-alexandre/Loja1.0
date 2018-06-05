@@ -13,9 +13,11 @@ namespace Loja1._0
         Model.Usuarios user = new Model.Usuarios();
         Controle controle = new Controle();
         Email email = new Email();
+        public string erro;
 
         //declaração das variaveis locais estaticas
         static int novoPerfil;
+
 
         public Cadastro()
         {
@@ -62,11 +64,10 @@ namespace Loja1._0
             }
             catch
             {
-                /*/Envio de email como parametro string do método da classe Email
-                email.EnviaEmail("Cadastro.cs, linha 36 a 58");*/
-
-                //mensagem genérica de erro 
-                MessageBox.Show("Erro não identificado em Cadastro.cs, linha 36 a 58, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Cadastro.cs, na instrução \"btnConfirmar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }        
 

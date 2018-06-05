@@ -167,9 +167,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(155, 332);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(281, 24);
+            this.label6.Size = new System.Drawing.Size(251, 24);
             this.label6.TabIndex = 177;
-            this.label6.Text = "mesma rede de lojas, sem mais.";
+            this.label6.Text = "nesta mesma loja, sem mais.";
             // 
             // label5
             // 
@@ -177,10 +177,10 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(161, 308);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(761, 24);
+            this.label5.Size = new System.Drawing.Size(751, 24);
             this.label5.TabIndex = 176;
-            this.label5.Text = "Estando ciente que devera este utilizar o referido valor para a aquisição de prod" +
-    "utos nesta";
+            this.label5.Text = "Estando este ciente que deverá este utilizar o referido valor para a aquisição de" +
+    " produtos";
             // 
             // label2
             // 

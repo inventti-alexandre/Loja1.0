@@ -67,7 +67,8 @@ namespace Loja1._0
                         "R$" + compra.preco_venda.ToString(),
                         value.Estoque.num_local.ToString(),
                         value.Estoque.letra_local.ToString(),
-                        value.Estoque.ref_local.ToString());
+                        value.Estoque.ref_local.ToString()
+                        );
                 }
 
                 dgvRelatorio.DataSource = dtProdutos;
@@ -86,7 +87,7 @@ namespace Loja1._0
             catch
             {
                 //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
-                erro = "ProdutosCompleta.cs, na instrução \"btnPreencheDataGrindView\"";
+                erro = "ProdutosCompleta.cs, na instrução \"preencheDataGrindView\"";
                 email.EnviaEmail(erro);
                 MessageBox.Show("Erro não identificado em " + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -95,7 +96,7 @@ namespace Loja1._0
         private void btnImprime_Click(object sender, EventArgs e)
         {
             impresso = new printDGV();
-            impresso.Print_DataGridView(dgvRelatorio, "Relatório Completo de Produtos");
+            impresso.Print_DataGridView(dgvRelatorio, "Relação Completa de Produtos");
         }
     }
 }

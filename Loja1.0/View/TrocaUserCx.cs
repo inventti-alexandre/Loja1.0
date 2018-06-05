@@ -19,6 +19,9 @@ namespace Loja1._0
         Model.Usuarios user;
         private Caixa caixa;
 
+        Email email = new Email();
+        public string erro;
+
         public TrocaUserCx(Model.Usuarios user, Caixa caixa)
         {
             InitializeComponent();
@@ -61,7 +64,10 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "TrocaUserCx.cs, na instrução \"btnEntrar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em " + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

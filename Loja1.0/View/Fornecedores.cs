@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Loja1._0.Model;
 using Loja1._0.Control;
@@ -23,6 +19,9 @@ namespace Loja1._0
         List<Model.Fornecedores> listaFornecedores = new List<Model.Fornecedores>();
         bool flagNovo = true;
 
+        Email email = new Email();
+        public string erro;
+
         public Fornecedores(Model.Usuarios user)
         {
             try
@@ -35,8 +34,12 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, no construtor da classe";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void preencheRelacao(List<Model.Fornecedores> listaFornecedores)
@@ -53,7 +56,13 @@ namespace Loja1._0
 
                 for (int i = 0; i < listaFornecedores.Count; i++)
                 {
-                    dtFornecedores.Rows.Add(listaFornecedores[i].nome, listaFornecedores[i].cnpj, listaFornecedores[i].contato, listaFornecedores[i].telefone, listaFornecedores[i].recado, listaFornecedores[i].celular);
+                    dtFornecedores.Rows.Add(listaFornecedores[i].nome,
+                        listaFornecedores[i].cnpj,
+                        listaFornecedores[i].contato, 
+                        listaFornecedores[i].telefone,
+                        listaFornecedores[i].recado, 
+                        listaFornecedores[i].celular
+                        );
                 }
                 dgvFornecedores.DataSource = dtFornecedores;
 
@@ -69,7 +78,11 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"preencheRelacao\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -143,7 +156,11 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"btnPesquisa_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -152,6 +169,8 @@ namespace Loja1._0
             try
             {
                 limpaForm();
+                AcceptButton = btnSalvar;
+                CancelButton = btnLimpar;
                 listaEstado = controle.PesquisaGeralEstados();
                 cmbUf.DataSource = listaEstado;
                 cmbUf.ValueMember = "id";
@@ -181,13 +200,20 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"btnNovo_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             flagNovo = false;
+
+            AcceptButton = btnSalvar;
+            CancelButton = btnLimpar;
             btnAlterar.Enabled = false;
             btnSalvar.Enabled = true;
             chkAtivo.Enabled = true;
@@ -208,6 +234,7 @@ namespace Loja1._0
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+
             try
             {
                 //Condicionais para validação do preenchimento
@@ -327,18 +354,31 @@ namespace Loja1._0
                         }
                     }
                 }
+                AcceptButton = btnPesquisa;
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"btnSalvar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         private bool validaCampos()
         {
-            if (!txtCnpj.Text.Equals("") && !txtFornecedor.Text.Equals("") && !txtContato.Text.Equals("") && (!txtCelular.Text.Equals("") || !txtTel1.Text.Equals("") || !txtTel2.Text.Equals("")))
+            if (!txtEmail.Text.Equals("") && !txtCnpj.Text.Equals("") && !txtFornecedor.Text.Equals("") && !txtContato.Text.Equals("") && (!txtCelular.Text.Equals("") || !txtTel1.Text.Equals("") || !txtTel2.Text.Equals("")))
             {
-                return true;
+                if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains(".com") && txtEmail.Text.Length < 11)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Campo email preenchido com valor inválido ou com menos de 11 caracteres, corrija e tente novamente","alert");
+                    return false;
+                }
             }
 
             else
@@ -359,12 +399,17 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"btnLimpar_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
         private void limpaForm()
         {
+            AcceptButton = btnPesquisa;
             dgvFornecedores.Enabled = true;
             chkAtivo.Enabled = false;
             btnSalvar.Enabled = false;
@@ -412,7 +457,11 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"cmbUf_SelectedIndexChanged\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -427,7 +476,11 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"gdvFornecedores_Click\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
@@ -491,7 +544,11 @@ namespace Loja1._0
             }
             catch
             {
-                MessageBox.Show("Erro não identificado, por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //havendo erro na execução das instruções envia email ao desenvolvedor e mensagem de erro desconhecido ao usuário
+                erro = "Fornecedores.cs, instrução \"preencheDados\"";
+                email.EnviaEmail(erro);
+                MessageBox.Show("Erro não identificado em" + erro + ", por favor, tente novamente", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 

@@ -63,6 +63,9 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(664, 2);
@@ -133,6 +136,9 @@
             this.btnCadastro.AutoEllipsis = true;
             this.btnCadastro.BackColor = System.Drawing.Color.White;
             this.btnCadastro.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCadastro.FlatAppearance.BorderSize = 0;
+            this.btnCadastro.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.btnCadastro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnCadastro.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnCadastro.Location = new System.Drawing.Point(522, 250);
@@ -148,6 +154,9 @@
             this.btnEntrar.AutoEllipsis = true;
             this.btnEntrar.BackColor = System.Drawing.Color.White;
             this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntrar.FlatAppearance.BorderSize = 0;
+            this.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.btnEntrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnEntrar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEntrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnEntrar.Location = new System.Drawing.Point(384, 250);

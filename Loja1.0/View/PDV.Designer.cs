@@ -693,6 +693,8 @@
             this.btnPesquisaCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisaCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnPesquisaCliente.Location = new System.Drawing.Point(446, 52);
@@ -710,6 +712,8 @@
             this.btnOkCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnOkCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOkCliente.FlatAppearance.BorderSize = 0;
+            this.btnOkCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnOkCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnOkCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOkCliente.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOkCliente.ForeColor = System.Drawing.Color.Lime;
@@ -731,6 +735,8 @@
             this.btnCancelCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelCliente.FlatAppearance.BorderSize = 0;
+            this.btnCancelCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCancelCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelCliente.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelCliente.ForeColor = System.Drawing.Color.Red;
@@ -752,6 +758,8 @@
             this.btnTrocaUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnTrocaUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTrocaUser.FlatAppearance.BorderSize = 0;
+            this.btnTrocaUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTrocaUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnTrocaUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrocaUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnTrocaUser.Location = new System.Drawing.Point(728, 3);
@@ -769,6 +777,8 @@
             this.btnOkPesquisa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnOkPesquisa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOkPesquisa.FlatAppearance.BorderSize = 0;
+            this.btnOkPesquisa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnOkPesquisa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnOkPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOkPesquisa.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOkPesquisa.ForeColor = System.Drawing.Color.Lime;
@@ -790,6 +800,8 @@
             this.btnCancelPesquisa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelPesquisa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelPesquisa.FlatAppearance.BorderSize = 0;
+            this.btnCancelPesquisa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelPesquisa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCancelPesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelPesquisa.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelPesquisa.ForeColor = System.Drawing.Color.Red;
@@ -810,6 +822,8 @@
             this.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisar.FlatAppearance.BorderSize = 0;
+            this.btnPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnPesquisar.Location = new System.Drawing.Point(652, 531);
@@ -828,6 +842,8 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -871,6 +887,8 @@
             this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnConsulta.Location = new System.Drawing.Point(694, 3);
@@ -918,11 +936,11 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pnlLogo);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.btnCancelPesquisa);
             this.Controls.Add(this.cmbCliente);
-            this.Controls.Add(this.btnPesquisaCliente);
             this.Controls.Add(this.btnCancelCliente);
+            this.Controls.Add(this.btnPesquisaCliente);
+            this.Controls.Add(this.btnPesquisar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

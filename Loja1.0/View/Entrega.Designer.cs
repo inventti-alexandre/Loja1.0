@@ -49,6 +49,7 @@
             this.txtBuscaCliente = new System.Windows.Forms.TextBox();
             this.btnCancelCliente = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
             this.lblBairro = new System.Windows.Forms.Label();
             this.txtNum = new System.Windows.Forms.TextBox();
             this.lblNum = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.lblEndereco = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.txtBairro = new System.Windows.Forms.TextBox();
             this.btnExcluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -111,6 +111,8 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(764, 3);
@@ -222,6 +224,8 @@
             this.btnPesquisar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisar.FlatAppearance.BorderSize = 0;
+            this.btnPesquisar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisar.Location = new System.Drawing.Point(253, 64);
             this.btnPesquisar.Margin = new System.Windows.Forms.Padding(0);
@@ -251,6 +255,8 @@
             this.btnOkCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnOkCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOkCliente.FlatAppearance.BorderSize = 0;
+            this.btnOkCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnOkCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnOkCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOkCliente.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOkCliente.ForeColor = System.Drawing.Color.Lime;
@@ -295,6 +301,8 @@
             this.btnPesquisaCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisaCliente.Enabled = false;
             this.btnPesquisaCliente.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPesquisaCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisaCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnPesquisaCliente.Location = new System.Drawing.Point(761, 64);
@@ -323,6 +331,8 @@
             this.btnCancelCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelCliente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancelCliente.FlatAppearance.BorderSize = 0;
+            this.btnCancelCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancelCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCancelCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelCliente.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelCliente.ForeColor = System.Drawing.Color.Red;
@@ -352,6 +362,15 @@
             this.groupBox1.TabIndex = 87;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Entrega";
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.Enabled = false;
+            this.txtBairro.Location = new System.Drawing.Point(583, 18);
+            this.txtBairro.MaxLength = 30;
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(185, 20);
+            this.txtBairro.TabIndex = 21;
             // 
             // lblBairro
             // 
@@ -435,15 +454,6 @@
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
-            // txtBairro
-            // 
-            this.txtBairro.Enabled = false;
-            this.txtBairro.Location = new System.Drawing.Point(583, 18);
-            this.txtBairro.MaxLength = 30;
-            this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(185, 20);
-            this.txtBairro.TabIndex = 21;
-            // 
             // btnExcluir
             // 
             this.btnExcluir.AutoEllipsis = true;
@@ -483,9 +493,9 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.txtBuscaCliente);
             this.Controls.Add(this.btnPesquisar);
-            this.Controls.Add(this.btnPesquisaCliente);
             this.Controls.Add(this.cmbCliente);
             this.Controls.Add(this.btnCancelCliente);
+            this.Controls.Add(this.btnPesquisaCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

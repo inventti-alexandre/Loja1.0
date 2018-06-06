@@ -91,6 +91,8 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnExit.Location = new System.Drawing.Point(765, 3);
@@ -162,6 +164,8 @@
             this.btnPesquisaProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPesquisaProduto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPesquisaProduto.FlatAppearance.BorderSize = 0;
+            this.btnPesquisaProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisaProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnPesquisaProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPesquisaProduto.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnPesquisaProduto.Location = new System.Drawing.Point(444, 50);
@@ -179,6 +183,8 @@
             this.btnOk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOk.FlatAppearance.BorderSize = 0;
+            this.btnOk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOk.ForeColor = System.Drawing.Color.Lime;
@@ -200,6 +206,8 @@
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.Red;

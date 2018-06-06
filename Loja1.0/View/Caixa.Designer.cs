@@ -1440,6 +1440,8 @@
             this.btnTrocaUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnTrocaUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTrocaUser.FlatAppearance.BorderSize = 0;
+            this.btnTrocaUser.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnTrocaUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnTrocaUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrocaUser.ForeColor = System.Drawing.Color.Lime;
             this.btnTrocaUser.Location = new System.Drawing.Point(727, 3);
@@ -1457,6 +1459,8 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -1502,6 +1506,8 @@
             this.btnConsulta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConsulta.FlatAppearance.BorderSize = 0;
+            this.btnConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsulta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnConsulta.Location = new System.Drawing.Point(692, 3);

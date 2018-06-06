@@ -585,6 +585,7 @@
     <Content Include="Image\lupa.png" />
     <Content Include="Image\NOK.png" />
     <Content Include="Image\OK.png" />
+    <None Include="Image\Sair.png" />
     <Content Include="Image\trocar.png" />
     <None Include="Image\voltar1.png" />
     <Content Include="Model\Model.Context.tt">

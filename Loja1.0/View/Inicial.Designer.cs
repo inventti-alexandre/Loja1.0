@@ -80,10 +80,13 @@
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
-            this.btnExit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExit.BackgroundImage")));
+            this.btnExit.BackgroundImage = global::Loja1._0.Properties.Resources.Sair;
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.Color.Transparent;
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -116,7 +119,7 @@
             this.lblCopy.BackColor = System.Drawing.Color.Transparent;
             this.lblCopy.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCopy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lblCopy.Location = new System.Drawing.Point(649, 577);
+            this.lblCopy.Location = new System.Drawing.Point(3, 583);
             this.lblCopy.Name = "lblCopy";
             this.lblCopy.Size = new System.Drawing.Size(158, 14);
             this.lblCopy.TabIndex = 6;
@@ -329,6 +332,9 @@
             this.btnConfig.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnConfig.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConfig.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnConfig.FlatAppearance.BorderSize = 0;
+            this.btnConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfig.ForeColor = System.Drawing.Color.Transparent;
             this.btnConfig.ImageAlign = System.Drawing.ContentAlignment.TopLeft;

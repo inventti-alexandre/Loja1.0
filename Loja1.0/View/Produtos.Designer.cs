@@ -92,6 +92,8 @@
             this.btnExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnExit.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -215,7 +217,7 @@
             "LITRO",
             "METRO"});
             this.cmbUnidade.Location = new System.Drawing.Point(625, 81);
-            this.cmbUnidade.Margin = new System.Windows.Forms.Padding(0);
+            this.cmbUnidade.Margin = new System.Windows.Forms.Padding(1);
             this.cmbUnidade.Name = "cmbUnidade";
             this.cmbUnidade.Size = new System.Drawing.Size(155, 21);
             this.cmbUnidade.TabIndex = 3;
@@ -307,7 +309,7 @@
             "LITRO",
             "METRO"});
             this.cmbFornecedor.Location = new System.Drawing.Point(338, 151);
-            this.cmbFornecedor.Margin = new System.Windows.Forms.Padding(0);
+            this.cmbFornecedor.Margin = new System.Windows.Forms.Padding(1);
             this.cmbFornecedor.Name = "cmbFornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(256, 21);
             this.cmbFornecedor.TabIndex = 7;
